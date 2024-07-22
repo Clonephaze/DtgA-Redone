@@ -1,8 +1,9 @@
 $(document).ready(function() {
     var pageContent;
+    let testing = true;
 
     // Fetch the JSON data
-    $.getJSON("pageContent.json", function(data) {
+    $.getJSON("OtherPages/pageContent.json", function(data) {
         pageContent = data;
 
         // Load the initial page based on the URL
@@ -32,9 +33,10 @@ $(document).ready(function() {
 
     function loadPageFromURL() {
         var pageId = window.location.hash.substring(1);
-        if (pageId) {
+
+        if (pageId && !testing) {
             loadPage(pageId);
-        } else {
+        } else if (!testing) {
             loadPage('homePage'); // Default to homePage if no hash
         }
     }
@@ -57,29 +59,33 @@ $(document).ready(function() {
         
         if (content) {
             $('.content-section').html(content.pageContent); // Update the content container
+
+            document.title = content.title;
             
             // Check if navigating to homePage and refresh tsParticles
             if (pageId === 'homePage') {
-                handleHomePageTransition();
+                handleHomePageTransition(pageContent);
             } else {
-                handleContentPageTransition();
+                handleContentPageTransition(pageContent);
             }
         } else {
             console.log("No content found for pageId:", pageId);
         }
     }
 
-    function handleHomePageTransition() {
+    function handleHomePageTransition(pageContent) {
         // Refresh the tsParticles container
         window.refreshParticles();
 
         // Hide the homepage background
         $('.homepageBg').animate({ opacity: "100%" }, 400);
         $('nav').toggleClass('nav-with-content', false);
+
     }
 
-    function handleContentPageTransition() {
+    function handleContentPageTransition(pageContent) {
         $('.homepageBg').animate({ opacity: "0" }, 400);
         $('nav').toggleClass('nav-with-content', true);
+
     }
 });

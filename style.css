@@ -85,6 +85,16 @@ nav {
         margin-inline: 2rem;
         order: 2;
     }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-image: linear-gradient(to bottom, color-mix(in hsl shorter hue, hsl(var(--color-primary-1)) 10%, black 90%) 0%, var(--bgColor) 80%);
+        opacity: 0; /* Start fully transparent */
+        transition: opacity 400ms ease;
+        z-index: -1; /* Place behind content */
+    }
 }
 
 @media (max-width: 768px) {
@@ -158,8 +168,8 @@ nav {
     } */
 }
 
-.nav-with-content {
-        background-image: linear-gradient(to bottom, color-mix(in hsl shorter hue, hsl(var(--color-primary-1)) 10%, black 90%) 0%, var(--bgColor) 80%);
+.nav-with-content::before {
+        opacity: 1;
     }
 
 .nav-item {
@@ -231,7 +241,7 @@ nav {
     }
 }
 
-.content-section {
+.logo-centerer {
     display: grid;
     height: 100%;
     max-height: 100vh;

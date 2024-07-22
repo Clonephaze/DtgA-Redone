@@ -26,6 +26,13 @@ $(document).ready(function() {
             $('.nav-list').animate({ height: "0" }, 200);
         }
     });
+
+    var navbarHeight = $('nav').height();
+    var navbarOffset = navbarHeight + 10;
+
+    console.log(navbarOffset, navbarHeight);
+
+    $('.content-section').css('padding-top', navbarOffset);
 });
 
 jQuery.fn.animateAutoHeight = function(duration, easing, callback) {
