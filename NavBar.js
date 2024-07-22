@@ -1,5 +1,37 @@
-const navDropdown = document.getElementById('nav-dropdown');
+$(document).ready(function() {
+    $('#wiki-list-dropdown').on('click', function() {
+        var dropdownExpanded = $(this).attr('aria-expanded') === 'true';
+        $(this).attr('aria-expanded', !dropdownExpanded);
+        var dropdown = $('.nav-dropdown');
 
-navDropdown.addEventListener('click', () => {
-    navDropdown.getAttribute('aria-expanded') === 'true' ? navDropdown.setAttribute('aria-expanded', 'false') : navDropdown.setAttribute('aria-expanded', 'true');
+        if (!dropdownExpanded) {
+            dropdown.animateAutoHeight(250, 'linear', function() {
+                $(this).css('height', 'auto');
+            });
+        } else {
+            dropdown.animate({ height: "0" }, 200);
+        }
+    });
+
+    $('.nav-toggle').on('click', function() {
+        var ariaExpanded = $(this).attr('aria-expanded') === 'true';
+        $(this).attr('aria-expanded', !ariaExpanded);
+        $('nav').toggleClass('mobile-nav-open', !ariaExpanded);
+
+        if (!ariaExpanded) {
+            $('.nav-list').animateAutoHeight(200, 'swing', function() {
+                $(this).css('height', 'auto');
+            });
+        } else {
+            $('.nav-list').animate({ height: "0" }, 200);
+        }
+    });
 });
+
+jQuery.fn.animateAutoHeight = function(duration, easing, callback) {
+    var elem = $(this),
+        originalHeight = elem.height(),
+        autoHeight = elem.css('height', 'auto').height();
+
+    elem.height(originalHeight).animate({ height: autoHeight }, duration, easing, callback);
+};
