@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var pageContent;
-    let testing = false;
+    let testing = true;
 
     // Fetch the JSON data
     $.getJSON("OtherPages/pageContent.json", function(data) {
@@ -71,6 +71,7 @@ $(document).ready(function() {
         } else {
             console.log("No content found for pageId:", pageId);
         }
+
     }
 
     function handleHomePageTransition(pageContent) {
@@ -87,5 +88,10 @@ $(document).ready(function() {
         $('.homepageBg').animate({ opacity: "0" }, 400);
         $('nav').toggleClass('nav-with-content', true);
 
+    }
+
+    if (testing) {
+        $('.homepageBg').css('background', 'none');
+        console.log('testing');
     }
 });
