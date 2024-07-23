@@ -12,10 +12,12 @@
     --bgColorHeading: color-mix(in hsl shorter hue, hsl(var(--color-primary), 30%) 80%, hsl(0, 0%, 13%) 20%);
     --bgColorGradient: linear-gradient(to bottom, color-mix(in hsl shorter hue, hsl(var(--color-primary)) 30%, black 70%) 0%, var(--bgColor) 80%);
 
+    --border-color: color-mix(in srgb, rgb(var(--color-primary-rgb-values)) 70%, rgb(10, 10, 10) 60%);
+
     --text-color-standard: 215, 215, 215;
     --text-color-mixed: color-mix(in srgb, rgb(var(--color-primary-rgb-values)) 90%, rgb(var(--text-color-standard)) 10%);
 
-
+    --standard-font: Arial, Helvetica, sans-serif;
     --transitionDuration: 100ms;
 }
 
@@ -31,13 +33,10 @@ html,
 body,
 main {
     height: 100%;
-    -webkit-font-smoothing: antialiased;    
-    -moz-osx-font-smoothing: grayscale;
-
-
 }
 
 body{
+    font-family: var(--standard-font);
     background-color: var(--bgColor);
     transition: background-color var(--transitionDuration);
 }
@@ -59,6 +58,7 @@ nav {
     position: fixed;
     width: 100%;
     backdrop-filter: blur(2px);
+    box-shadow: 0 0 6px 2px hsla(0, 0%, 0%, 0.5);
     background-color: hsla(0, 0%, 0%, 0.5);
 
 
@@ -126,7 +126,6 @@ nav {
         /* outline: lime 1px dashed; */
         max-width: 100vw;
         border-radius: 0 0 13px 13px;
-        box-shadow: 0 0 6px 2px hsla(0, 0%, 0%, 0.5);
 
         >.nav-list {
             display: flex;
@@ -265,6 +264,45 @@ nav {
 
 .content-section {
     height: 100%;
+    width: min(95vw, 1280px);
+    margin: 0 auto;
+    padding-top: 15px;
+}
+
+.code-box {
+    background-color: hsl(0, 0%, 6%);
+    width: fit-content;
+    display: inline-block;
+    margin-inline: 0.15rem;
+    padding: 0.1rem 0.2rem;
+    border-radius: 4px;
+    color: var(--text-color-mixed);
+}
+
+.highlight-bar {
+    font-family: 'HyliaSerif';
+    width: 100%;
+    text-align: center;
+    border: 3px solid var(--border-color);
+    border-radius: 15px;
+    padding: 0.8rem 1rem 0.5rem 1rem; 
+    margin-block: 1rem;
+    color: var(--text-color-mixed);
+    box-shadow: 0 0 6px 2px hsl(var(--color-primary), 0.3), inset 0 0 4px 2px hsl(var(--color-primary), 0.3);
+    background-color: color-mix(in srgb, currentcolor 20%, rgb(var(--color-secondary-rgb-values)));
+
+
+    &::before,
+    &::after {
+        content: '*';
+        color: hsl(var(--color-primary));
+        font-family: 'TriForce';
+        font-size: 1.5rem;
+        margin-inline: 1.5rem;
+        vertical-align: -0.2rem;
+    }
+
+
 }
 
 /****** HOME PAGE ******/
@@ -292,7 +330,6 @@ nav {
 
 /****** ABOUT PAGE ******/
 .about-container {
-    margin-top: 15px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -321,7 +358,7 @@ nav {
     border-radius: 15px;
     margin-block: 1rem;
     box-shadow: inset 0 0 3px 3px hsla(0, 0%, 0%, 0.1), 0 0 3px 3px rgba(var(--color-primary-rgb-values), 0.1);
-    border: 2px solid color-mix(in srgb, rgb(var(--color-primary-rgb-values)) 70%, rgb(10, 10, 10) 60%);
+    border: 2px solid var(--border-color);
 
 
     >.about-subtitle {
@@ -358,7 +395,7 @@ nav {
 
         >li{
             list-style: none;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: var(--standard-font);
             font-weight: 400;
             font-size: clamp(0.75rem, 0.625rem + 0.5556vw, 1rem);
             letter-spacing: normal;
@@ -378,13 +415,173 @@ nav {
                 border: none;
                 color: var(--text-color-mixed);
                 text-decoration: underline;
-                font-family: Arial, Helvetica, sans-serif;
+                font-family: var(--standard-font);
                 font-weight: 600;
                 font-size: clamp(0.75rem, 0.625rem + 0.5556vw, 1rem);
                 letter-spacing: normal;
                 cursor: pointer;
             }
         }
+    }
+}
+
+/****** Getting Started Page ******/
+.get-sta-button {
+    background: none;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-color-mixed);
+    font-family: var(--standard-font);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: normal;
+    cursor: pointer;
+    padding: 0.5rem 0.8rem;
+    margin: 0.25rem 0.5rem;
+    box-shadow: inset -2px 5px 3px 1px rgba(var(--color-primary-rgb-values), 0.1), 0 0 4px 1px rgba(0,0,0,0.2);
+
+    >i {
+        padding-right: 0.25rem;
+        font-size: 1rem;
+        vertical-align: -0.125rem;
+
+    }
+}
+
+.get-sta-title {
+    color: var(--text-color-mixed);
+    font-size: clamp(1.125rem, 0.6875rem + 1.9444vw, 2rem);
+    font-family: 'HyliaSerif';
+    text-align: center;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    margin-block: 0.5rem;
+    
+}
+
+.get-sta-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(var(--text-color-standard));
+
+    & li {
+        padding-left: 0.25rem;
+
+        &::marker {
+            content: '*';
+            font-family: 'TriForce';
+            color: var(--text-color-mixed);
+            font-size: 1rem;
+            line-height: 1.25rem;
+            text-shadow: 0 0 5px var(--text-color-mixed);
+        }
+    }
+
+    > .gs-download-container {
+        width: 100%;
+    }
+
+    >.install-container {
+        width: 100%;
+    }
+
+    >.what-to-know-container {
+        width: 100%;
+    }
+}
+
+.download-cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+
+    >.download-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--border-color);
+        border-radius: 15px;
+        padding: 1rem;
+        box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.1);
+
+        >h2 {
+            font-family: 'BreathOfWild';
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            color: var(--text-color-mixed);
+        }
+    }
+}
+
+.install-cards-container {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.1);
+
+    >.install-card {
+        display: grid;
+        grid-template-columns: 85% 15%;
+        padding: 0.8rem 1.8rem;
+        box-shadow: inset 0 0 5px 3px rgba(var(--color-primary-rgb-values), 0.1);
+
+        &:nth-child(2),
+        &:nth-child(3) {
+            border-top: 2px solid var(--border-color);
+        }
+
+        & .install-card-title {
+            color: var(--text-color-mixed);
+            font-family: 'HyliaSerif';
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            padding-bottom: 0.2rem;
+        }
+
+        >.install-buttons {
+            place-self: center;
+            width: 80%;
+
+            >button {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.what-to-know-card {
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.1), inset 0 0 5px 3px rgba(var(--color-primary-rgb-values), 0.1);
+    padding: 0.8rem 1.8rem;
+
+    & .what-to-know-title,
+      .what-to-know-subtitle {
+        color: var(--text-color-mixed);
+        font-family: 'HyliaSerif';
+        letter-spacing: 0.05em;
+        padding-bottom: 0.2rem;
+    }
+    
+    & .what-to-know-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    & .what-to-know-subtitle {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    & .what-to-know>li>ul {
+        padding-left: 1rem;
     }
 }
 

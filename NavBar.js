@@ -28,9 +28,7 @@ $(document).ready(function() {
     });
 
     var navbarHeight = $('nav').height();
-    var navbarOffset = navbarHeight + 10;
-
-    console.log(navbarOffset, navbarHeight);
+    var navbarOffset = navbarHeight + 25;
 
     $('.content-section').css('padding-top', navbarOffset);
 });
