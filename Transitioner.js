@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var pageContent;
-    let testing = true;
+    let testing = false;
 
     // Fetch the JSON data
     $.getJSON("OtherPages/pageContent.json", function(data) {
@@ -44,10 +44,13 @@ $(document).ready(function() {
     function loadPage(pageId) {
         $('.nav-toggle').attr('aria-expanded', 'false');
 
-        // check if screen width is equal to or less than 768px
+        // Close the dropdowns if they're open
         if ($(window).width() <= 768) {
             $('.nav-list').animate({ height: "0" }, 200);
             $('.nav-list').attr('aria-expanded', 'false');
+            $('.nav-dropdown').animate({ height: "0" }, 200);
+            $('#wiki-list-dropdown').attr('aria-expanded', 'false');
+        } else {
             $('.nav-dropdown').animate({ height: "0" }, 200);
             $('#wiki-list-dropdown').attr('aria-expanded', 'false');
         }

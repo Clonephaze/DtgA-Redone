@@ -599,6 +599,80 @@ nav {
     }
 }
 
+/****** New Mechanics Page ******/
+
+.new-mechanics-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.new-mech-title {
+    color: var(--text-color-mixed);
+    font-family: 'HyliaSerif';
+    font-size: clamp(1.75rem, 1.375rem + 1.6667vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.new-mech-card-container {
+    display: grid;
+    width: min(120%, 95vw);
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 95vw), 1fr));
+    gap: 2rem;
+    color: rgb(var(--text-color-standard));
+
+    >.new-mech-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid var(--border-color);
+        border-radius: 15px;
+        box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.2), inset 0 0 3px 2px rgba(0, 0, 0, 0.3);
+        max-width: 450px;
+        margin-inline: auto;
+        overflow: hidden;
+
+        >.new-mech-card-title {
+            color: var(--text-color-mixed);
+            font-family: 'HyliaSerif';
+            font-size: clamp(1.125rem, 1.0625rem + 0.2778vw, 1.25rem);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            padding-bottom: 0.2rem;
+            text-align: center;
+            width: 100%;
+            background-image: var(--bgColorGradient);
+            padding: 0.7rem 1rem;
+            box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.3);
+
+
+        }
+
+        >.new-mech-card-description {
+            padding: 0.8rem 2rem;
+            font-size: clamp(0.9rem, 0.625rem + 0.5556vw, 1rem);
+
+            >ul>li {
+                margin-block: 0.25rem;
+
+                &::marker {
+                    content: '* ';
+                    color: var(--color-primary);
+                    font-size: 1.2rem;
+                    font-family: 'TriForce';
+                }
+            }
+        }
+
+
+    }
+}
+
 @font-face {
     font-family: 'BreathOfWild';
     src: url(Assets/Fonts/TheWildBreathofZelda.otf);
