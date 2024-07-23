@@ -341,7 +341,7 @@ nav {
 
 .about-title {
     font-size: clamp(1.125rem, 0.6875rem + 1.9444vw, 2rem);
-    font-family: 'BreathOfWild';
+    font-family: 'HyliaSerif';
     text-align: center;
     letter-spacing: 0.05em;
     font-weight: 700;
@@ -394,7 +394,6 @@ nav {
 
 
         >li{
-            list-style: none;
             font-family: var(--standard-font);
             font-weight: 400;
             font-size: clamp(0.75rem, 0.625rem + 0.5556vw, 1rem);
@@ -402,12 +401,12 @@ nav {
             color: rgb(var(--text-color-standard));
             text-wrap: balance;
             text-wrap: pretty;
+            padding-left: 0.25rem;
 
-            &::before {
+            &::marker {
                 content: "*";
                 font-family: "Triforce";
                 color: var(--text-color-mixed);
-                padding-right: 0.25rem;
             }
 
             & button {
