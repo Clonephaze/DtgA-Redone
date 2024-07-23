@@ -512,6 +512,16 @@ nav {
             margin-bottom: 1.5rem;
             color: var(--text-color-mixed);
         }
+
+        & .buttons-row {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+
+            @media (max-width: 768px) {
+                flex-direction: column;
+            }
+        }
     }
 }
 
@@ -550,6 +560,11 @@ nav {
             >button {
                 width: 100%;
             }
+        }
+
+        @media (max-width: 768px) {
+            grid-template-rows: 85% 15%;
+            grid-template-columns: none;
         }
     }
 }
