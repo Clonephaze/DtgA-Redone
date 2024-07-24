@@ -663,7 +663,7 @@ nav {
 
                 &::marker {
                     content: '* ';
-                    color: var(--color-primary);
+                    color: rgb(var(--color-primary-rgb-values));
                     font-size: 1.2rem;
                     font-family: 'TriForce';
                 }
