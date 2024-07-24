@@ -277,6 +277,7 @@ nav {
     padding: 0.1rem 0.2rem;
     border-radius: 4px;
     color: var(--text-color-mixed);
+    font-family: monospace;
 }
 
 .highlight-bar {
@@ -670,6 +671,74 @@ nav {
         }
 
 
+    }
+}
+
+/****** FAQ Page ******/
+
+.faq-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.faq-accordion {
+    width: min(100%, 95vw);
+    color: rgb(var(--text-color-standard));
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.2), inset 0 0 3px 2px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+
+    >.accordion-button {
+        color: var(--text-color-mixed);
+        text-align: left;
+        font-family: 'HyliaSerif';
+        font-size: clamp(1rem, 0.875rem + 0.5556vw, 1.25rem);
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        padding-bottom: 0.2rem;
+        padding-left: 1rem;
+        background-color: unset;
+        width: 100%;
+        border: none;
+        border-bottom: 2px solid var(--border-color);
+        cursor: pointer;
+
+        >h2 {
+            margin: 0.3rem ;
+        }
+
+        &:nth-last-of-type(1) {
+            border-bottom: unset;
+        }
+        
+    }
+
+    >.accordion-content {
+        font-size: clamp(0.9rem, 0.625rem + 0.5556vw, 1rem);
+        box-shadow: inset 0 0 6px 4px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        height: 0;
+
+        .content-centerer {
+            padding: 2rem 1.5rem;
+
+            >ol {
+                padding-left: 2rem;
+            }
+
+            >ol>li>button {
+                background-color: unset;
+                border: none;
+                color: var(--text-color-mixed);
+                text-decoration: underline;
+                cursor: pointer;
+                font-size: inherit;
+            }
+        }
     }
 }
 
