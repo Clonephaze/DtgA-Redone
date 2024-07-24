@@ -291,6 +291,10 @@ nav {
     color: var(--text-color-mixed);
     box-shadow: 0 0 6px 2px hsl(var(--color-primary), 0.3), inset 0 0 4px 2px hsl(var(--color-primary), 0.3);
     background-color: color-mix(in srgb, currentcolor 20%, rgb(var(--color-secondary-rgb-values)));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 
 
     &::before,
