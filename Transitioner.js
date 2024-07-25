@@ -72,6 +72,17 @@ $(document).ready(function() {
                 $('.homepageBg').animate({ opacity: "0" }, 400);
                 $('nav').toggleClass('nav-with-content', true);
                 break;
+            case 'itemsPage':
+                $.getScript("SpecialActions.js", function() {
+                    generatePageContent('Items', {
+                        'Armors': 'armorsContainer',
+                        'Consumables': 'consumablesContainer',
+                        'Gadgets': 'gadgetsContainer',
+                        'KeyItems': 'keyitemsContainer',
+                        'Souls': 'soulsContainer',
+                        'Weapons': 'weaponsContainer'
+                    });
+                })
             default:
                 $('.homepageBg').animate({ opacity: "0" }, 400);
                 $('nav').toggleClass('nav-with-content', true);

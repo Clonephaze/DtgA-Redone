@@ -1,0 +1,1081 @@
+[
+    {
+        "Items": [
+            {
+                "Armors": [
+                    {
+                        "title": "Old Cap",
+                        "description": "This hat has been sitting in a chest for who who knows how long. Still- it's a nice fit.",
+                        "imageSrc": [
+                            "Icons/OldCap.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "Can be found in the Cave of Awakening."
+                    },
+                    {
+                        "title": "Blue Cap",
+                        "description": "According to legend, this cap was crafted for a hero who aided the Zora in their hour of need. It allows the wearer to swim with great speed. Gives the entire Zora armor effects.",
+                        "imageSrc": [
+                            "Icons/BlueCap.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "Can be found in the Zora City Shop."
+                    },
+                    {
+                        "title": "Green Cap",
+                        "description": "The forest children found this cap, clutched in the hands of a stalfos who'd stopped moving. It makes the wearer feel lighter than air. Gives the entire Climbing Gear armor effects.",
+                        "imageSrc": [
+                            "Icons/GreenCap.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "Can be found in the Great Deku tree shop."
+                    },
+                    {
+                        "title": "Red Cap",
+                        "description": "According to legend, this cap was crafted for a hero who aided the Gorons in their hour of need. It provides superb protection from heat. Gives the entire Flamebreaker armor effects.",
+                        "imageSrc": [
+                            "Icons/RedCap.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "Can be found in the Goron City Shop."
+                    }
+                ],
+                "Consumables": [
+                    {
+                        "title": "Heart Piece",
+                        "description": "Can be exchanged 5 at a time with the goddess statues around Hyrule for more health.",
+                        "imageSrc": [
+                            "Icons/HeartPiece.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in chests around Hyrule."
+                    },
+                    {
+                        "title": "Divine Vessel",
+                        "description": "A vessel strong enough to contain a portion of Hylia's Light, allowing the Lost One (you) to journey off Hope's Rise. While not consumable itself, this item produces your Estus Flasks from Hylia's Light when resting at a campfire.",
+                        "imageSrc": [
+                            "Icons/DivineVessel.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be recieved from the Old Man after completing the 4 shrines on Hope's Rise."
+                    },
+                    {
+                        "title": "Estus Flask",
+                        "description": "After recieving the Divine vessel you will recieve 5 of these whenever you rest at a campfire. Use these to restore your health and stamina! (Amount scales with Vitality and Endurance respectively) <br>Use with Dpad-down <span style=\"font-family: 'PromptFont'; font-size: 20px;\">↡</span> + Activate<span style=\"font-family: 'PromptFont'; font-size: 20px;\">⇓</span>",
+                        "imageSrc": [
+                            "Icons/EstusFlask.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be refilled by resting at a campfire after recivieving it from the Old Man."
+                        
+                    },
+                    {
+                        "title": "Goron Powder Keg",
+                        "description": "Portable exploding barrels! Drop them from your inventory to pick them up to place or throw them. Can be exploded with the Slingshot.",
+                        "imageSrc": [
+                            "Icons/PowderKeg.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in chests around Hyrule."
+                    },
+                    {
+                        "title": "Deployable Paraglider",
+                        "description": "A temporary paraglider that can be dropped from your inventory, when you drop it from your inventory you can pick them up and can jump off a cliff and glide. Good for a few flights, but they break easily so be careful.",
+                        "imageSrc": [
+                            "Icons/Paraglider.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in chests around Hyrule."
+                    },
+                    {
+                        "title": "Metal Balloon",
+                        "description": "These balloons act like Octo Balloons, but these don't pop! Make your flying dreams come true.",
+                        "imageSrc": [
+                            "Icons/Balloon.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in chests around Hyrule."
+                    },
+                    {
+                        "title": "Raft Kit",
+                        "description": "This kit has everything one would need to build a makeshift wooden raft. It doesn't come with a sail, unfortunately. To deploy, hold the item from your inventory screen and throw the item into the water.",
+                        "imageSrc": [
+                            "Icons/WoodRaft.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in chests and shops all around Hyrule."
+                    },
+                    {
+                        "title": "Magnetic Sail",
+                        "description": "Unlike most sails, this one has a metal base. Any raft with this attached would be subject to the power of magnetism... To set sail, place beside any large object and stand clear.",
+                        "imageSrc": [
+                            "Icons/SwiftSail.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in chests and shops all around Hyrule."
+                    },
+                    {
+                        "title": "Cracked Pyro Pot",
+                        "description": "This pot has been filled with the magics home to Death Mountain; namely fire.",
+                        "imageSrc": [
+                            "Icons/CrackedPot(Fire).webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be crafted at the alchemy tables found in towns and the Shrine of Resurrection. Needs: 1 Pot, 1 Red Chuchu Jelly, 1 Ruby, and 100 Rupees."
+                    },
+                    {
+                        "title": "Cracked Hydro Pot",
+                        "description": "The Zora use these pots to stay hydrated. Particularly useful on Death Mountain.",
+                        "imageSrc": [
+                            "Icons/CrackedPot(Water).webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be crafted at the alchemy tables found in towns and the Shrine of Resurrection. Needs: 1 Pot, 1 Blue Chuchu Jelly, 1 Opal, and 100 Rupees."
+                    },
+                    {
+                        "title": "Cracked Cryo Pot",
+                        "description": "The dragon Naydra's breath has blessed the water in this jar. Treasured in Gerudo.",
+                        "imageSrc": [
+                            "Icons/CrackedPot(Ice).webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be crafted at the alchemy tables found in towns and the Shrine of Resurrection. Needs: 1 Pot, 1 White Chuchu Jelly, 1 Sapphire, and 100 Rupees."
+                    },
+                    {
+                        "title": "Cracked Dendro Pot",
+                        "description": "This isn't exactly a pot, but rather, a magical seed. Creats a wall of thorns.",
+                        "imageSrc": [
+                            "Icons/CrackedPot(Earth).webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be crafted at the alchemy tables found in towns and the Shrine of Resurrection. "
+                    },
+                    {
+                        "title": "Cracked Aero Pot",
+                        "description": "This pot houses the gusts of Tabantha Plains. Break to release several updrafts.",
+                        "imageSrc": [
+                            "Icons/CrackedPot(Air).webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be crafted at the alchemy tables found in towns and the Shrine of Resurrection. Needs: 1 Pot, 1 Blue Chuchu Jelly, 1 Opal, and 100 Rupees."
+                    },
+                    {
+                        "title": "Cracked Electro Pot",
+                        "description": "This pot contains the fury of Faron's ever-lasting storm. It has a delayed effect.",
+                        "imageSrc": [
+                            "Icons/CrackedPot(Shock).webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be crafted at the alchemy tables found in towns and the Shrine of Resurrection. Needs: 1 Pot, 1 Yellow Chuchu Jelly, 1 Topaz, and 100 Rupees."
+                    },
+                    {
+                        "title": "Cracked Magno Pot",
+                        "description": "This metalic pot was made by an expert craftsman. Breaking it seems a shame. (WARNING: This will send giant metal spiked balls flying in all directions. Be careful.)",
+                        "imageSrc": [
+                            "Icons/CrackedPot(Metal).webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be crafted at the alchemy tables found in towns and the Shrine of Resurrection. Needs: 1 Pot, 1 Blue Chuchu Jelly, 1 Diamond, and 100 Rupees."
+                    },
+                    {
+                        "title": "Cracked Geo Pot",
+                        "description": "A cracked pot filled with the power of Geo. (WARNING: This will send giant stone boulders flying in all directions. Be careful.)",
+                        "imageSrc": [
+                            "Icons/CrackedPot(Wood).webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be crafted at the alchemy tables found in towns and the Shrine of Resurrection."
+                    },
+                    {
+                        "title": "Cracked Deo Pot",
+                        "description": "This strange pot seems to house the power of Hylia. Has a 25% chance to duplicate.",
+                        "imageSrc": [
+                            "Icons/CrackedPot(Holy).webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be crafted at the alchemy tables found in towns and the Shrine of Resurrection. Needs: 1 Pot, 1 Blue Chuchu Jelly, 1 Star Fragment, and 250 Rupees."
+                    },
+                    {
+                        "title": "Cracked Entro Pot",
+                        "description": "A cracked pot imbued with the power of Entro",
+                        "imageSrc": [
+                            "Icons/CrackedPot(Dark).webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be crafted at the alchemy tables found in towns and the Shrine of Resurrection. Needs: 1 Pot, 1 Blue Chuchu Jelly, 25 Fairy, and 1,000 Rupees."
+                    }
+                ],
+                "Gadgets": [
+                    {
+                        "title": "Flint Strike",
+                        "description": "Flint Strike is a gadget used to light fires, can be used to light bundles of wood or any other flamable object. Useful for making campfires!",
+                        "imageSrc": [
+                            "Icons/ItemFlintStrike.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in the <a class=\"location-popover DtgA-popover-link\" id=\"Old Man's Cabin\">Old Man's Hut</a> on Hope's Rise (the plateau)."
+                    },
+                    {
+                        "title": "Slingshot",
+                        "description": "Arrows are scarce with DtgA, and thats where the slingshot comes in. It fires pebbles, so youll never be without ammo! It doesnt hit hard, but it can break ice, and even move small objects.",
+                        "imageSrc": [
+                            "Icons/Slingshot.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found at the newly added <a class=\"location-popover DtgA-popover-link\" id=\"Frozen Ruins\">Frozen Ruins</a> below the shrine in the snowy mountains on Hope's Rise."
+                    },
+                    {
+                        "title": "Cannon",
+                        "description": "Introducing the Cannon, the game's most powerful weapon by a long shot. With its unlimited bomb arrows, enhanced explosion radius, and physics-based projectiles, this weapon can easily take down even the toughest enemies and send objects flying. Will eventually rely on Powder Kegs as ammo. Just remember to avoid firing it in the rain unless you like pain.",
+                        "imageSrc": [
+                            "Icons/Cannon.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in the newly added <a class=\"location-popover DtgA-popover-link\" id=\"Cannon Cave\">Cannon Cave</a> next to the Woodland Stable pond."
+                    },
+                    {
+                        "title": "Silver Gauntlents",
+                        "description": "A classic Zelda item, with a fresh twist. No longer just for lifting hefty rocks, these gauntlets now allow you to manipulate any physics object as if it were as light as a Boko fang. Originating from a cleverly-named giant who was cursed by a goddess, these gauntlets come with a lore-friendly backstory that explains their flawed hitbox - they can't interact with enemies, only physics objects.",
+                        "imageSrc": [
+                            "Icons/SilverGauntlents.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in the <a class=\"location-popover DtgA-popover-link\" id=\"Lanayru Waterfall\">Lanayru Waterfall</a> in Lanayru's Promenade."
+                    },
+                    {
+                        "title": "Golden Gauntlents",
+                        "description": "Struggling with the Silver Gauntlets? Meet the Golden Gauntlets. Blessed by the goddess Din, they turn gold and gain new powers. Now, they can move physics objects and unleash invisible Lynel flames on enemies. It's a bug-turned-feature moment. Plus, they've been ReAnimated for a new look.",
+                        "imageSrc": [
+                            "Icons/GoldenGauntlents.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Received automatically upon finding the Silver Gauntlents."
+                    },
+                    {
+                        "title": "Twilight Spinner",
+                        "description": "Like shield surfing on a spinning top. This device propels you in any direction you desire, even uphill. The Spinner doesn't just transport you; it offers a whirlwind adventure that redefines motion in the game. Be sure to start shield surfing first, THEN equip the Spinner.",
+                        "imageSrc": [
+                            "Icons/TwilightSpinner.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in the newly added <a class=\"location-popover DtgA-popover-link\" id=\"Desert Ruins\">Desert Ruins</a> in Gerudo Desert."
+                    },
+                    {
+                        "title": "Iron Boots",
+                        "description": "Meet the Iron Boots, simple yet unique. Equip and activate their ZAction (Activate (A) + move) when already in water to sink. Start in shallow water, keep moving, then press and hold Activate. To stop, click the Left Analog Stick while swimming or use another ZAction on land. Future builds will auto-end the action. Remove with Crouch (L3) + Move.",
+                        "imageSrc": [
+                            "Icons/IronBoots.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found at the newly added <a class=\"location-popover DtgA-popover-link\" id=\"Hylian Waterworks\">Hylian Waterworks</a>, a new structure built at the Lake Hylia Inlet."
+                    },
+                    {
+                        "title": "Dive Boots (Unimplemented)",
+                        "description": "The Dive Boots - a faster, resource-flipped version of the Iron Boots. No excuses here, all the Iron Boots rules apply. Equip and activate their ZAction (Dpad Down + move) when already in water to sink. Start in shallow water, keep moving, then press and hold Activate. To stop, click the Left Analog Stick while swimming or use another ZAction on land. Future builds will auto-end the action. Remove with Crouch (L3) + Move.",
+                        "imageSrc": [
+                            "Icons/DiveBoots.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "CANNOT YET BE FOUND"
+                    },
+                    {
+                        "title": "Hover Boots",
+                        "description": "Just like in Ocarina of Time, these boots create an invisible platform beneath you once worn. The platform extends about 20 feet in all directions and lasts for approximately five seconds. The precise duration may be updated later, but for now, let's go with five seconds. Remove with Crouch (L3) + Move.",
+                        "imageSrc": [
+                            "Icons/HoverBoots.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found at the <a class=\"location-popover DtgA-popover-link\" id=\"Hylian Royal Crypt\">Hylian Royal Crypt</a>, at Saninindindin Park, located atop Safula Hill in the Hyrule Ridge."
+                    },
+                    {
+                        "title": "Hookshot",
+                        "description": "The Hookshot - perhaps a misnomer, as \"Link Catapult\" might be a more fitting name. We've taken the hookshot model, attached a large physics object to an arrow, and made it invisible. Fire the Hookshot, and an unseen metal bowl scoops you up, propelling you about 30 feet forward. But if you aim directly upwards... well, you'll see.",
+                        "imageSrc": [
+                            "Icons/HookShot.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found atop Dueling Peaks, in the newly added <a class=\"location-popover DtgA-popover-link\" id=\"Dueling Monastery\">Dueling Monastery</a>."
+                    },
+                    {
+                        "title": "Generator",
+                        "description": "The Generator - a game-changer in controlling enemy movement. Simply don the full rubber armor set, equip this gadget, and draw your sword. Witness as your shield expands, creating a massive electrical field around you. Initially intended for puzzle creation, it currently serves as a tool for causing chaos at your leisure. Enjoy the mayhem!",
+                        "imageSrc": [
+                            "Icons/Generator.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found at the newly added <a class=\"location-popover DtgA-popover-link\" id=\"Fort Hateno Keep\">Fort Hateno Keep</a>."
+                    },
+                    {
+                        "title": "Gust Jar",
+                        "description": "The Gust Jar - a prototype gadget with a triple punch. It spawns an updraft tornado, perfect for glider escapes and dodging Bokos. It also generates mini-tornadoes that harm enemies (ear-friendly sound effect coming soon). Lastly, it houses a friendly, spinning rock Octorok that pulls in nearby weapons, even causing boomerangs to circle indefinitely. In the future, expect this tornado to follow you.",
+                        "imageSrc": [
+                            "Icons/GustJar.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found at the newly added <a class=\"location-popover DtgA-popover-link\" id=\"Hebra Mansion\">Hebra Mansion</a>, on the Hebra Frozen River"
+                    }
+                ],
+                "KeyItems": [
+                    {
+                        "title": "Magic Pouch",
+                        "description": "The Magic Pouch is a way of keeping all your gadgets on you without wasting inventory slots. Call it with Crouch <span style=\"font-family: 'PromptFont'; font-size: 20px;\">↺</span> + Activate <span style=\"font-family: 'PromptFont'; font-size: 20px;\">⇓</span>.",
+                        "imageSrc": [
+                            "Icons/MagicPouch.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in the Northern Shrine on Hope's Rise."
+                    },
+                    {
+                        "title": "Coiled Sword",
+                        "description": "This mysterious sword is constantly glowing, as if it had just been pulled from a forge. There's an inscription: The Siphon of Souls. Trade rupees to upgrade your stats. Call it with Crouch <span style=\"font-family: 'PromptFont'; font-size: 20px;\">↺</span> + Attack <span style=\"font-family: 'PromptFont'; font-size: 20px;\">⇐</span>.",
+                        "imageSrc": [
+                            "Icons/CoiledSword.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in the Western Shrine on Hope's Rise"
+                    },
+                    {
+                        "title": "Spellbook",
+                        "description": "This spellbook contains the magic kept secret by Wizzrobes and Bokoblins. By memorizing the passages, I can call upon the same power as the Yiga Clan. Read it (switch your active spell crystal) with Activate <span style=\"font-family: 'PromptFont'; font-size: 20px;\">⇓</span> + Dpad Down.",
+                        "imageSrc": [
+                            "Icons/SpellBook.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in the Eastern Shrine on Hope's Rise"
+                    },
+                    {
+                        "title": "Twilight Mirror",
+                        "description": "This mysterious stone mirror gives off a strange light. The reflections cast in it look eerily like people I've met in my travels. Can be used to summon all npc characters that have decided to join you on your journey. Call it with Crouch <span style=\"font-family: 'PromptFont'; font-size: 20px;\">↺</span> + Jump <span style=\"font-family: 'PromptFont'; font-size: 20px;\">⇑</span>.",
+                        "imageSrc": [
+                            "Icons/TwilightMirror.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in the Southern Shrine on Hope's Rise"
+                    },
+                    {
+                        "title": "Neko-Te",
+                        "description": "Unleash your inner feline with Neko-Te, climbing claws that gift the hero the agility to conquer any ascent. Master sheer cliffs and ancient structures, scaling heights with unmatched ease, unveiling hidden realms and vistas with nimble prowess. Before you can climb anywhere with DtgA, you will need to find these claws.",
+                        "imageSrc": [
+                            "Icons/Neko-Te.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be recieved from 'Joon' in Kakariko Village."
+                    }
+                ],
+                "Souls": [
+                    {
+                        "title": "Soul of a Frightened Soldier",
+                        "description": "The lingering essence of a Hylian soldier who met their end in a lightly guarded area. Their fear and determination are palpable.",
+                        "imageSrc": [
+                            "Icons/SoulOfAFrightenedSoldier.webp"
+                        ],
+                        
+                        "directory": "Items",
+                        "location": "Given to the Lost One by fallen Hylian Soldiers in lightly guarded areas, and around Hope's Rise."
+                    },
+                    {
+                        "title": "Soul of a Brave Knight",
+                        "description": "This soul holds the bravery and valor of a fallen Hylian Knight who met their end in moderately guarded areas. It radiates an aura of courage.",
+                        "imageSrc": [
+                            "Icons/SoulOfABraveKnight.webp"
+                        ],
+                        
+                        "directory": "Items",
+                        "location": "Given to the Lost One by fallen Hylian Knights in moderately guarded areas, and around HC."
+                    },
+                    {
+                        "title": "Soul of a Royal Guard",
+                        "description": "Imbued with the strength and loyalty of a member of the Hylian Royal Soldiers, this soul is obtained in heavily guarded areas and fortresses.",
+                        "imageSrc": [
+                            "Icons/SoulOfARoyalGuard.webp"
+                        ],
+                        
+                        "directory": "Items",
+                        "location": "Given to the Lost One by members of the Hylian Royal Soldiers in heavily guarded areas and fortresses."
+                    },
+                    {
+                        "title": "Soul of a Would Be Champion",
+                        "description": "This soul represents the aspirations of a Hylian Royal Guard who faced the greatest dangers. It embodies the spirit of those who dared to become champions.",
+                        "imageSrc": [
+                            "Icons/SoulOfAWouldBeChampion.webp"
+                        ],
+                        
+                        "directory": "Items",
+                        "location": "Given to the Lost One by members of the Hylian Royal Guard, only in the most dangerous areas."
+                    },
+                    {
+                        "title": "Soul of an Enlightened One",
+                        "description": "The remnants of prospective champions who fell short in impressing the Sword that Seals the Darkness. These souls are scattered across Hyrule, usually in areas heavily guarded.",
+                        "imageSrc": [
+                            "Icons/SoulOfAnEnlightenedOne.webp"
+                        ],
+                        
+                        "directory": "Items",
+                        "location": "Given to the Lost One by prospective champions who failed to impress the Sword that Seals the Darkness. These souls scattered after their failure and can be found all over Hyrule, usually heavily guarded."
+                    },
+                    {
+                        "title": "Soul of the Hero's Shade",
+                        "description": "This soul is a memento from the first boss encounter the Lost One faces on Hope's Rise. It contains the essence of a valiant warrior who stood their ground.",
+                        "imageSrc": [
+                            "Icons/SoulBoss.webp"
+                        ],
+                        
+                        "directory": "Items",
+                        "location": "Dropped by the first boss the Lost One faces on Hope's Rise. Used to upgrade the first level of special swords added by ReForged."
+                    },
+                    {
+                        "title": "Soul of Darknut the Executioner",
+                        "description": "This soul embodies the strength and determination of Darknut, the formidable adversary at the Hyrule Castle Town Cathedral.",
+                        "imageSrc": [
+                            "Icons/SoulBoss.webp"
+                        ],
+                        
+                        "directory": "Items",
+                        "location": "Acquired by defeating Darknut at the Hyrule Castle Town Cathedral."
+                    },
+                    {
+                        "title": "Soul of Gallahad the Mighty",
+                        "description": "A testament to the might of Sir Gallahad, this soul exudes power and resilience after his defeat at Fort Hateno.",
+                        "imageSrc": [
+                            "Icons/SoulBoss.webp"
+                        ],
+                        
+                        "directory": "Items",
+                        "location": "Acquired by defeating Sir Gallahad at Fort Hateno."
+                    },
+                    {
+                        "title": "Soul of Robin the Swift",
+                        "description": "This soul carries the swiftness and agility of Sir Robin, earned by overcoming him at the ruined Hateno shooting range.",
+                        "imageSrc": [
+                            "Icons/SoulBoss.webp"
+                        ],
+                        
+                        "directory": "Items",
+                        "location": "Acquired by defeating Sir Robin at the ruined Hateno shooting range."
+                    },
+                    {
+                        "title": "Soul of Lancelot the Brave",
+                        "description": "Imbued with the bravery and valor of Sir Lancelot, this soul reflects the courage he displayed near the shrine of courage.",
+                        "imageSrc": [
+                            "Icons/SoulBoss.webp"
+                        ],
+                        
+                        "directory": "Items",
+                        "location": "Acquired by defeating Sir Lancelot near the shrine of courage."
+                    },
+                    {
+                        "title": "Soul of King Rhoam",
+                        "description": "#",
+                        "imageSrc": [
+                            "Icons/SoulBoss.webp"
+                        ],
+                        
+                        "directory": "Items",
+                        "location": "Acquired by [Please provide additional information on how to acquire this soul.]"
+                    },
+                    {
+                        "title": "Soul of Queen Rhoam",
+                        "description": "#",
+                        "imageSrc": [
+                            "Icons/SoulBoss.webp"
+                        ],
+                        
+                        "directory": "Items",
+                        "location": "Acquired by [Please provide additional information on how to acquire this soul.]"
+                    },
+                    {
+                        "title": "Twinsouls of Miko and Sibyl",
+                        "description": "These intertwined souls represent the combined strength and unity of Miko and Sibyl. They are obtained after defeating them at Sanindin Park Ruins.",
+                        "imageSrc": [
+                            "Icons/SoulBoss.webp"
+                        ],
+                        
+                        "directory": "Items",
+                        "location": "Acquired by defeating Miko and Sibyl at Sanindin Park Ruins."
+                    }
+                ],
+                "Weapons": [
+                    {
+                        "title": "Axe",
+                        "genDesc":"These axes are great for all your chopping needs! ",
+                        "description": [
+                            {
+                                "title": "Hatchet",
+                                "content": "This little hatchet is only good for chopping trees. Base form."
+                            },
+                            {
+                                "title": "Woodcutter's Greataxe",
+                                "content": "This axe is heavy enough to serve as a weapon."
+                            },
+                            {
+                                "title": "Double Axe",
+                                "content": "This axe was once wielded on the battlefield. It was designed for combat, as evidenced by the notches in its blade."
+                            },
+                            {
+                                "title": "Refined Axe",
+                                "content": "This axe was once wielded on the battlefield. It was designed for combat, as evidenced by the notches in its blade. It has been fortified with a new coat of steel."
+                            },
+                            {
+                                "title": "Executioner's Axe",
+                                "content": "This axe was once wielded by a grizzly executioner... The heft is ideal for cleaving flesh from bone..."
+                            },
+                            {
+                                "title": "Headsman",
+                                "content": "This axe was once wielded by a grizzly executioner... The heft is ideal for cleaving flesh from bone... the new layer of dark steel makes it all the more intimidating."
+                            }
+                        ],
+                        "imageSrc": [
+                            "Icons/WoodAxe1.webp",
+                            "Icons/WoodAxe2.webp",
+                            "Icons/WoodAxe3.webp",
+                            "Icons/WoodAxe4.webp",
+                            "Icons/WoodAxe5.webp",
+                            "Icons/WoodAxe7.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found the eastern shrine of Hope's Rise. (The Great Plateau Bomb Shrine)."
+                    },
+                    {
+                        "title": "Sword",
+                        "genDesc":"One handed swords for quick short range attacks.",
+                        "description": [
+                            {
+                                "title":"Durable Rusty Sword",
+                                "content":"This old sword seems stronger than most."
+                            },
+                            {
+                                "title": "The Vagrant's Sword",
+                                "content": "It's Dangerous To Go Alone. Those are the words the old man said when you awoke from your slumber. Though it isn't great company, you can feel the spirit that sleeps within this sword"
+                            },
+                            {
+                                "title": "The Vagrant's Broad Sword",
+                                "content": "It's Dangerous To Go Alone. Those are the words the old man said when you awoke from your slumber. After imbuing the sword with a stronger spirit, the comfort you feel with it in your grasp has grown."
+                            },
+                            {
+                                "title": "The Vagrant Knight's Sword",
+                                "content": "It's Dangerous To Go Alone. Like a true swordsman, your bond with this blade has become unbreakable. Emboldened by the spirit of a brave knight, you wield this weapon like part of your own body."
+                            },
+                            {
+                                "title": "The Royal Knight's Sword",
+                                "content": "Your faithful sword has now been honed with a special gold alloy. It deals remarkable damage, but it loses its edge rather quickly."
+                            }
+                        ],
+                        "imageSrc": [
+                            "Icons/Sword1.webp",
+                            "Icons/Sword2.webp",
+                            "Icons/Sword3.webp",
+                            "Icons/Sword4.webp",
+                            "Icons/Sword5.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in the southern shrine of Hope's Rise. (The Great Plateau Stasis Shrine)."
+                    },
+                    {
+                        "title": "Claymore",
+                        "genDesc":"Two handed swords for slow but powerful medium range attacks.",
+                        "description": [
+                            {
+                                "title": "Sturdy Rusted Claymore",
+                                "content": "A rusted sword, with battlescars running the lenght of its blade. Presumably left behind by a soldier at the time of the calamity. Seems sturdier than others."
+                            },
+                            {
+                                "title": "Polished Claymore",
+                                "content": "That same old rusted claymore, with the rust scraped off and a sharpened blade. The hanlde has been smoothed and wrapped as well."   
+                            },
+                            {
+                                "title": "Bastard Sword",
+                                "content": "The Traveler's Greatsword has been polished, sharpened, and enchanted with the soul of a fallen soldier. It can now be swung up to five times."   
+                            },
+                            {
+                                "title": "Knight's Claymore",
+                                "content": "After being reforged, repommeled, reweighted, and further enchanted by an even stronger soul, belonging to a long  forgotten knight, this weapon looks nothing like it once did."   
+                            },
+                            {
+                                "title": "Radiant Claymore",
+                                "content": "This claymore has been enhanced with a strange type of gold aloy. Its edge is supremely sharp, but since it was made of softer metal it will dull quickly."   
+                            },
+                            {
+                                "title": "Guardian's Claymore",
+                                "content": "This once humble weapon, storied, and tempered, is now without equal. Its razor sharp edge never dulls, owing to the daimond  coating, and the unbreakable spirit that dwells inside."   
+                            },
+                            {
+                                "title": "Save The King",
+                                "content": "Here lies the soul of the wolf, who guarded our king until the very end."   
+                            }
+                        ],
+                        "imageSrc": [
+                            "Icons/LargeSword1.webp",
+                            "Icons/LargeSword2.webp",
+                            "Icons/LargeSword3.webp",
+                            "Icons/LargeSword4.webp",
+                            "Icons/LargeSword5.webp",
+                            "Icons/LargeSword6.webp",
+                            "Icons/LargeSword7.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in the western shrine of Hope's Rise. (The Great Plateau Cryonis Shrine)."
+                    },
+                    {
+                        "title": "Spear",
+                        "genDesc": "Two handed spears for quick long range attacks.",
+                        "description": [
+                            {
+                                "title": "Rusted Iron Halberd",
+                                "content": "A rusted halberd. While it doesn't do much damage, it's remarkably sturdy."
+                            },
+                            {
+                                "title": "Adventurer's Spear",
+                                "content": "The axehead is being refined. In the meantime, a simple spearhead has been affixed to this reinforced polearm."
+                            },
+                            {
+                                "title": "Soldier's Spear",
+                                "content": "This old spear has been reforged into same one used by the soldiers of Hyrule Castle. Easy to use but difficult to master. The iron tip is very sturdy, and the shaft will not burn when exposed to flame."
+                            },
+                            {
+                                "title": "Knight's Halberd",
+                                "content": "A weapon used by knights specifically for combat situations when facing multiple opponents. It has a wide sweeping moveset."
+                            },
+                            {
+                                "title": "Royal Halberd",
+                                "content": "This weapon was issued to the knights who guarded Hyrule Castle's throne room. Its ornate design could only have been applied by a craftsman in service to the royal family."
+                            },
+                            {
+                                "title": "Royal Guard's Halberd",
+                                "content": "This polearm has been reinforced with a diamond edge and an unbreakable spirit."
+                            },
+                            {
+                                "title": "Save The Queen",
+                                "content": "This once humble weapon has become more than a mere instrument. It is now imbued with a soul that rivals your own. In short, among other spears, it is peerless."
+                            }
+                        ],
+                        "directory": "Items",
+                        "imageSrc": [
+                            "Icons/Spear1.webp",
+                            "Icons/Spear2.webp",
+                            "Icons/Spear3.webp",
+                            "Icons/Spear4.webp",
+                            "Icons/Spear5.webp",
+                            "Icons/Spear6.webp",
+                            "Icons/Spear7.webp"
+                        ],
+                        "location": "Can be found in the northern shrine of Hope's Rise. (The Great Plateau Magnesis Shrine)."
+                    },
+                    {
+                        "title": "Bow",
+                        "genDesc": "A bow with unique potential, sturdier than other bows.",
+                        "description": [
+                            {
+                                "title": "Practice Greatbow",
+                                "content": "This huge wooden bow won't do much damage, but its simple design ensures that it won't break."
+                            },
+                            {
+                                "title": "Traveler's Greatbow",
+                                "content": "This oversized bow, sometimes used by travelers, doesn't do a lot of damage, but it won't consume arrows when fired."
+                            },
+                            {
+                                "title": "Soldier's Greatbow",
+                                "content": "This greatbow was designed for armed conflict. It inflicts more damage than The Traveler's bow, but it will still burn if it touches fire."
+                            },
+                            {
+                                "title": "Knight's Greatbow",
+                                "content": "The sturdy metal construction of this bow offers superior durability, while its lack of firing quirks makes it quite reliable. Once favored by the knights at Hyrule Castle."
+                            },
+                            {
+                                "title": "Royal Greatbow",
+                                "content": "A metal bow wrapped in ornate gold fillagree. What it lacks in durability, it makes up in sheer firepower."
+                            },
+                            {
+                                "title": "Royal Guard's Greatbow",
+                                "content": "A highly refined bow made with Sheikah technology. In terms of durability and power, this bow is unmatched."
+                            },
+                            {
+                                "title": "Noblesse Strike",
+                                "content": "A bow without equal wielded by the Queen's personal guard. It no longer loses durability, and fires 3 guard piercing arrows at once."
+                            }
+                        ],
+                        "directory": "Items",
+                        "imageSrc": [
+                            "Icons/Bow1.webp",
+                            "Icons/Bow2.webp",
+                            "Icons/Bow3.webp",
+                            "Icons/Bow4.webp",
+                            "Icons/Bow5.webp",
+                            "Icons/Bow6.webp",
+                            "Icons/Bow7.webp"
+                        ],
+                        "location": "Can be found in the Temple of Time of Hope's Rise. (The Great Plateau)."
+                    }
+                ]
+            }
+        ],
+        "Enemies": [
+            {
+                "Bosses": [
+                    {
+                        "title": "The Hero's Shade",
+                        "description": "Once a candidate for the Hero's title, he now tests you when you first wake. You'll find him in front of the first tower, and in each of the four shrines on Hope's Rise ready for battle. Prove your Hero's title, and he'll reward you with 4 weapons of unique potential.",
+                        "imageType": "fullsize",
+                        "directory": "Enemies",
+                        "imageSrc": ["Icons/HerosShade.webp"],
+                        "location": "Can be found on Hope's Rise near the eastern shrine."
+                    },
+                    {
+                        "title": "Cursed Puppets",
+                        "description": "They're like thunderblight, but with more magic. Theres 4 versions so it won't be the same fight every time, each one having a couple of spells to attack you with along with their innate speed. Will appear when the sky turns pale blue.",
+                        "imageType": "fullsize",
+                        "directory": "Enemies",
+                        "imageSrc": ["Icons/CursedPuppet1.webp"],
+                        "location": "Can be found in the forests around Hyrule."
+                    },
+                    {
+                        "title": "Argorok",
+                        "description": "Currently a WIP. You can climb on him if you have stasis. He WILL break halfway through the fight.",
+                        "imageType": "fullsize",
+                        "directory": "Enemies",
+                        "imageSrc": ["Icons/Argorok.webp"],
+                        "location": "Found at the top of the Dueling Peaks."
+                    },
+                    {
+                        "title": "Darknut",
+                        "description": "Currently a WIP. You can't kill him yet as the fight will require the megaton hammer.",
+                        "imageType": "fullsize",
+                        "directory": "Enemies",
+                        "imageSrc": ["Icons/Darknut.webp"],
+                        "location": "Found at Castle Town Cathedral."
+                    },
+                    {
+                        "title": "Galahad",
+                        "description": "Pretty straightforward, just stay close and nail your parries.",
+                        "imageType": "fullsize",
+                        "directory": "Enemies",
+                        "imageSrc": ["Icons/Galahad.webp"],
+                        "location": "Found at Fort Hateno."
+                    },
+                    {
+                        "title": "Lancelot",
+                        "description": "Currently a WIP. He'll seem like he's stuck in an animation, but stagger him out of it and then stay far away from his spear.",
+                        "imageType": "fullsize",
+                        "directory": "Enemies",
+                        "imageSrc": ["Icons/Lancelot.webp"],
+                        "location": "Found at the Shrine of Courage."
+                    },
+                    {
+                        "title": "Robin",
+                        "description": "Can be a challenge, but you'll be fine if you take care of the adds and shoot well.",
+                        "imageType": "fullsize",
+                        "directory": "Enemies",
+                        "imageSrc": ["Icons/Robin.webp"],
+                        "location": "Found at the Heteno shooting range."
+                    },
+                    {
+                        "title": "Miko and Sibyl",
+                        "description": "These are fast, hit hard, and deal a TON of aoe damage. The arena is basicaly made of fire so bring some Fireproof potions or a flamebreaker set.",
+                        "imageType": "fullsize",
+                        "directory": "Enemies",
+                        "imageSrc": ["Icons/MikoAndSibyl.webp"],
+                        "location": "Found in the Sanidin park."
+                    }
+                ],
+                "commonEnemies": [
+                    {
+                        "title": "ReDead",
+                        "description": "The haunting return of a classic adversary! Undead and enduring, these foes withstand relentless assaults. Persistence is key, but victory is within reach! <br>Drop rupees and claw weapons upon death.", 
+                        "imageSrc": ["Icons/ReDead.webp"],
+                        "imageType": "fullsize",
+                        "directory": "Enemies",
+                        "location": "Can be found all around Hyrule."
+                    },
+                    {
+                        "title": "Skulltula",
+                        "description": "Back in Hyrule with renewed menace, these eight-armed fiends are relentless. They swarm in numbers and boast formidable strength, demanding top-notch gear for a chance to conquer them. They are extremely weak to sources of fire. <br>Drop rupees upon death.",
+                        "imageSrc": ["Icons/Skulltula.webp"],
+                        "imageType": "fullsize",
+                        "directory": "Enemies",
+                        "location": "Can be found all around Hyrule."
+                    },
+                    {
+                        "title": "Gibdo",
+                        "description": "Beware the Gibdo, ancient guardians of cursed tombs. These formidable foes endure strikes and wield dark arcane powers allowing them to warp around like the yiga. Approach with caution and arm yourself well for their relentless onslaught.",
+                        "imageSrc": ["Icons/Gibdo.webp"],
+                        "imageType": "fullsize",
+                        "directory": "Enemies",
+                        "location": "Can be found in the Hyrule Desert."
+                    }
+                ]
+            }
+        ],
+        "gadetLocations": [
+            {
+                "title": "Old Man's Cabin",
+                "description": "The old man's cabin in Hope's Rise, now hiding away the flint strike gadget.",
+                "imageSrc": [
+                    "Icons/OldMansCabin.webp"
+                ],
+                "imageType": "fullsize",
+                "directory": "Locations",
+                "location": "Hopes Rise, east of the southern shrine."
+            },
+            {
+               "title": "Frozen Ruins",
+               "description": "Newly added ruins below the western shrine on Hope's Rise, hiding away the slingshot gadget.",
+               "imageSrc": [
+                   "Icons/FrozenRuins.webp"
+               ],
+               "imageType": "fullsize",
+               "directory": "Locations",
+               "location": "Hopes Rise, below the western shrine."
+            },
+            {
+               "title": "Cannon Cave",
+               "description": "Newly added cave, here to offer the Cannon gadget and give you your first place to test it.",
+               "imageSrc": [
+                   "Icons/CannonCave.webp"
+               ],
+               "imageType": "fullsize",
+               "directory": "Locations",
+               "location": "Behind the Woodland stable."
+            },
+            {
+               "title": "Lanayru Waterfall",
+               "description": "The waterfall in Lanayru's Promenade, hiding away the Silver Gauntlets.",
+               "imageSrc": [
+                   "Icons/LanayruWaterfall.webp"
+               ],
+               "imageType": "fullsize",
+               "directory": "Locations",
+               "location": "Lanayru Promenade, east of Kakariko Village."
+            },
+            {
+               "title": "Desert Ruins",
+               "description": "Newly added Desert Ruins in the westernmost reaches of the Gerudo desert, hiding away the Twilight Spinner.",
+               "imageSrc": [
+                   "Icons/DesertRuins.webp"
+               ],
+               "imageType": "fullsize",
+               "directory": "Locations" ,
+               "location": "Just south-west of the Kema Zoos shrine, or the entrance to the valley leading to the Yiga Hideout."
+            },
+            {
+               "title": "Hylian Waterworks",
+               "description": "Newly added Hylian Waterworks, hiding away the Iron Boots.",
+               "imageSrc": [
+                   "Icons/HylianWaterworks.webp"
+               ],
+               "imageType": "fullsize",
+               "directory": "Locations",
+               "location": "The very entrance of the Hylia Lake inlet, just south of Scout's Hill."
+            },
+            {
+               "title": "Hylian Royal Crypt",
+               "description": "Resting underneath the Sanidin Park Ruins, the Royal Crypt hides away the Hover Boots.",
+               "imageSrc": [
+                   "Icons/HylianRoyalCrypt.webp"
+               ],
+               "imageType": "fullsize",
+               "directory": "Locations",
+               "location": "Underneath the horse fountain in the Sanidin Park Ruins."
+            },
+            {
+               "title": "Dueling Monastery",
+               "description": "Newly added Dueling Monastery, hiding away the Hookshot.",
+               "imageSrc": [
+                   "Icons/DuelingMonastery.webp"
+               ],
+               "imageType": "fullsize",
+               "directory": "Locations",
+               "location": "Atop the Dueling Peaks, on the Southern peak."
+            },
+            {
+               "title": "Hebra Mansion",
+               "description": "Newly added structure in the Hebra Mountains, hiding away the Gust Jar.",
+               "imageSrc": [
+                   "Icons/HebraMansion.webp"
+               ],
+               "imageType": "fullsize",
+               "directory": "Locations",
+               "location": "Rest's atop the northernmost part of the Hebra Headspring."
+            },
+            {
+               "title": "Fort Hateno Keep",
+               "description": "The newly added Keep structure, towering over the Fort Hateno gates, hides away the Generator.",
+               "imageSrc": [
+                   "Icons/FortHatenoKeep.webp"
+               ],
+               "imageType": "fullsize",
+               "directory": "Locations",
+               "location": "On the cliff just to the north and behind the Fort Hateno gates."
+            }
+        ],
+        "NPCs": [
+            {
+                "companions": [
+                    {
+                        "title": "Sidon",
+                        "description": "One of the many who have decided to join you on your adventure. Summon them with the Twilight Mirror!",
+                        "imageSrc": [
+                            "Icons/Sidon.webp"
+                        ],
+                        "location": "Currently recieved upon recieving the Twilight Mirror"
+                    },
+                    {
+                        "title": "Riju",
+                        "description": "One of the many who have decided to join you on your adventure. Summon them with the Twilight Mirror!",
+                        "imageSrc": [
+                            "Icons/Riju.webp"
+                        ],
+                        "location": "Currently recieved upon recieving the Twilight Mirror"
+                    },
+                    {
+                        "title": "Teba",
+                        "description": "One of the many who have decided to join you on your adventure. Summon them with the Twilight Mirror!",
+                        "imageSrc": [
+                            "Icons/Teba.webp"
+                        ],
+                        "location": "Currently recieved upon recieving the Twilight Mirror"
+                    },
+                    {
+                        "title": "Yunobo",
+                        "description": "One of the many who have decided to join you on your adventure. Summon them with the Twilight Mirror!",
+                        "imageSrc": [
+                            "Icons/Yunobo.webp"
+                        ],
+                        "location": "Currently recieved upon recieving the Twilight Mirror"
+                    },
+                    {
+                        "title": "Paya",
+                        "description": "One of the many who have decided to join you on your adventure. Summon them with the Twilight Mirror!",
+                        "imageSrc": [
+                            "Icons/Paya.webp"
+                        ],
+                        "location": "Currently recieved upon recieving the Twilight Mirror"
+                    },
+                    {
+                        "title": "Rhoam",
+                        "description": "One of the many who have decided to join you on your adventure. Summon them with the Twilight Mirror!",
+                        "imageSrc": [
+                            "Icons/Rhoam.webp"
+                        ],
+                        "location": "Currently recieved upon recieving the Twilight Mirror"
+                    },
+                    {
+                        "title": "Purah",
+                        "description": "One of the many who have decided to join you on your adventure. Summon them with the Twilight Mirror!",
+                        "imageSrc": [
+                            "Icons/Purah.webp"
+                        ],
+                        "location": "Currently recieved upon recieving the Twilight Mirror"
+                    },
+                    {
+                        "title": "Hestu",
+                        "description": "One of the many who have decided to join you on your adventure. Summon them with the Twilight Mirror!",
+                        "imageSrc": [
+                            "Icons/Hestu.webp"
+                        ],
+                        "location": "Currently recieved upon recieving the Twilight Mirror"
+                    },
+                    {
+                        "title": "Beedle",
+                        "description": "One of the many who have decided to join you on your adventure. Summon them with the Twilight Mirror!",
+                        "imageSrc": [
+                            "Icons/Beedle.webp"
+                        ],
+                        "location": "Currently recieved upon recieving the Twilight Mirror"
+                    },
+                    {
+                        "title": "Maz Koshia",
+                        "description": "One of the many who have decided to join you on your adventure. Summon them with the Twilight Mirror!",
+                        "imageSrc": [
+                            "Icons/MazKoshia.webp"
+                        ],
+                        "location": "Currently recieved upon recieving the Twilight Mirror"
+                    }
+                ],
+                "lostSouls": [
+                    {
+                        "title": "Frightened Soldiers",
+                        "imageType": "fullsize",
+                        "directory": "NPCs",
+                        "description": "Ghosts of soldiers who cowered or fled during the calamity, who give the Lost One their soul in hopes it may help in battle against Ganon.",
+                        "imageSrc": [
+                            "Icons/FrightenedSoldiers.webp"
+                        ],
+                        "location": "Can be found all around Hyrule."
+                    },
+                    {
+                        "title": "Brave Knights",
+                        "imageType": "fullsize",
+                        "directory": "NPCs",
+                        "description": "Ghosts of soldiers who sacrificed themselves to save others during the calamity, who give the Lost One their soul in hopes it may help in battle against Ganon.",
+                        "imageSrc": [
+                            "Icons/BraveKnight.webp"
+                        ],
+                        "location": "Can be found all around Hyrule."
+                    },
+                    {
+                        "title": "Royal Knights",
+                        "imageType": "fullsize",
+                        "directory": "NPCs",
+                        "description": "Ghosts of distinguished knights who served under the Royal Guard, who give the Lost One their soul in hopes it may help in battle against Ganon.",
+                        "imageSrc": [
+                            "Icons/RoyalKnight.webp"
+                        ],
+                        "location": "Can be found all around Hyrule."
+                    },
+                    {
+                        "title": "Royal Guardsmen",
+                        "imageType": "fullsize",
+                        "directory": "NPCs",
+                        "description": "Ghosts of who served at the side of the royal family, who give the Lost One their soul in hopes it may help in battle against Ganon.",
+                        "imageSrc": [
+                            "Icons/RoyalGuard.webp"
+                        ],
+                        "location": "Can be found all around Hyrule."
+                    },
+                    {
+                        "title": "Would be Champions",
+                        "imageType": "fullsize",
+                        "directory": "NPCs",
+                        "description": "Ghosts of former rivals and prospective heroes, who give the Lost One their soul in hopes it may help in battle against Ganon.",
+                        "imageSrc": [
+                            "Icons/WouldBeChampion.webp"
+                        ],
+                        "location": "Can be found all around Hyrule."
+                    }
+                ],
+                "vendors": [
+                    {
+                        "title": "The Castle Town Blacksmith",
+                        "description": "The Blacksmith is an npc that can upgrade your unbreakable weapons using the power of souls you find around Hyrule. The power of these souls will degrade until you upgrade the weapon with a boss soul, so until then you will degrade in levels around 100 hits.",
+                        "imageSrc": [
+                            ""
+                        ],
+                        "directory": "NPCs",
+                        "location": "Can be found around the south-east section of the Castle Town ruins."
+                    },
+                    {
+                        "title": "The Phoebist",
+                        "description": "The Lamp Vendor is an npc that sells 4 unique lamps.",
+                        "imageSrc": [
+                            ""
+                        ],
+                        "directory": "NPCs",
+                        "location": "Can be found in the Black Market (And eventually all over hyrule)"
+                    },
+                    {
+                        "title": "The Alchemist Qosmo",
+                        "description": "The Potion Vendor is an npc that sells 3 new potions, 3 new elixirs, and 9 resins to enchant your weapon. (Will expand upon this information when the character is released.)",
+                        "imageSrc": [
+                            ""
+                        ],
+                        "directory": "NPCs",
+                        "location": "Can be found in the Black Market (And eventually all over hyrule)"
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -37,6 +37,65 @@ function handleAccordionClicks() {
     });
 }
 
+/**
+ * Function to fetch JSON data and generate HTML structure for a specified category.
+ * The generated HTML for each item will be placed in its respective subcategory container.
+ * 
+ * @param {string} mainCategory - The main category to search within (e.g., 'Items', 'Enemies').
+ * @param {object} subcategoryContainers - An object mapping subcategories to their container IDs.
+ */
+function generatePageContent(mainCategory, subcategoryContainers) {
+    // Fetch the JSON file
+    $.getJSON('generationData.json', function(data) {
+        // Loop through the data array to find the matching main category
+        data.forEach(function(element) {
+            if (element[mainCategory]) {
+                let mainCategoryData = element[mainCategory][0]; // Assuming the first element in the array is the relevant data
+
+                // Loop through each subcategory in the main category
+                for (let subcategory in mainCategoryData) {
+                    if (mainCategoryData.hasOwnProperty(subcategory)) {
+                        let subcategoryData = mainCategoryData[subcategory];
+
+                        // Loop through each item in the subcategory
+                        subcategoryData.forEach(function(item) {
+
+                            let cardContent = `
+                                <div class="card-box">
+                                    <div class="image-container">
+                                        <img src="${item.imageSrc[0]}" loading="lazy" alt="">
+                                    </div>
+                                    <div class="card-desc-container">
+                                        <h3 class="card-title">${item.title}</h3>
+                                        <p class="card-desc">${item.description}</p>
+                                        <div class="location-holder">
+                                            <button class="location-button">Click To Reveal Location</button>
+                                            <p class="location-text">${item.location}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                `;
+
+                            // Append the generated HTML to the respective subcategory container
+                            if (subcategoryContainers[subcategory]) {
+                                $(`#${subcategoryContainers[subcategory]}`).append(cardContent);
+                            } else {
+                                console.error(`Container for subcategory '${subcategory}' not found.`);
+                            }
+                        });
+                    }
+                }
+            } else {
+                console.error(`Main category '${mainCategory}' not found.`);
+            }
+        });
+    }).fail(function() {
+        console.error('Failed to fetch JSON data.');
+    });
+}
+
+
+
 
 /**
  * jQuery plugin to animate an element's height to its auto height.
