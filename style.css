@@ -12,7 +12,7 @@
     --bgColorHeading: color-mix(in hsl shorter hue, hsl(var(--color-primary), 30%) 80%, hsl(0, 0%, 13%) 20%);
     --bgColorGradient-old: linear-gradient(to bottom, color-mix(in hsl shorter hue, hsl(var(--color-primary)) 30%, black 70%) 0%, var(--bgColor) 80%);
 
-    --bgColorGradient: linear-gradient(to bottom, var(--bgColor) 10%, rgba(var(--color-primary-rgb-values), 0.35) 98%, transparent 100%); 
+    --bgColorGradient: linear-gradient(to bottom, var(--bgColor) 10%, rgba(var(--color-primary-rgb-values), 0.2) 98%, transparent 100%); 
 
     --border-color: color-mix(in srgb, rgb(var(--color-primary-rgb-values)) 70%, rgb(10, 10, 10) 60%);
 
@@ -112,10 +112,10 @@ nav {
         content: "";
         position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
-        background-image: var(--bgColorGradient);
-        opacity: 0; /* Start fully transparent */
+        background-image: linear-gradient(to bottom, var(--bgColor) 10%, rgba(var(--color-primary-rgb-values), 0.35) 98%, transparent 100%); ;
+        opacity: 0; 
         transition: opacity 400ms ease;
-        z-index: -1; /* Place behind content */
+        z-index: -1; 
     }
 }
 
@@ -855,6 +855,223 @@ nav {
 }
 
 
+/****** Spell Page ******/
+
+.spell-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+
+    >.spell-page-title{
+        font-family: 'HyliaSerif';
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        font-size: clamp(1.375rem, 1.0625rem + 1.3889vw, 2rem);
+        color: var(--text-color-mixed);
+        width: 100%;
+        text-align: center;
+        padding: 1.5rem 0;
+    }
+}
+
+.spell-page-des-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgb(var(--text-color-standard));
+    overflow: hidden;
+    border-radius: 15px;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.2), inset 0 0 3px 2px rgba(0, 0, 0, 0.3);
+    max-width: 1080px;
+
+    >h2 {
+        font-family: 'HyliaSerif';
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        font-size: clamp(1rem, 0.875rem + 0.5556vw, 1.25rem);
+        color: var(--text-color-mixed);
+        width: 100%;
+        text-align: center;
+        background-image: var(--bgColorGradient);
+        padding: 0.75rem 1.3rem;
+    }
+
+    >.spell-desc {
+        font-size: clamp(0.9rem, 0.625rem + 0.5556vw, 1rem);
+        padding: 1rem 1.3rem;
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+    }
+}
+
+.spell-page-card-container{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    >.spell-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        color: rgb(var(--text-color-standard));
+        overflow: hidden;
+        border-radius: 15px;
+        border: 2px solid var(--border-color);
+        box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.2), inset 0 0 3px 2px rgba(0, 0, 0, 0.3);
+        min-width: 300px;
+        width: calc(33% - 1rem);
+        max-width: 98vw;
+    
+        @media (max-width: 997px) {
+            width: calc(50% - 1rem);
+        }
+    
+        @media (max-width: 600px) {
+            width: calc(100% - 1rem);
+        }
+
+        >.img-wrapper{
+            overflow: hidden;
+            padding: 0.25rem;
+            aspect-ratio: 1;
+            max-height: 200px;
+
+            >img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                background-image: radial-gradient(circle, rgba(var(--color-primary-rgb-values), 0.2) 5%, transparent 55%);;
+            }
+        }
+
+        >.spell-card-title {
+            font-family: 'HyliaSerif';
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            font-size: clamp(1rem, 0.875rem + 0.5556vw, 1.25rem);
+            color: var(--text-color-mixed);
+            padding: 0.75rem 1.3rem;
+        }
+    }
+}
+
+.element-type-card {
+
+    >.spell-card-content {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        align-items: center;
+
+        >.element-type {
+            font-family: 'HyliaSerif';
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            font-size: clamp(0.875rem, 0.75rem + 0.5556vw, 1.125rem);
+            color: var(--text-color-mixed);
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            
+            >img {
+                aspect-ratio: 1;
+                height: 32px;
+            }
+            >span {
+                font-size: clamp(0.625rem, 0.5rem + 0.5556vw, 0.875rem);
+                padding-top: 0.2rem;
+                padding-left: 0.5rem;
+            }
+        }
+    }
+}
+
+.cast-type-card {
+
+    >.cast-type-wrapper {
+        max-width: 95%;
+
+        >.cast-type {
+
+            >.type-title {
+                font-family: 'HyliaSerif';
+                font-weight: 600;
+                letter-spacing: 0.08em;
+                font-size: clamp(0.875rem, 0.75rem + 0.5556vw, 1.125rem);
+                color: var(--text-color-mixed);
+                width: 100%;
+                text-align: start;
+                padding-left: 0.4rem;
+            }
+
+            >ul>li,
+            >ul>li>ul>li {
+                font-size: clamp(0.875rem, 0.8125rem + 0.2778vw, 1rem);
+                padding-left: 1rem;
+                padding-bottom: 0.5rem;
+                list-style: none;
+
+            }
+        }
+    }
+}
+
+.level-up-card {
+
+    >.spell-card-content {
+
+        >.level-up-desc {
+            font-family: 'HyliaSerif';
+            letter-spacing: 0.08em;
+            font-size: clamp(0.875rem, 0.8125rem + 0.2778vw, 1rem);
+            color: var(--text-color-mixed);
+            max-width: 95%;
+            margin: auto;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+
+            >.attribute-type {
+
+                >.attribute-title {
+                    font-family: 'HyliaSerif';
+                    letter-spacing: 0.08em;
+                    font-weight: 400;
+                    font-size: clamp(0.75rem, 0.6875rem + 0.2778vw, 0.875rem);
+                    color: var(--text-color-mixed);
+                }
+
+                >ul>li {
+                    font-family: var(--standard-font);
+                    font-size: clamp(0.625rem, 0.5rem + 0.5556vw, 0.875rem);
+                    padding-left: 0.5rem;
+                    padding-bottom: 0.5rem;
+                    list-style: none;
+                    color: var(--text-color-standard);
+                }
+            }
+            
+        }
+    }
+}
+
+.spellbook-card,
+.cube-card {
+    padding: 0 0.5rem 0.8rem 0.5rem;
+}
 
 /****** Fonts ******/
 
