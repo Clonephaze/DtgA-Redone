@@ -10,7 +10,9 @@
     --bgColor: color-mix(in srgb, rgb(var(--color-primary-rgb-values)) 15%, rgb(var(--color-secondary-rgb-values)));
     --bgColorDark: color-mix(in hsl shorter hue, hsl(var(--color-primary)) 10%, hsl(var(--color-secondary)) 100%);
     --bgColorHeading: color-mix(in hsl shorter hue, hsl(var(--color-primary), 30%) 80%, hsl(0, 0%, 13%) 20%);
-    --bgColorGradient: linear-gradient(to bottom, color-mix(in hsl shorter hue, hsl(var(--color-primary)) 30%, black 70%) 0%, var(--bgColor) 80%);
+    --bgColorGradient-old: linear-gradient(to bottom, color-mix(in hsl shorter hue, hsl(var(--color-primary)) 30%, black 70%) 0%, var(--bgColor) 80%);
+
+    --bgColorGradient: linear-gradient(to bottom, var(--bgColor) 10%, rgba(var(--color-primary-rgb-values), 0.35) 98%, transparent 100%); 
 
     --border-color: color-mix(in srgb, rgb(var(--color-primary-rgb-values)) 70%, rgb(10, 10, 10) 60%);
 
@@ -469,6 +471,7 @@ nav {
         justify-content: center;
         padding: 0.3rem 0.5rem;
         background-color: hsla(0, 0%, 0%, 0.15);
+        background-image: var(--bgColorGradient);
         box-shadow: 0 3px 3px 2px hsla(0, 0%, 0%, 0.2);
 
 
@@ -486,8 +489,9 @@ nav {
 
     >ul {
         grid-area: list-items;
-        padding: 0.5rem 0.25rem;
+        padding: 0.75rem 1.5rem;
         max-width: 80%;
+        place-self: start;
 
 
         >li{
