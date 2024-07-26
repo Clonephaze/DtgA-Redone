@@ -95,8 +95,6 @@ function generatePageContent(mainCategory, subcategoryContainers) {
 }
 
 
-
-
 /**
  * jQuery plugin to animate an element's height to its auto height.
  * 
