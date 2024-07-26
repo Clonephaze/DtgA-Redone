@@ -843,7 +843,7 @@ nav {
     font-family: 'HyliaSerif';
     font-weight: 600;
     letter-spacing: 0.05em;
-    font-size: clamp(1.125rem, 1.0625rem + 0.2778vw, 1.25rem);
+    font-size: clamp(1.375rem, 1.0625rem + 1.3889vw, 2rem);
     color: var(--text-color-mixed);
     width: 100%;
     text-align: center;

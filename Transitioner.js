@@ -69,7 +69,7 @@ $(document).ready(function() {
                     setupFAQPage();
                     handleAccordionClicks();
                 });
-                $('.homepageBg').animate({ opacity: "0" }, 400);
+                $('.homepageBg').css('opacity', '0');
                 $('nav').toggleClass('nav-with-content', true);
                 break;
             case 'itemsPage':
@@ -83,6 +83,39 @@ $(document).ready(function() {
                         'Weapons': 'weaponsContainer'
                     });
                 })
+                $('.homepageBg').css('opacity', '0');
+                $('nav').toggleClass('nav-with-content', true);
+                break;
+            case 'enemiesPage':
+                $.getScript("SpecialActions.js", function() {
+                    generatePageContent('Enemies', {
+                        'commonEnemies': 'commonEnemiesContainer',
+                        'Bosses': 'bossesContainer'
+                    });
+                })
+                $('.homepageBg').css('opacity', '0');
+                $('nav').toggleClass('nav-with-content', true);
+                break;
+            case 'npcsPage':
+                $.getScript("SpecialActions.js", function(){
+                    generatePageContent('NPCs', {
+                        'companions': 'companionsContainer',
+                        'vendors': 'vendorsContainer',
+                        'lostSouls': 'lostSoulsContainer'
+                    });
+                })
+                $('.homepageBg').css('opacity', '0');
+                $('nav').toggleClass('nav-with-content', true);
+                break;
+            case 'locationsPage':
+                $.getScript("SpecialActions.js", function() {
+                    generatePageContent('gadgetLocations', {
+                        'locations': 'locationsContainer'
+                    });
+                })
+                $('.homepageBg').css('opacity', '0');
+                $('nav').toggleClass('nav-with-content', true);
+                break;
             default:
                 $('.homepageBg').animate({ opacity: "0" }, 400);
                 $('nav').toggleClass('nav-with-content', true);

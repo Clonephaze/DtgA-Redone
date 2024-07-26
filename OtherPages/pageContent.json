@@ -27,6 +27,21 @@
     {
         "pageId": "itemsPage",
         "title":"Items | Dangerous to go Alone Wiki | Mod for BOTW",
-        "pageContent": "<div id=\"items-page-container\" class=\"items-page-container\"><h1 class=\"section-title\">Armors</h1><div id=\"armorsContainer\" class=\"subcategory-container card-container\"></div><h2 class=\"section-title\">Consumables</h2><div id=\"consumablesContainer\" class=\"subcategory-container card-container\"></div><h2 class=\"section-title\">Gadgets</h2><div id=\"gadgetsContainer\" class=\"subcategory-container card-container\"></div><h2 class=\"section-title\">Key Items</h2><div id=\"keyitemsContainer\" class=\"subcategory-container card-container\"></div><h2 class=\"section-title\">Souls</h2><div id=\"soulsContainer\" class=\"subcategory-container card-container\"></div><h2 class=\"section-title\">Weapons</h2><div id=\"weaponsContainer\" class=\"subcategory-container card-container\"></div></div>"
+        "pageContent": "<div id=\"items-page-container\" class=\"items-page-container\"><h1 class=\"section-title\">Key Items</h1><div id=\"keyitemsContainer\" class=\"card-container\"></div><h2 class=\"section-title\">Gadgets</h2><div id=\"gadgetsContainer\" class=\"card-container\"></div><h2 class=\"section-title\">Weapons</h2><div id=\"weaponsContainer\" class=\"card-container\"></div><h2 class=\"section-title\">Armors</h2><div id=\"armorsContainer\" class=\"card-container\"></div><h2 class=\"section-title\">Consumables</h2><div id=\"consumablesContainer\" class=\"card-container\"></div><h2 class=\"section-title\">Souls</h2><div id=\"soulsContainer\" class=\"card-container\"></div></div>"
+    },
+    {
+        "pageId": "enemiesPage",
+        "title":"Enemies | Dangerous to go Alone Wiki | Mod for BOTW",
+        "pageContent": "<div id=\"enemies-page-container\" class=\"enemies-page-container\"><h1 class=\"section-title\">Common Enemies</h1><div id=\"commonEnemiesContainer\" class=\"card-container\"></div><h2 class=\"section-title\">Bosses</h2><div id=\"bossesContainer\" class=\"card-container\"></div></div>"
+    },
+    {
+        "pageId": "npcsPage",
+        "title":"NPCs | Dangerous to go Alone Wiki | Mod for BOTW",
+        "pageContent": "<div id=\"npc-page-container\" class=\"npc-page-container\"><h1 class=\"section-title\">Companions</h1><div id=\"companionsContainer\" class=\"card-container\"></div><h2 class=\"section-title\">Vendors</h2><div id=\"vendorsContainer\" class=\"card-container\"></div><h2 class=\"section-title\">Lost Souls</h2><div id=\"lostSoulsContainer\" class=\"card-container\"></div></div>"
+    },
+    {
+        "pageId": "locationsPage",
+        "title":"Locations | Dangerous to go Alone Wiki | Mod for BOTW",
+        "pageContent": "<div id=\"locations-page-container\" class=\"locations-page-container\"><h1 class=\"section-title\">Gadget Locations</h1><div class=\"highlight-bar\">Each of these locations, some old some new, hide one of DtgA's many Gadgets!</div><div id=\"locationsContainer\" class=\"card-container\"></div></div>"        
     }
 ]
