@@ -2,12 +2,16 @@ $(document).ready(function() {
     var pageContent;
     let testing = false;
 
+    /**
+     * Fetches JSON data for page content and initializes page load based on URL hash.
+     */
     $.getJSON("OtherPages/pageContent.json", function(data) {
         pageContent = data;
         loadPageFromURL();
 
+        // Event handler for navigation clicks
         $(".pageNav").on('click', function() {
-            var pageId = $(this).attr('id'); 
+            var pageId = $(this).attr('id');
             history.pushState({ pageId: pageId }, '', '#' + pageId);
             loadPage(pageId);
         });
@@ -15,6 +19,9 @@ $(document).ready(function() {
         console.error("Failed to load page content.");
     });
 
+    /**
+     * Handles browser back/forward button clicks.
+     */
     window.onpopstate = function(event) {
         if (event.state && event.state.pageId) {
             loadPage(event.state.pageId);
@@ -23,6 +30,9 @@ $(document).ready(function() {
         }
     };
 
+    /**
+     * Loads the page based on the current URL hash.
+     */
     function loadPageFromURL() {
         var pageId = window.location.hash.substring(1);
         if (pageId && !testing) {
@@ -32,9 +42,15 @@ $(document).ready(function() {
         }
     }
 
+    /**
+     * Loads the specified page content and handles related UI changes.
+     * 
+     * @param {string} pageId - The ID of the page to load.
+     */
     function loadPage(pageId) {
         $('.nav-toggle').attr('aria-expanded', 'false');
 
+        // Responsive handling for navigation menu animation
         if ($(window).width() <= 768) {
             $('.nav-list').animate({ height: "0" }, 200).attr('aria-expanded', 'false');
             $('.nav-dropdown').animate({ height: "0" }, 200);
@@ -43,11 +59,12 @@ $(document).ready(function() {
             $('.nav-dropdown').animate({ height: "0" }, 200);
             $('#wiki-list-dropdown').attr('aria-expanded', 'false');
         }
-        
+
+        // Find the content for the specified pageId
         var content = pageContent.find(function(page) {
             return page.pageId === pageId;
         });
-        
+
         if (content) {
             $('.content-section').html(content.pageContent);
             document.title = content.title;
@@ -57,6 +74,11 @@ $(document).ready(function() {
         }
     }
 
+    /**
+     * Handles page-specific transitions and loads additional scripts if necessary.
+     * 
+     * @param {string} pageId - The ID of the page to handle transition for.
+     */
     function handlePageTransition(pageId) {
         switch (pageId) {
             case 'homePage':
@@ -82,7 +104,7 @@ $(document).ready(function() {
                         'Souls': 'soulsContainer',
                         'Weapons': 'weaponsContainer'
                     });
-                })
+                });
                 $('.homepageBg').css('opacity', '0');
                 $('nav').toggleClass('nav-with-content', true);
                 break;
@@ -92,18 +114,18 @@ $(document).ready(function() {
                         'commonEnemies': 'commonEnemiesContainer',
                         'Bosses': 'bossesContainer'
                     });
-                })
+                });
                 $('.homepageBg').css('opacity', '0');
                 $('nav').toggleClass('nav-with-content', true);
                 break;
             case 'npcsPage':
-                $.getScript("SpecialActions.js", function(){
+                $.getScript("SpecialActions.js", function() {
                     generatePageContent('NPCs', {
                         'companions': 'companionsContainer',
                         'vendors': 'vendorsContainer',
                         'lostSouls': 'lostSoulsContainer'
                     });
-                })
+                });
                 $('.homepageBg').css('opacity', '0');
                 $('nav').toggleClass('nav-with-content', true);
                 break;
@@ -112,7 +134,7 @@ $(document).ready(function() {
                     generatePageContent('gadgetLocations', {
                         'locations': 'locationsContainer'
                     });
-                })
+                });
                 $('.homepageBg').css('opacity', '0');
                 $('nav').toggleClass('nav-with-content', true);
                 break;
@@ -123,6 +145,7 @@ $(document).ready(function() {
         }
     }
 
+    // If testing mode is enabled, modify the background and log testing state
     if (testing) {
         $('.homepageBg').css('background', 'none');
         console.log('testing');
