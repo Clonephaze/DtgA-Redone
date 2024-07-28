@@ -61,7 +61,7 @@ function generatePageContent(mainCategory, subcategoryContainers) {
                         subcategoryData.forEach(function(item) {
 
                             let cardContent = `
-                                <div class="card-box">
+                                <div class="card-box on-hover-box">
                                     <div class="image-container">
                                         <img src="${item.imageSrc[0]}" loading="lazy" alt="">
                                     </div>
