@@ -65,7 +65,7 @@
                     },
                     {
                         "title": "Estus Flask",
-                        "description": "After recieving the Divine vessel you will recieve 5 of these whenever you rest at a campfire. Use these to restore your health and stamina! (Amount scales with Vitality and Endurance respectively) <br>Use with Dpad-down <span style=\"font-family: 'PromptFont'; font-size: 20px;\">↡</span> + Activate<span style=\"font-family: 'PromptFont'; font-size: 20px;\">⇓</span>",
+                        "description": "After recieving the Divine vessel you will recieve 5 of these whenever you rest at a campfire. Use these to restore your health and stamina! (Amount scales with Vitality and Endurance respectively) <br>Use with Dpad-down <span class=\"gamepadIcons\">↡</span> + Activate<span class=\"gamepadIcons\">⇓</span>",
                         "imageSrc": [
                             "Icons/EstusFlask.webp"
                         ],
@@ -275,7 +275,7 @@
                     },
                     {
                         "title": "Dive Boots (Unimplemented)",
-                        "description": "The Dive Boots - a faster, resource-flipped version of the Iron Boots. No excuses here, all the Iron Boots rules apply. Equip and activate their ZAction (Dpad Down + move) when already in water to sink. Start in shallow water, keep moving, then press and hold Activate. To stop, click the Left Analog Stick while swimming or use another ZAction on land. Future builds will auto-end the action. Remove with Crouch (L3) + Move.",
+                        "description": "The Dive Boots - a faster, resource-flipped version of the Iron Boots. No excuses here, all the Iron Boots rules apply. Equip and activate their ZAction (Dpad Down <span class=\"gamepadIcons\">↡</span> + move) when already in water to sink. Start in shallow water, keep moving, then press and hold Activate. To stop, click the Left Analog Stick while swimming or use another ZAction on land. Future builds will auto-end the action. Remove with Crouch (L3) + Move.",
                         "imageSrc": [
                             "Icons/DiveBoots.webp"
                         ],
@@ -322,7 +322,7 @@
                 "KeyItems": [
                     {
                         "title": "Magic Pouch",
-                        "description": "The Magic Pouch is a way of keeping all your gadgets on you without wasting inventory slots. Call it with Crouch <span style=\"font-family: 'PromptFont'; font-size: 20px;\">↺</span> + Activate <span style=\"font-family: 'PromptFont'; font-size: 20px;\">⇓</span>.",
+                        "description": "The Magic Pouch is a way of keeping all your gadgets on you without wasting inventory slots. Call it with Crouch <span class=\"gamepadIcons\">↺</span> + Activate <span class=\"gamepadIcons\">⇓</span>.",
                         "imageSrc": [
                             "Icons/MagicPouch.webp"
                         ],
@@ -331,7 +331,7 @@
                     },
                     {
                         "title": "Coiled Sword",
-                        "description": "This mysterious sword is constantly glowing, as if it had just been pulled from a forge. There's an inscription: The Siphon of Souls. Trade rupees to upgrade your stats. Call it with Crouch <span style=\"font-family: 'PromptFont'; font-size: 20px;\">↺</span> + Attack <span style=\"font-family: 'PromptFont'; font-size: 20px;\">⇐</span>.",
+                        "description": "This mysterious sword is constantly glowing, as if it had just been pulled from a forge. There's an inscription: The Siphon of Souls. Trade rupees to upgrade your stats. Call it with Crouch <span class=\"gamepadIcons\">↺</span> + Attack <span class=\"gamepadIcons\">⇐</span>.",
                         "imageSrc": [
                             "Icons/CoiledSword.webp"
                         ],
@@ -340,7 +340,7 @@
                     },
                     {
                         "title": "Spellbook",
-                        "description": "This spellbook contains the magic kept secret by Wizzrobes and Bokoblins. By memorizing the passages, I can call upon the same power as the Yiga Clan. Read it (switch your active spell crystal) with Activate <span style=\"font-family: 'PromptFont'; font-size: 20px;\">⇓</span> + Dpad Down.",
+                        "description": "This spellbook contains the magic kept secret by Wizzrobes and Bokoblins. By memorizing the passages, I can call upon the same power as the Yiga Clan. Read it (switch your active spell crystal) with Activate <span class=\"gamepadIcons\">⇓</span> + Dpad Down <span class=\"gamepadIcons\">↡</span>.",
                         "imageSrc": [
                             "Icons/SpellBook.webp"
                         ],
@@ -349,7 +349,7 @@
                     },
                     {
                         "title": "Twilight Mirror",
-                        "description": "This mysterious stone mirror gives off a strange light. The reflections cast in it look eerily like people I've met in my travels. Can be used to summon all npc characters that have decided to join you on your journey. Call it with Crouch <span style=\"font-family: 'PromptFont'; font-size: 20px;\">↺</span> + Jump <span style=\"font-family: 'PromptFont'; font-size: 20px;\">⇑</span>.",
+                        "description": "This mysterious stone mirror gives off a strange light. The reflections cast in it look eerily like people I've met in my travels. Can be used to summon all npc characters that have decided to join you on your journey. Call it with Crouch <span class=\"gamepadIcons\">↺</span> + Jump <span class=\"gamepadIcons\">⇑</span>.",
                         "imageSrc": [
                             "Icons/TwilightMirror.webp"
                         ],
