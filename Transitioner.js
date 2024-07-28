@@ -99,6 +99,7 @@ $(document).ready(function() {
                 window.refreshParticles();
                 $('.homepageBg').animate({ opacity: "100%" }, 400);
                 $('nav').toggleClass('nav-with-content', false);
+                $('.site-footer').css('display', 'none');
                 break;
             case 'faqPage':
                 $.getScript("SpecialActions.js", function() {
@@ -107,6 +108,7 @@ $(document).ready(function() {
                 });
                 $('.homepageBg').css('opacity', '0');
                 $('nav').toggleClass('nav-with-content', true);
+                $('.site-footer').css('display', 'flex');
                 break;
             case 'itemsPage':
                 $.getScript("SpecialActions.js", function() {
@@ -120,6 +122,7 @@ $(document).ready(function() {
                     });
                 });
                 $('.homepageBg').css('opacity', '0');
+                $('.site-footer').css('display', 'flex');
                 $('nav').toggleClass('nav-with-content', true);
                 break;
             case 'enemiesPage':
@@ -130,6 +133,7 @@ $(document).ready(function() {
                     });
                 });
                 $('.homepageBg').css('opacity', '0');
+                $('.site-footer').css('display', 'flex');
                 $('nav').toggleClass('nav-with-content', true);
                 break;
             case 'npcsPage':
@@ -141,6 +145,7 @@ $(document).ready(function() {
                     });
                 });
                 $('.homepageBg').css('opacity', '0');
+                $('.site-footer').css('display', 'flex');
                 $('nav').toggleClass('nav-with-content', true);
                 break;
             case 'locationsPage':
@@ -150,10 +155,12 @@ $(document).ready(function() {
                     });
                 });
                 $('.homepageBg').css('opacity', '0');
+                $('.site-footer').css('display', 'flex');
                 $('nav').toggleClass('nav-with-content', true);
                 break;
             default:
                 $('.homepageBg').animate({ opacity: "0" }, 400);
+                $('.site-footer').css('display', 'flex');
                 $('nav').toggleClass('nav-with-content', true);
                 break;
         }
