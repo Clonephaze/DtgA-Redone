@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var pageContent;
-    let testing = false;
+    let testing = false; // Set to true and go to the root page to add content without the transitioner changing the content on screen.
 
     /**
      * Fetches JSON data for page content and initializes page load based on URL hash.
