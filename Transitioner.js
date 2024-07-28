@@ -83,6 +83,7 @@ $(document).ready(function() {
             $('.content-section').html(content.pageContent);
             document.title = content.title;
             handlePageTransition(pageId);
+            generateTOC();
         } else {
             console.log("No content found for pageId:", pageId);
         }
@@ -170,6 +171,25 @@ $(document).ready(function() {
     if (testing) {
         $('.homepageBg').css('background', 'none');
         console.log('testing');
+    }
+
+    function generateTOC() {
+        var toc = $('.toc');
+        if (toc.length) {
+            toc.empty();
+            $('.toc-place').each(function(index, element) {
+                var id = 'toc-place-' + index;
+                $(element).attr('id', id);
+                toc.append('<button class="toc-button" data-target="#' + id + '">' + $(element).data('name') + '</button>');
+            });
+
+            $('.toc-button').on('click', function() {
+                var target = $($(this).data('target'));
+                var navbarHeight = $('nav').height();
+                var navbarOffset = navbarHeight + 10;
+                $('html, body').animate({ scrollTop: target.offset().top - navbarOffset }, 1250);
+            });
+        }
     }
 });
 

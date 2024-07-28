@@ -265,6 +265,43 @@ nav {
     }
 }
 
+.toc {
+    position: fixed;
+    top: 150; left: 0;
+    margin-inline: 1rem;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--border-color);
+    border-radius: 15px;
+    box-shadow: 0 0 4px 4px rgba(var(--color-primary-rgb-values), 0.15);
+    overflow: hidden;
+    width: min(250px, 9vw);
+
+    >button {
+        background-color: unset;
+        border: none;
+        color: var(--text-color-mixed);
+        font-family: 'HyliaSerif';
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        font-size: clamp(0.875rem, 0.8472rem + 0.1235vw, 1rem);
+        cursor: pointer;
+        border-bottom: 2px solid var(--border-color);
+        padding: 0.25rem 0.5rem;
+        box-shadow: inset 0 0 3px 2px hsla(0, 0%, 0%, 0.3);
+
+        &:last-of-type {
+            border-bottom: none;
+        }
+    }
+
+    @media (max-width: 1280px) {
+        position: initial;
+        max-width: 95vw;
+        width: 600px;
+        margin-inline: auto;
+    }
+}
 
 @media (hover: hover) {
     .on-hover-box {
@@ -311,6 +348,15 @@ nav {
             &:hover {
                 color: hsl(6.6, 70.7%, 54.5%);
             }
+        }
+    }
+
+    .toc-button {
+        transition: color 250ms ease;
+
+        &:hover {
+            color: hsl(var(--color-primary), 0.8);
+            scale: 1.005;
         }
     }
 }
@@ -924,6 +970,16 @@ nav {
 }
 
 /****** Items Page ******/
+.items-page-container, 
+.enemies-page-container,
+.npc-page-container {
+   
+    @media (min-width: 768px) {
+        max-width: 80vw;
+        margin-inline: auto;
+    }
+}
+
 .section-title {
     font-family: 'HyliaSerif';
     font-weight: 600;
