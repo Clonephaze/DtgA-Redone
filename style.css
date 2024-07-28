@@ -334,6 +334,10 @@ nav {
     width: min(95vw, 1280px);
     margin: 0 auto;
     padding-top: 15px;
+
+    &:has(> .logo-centerer) {
+        height: 100%;
+    }
 }
 
 .code-box {
