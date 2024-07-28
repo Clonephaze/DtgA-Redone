@@ -19,6 +19,20 @@ $(document).ready(function() {
         console.error("Failed to load page content.");
     });
 
+    $(document).on('click', '#site-button', function() {
+        var href = $(this).data('href');
+
+        if (href.startsWith('#')) {
+            // Handle internal link
+            var pageId = href.substring(1);
+            history.pushState({ pageId: pageId }, '', href);
+            loadPage(pageId);
+        } else {
+            // Handle external link
+            window.open(href, '_blank', 'noopener,noreferrer');
+        }
+    });
+
     /**
      * Handles browser back/forward button clicks.
      */
