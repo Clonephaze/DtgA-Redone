@@ -24,13 +24,13 @@ function handleAccordionClicks() {
         var content = $(this).next('.accordion-content');
 
         if (content.hasClass('show')) {
-            content.removeClass('show').animate({ height: 0 }, 300);
+            content.removeClass('show').stop().animate({ height: 0 }, 300);
         } else {
-            $('.accordion-content.show').not(content).removeClass('show').animate({ height: 0 }, 300, function() {
+            $('.accordion-content.show').not(content).removeClass('show').stop().animate({ height: 0 }, 300, function() {
                 $(this).css('height', ''); // Reset height after animation
             });
 
-            content.addClass('show').animateAutoHeight(300, 'swing', function() {
+            content.addClass('show').stop().animateAutoHeight(300, 'swing', function() {
                 $(this).css('height', 'auto');
             });
         }
@@ -57,30 +57,81 @@ function generatePageContent(mainCategory, subcategoryContainers) {
                     if (mainCategoryData.hasOwnProperty(subcategory)) {
                         let subcategoryData = mainCategoryData[subcategory];
 
+                        let weaponNumber = 0;
                         // Loop through each item in the subcategory
                         subcategoryData.forEach(function(item) {
+                            // Check if the item has multiple descriptions and images
+                            if (Array.isArray(item.description) && Array.isArray(item.imageSrc)) {
+                                let descriptionContent = '';
+                                let imageDescNumber = 0;
+                                item.description.forEach(function(desc, index) {
+                                    descriptionContent += `
+                                        <button class="desc-title" data-weapon-number="${weaponNumber}" data-upgrade-number="${imageDescNumber++}" aria-expanded="false">
+                                            <h4>${desc.title}</h4>
+                                            <i class='bx bx-down-arrow'></i>
+                                        </button>
+                                        <div class="weapon-desc">
+                                            <p class="desc-content">${desc.content}</p>
+                                        </div>
+                                    `;
+                                });
 
-                            let cardContent = `
-                                <div class="card-box on-hover-box">
-                                    <div class="image-container">
-                                        <img src="${item.imageSrc[0]}" loading="lazy" alt="">
-                                    </div>
-                                    <div class="card-desc-container">
-                                        <h3 class="card-title">${item.title}</h3>
-                                        <p class="card-desc">${item.description}</p>
-                                        <div class="location-holder">
-                                            <button class="location-button">Click To Reveal Location</button>
-                                            <p class="location-text">${item.location}</p>
+                                let imageContent = '';
+                                imageDescNumber = 0;
+                                item.imageSrc.forEach(function(src) {
+                                    imageContent += `<div class="carousel-item" data-weapon-number="${weaponNumber}" data-upgrade-number="${imageDescNumber++}"><img src="${src}" loading="lazy" alt=""></div>`;
+                                });
+                                
+                                weaponNumber++;
+                                let cardContent = `
+                                    <div class="card-box on-hover-box"}">
+                                        <div class="image-container">
+                                            <div class="image-carousel">
+                                                ${imageContent}
+                                            </div>
+                                        </div>
+                                        <div class="card-desc-container">
+                                            <h3 class="card-title">${item.title}</h3>
+                                            <p class="gen-desc">${item.genDesc}</p>
+                                            ${descriptionContent}
+                                            <button class="location-button" araia-expanded="false">Click To Reveal Location<i class='bx bxs-chevron-down'></i></button>
+                                            <div class="location-holder">
+                                                <p class="location-text">${item.location}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 `;
 
-                            // Append the generated HTML to the respective subcategory container
-                            if (subcategoryContainers[subcategory]) {
-                                $(`#${subcategoryContainers[subcategory]}`).append(cardContent);
+                                // Append the generated HTML to the respective subcategory container
+                                if (subcategoryContainers[subcategory]) {
+                                    $(`#${subcategoryContainers[subcategory]}`).append(cardContent);
+                                } else {
+                                    console.error(`Container for subcategory '${subcategory}' not found.`);
+                                }
                             } else {
-                                console.error(`Container for subcategory '${subcategory}' not found.`);
+                                // Handle regular items without multiple descriptions and images
+                                let cardContent = `
+                                    <div class="card-box on-hover-box">
+                                        <div class="image-container">
+                                            <img src="${item.imageSrc[0]}" loading="lazy" alt="">
+                                        </div>
+                                        <div class="card-desc-container">
+                                            <h3 class="card-title">${item.title}</h3>
+                                            <p class="card-desc">${item.description}</p>
+                                            <button class="location-button" araia-expanded="false">Click To Reveal Location<i class='bx bxs-chevron-down'></i></button>
+                                            <div class="location-holder">
+                                                <p class="location-text">${item.location}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `;
+
+                                // Append the generated HTML to the respective subcategory container
+                                if (subcategoryContainers[subcategory]) {
+                                    $(`#${subcategoryContainers[subcategory]}`).append(cardContent);
+                                } else {
+                                    console.error(`Container for subcategory '${subcategory}' not found.`);
+                                }
                             }
                         });
                     }
@@ -89,10 +140,62 @@ function generatePageContent(mainCategory, subcategoryContainers) {
                 console.error(`Main category '${mainCategory}' not found.`);
             }
         });
+        // Add event listeners for description toggles
+        $(document).on('click', '.desc-title', function() {
+            let $card = $(this).closest('.card-box');
+            let $button = $(this);
+            let $descContent = $(this).next('.weapon-desc');
+            let isExpanded = $button.attr('aria-expanded') === 'true';
+            
+            // Collapse other descriptions in the same card and toggle their aria-expanded attribute
+            $card.find('.desc-title').not($button).attr('aria-expanded', 'false');
+            $card.find('.weapon-desc').not($descContent).animate({ height: 0 }, 400);
+
+
+            // Slide down the selected description and toggle its aria-expanded attribute to on
+            $button.attr('aria-expanded', !isExpanded);
+            
+            if (!isExpanded) {
+                $descContent.animateAutoHeight(400, 'swing', function() {
+                    $(this).css('height', 'auto');
+                });
+            } else {
+                $descContent.animate({ height: 0 }, 400);
+            }
+
+            let weaponNumber = $(this).data('weapon-number');
+            let upgradeNumber = $(this).data('upgrade-number');
+            let $carousel = $(this).closest('.card-box').find('.image-carousel');
+            let $targetItem = $carousel.find(`.carousel-item[data-weapon-number="${weaponNumber}"][data-upgrade-number="${upgradeNumber}"]`);
+            $carousel.animate({
+                scrollLeft: $carousel.scrollLeft() + $targetItem.position().left
+            }, 400);
+        });
+
+        // Add event listener for location button
+        $(document).on('click', '.location-button', function() {
+            let $button = $(this);
+            let $locationText = $button.next('.location-holder');
+            let isExpanded = $button.attr('aria-expanded') === 'true';
+            
+            // Toggle aria-expanded state
+            $button.attr('aria-expanded', !isExpanded);
+
+            // Animate the location text
+            if (!isExpanded) {
+                $locationText.animateAutoHeight(400, 'swing', function() {
+                    $(this).css('height', 'auto');
+                });
+            } else {
+                $locationText.animate({ height: 0 }, 400);
+            }
+        });
+
     }).fail(function() {
         console.error('Failed to fetch JSON data.');
     });
 }
+
 
 function initializeColorPicker() {
     $('#picker').empty();
@@ -163,7 +266,7 @@ jQuery.fn.animateAutoHeight = function(duration, easing, callback) {
         originalHeight = elem.height(),
         autoHeight = elem.css('height', 'auto').height();
 
-    elem.height(originalHeight).animate({ height: autoHeight }, duration, easing, function() {
+    elem.height(originalHeight).stop().animate({ height: autoHeight }, duration, easing, function() {
         if (typeof callback === 'function') callback.call(this);
     });
 };

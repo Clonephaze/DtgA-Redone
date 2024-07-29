@@ -30,15 +30,18 @@ $(document).ready(function() {
     // Handle click event on the navigation toggle for mobile view
     $('.nav-toggle').on('click', function() {
         var ariaExpanded = $(this).attr('aria-expanded') === 'true';
+        var expanding = false;
         $(this).attr('aria-expanded', !ariaExpanded); // Toggle aria-expanded attribute
         $('nav').toggleClass('mobile-nav-open', !ariaExpanded); // Toggle mobile-nav-open class
 
-        if (!ariaExpanded) {
+        if (!ariaExpanded && !expanding) {
+            expanding = true;
             // Expand navigation list and animate height to auto
             $('.nav-list').animateAutoHeight(200, 'swing', function() {
                 $(this).css('height', 'auto');
             });
         } else {
+            expanding = false;
             // Collapse navigation list to height 0
             $('.nav-list').animate({ height: "0" }, 200);
         }

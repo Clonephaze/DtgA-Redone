@@ -548,18 +548,38 @@ nav {
             margin-block: 1rem;
         }
 
-        >.location-holder{
+        >.location-button {
+            background-color: unset;
+            border: none;
+            cursor: pointer;
+            color: color-mix(in srgb, rgb(var(--standard-font)) 50%, rgb(16, 16, 16) );
+            place-self: start;
+            font-size: 0.8rem;
 
-            >.location-button {
-                background-color: unset;
-                border: none;
-                cursor: pointer;
-                color: color-mix(in srgb, rgb(var(--standard-font)) 50%, rgb(16, 16, 16) );
+            >i {
+                margin-left: 0.5rem;
+                transition: transform 0.3s;
             }
 
+            &[aria-expanded="true"] {
+                >i {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        >.location-holder{
+            margin-top: 0.5rem;
+            height: 0;
+            overflow: hidden;
+
+
             >.location-text {
-                height: 0;
-                overflow: hidden;
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+                background-color: var(--bgColor);
+                border-radius: 15px;
+                box-shadow: inset 0 0 6px 4px rgba(0, 0, 0, 0.3);
             }
         }
     }
@@ -1088,6 +1108,82 @@ nav {
     width: 100%;
     text-align: center;
     padding: 1.5rem 0; 
+}
+
+.image-carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    >.carousel-item {
+        width: 100%;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        >img {
+            display: block;
+        }
+    }
+
+}
+
+.card-desc-container:has(>.desc-title) {
+    gap: 0.5rem;
+
+    >.desc-title {
+        border: unset;
+        background: unset;
+
+        letter-spacing: 0.05em;
+        color: var(--text-color-mixed);
+        font-size: clamp(0.875rem, 0.8472rem + 0.1235vw, 1rem);
+        place-self: start;
+        display: flex;
+
+        >h4{
+            font: inherit;
+            font-family: 'HyliaSerif';
+            font-weight: 300;
+        }
+
+        >i {
+            margin-left: 0.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        &[aria-expanded="true"] {
+            >i {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    >.weapon-desc {
+        font-size: clamp(0.75rem, 0.625rem + 0.5556vw, 1rem);
+        height: 0;
+        overflow: hidden;
+
+        background-color: var(--bgColor);
+        box-shadow: inset 0 0 6px 4px rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+
+        >.desc-content {
+            padding: 0.5rem 0.75rem;
+        }
+    }
 }
 
 
