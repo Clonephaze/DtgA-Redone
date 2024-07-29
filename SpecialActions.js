@@ -118,12 +118,12 @@ function initializeColorPicker() {
     }
     // Open the modal
     $('#color-picker-btn').on('click', function() {
-        $('#color-picker-modal').animate({ right: '10px' }, 500);
+        $('#color-picker-modal').stop().animate({ right: '10px' }, 500);
     });
 
     // Close the modal
     function closeModal() {
-        $('#color-picker-modal').animate({ right: '-350px' }, 500);
+        $('#color-picker-modal').stop().animate({ right: '-350px' }, 500);
     }
 
 
