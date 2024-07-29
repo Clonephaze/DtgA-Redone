@@ -95,6 +95,7 @@ function generatePageContent(mainCategory, subcategoryContainers) {
 }
 
 function initializeColorPicker() {
+    $('#picker').empty();
     var savedColorItems = localStorage.getItem('color-primary-rgb-values');
     var savedColor = "rgb(" + savedColorItems + ")";
 
@@ -149,10 +150,6 @@ function initializeColorPicker() {
         localStorage.setItem('color-primary-rgb-values', rgbValues);
     });
 }
-
-$(document).ready(function() {
-    initializeColorPicker();    
-});   
 
 /**
  * jQuery plugin to animate an element's height to its auto height.

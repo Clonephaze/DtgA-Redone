@@ -87,6 +87,9 @@ $(document).ready(function() {
         if (content) {
             $('.content-section').html(content.pageContent);
             document.title = content.title;
+            $.getScript("SpecialActions.js", function() {
+                initializeColorPicker();
+            })
             handlePageTransition(pageId);
             generateTOC();
         } else {
