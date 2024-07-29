@@ -64,6 +64,11 @@ $(document).ready(function() {
     function loadPage(pageId) {
         $('.nav-toggle').attr('aria-expanded', 'false');
 
+        var savedColor = localStorage.getItem('color-primary-rgb-values');
+        if (savedColor) {
+            $('html').css('--color-primary-rgb-values', savedColor);
+        }
+
         // Responsive handling for navigation menu animation
         if ($(window).width() <= 768) {
             $('.nav-list').animate({ height: "0" }, 200).attr('aria-expanded', 'false');

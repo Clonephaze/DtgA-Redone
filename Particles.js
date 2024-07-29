@@ -12,6 +12,9 @@ $(document).ready(async function () {
     // Load the full tsParticles library
     await loadFull(tsParticles);
 
+    let rgbValues = localStorage.getItem('color-primary-rgb-values');
+    let particleColor = rgbValues ? `rgb(${rgbValues})` : 'rgb(133, 255, 225)'; // Default colo
+
     // Initialize the tsParticles animation with specified configurations
     $("#tsparticles")
         .particles()
@@ -20,7 +23,7 @@ $(document).ready(async function () {
                 fpsLimit: 120,
                 particles: {
                     color: {
-                        value: "#ffffff",
+                        value: particleColor,
                     },
                     move: {
                         direction: "none",
@@ -63,6 +66,9 @@ $(document).ready(async function () {
 window.refreshParticles = function() {
     loadFull(tsParticles);
 
+    let rgbValues = localStorage.getItem('color-primary-rgb-values');
+    let particleColor = rgbValues ? `rgb(${rgbValues})` : 'rgb(133, 255, 225)'; // Default colo
+
     // Reinitialize the tsParticles animation with the same configurations
     $("#tsparticles")
         .particles()
@@ -71,7 +77,7 @@ window.refreshParticles = function() {
                 fpsLimit: 120,
                 particles: {
                     color: {
-                        value: "#ffffff",
+                        value: particleColor,
                     },
                     move: {
                         direction: "none",

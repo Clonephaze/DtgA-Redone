@@ -19,6 +19,7 @@
     <script src="Transitioner.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tsparticles/tsparticles.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/jquery"></script>
+    <script src="iro.min.js"></script>
 </head>
 <body>
     <div class="homepageBg"></div>
@@ -35,12 +36,12 @@
             </path>
         </svg>
         <ul class="nav-list">
-            <li class="nav-item"><button class="pageNav" id="homePage">Home</button></li>
-            <li class="nav-item"><button class="pageNav" id="aboutPage">About</button></li>
-            <li class="nav-item"><button class="pageNav" id="gettingStartedPage">Getting Started</button></li>
+            <li class="nav-item"><button class="pageNav" role="link" id="homePage">Home</button></li>
+            <li class="nav-item"><button class="pageNav" role="link" id="aboutPage">About</button></li>
+            <li class="nav-item"><button class="pageNav" role="link" id="gettingStartedPage">Getting Started</button></li>
             <li class="nav-item">
-                <button id="wiki-list-dropdown" role="button" aria-expanded="false">Wiki</button>
-                <div class="nav-dropdown">
+                <button id="wiki-list-dropdown" aria-label="Wiki Dropdown button" role="button" aria-expanded="false" aria-controls="nav-dropdown">Wiki</button>
+                <div class="nav-dropdown" aria-label="Wiki Dropdown">
                     <ul>
                         <li><button class="pageNav" id="newMechanicsPage">New Mechanics</button></li>
                         <li><button class="pageNav" id="itemsPage">Items</button></li>
@@ -51,18 +52,27 @@
                     </ul>
                 </div>
             </li>
-            <li class="nav-item"><button class="pageNav" id="faqPage">FAQ</button></li>
+            <li class="nav-item"><button role="link" class="pageNav" id="faqPage">FAQ</button></li>
+            <button id="color-picker-btn"><i class='bx bxs-palette' ></i></button>
         </ul>
-              
+        <div id="color-picker-modal">
+            <div class="modal-content">
+                <div class="button-row">
+                    <button id="reset-button" class="reset-btn"><i class='bx bx-reset'></i></button>
+                    <button id="modal-close-button" class="close-btn"><i class='bx bx-x'></i></button>
+                </div>
+                <div id="picker"></div>
+            </div>
+        </div>
     </nav>
     <main>
         <div class="content-section">
 
         </div>
         <div class="site-footer">
-            <div class="social-media-button" id="site-button" data-href="https://discord.gg/qNyn26aWKB"><i class='bx bxl-discord-alt'></i></div>
-            <div class="social-media-button" id="site-button" data-href="https://github.com/Clonephaze/DtgA"><i class='bx bxl-github'></i></div>
-            <div class="social-media-button" id="site-button" data-href="https://www.patreon.com/ZoeyEule/posts"><i class='bx bxl-patreon'></i></div>
+            <div class="social-media-button" id="site-button" data-href="https://discord.gg/qNyn26aWKB" role="link" aria-label="D t g A Discord Link"><i class='bx bxl-discord-alt'></i></div>
+            <div class="social-media-button" id="site-button" data-href="https://github.com/Clonephaze/DtgA" role="link" aria-label="Git Hub for clonephaze link"><i class='bx bxl-github'></i></div>
+            <div class="social-media-button" id="site-button" data-href="https://www.patreon.com/ZoeyEule/posts" role="link" aria-label="Zoey's Patreon Link"><i class='bx bxl-patreon'></i></div>
         </div>
     </main>
     <script src="NavBar.js"></script>

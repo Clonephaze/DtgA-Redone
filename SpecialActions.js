@@ -94,6 +94,65 @@ function generatePageContent(mainCategory, subcategoryContainers) {
     });
 }
 
+function initializeColorPicker() {
+    var savedColorItems = localStorage.getItem('color-primary-rgb-values');
+    var savedColor = "rgb(" + savedColorItems + ")";
+
+    if (savedColorItems) {
+        var colorPicker = new iro.ColorPicker("#picker", {
+            width: 300,
+            color: savedColor,
+            wheelLightness: true,
+            borderWidth: 2,
+            borderColor: "rgb(355, 355, 355)",
+        });
+    } else {
+        var colorPicker = new iro.ColorPicker("#picker", {
+            width: 300,
+            color: "rgb(133, 255, 225)",
+            wheelLightness: true,
+            borderWidth: 2,
+            borderColor: "rgb(355, 355, 355)",
+        });
+    }
+    // Open the modal
+    $('#color-picker-btn').on('click', function() {
+        $('#color-picker-modal').animate({ right: '10px' }, 500);
+    });
+
+    // Close the modal
+    function closeModal() {
+        $('#color-picker-modal').animate({ right: '-350px' }, 500);
+    }
+
+
+
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('#color-picker-modal, #color-picker-btn').length) {
+            closeModal();
+        }
+        if ($('#modal-close-button') && $(event.target).closest('#modal-close-button').length) {
+            closeModal();
+        }
+        if ($('#reset-button') && $(event.target).closest('#reset-button').length) {
+            localStorage.setItem('color-primary-rgb-values', '133, 255, 225');
+            $('html').css('--color-primary-rgb-values', '133, 255, 225');
+            closeModal();
+        }
+    });
+
+    // Update the CSS variable and local storage when the color changes
+    colorPicker.on('color:change', function(color) {
+        var rgb = color.rgb;
+        var rgbValues = `${rgb.r}, ${rgb.g}, ${rgb.b}`;
+        $('html').css('--color-primary-rgb-values', rgbValues);
+        localStorage.setItem('color-primary-rgb-values', rgbValues);
+    });
+}
+
+$(document).ready(function() {
+    initializeColorPicker();    
+});   
 
 /**
  * jQuery plugin to animate an element's height to its auto height.
