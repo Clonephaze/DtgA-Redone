@@ -623,7 +623,7 @@ nav {
 .logo-container {
     width: fit-content;
     font-family: 'BreathOfWild';
-    color: rgb(var(--color-primary-rgb-values));
+    color: white;
     text-align: center;
     font-size: clamp(2.25rem, 1.8173rem + 1.9231vw, 3.5rem);
 
