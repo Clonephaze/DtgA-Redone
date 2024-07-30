@@ -5,7 +5,7 @@
   "description": "A companion app for \"Dangerous to go Alone\" for Breath of the wild. Holds all of DtgA's information in one convienient app.",
   "scope": "https://clonephaze.github.io/DtgA-Redone/",
   "start_url": "https://clonephaze.github.io/DtgA-Redone/",
-  "theme_color": "#A9A9A9",
+  "theme_color": "#000000",
   "background_color": "#000000",
   "categories": ["games", "utilities"],
   "icons": [
