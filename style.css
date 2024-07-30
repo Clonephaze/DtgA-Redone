@@ -104,16 +104,12 @@ nav {
     & .nav-list {
         display: flex;
         list-style: none;
+        gap: 1rem;
         align-items: center;
         margin-inline: 2rem;
         order: 2;
         overflow: visible;
         width: 100%;
-        height: 100%;
-
-        >.nav-item{
-            padding: 0.2rem;
-        }
     }
 
     #color-picker-btn {
@@ -292,9 +288,7 @@ nav {
     font-weight: 500;
     letter-spacing: 0.05em;
     
-    
     & #wiki-list-dropdown {
-        padding: 0.3rem 0.5rem;
         /** This is the dropdown arrow **/
         position: relative;
         &::after {
@@ -316,12 +310,6 @@ nav {
         color: var(--text-color-mixed);
         font: inherit;
         cursor: pointer;
-        height: 100%;
-        position: relative;
-    }
-
-    & .pageNav {
-        padding: 0.5rem 0.8rem;
     }
 }
 
@@ -451,30 +439,11 @@ nav {
         }
     }
 
-    .nav-item>button{
-        transition: background-size 250ms ease;
-        background-image: radial-gradient(rgba(var(--color-primary-rgb-values), 0.2) 0%, transparent 80%);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 0% 0%;
-
+    .nav-item>button {
+        transition: color 250ms ease;
         &:hover {
-            background-image: radial-gradient(rgba(var(--color-primary-rgb-values), 0.2) 0%, transparent 80%);
-            background-size: 100% 100%;
-        }
-    }
-
-    
-    .nav-item>.nav-dropdown>ul>li {
-        transition: background-size 250ms ease;
-        background-image: radial-gradient(rgba(var(--color-primary-rgb-values), 0.2) 0%, transparent 65%);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 0% 0%;
-
-        &:hover {
-            background-image: radial-gradient(rgba(var(--color-primary-rgb-values), 0.2) 0%, transparent 65%);
-            background-size: 100% 100%;
+            color: rgba(var(--color-primary-rgb-values), 0.8);
+            background-image: radial-gradient(circle, rgba(var(--color-primary-rgb-values), 0.2) 0%, transparent 100%);
         }
     }
 }
