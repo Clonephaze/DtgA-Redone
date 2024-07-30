@@ -1,25 +1,35 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var pageContent;
     let testing = false; // Set to true and go to the root page to add content without the transitioner changing the content on screen.
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function (err) {
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+    }
 
     /**
      * Fetches JSON data for page content and initializes page load based on URL hash.
      */
-    $.getJSON("OtherPages/pageContent.json", function(data) {
+    $.getJSON("OtherPages/pageContent.json", function (data) {
         pageContent = data;
         loadPageFromURL();
 
         // Event handler for navigation clicks
-        $(".pageNav").on('click', function() {
+        $(".pageNav").on('click', function () {
             var pageId = $(this).attr('id');
             history.pushState({ pageId: pageId }, '', '#' + pageId);
             loadPage(pageId);
         });
-    }).fail(function() {
+    }).fail(function () {
         console.error("Failed to load page content.");
     });
 
-    $(document).on('click', '#site-button', function() {
+    $(document).on('click', '#site-button', function () {
         var href = $(this).data('href');
 
         if (href.startsWith('#')) {
@@ -36,7 +46,7 @@ $(document).ready(function() {
     /**
      * Handles browser back/forward button clicks.
      */
-    window.onpopstate = function(event) {
+    window.onpopstate = function (event) {
         if (event.state && event.state.pageId) {
             loadPage(event.state.pageId);
         } else {
@@ -80,14 +90,14 @@ $(document).ready(function() {
         }
 
         // Find the content for the specified pageId
-        var content = pageContent.find(function(page) {
+        var content = pageContent.find(function (page) {
             return page.pageId === pageId;
         });
 
         if (content) {
             $('.content-section').html(content.pageContent);
             document.title = content.title;
-            $.getScript("SpecialActions.js", function() {
+            $.getScript("SpecialActions.js", function () {
                 initializeColorPicker();
             })
             handlePageTransition(pageId);
@@ -111,7 +121,7 @@ $(document).ready(function() {
                 $('.site-footer').css('display', 'none');
                 break;
             case 'faqPage':
-                $.getScript("SpecialActions.js", function() {
+                $.getScript("SpecialActions.js", function () {
                     setupFAQPage();
                     handleAccordionClicks();
                 });
@@ -120,7 +130,7 @@ $(document).ready(function() {
                 $('.site-footer').css('display', 'flex');
                 break;
             case 'itemsPage':
-                $.getScript("SpecialActions.js", function() {
+                $.getScript("SpecialActions.js", function () {
                     generatePageContent('Items', {
                         'Armors': 'armorsContainer',
                         'Consumables': 'consumablesContainer',
@@ -135,7 +145,7 @@ $(document).ready(function() {
                 $('nav').toggleClass('nav-with-content', true);
                 break;
             case 'enemiesPage':
-                $.getScript("SpecialActions.js", function() {
+                $.getScript("SpecialActions.js", function () {
                     generatePageContent('Enemies', {
                         'commonEnemies': 'commonEnemiesContainer',
                         'Bosses': 'bossesContainer'
@@ -146,7 +156,7 @@ $(document).ready(function() {
                 $('nav').toggleClass('nav-with-content', true);
                 break;
             case 'npcsPage':
-                $.getScript("SpecialActions.js", function() {
+                $.getScript("SpecialActions.js", function () {
                     generatePageContent('NPCs', {
                         'companions': 'companionsContainer',
                         'vendors': 'vendorsContainer',
@@ -158,7 +168,7 @@ $(document).ready(function() {
                 $('nav').toggleClass('nav-with-content', true);
                 break;
             case 'locationsPage':
-                $.getScript("SpecialActions.js", function() {
+                $.getScript("SpecialActions.js", function () {
                     generatePageContent('gadgetLocations', {
                         'locations': 'locationsContainer'
                     });
@@ -185,13 +195,13 @@ $(document).ready(function() {
         var toc = $('.toc');
         if (toc.length) {
             toc.empty();
-            $('.toc-place').each(function(index, element) {
+            $('.toc-place').each(function (index, element) {
                 var id = 'toc-place-' + index;
                 $(element).attr('id', id);
                 toc.append('<button class="toc-button" data-target="#' + id + '">' + $(element).data('name') + '</button>');
             });
 
-            $('.toc-button').on('click', function() {
+            $('.toc-button').on('click', function () {
                 var target = $($(this).data('target'));
                 var navbarHeight = $('nav').height();
                 var navbarOffset = navbarHeight + 10;
@@ -208,12 +218,12 @@ $(document).ready(function() {
  * @param {string} easing - Easing function for the animation.
  * @param {Function} [callback] - Optional callback function to execute after the animation completes.
  */
-jQuery.fn.animateAutoHeight = function(duration, easing, callback) {
+jQuery.fn.animateAutoHeight = function (duration, easing, callback) {
     var elem = $(this),
         originalHeight = elem.height(),
         autoHeight = elem.css('height', 'auto').height();
 
-    elem.height(originalHeight).animate({ height: autoHeight }, duration, easing, function() {
+    elem.height(originalHeight).animate({ height: autoHeight }, duration, easing, function () {
         if (typeof callback === 'function') callback.call(this);
     });
 };
