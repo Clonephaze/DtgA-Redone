@@ -1,0 +1,92 @@
+{
+  "name": "Dangerous to go Alone Wiki",
+  "short_name": "DtgA Wiki",
+  "display": "standalone",
+  "description": "A companion app for \"Dangerous to go Alone\" for Breath of the wild. Holds all of DtgA's information in one convienient app.",
+  "scope": "https://clonephaze.github.io/DtgA-Redone/",
+  "start_url": "https://clonephaze.github.io/DtgA-Redone/",
+  "theme_color": "#A9A9A9",
+  "background_color": "#000000",
+  "categories": ["games", "utilities"],
+  "icons": [
+    {
+      "src": "Assets/SocialAndIcons/Icons/DtgA-Icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "Assets/SocialAndIcons/Icons/DtgA-Icon-256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "Assets/SocialAndIcons/Icons/DtgA-Icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "Assets/SocialAndIcons/Icons/DtgA-Icon-vector.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "Assets/Screenshots/HomeDesktop.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Homescreen of DtgA"
+    },
+    {
+      "src": "Assets/Screenshots/HomeMobile.png",
+      "sizes": "448x998",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Homescreen of DtgA"
+    },
+    {
+      "src": "Assets/Screenshots/ItemsDesktop.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Items in DtgA"
+    },
+    {
+      "src": "Assets/Screenshots/ItemsMobile.png",
+      "sizes": "448x998",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Items in DtgA"
+    },
+    {
+      "src": "Assets/Screenshots/FAQDesktop.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "FAQ of DtgA"
+    },
+    {
+      "src": "Assets/Screenshots/FAQMobile.png",
+      "sizes": "448x998",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "FAQ of DtgA"
+    },
+    {
+      "src": "Assets/Screenshots/ThemeSwitcherDesktop.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Preview of the color changer in the app."
+    },
+    {
+      "src": "Assets/Screenshots/ThemeSwitcherMobile.png",
+      "sizes": "448x998",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Preview of the color changer in the app."
+    }
+  ]
+}
