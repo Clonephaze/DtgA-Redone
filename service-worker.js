@@ -1,112 +1,77 @@
-const CACHE_NAME = 'DtgA-Redone-v1';
-const urlsToCache = [
-    '/Transitioner.js',
-    '/style.css',
-    '/SpecialActions.js',
-    '/NavBar.js',
-    '/Particles.js',
-    '/manifest.json',
-    '/iro.min.js',
-    '/jquery-3.7.1.min.js',
-    '/tsparticles.bundle.min.js',
-    '/TSParticlesjquery.js',
-    '/index.html',
-    '/generationData.json',
-    '/OtherPages/pageContent.json',
-    'Assets/DtgA-logo_Final-GaplessBW.webp',
-    'Assets/Fonts/HyliaSerifBeta-Regular.otf',
-    'Assets/Fonts/promptfont.otf',
-    'Assets/Fonts/promptfont.ttf',
-    'Assets/Fonts/TheWildBreathofZelda.otf',
-    'Assets/Fonts/Triforce-y07d.ttf',
+var APP_PREFIX = 'DtgA_';     // Identifier for this app
+var VERSION = 'version_02';   // Version of the off-line cache
+var CACHE_NAME = APP_PREFIX + VERSION;
+var REPOSITORY = '/DtgA-Redone';
+var URLS = [
+  REPOSITORY + '/',                     
+  REPOSITORY + '/index.html',            
+  REPOSITORY + '/Transitioner.js',
+  REPOSITORY + '/style.css',
+  REPOSITORY + '/SpecialActions.js',
+  REPOSITORY + '/NavBar.js',
+  REPOSITORY + '/Particles.js',
+  REPOSITORY + '/manifest.json',
+  REPOSITORY + '/iro.min.js',
+  REPOSITORY + '/jquery-3.7.1.min.js',
+  REPOSITORY + '/tsparticles.bundle.min.js',
+  REPOSITORY + '/TSParticlesjquery.js',
+  REPOSITORY + '/generationData.json',
+  REPOSITORY + '/OtherPages/pageContent.json',
+  REPOSITORY + '/Assets/DtgA-logo_Final-GaplessBW.webp',
+  REPOSITORY + '/Assets/Fonts/HyliaSerifBeta-Regular.otf',
+  REPOSITORY + '/Assets/Fonts/promptfont.otf',
+  REPOSITORY + '/Assets/Fonts/promptfont.ttf',
+  REPOSITORY + '/Assets/Fonts/TheWildBreathofZelda.otf',
+  REPOSITORY + '/Assets/Fonts/Triforce-y07d.ttf'
+]
 
-];
+// Respond with cached resources
+self.addEventListener('fetch', function (e) {
+  console.log('fetch request : ' + e.request.url);
+  e.respondWith(
+    caches.match(e.request).then(function (request) {
+      if (request) { // if cache is available, respond with cache
+        console.log('responding with cache : ' + e.request.url);
+        return request;
+      } else {       // if there are no cache, try fetching request
+        console.log('file is not cached, fetching : ' + e.request.url);
+        return fetch(e.request);
+      }
 
-
-self.addEventListener('install', event => {
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => {
-                console.log('Opened cache');
-                return cache.addAll(urlsToCache);
-            })
-    );
+      // You can omit if/else for console.log & put one line below like this too.
+      // return request || fetch(e.request)
+    })
+  )
 });
 
-self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                // Cache hit - return the response from the cache
-                if (response) {
-                    return response;
-                }
-                
-                // Clone the request
-                let fetchRequest = event.request.clone();
-
-                return fetch(fetchRequest).then(
-                    response => {
-                        // Check if we received a valid response
-                        if (!response || response.status !== 200 || response.type !== 'basic') {
-                            return response;
-                        }
-
-                        // Clone the response
-                        let responseToCache = response.clone();
-
-                        caches.open(CACHE_NAME)
-                            .then(cache => {
-                                cache.put(event.request, responseToCache);
-                            });
-
-                        return response;
-                    }
-                );
-            })
-    );
+// Cache resources
+self.addEventListener('install', function (e) {
+  e.waitUntil(
+    caches.open(CACHE_NAME).then(function (cache) {
+      console.log('installing cache : ' + CACHE_NAME);
+      return cache.addAll(URLS);
+    })
+  )
 });
 
-self.addEventListener('activate', event => {
-    const cacheWhitelist = [CACHE_NAME];
-    event.waitUntil(
-        caches.keys().then(cacheNames => {
-            return Promise.all(
-                cacheNames.map(cacheName => {
-                    if (cacheWhitelist.indexOf(cacheName) === -1) {
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        })
-    );
+// Delete outdated caches
+self.addEventListener('activate', function (e) {
+  e.waitUntil(
+    caches.keys().then(function (keyList) {
+      // `keyList` contains all cache names under your username.github.io
+      // filter out ones that have this app prefix to create a whitelist
+      var cacheWhitelist = keyList.filter(function (key) {
+        return key.indexOf(APP_PREFIX) === 0;
+      });
+      // add current cache name to white list
+      cacheWhitelist.push(CACHE_NAME);
+
+      return Promise.all(keyList.map(function (key, i) {
+        if (cacheWhitelist.indexOf(key) === -1) {
+          console.log('deleting cache : ' + keyList[i]);
+          return caches.delete(keyList[i]);
+        }
+      }));
+    })
+  )
 });
-
-// Function to cache all .webp images in the Icons folder dynamically
-function cacheWebPImages() {
-    return fetch('/Icons/')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.text();
-        })
-        .then(html => {
-            // Parse the HTML to find .webp images
-            let parser = new DOMParser();
-            let doc = parser.parseFromString(html, 'text/html');
-            let imageElements = doc.querySelectorAll('img[src$=".webp"]');
-            let imageUrls = Array.from(imageElements).map(img => img.src);
-
-            return caches.open(CACHE_NAME)
-                .then(cache => {
-                    return cache.addAll(imageUrls);
-                });
-        })
-        .catch(error => {
-            console.error('Failed to cache WebP images:', error);
-        });
-}
-
-// Call the function to cache WebP images
-cacheWebPImages();
