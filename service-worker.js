@@ -1,5 +1,5 @@
 var APP_PREFIX = 'DtgA_';     // Identifier for this app
-var VERSION = 'version_03';   // Version of the off-line cache
+var VERSION = 'version_04';   // Version of the off-line cache
 var CACHE_NAME = APP_PREFIX + VERSION;
 var REPOSITORY = '/DtgA-Redone';
 var URLS = [
@@ -26,23 +26,6 @@ var URLS = [
     REPOSITORY + '/Assets/Fonts/Triforce-y07d.ttf'
 ]
 
-// Function to fetch and cache all .webp images in the Icons folder
-function cacheWebpImages() {
-    return fetch(REPOSITORY + '/Icons/')
-        .then(response => {
-            if (!response.ok) throw new TypeError('Bad response status');
-            return response.text();
-        })
-        .then(html => {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const imageLinks = Array.from(doc.querySelectorAll('a'))
-                .filter(link => link.href.endsWith('.webp'))
-                .map(link => REPOSITORY + '/Icons/' + link.getAttribute('href'));
-            return caches.open(CACHE_NAME).then(cache => cache.addAll(imageLinks));
-        });
-}
-
 // Respond with cached resources
 self.addEventListener('fetch', function (e) {
     console.log('fetch request : ' + e.request.url);
@@ -50,13 +33,22 @@ self.addEventListener('fetch', function (e) {
     strippedUrl.search = ''; // Remove the query parameters
 
     e.respondWith(
-        caches.match(strippedUrl).then(function (request) {
-            if (request) { // if cache is available, respond with cache
+        caches.match(strippedUrl).then(function (response) {
+            if (response) { // if cache is available, respond with cache
                 console.log('responding with cache : ' + e.request.url);
-                return request;
-            } else {       // if there are no cache, try fetching request
+                return response;
+            } else { // if there are no cache, try fetching request and cache it
                 console.log('file is not cached, fetching : ' + e.request.url);
-                return fetch(e.request);
+                return fetch(e.request).then(function (networkResponse) {
+                    if (networkResponse.ok && strippedUrl.pathname.startsWith(REPOSITORY + '/Icons/') && strippedUrl.pathname.endsWith('.webp')) {
+                        return caches.open(CACHE_NAME).then(function (cache) {
+                            cache.put(strippedUrl, networkResponse.clone());
+                            return networkResponse;
+                        });
+                    } else {
+                        return networkResponse;
+                    }
+                });
             }
         })
     );
@@ -67,7 +59,7 @@ self.addEventListener('install', function (e) {
     e.waitUntil(
         caches.open(CACHE_NAME).then(function (cache) {
             console.log('installing cache : ' + CACHE_NAME);
-            return cache.addAll(URLS).then(() => cacheWebpImages());
+            return cache.addAll(URLS);
         })
     );
 });
