@@ -1,184 +1,185 @@
-var APP_PREFIX = 'DtgA_';     // Identifier for this app
-var VERSION = 'version_05';   // Version of the off-line cache
-var CACHE_NAME = APP_PREFIX + VERSION;
-var REPOSITORY = '/DtgA-Redone';
-var URLS = [
-    REPOSITORY + '/',
-    REPOSITORY + '/index.html',
-    REPOSITORY + '/Transitioner.js',
-    REPOSITORY + '/style.css',
-    REPOSITORY + '/SpecialActions.js',
-    REPOSITORY + '/NavBar.js',
-    REPOSITORY + '/Particles.js',
-    REPOSITORY + '/manifest.json',
-    REPOSITORY + '/iro.min.js',
-    REPOSITORY + '/jquery-3.7.1.min.js',
-    REPOSITORY + '/tsparticles.bundle.min.js',
-    REPOSITORY + '/TSParticlesjquery.js',
-    REPOSITORY + '/generationData.json',
-    REPOSITORY + '/OtherPages/pageContent.json',
-    REPOSITORY + '/Assets/DtgA-logo_Final-GaplessBW.webp',
-    REPOSITORY + '/Assets/Fonts/HyliaSerifBeta-Regular.otf',
-    REPOSITORY + '/Assets/Fonts/promptfont.otf',
-    REPOSITORY + '/Assets/Fonts/promptfont.ttf',
-    REPOSITORY + '/Assets/Fonts/TheWildBreathofZelda.otf',
-    REPOSITORY + '/Assets/Fonts/Triforce-y07d.ttf',
-    // Add your .webp images here
-    REPOSITORY + '/Icons/Aero.webp',
-    REPOSITORY + '/Icons/Argorok.webp',
-    REPOSITORY + '/Icons/Balloon.webp',
-    REPOSITORY + '/Icons/Beedle.webp',
-    REPOSITORY + '/Icons/BlueCap.webp',
-    REPOSITORY + '/Icons/Bow1.webp',
-    REPOSITORY + '/Icons/Bow2.webp',
-    REPOSITORY + '/Icons/Bow3.webp',
-    REPOSITORY + '/Icons/Bow4.webp',
-    REPOSITORY + '/Icons/Bow5.webp',
-    REPOSITORY + '/Icons/Bow6.webp',
-    REPOSITORY + '/Icons/Bow7.webp',
-    REPOSITORY + '/Icons/BraveKnight.webp',
-    REPOSITORY + '/Icons/Cannon.webp',
-    REPOSITORY + '/Icons/CannonCave.webp',
-    REPOSITORY + '/Icons/CoiledSword.webp',
-    REPOSITORY + '/Icons/CrackedPot(Air).webp',
-    REPOSITORY + '/Icons/CrackedPot(Dark).webp',
-    REPOSITORY + '/Icons/CrackedPot(Earth).webp',
-    REPOSITORY + '/Icons/CrackedPot(Fire).webp',
-    REPOSITORY + '/Icons/CrackedPot(Holy).webp',
-    REPOSITORY + '/Icons/CrackedPot(Ice).webp',
-    REPOSITORY + '/Icons/CrackedPot(Metal).webp',
-    REPOSITORY + '/Icons/CrackedPot(Shock).webp',
-    REPOSITORY + '/Icons/CrackedPot(Water).webp',
-    REPOSITORY + '/Icons/CrackedPot(Wood).webp',
-    REPOSITORY + '/Icons/Cryo.webp',
-    REPOSITORY + '/Icons/CubeOfZoe.webp',
-    REPOSITORY + '/Icons/CurrentGemGroup.webp',
-    REPOSITORY + '/Icons/CursedPuppet1.webp',
-    REPOSITORY + '/Icons/Darknut.webp',
-    REPOSITORY + '/Icons/Daruk.webp',
-    REPOSITORY + '/Icons/DesertRuins.webp',
-    REPOSITORY + '/Icons/DiveBoots.webp',
-    REPOSITORY + '/Icons/DivineVessel.webp',
-    REPOSITORY + '/Icons/DuelingMonastery.webp',
-    REPOSITORY + '/Icons/Electro.webp',
-    REPOSITORY + '/Icons/EstusFlask.webp',
-    REPOSITORY + '/Icons/FortHatenoKeep.webp',
-    REPOSITORY + '/Icons/FrightenedSoldiers.webp',
-    REPOSITORY + '/Icons/FrozenRuins.webp',
-    REPOSITORY + '/Icons/Generator.webp',
-    REPOSITORY + '/Icons/Gibdo.webp',
-    REPOSITORY + '/Icons/GoldenGauntlents.webp',
-    REPOSITORY + '/Icons/GreenCap.webp',
-    REPOSITORY + '/Icons/GustJar.webp',
-    REPOSITORY + '/Icons/HeartPiece.webp',
-    REPOSITORY + '/Icons/HebraMansion.webp',
-    REPOSITORY + '/Icons/HerosShade.webp',
-    REPOSITORY + '/Icons/Hestu.webp',
-    REPOSITORY + '/Icons/HookShot.webp',
-    REPOSITORY + '/Icons/HoverBoots.webp',
-    REPOSITORY + '/Icons/HylianRoyalCrypt.webp',
-    REPOSITORY + '/Icons/HylianWaterworks.webp',
-    REPOSITORY + '/Icons/IronBoots.webp',
-    REPOSITORY + '/Icons/ItemFlintStrike.webp',
-    REPOSITORY + '/Icons/ItemPlaceholder.webp',
-    REPOSITORY + '/Icons/LanayruWaterfall.webp',
-    REPOSITORY + '/Icons/Lancelot.webp',
-    REPOSITORY + '/Icons/LargeSword1.webp',
-    REPOSITORY + '/Icons/LargeSword2.webp',
-    REPOSITORY + '/Icons/LargeSword3.webp',
-    REPOSITORY + '/Icons/LargeSword4.webp',
-    REPOSITORY + '/Icons/LargeSword5.webp',
-    REPOSITORY + '/Icons/LargeSword6.webp',
-    REPOSITORY + '/Icons/LargeSword7.webp',
-    REPOSITORY + '/Icons/MagicPouch.webp',
-    REPOSITORY + '/Icons/MazKoshia.webp',
-    REPOSITORY + '/Icons/Mipha.webp',
-    REPOSITORY + '/Icons/Neko-Te.webp',
-    REPOSITORY + '/Icons/OldCap.webp',
-    REPOSITORY + '/Icons/OldMansCabin.webp',
-    REPOSITORY + '/Icons/Paraglider.webp',
-    REPOSITORY + '/Icons/Paya.webp',
-    REPOSITORY + '/Icons/PowderKeg.webp',
-    REPOSITORY + '/Icons/Purah.webp',
-    REPOSITORY + '/Icons/Pyro.webp',
-    REPOSITORY + '/Icons/RedCap.webp',
-    REPOSITORY + '/Icons/ReDead.webp',
-    REPOSITORY + '/Icons/Revali.webp',
-    REPOSITORY + '/Icons/Rhoam.webp',
-    REPOSITORY + '/Icons/Riju.webp',
-    REPOSITORY + '/Icons/Robbie.webp',
-    REPOSITORY + '/Icons/Robin.webp',
-    REPOSITORY + '/Icons/RoyalGuard.webp',
-    REPOSITORY + '/Icons/RoyalKnight.webp',
-    REPOSITORY + '/Icons/Sidon.webp',
-    REPOSITORY + '/Icons/SilverGauntlents.webp',
-    REPOSITORY + '/Icons/Skulltula.webp',
-    REPOSITORY + '/Icons/Slingshot.webp',
-    REPOSITORY + '/Icons/SoulBoss.webp',
-    REPOSITORY + '/Icons/SoulOfABraveKnight.webp',
-    REPOSITORY + '/Icons/SoulOfAFrightenedSoldier.webp',
-    REPOSITORY + '/Icons/SoulOfAnEnlightenedOne.webp',
-    REPOSITORY + '/Icons/SoulOfARoyalGuard.webp',
-    REPOSITORY + '/Icons/SoulOfAWouldBeChampion.webp',
-    REPOSITORY + '/Icons/Spear1.webp',
-    REPOSITORY + '/Icons/Spear2.webp',
-    REPOSITORY + '/Icons/Spear3.webp',
-    REPOSITORY + '/Icons/Spear4.webp',
-    REPOSITORY + '/Icons/Spear5.webp',
-    REPOSITORY + '/Icons/Spear6.webp',
-    REPOSITORY + '/Icons/Spear7.webp',
-    REPOSITORY + '/Icons/SpellBook.webp',
-    REPOSITORY + '/Icons/SwiftSail.webp',
-    REPOSITORY + '/Icons/Sword1.webp',
-    REPOSITORY + '/Icons/Sword2.webp',
-    REPOSITORY + '/Icons/Sword3.webp',
-    REPOSITORY + '/Icons/Sword4.webp',
-    REPOSITORY + '/Icons/Sword5.webp',
-    REPOSITORY + '/Icons/Teba.webp',
-    REPOSITORY + '/Icons/TwilightMirror.webp',
-    REPOSITORY + '/Icons/TwilightSpinner.webp',
-    REPOSITORY + '/Icons/Urbosa.webp',
-    REPOSITORY + '/Icons/WoodAxe1.webp',
-    REPOSITORY + '/Icons/WoodAxe2.webp',
-    REPOSITORY + '/Icons/WoodAxe3.webp',
-    REPOSITORY + '/Icons/WoodAxe4.webp',
-    REPOSITORY + '/Icons/WoodAxe5.webp',
-    REPOSITORY + '/Icons/WoodAxe6.webp',
-    REPOSITORY + '/Icons/WoodAxe7.webp',
-    REPOSITORY + '/Icons/WoodRaft.webp',
-    REPOSITORY + '/Icons/WouldBeChampion.webp',
-    REPOSITORY + '/Icons/Yunobo.webp'
-];
+// Constants for the service worker
+const APP_PREFIX = 'DtgA_';        // Identifier for this app
+const VERSION = 'version_06';      // Version of the offline cache, itterate this number if changes are made and old caches should be cleared
+const CACHE_NAME = APP_PREFIX + VERSION; // Cache name combining app prefix and version
+const REPOSITORY = '/DtgA-Redone'; // Base path for repository, required for making a service worker work for github pages.
 
-// Respond with cached resources
+// List of files to cache
+const URLS = [
+    '/',
+    '/index.html',
+    '/Transitioner.js',
+    '/style.css',
+    '/SpecialActions.js',
+    '/NavBar.js',
+    '/Particles.js',
+    '/manifest.json',
+    '/iro.min.js',
+    '/jquery-3.7.1.min.js',
+    '/tsparticles.bundle.min.js',
+    '/TSParticlesjquery.js',
+    '/generationData.json',
+    '/OtherPages/pageContent.json',
+    '/Assets/DtgA-logo_Final-GaplessBW.webp',
+    '/Assets/Fonts/HyliaSerifBeta-Regular.otf',
+    '/Assets/Fonts/promptfont.otf',
+    '/Assets/Fonts/promptfont.ttf',
+    '/Assets/Fonts/TheWildBreathofZelda.otf',
+    '/Assets/Fonts/Triforce-y07d.ttf',
+    '/Assets/boxicons-2.1.4/css/boxicons.min.css',
+    '/Assets/boxicons-2.1.4/fonts/boxicons.eot',
+    '/Assets/boxicons-2.1.4/fonts/boxicons.svg',
+    '/Assets/boxicons-2.1.4/fonts/boxicons.ttf',
+    '/Assets/boxicons-2.1.4/fonts/boxicons.woff',
+    '/Assets/boxicons-2.1.4/fonts/boxicons.woff2',
+    '/Icons/Aero.webp',
+    '/Icons/Argorok.webp',
+    '/Icons/Balloon.webp',
+    '/Icons/Beedle.webp',
+    '/Icons/BlueCap.webp',
+    '/Icons/Bow1.webp',
+    '/Icons/Bow2.webp',
+    '/Icons/Bow3.webp',
+    '/Icons/Bow4.webp',
+    '/Icons/Bow5.webp',
+    '/Icons/Bow6.webp',
+    '/Icons/Bow7.webp',
+    '/Icons/BraveKnight.webp',
+    '/Icons/Cannon.webp',
+    '/Icons/CannonCave.webp',
+    '/Icons/CoiledSword.webp',
+    '/Icons/CrackedPot(Air).webp',
+    '/Icons/CrackedPot(Dark).webp',
+    '/Icons/CrackedPot(Earth).webp',
+    '/Icons/CrackedPot(Fire).webp',
+    '/Icons/CrackedPot(Holy).webp',
+    '/Icons/CrackedPot(Ice).webp',
+    '/Icons/CrackedPot(Metal).webp',
+    '/Icons/CrackedPot(Shock).webp',
+    '/Icons/CrackedPot(Water).webp',
+    '/Icons/CrackedPot(Wood).webp',
+    '/Icons/Cryo.webp',
+    '/Icons/CubeOfZoe.webp',
+    '/Icons/CurrentGemGroup.webp',
+    '/Icons/CursedPuppet1.webp',
+    '/Icons/Darknut.webp',
+    '/Icons/Daruk.webp',
+    '/Icons/DesertRuins.webp',
+    '/Icons/DiveBoots.webp',
+    '/Icons/DivineVessel.webp',
+    '/Icons/DuelingMonastery.webp',
+    '/Icons/Electro.webp',
+    '/Icons/EstusFlask.webp',
+    '/Icons/FortHatenoKeep.webp',
+    '/Icons/FrightenedSoldiers.webp',
+    '/Icons/FrozenRuins.webp',
+    '/Icons/Generator.webp',
+    '/Icons/Gibdo.webp',
+    '/Icons/GoldenGauntlents.webp',
+    '/Icons/GreenCap.webp',
+    '/Icons/GustJar.webp',
+    '/Icons/HeartPiece.webp',
+    '/Icons/HebraMansion.webp',
+    '/Icons/HerosShade.webp',
+    '/Icons/Hestu.webp',
+    '/Icons/HookShot.webp',
+    '/Icons/HoverBoots.webp',
+    '/Icons/HylianRoyalCrypt.webp',
+    '/Icons/HylianWaterworks.webp',
+    '/Icons/IronBoots.webp',
+    '/Icons/ItemFlintStrike.webp',
+    '/Icons/ItemPlaceholder.webp',
+    '/Icons/LanayruWaterfall.webp',
+    '/Icons/Lancelot.webp',
+    '/Icons/LargeSword1.webp',
+    '/Icons/LargeSword2.webp',
+    '/Icons/LargeSword3.webp',
+    '/Icons/LargeSword4.webp',
+    '/Icons/LargeSword5.webp',
+    '/Icons/LargeSword6.webp',
+    '/Icons/LargeSword7.webp',
+    '/Icons/MagicPouch.webp',
+    '/Icons/MazKoshia.webp',
+    '/Icons/Mipha.webp',
+    '/Icons/Neko-Te.webp',
+    '/Icons/OldCap.webp',
+    '/Icons/OldMansCabin.webp',
+    '/Icons/Paraglider.webp',
+    '/Icons/Paya.webp',
+    '/Icons/PowderKeg.webp',
+    '/Icons/Purah.webp',
+    '/Icons/Pyro.webp',
+    '/Icons/RedCap.webp',
+    '/Icons/ReDead.webp',
+    '/Icons/Revali.webp',
+    '/Icons/Rhoam.webp',
+    '/Icons/Riju.webp',
+    '/Icons/Robbie.webp',
+    '/Icons/Robin.webp',
+    '/Icons/RoyalGuard.webp',
+    '/Icons/RoyalKnight.webp',
+    '/Icons/Sidon.webp',
+    '/Icons/SilverGauntlents.webp',
+    '/Icons/Skulltula.webp',
+    '/Icons/Slingshot.webp',
+    '/Icons/SoulBoss.webp',
+    '/Icons/SoulOfABraveKnight.webp',
+    '/Icons/SoulOfAFrightenedSoldier.webp',
+    '/Icons/SoulOfAnEnlightenedOne.webp',
+    '/Icons/SoulOfARoyalGuard.webp',
+    '/Icons/SoulOfAWouldBeChampion.webp',
+    '/Icons/Spear1.webp',
+    '/Icons/Spear2.webp',
+    '/Icons/Spear3.webp',
+    '/Icons/Spear4.webp',
+    '/Icons/Spear5.webp',
+    '/Icons/Spear6.webp',
+    '/Icons/Spear7.webp',
+    '/Icons/SpellBook.webp',
+    '/Icons/SwiftSail.webp',
+    '/Icons/Sword1.webp',
+    '/Icons/Sword2.webp',
+    '/Icons/Sword3.webp',
+    '/Icons/Sword4.webp',
+    '/Icons/Sword5.webp',
+    '/Icons/Teba.webp',
+    '/Icons/TwilightMirror.webp',
+    '/Icons/TwilightSpinner.webp',
+    '/Icons/Urbosa.webp',
+    '/Icons/WoodAxe1.webp',
+    '/Icons/WoodAxe2.webp',
+    '/Icons/WoodAxe3.webp',
+    '/Icons/WoodAxe4.webp',
+    '/Icons/WoodAxe5.webp',
+    '/Icons/WoodAxe6.webp',
+    '/Icons/WoodAxe7.webp',
+    '/Icons/WoodRaft.webp',
+    '/Icons/WouldBeChampion.webp',
+    '/Icons/Yunobo.webp'
+].map(url => REPOSITORY + url); // Prepend the REPOSITORY to each URL `/DtgA-Redone/index.html`
+
+// Respond with cached resources if cache is available
 self.addEventListener('fetch', function (e) {
     console.log('fetch request : ' + e.request.url);
     const strippedUrl = new URL(e.request.url);
-    strippedUrl.search = ''; // Remove the query parameters
+    strippedUrl.search = ''; // Remove query parameters, timestamps, etc from URL requests to find the correct file
 
     e.respondWith(
         caches.match(strippedUrl).then(function (response) {
-            if (response) { // if cache is available, respond with cache
+            if (response) {
+                // If cache is available, respond with cache
                 console.log('responding with cache : ' + e.request.url);
                 return response;
-            } else { // if there are no cache, try fetching request and cache it
+            } else {
+                // If there are no cache, try fetching the request
                 console.log('file is not cached, fetching : ' + e.request.url);
-                return fetch(e.request).then(function (networkResponse) {
-                    if (networkResponse.ok && strippedUrl.pathname.startsWith(REPOSITORY + '/Icons/') && strippedUrl.pathname.endsWith('.webp')) {
-                        return caches.open(CACHE_NAME).then(function (cache) {
-                            cache.put(strippedUrl, networkResponse.clone());
-                            return networkResponse;
-                        });
-                    } else {
-                        return networkResponse;
-                    }
-                });
+                return fetch(e.request);
             }
         })
     );
 });
 
-// Cache resources
+// Cache resources during installation
 self.addEventListener('install', function (e) {
     e.waitUntil(
         caches.open(CACHE_NAME).then(function (cache) {
@@ -188,16 +189,16 @@ self.addEventListener('install', function (e) {
     );
 });
 
-// Delete outdated caches
+// Delete outdated caches during activation
 self.addEventListener('activate', function (e) {
     e.waitUntil(
         caches.keys().then(function (keyList) {
-            // `keyList` contains all cache names under your username.github.io
-            // filter out ones that have this app prefix to create a whitelist
-            var cacheWhitelist = keyList.filter(function (key) {
+            // `keyList` contains all cache names under USERNAME.github.io
+            // Filter out ones that have this app prefix to create a whitelist
+            const cacheWhitelist = keyList.filter(function (key) {
                 return key.indexOf(APP_PREFIX) === 0;
             });
-            // add current cache name to white list
+            // Add current cache name to white list
             cacheWhitelist.push(CACHE_NAME);
 
             return Promise.all(keyList.map(function (key, i) {
