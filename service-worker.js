@@ -1,6 +1,6 @@
 // Constants for the service worker
 const APP_PREFIX = 'DtgA_';        // Identifier for this app
-const VERSION = 'version_06_01';      // Version of the offline cache, itterate this number if changes are made and old caches should be cleared
+const VERSION = 'version_07';      // Version of the offline cache, itterate this number if changes are made and old caches should be cleared
 const CACHE_NAME = APP_PREFIX + VERSION; // Cache name combining app prefix and version
 const REPOSITORY = '/DtgA-Redone'; // Base path for repository, required for making a service worker work for github pages.
 
