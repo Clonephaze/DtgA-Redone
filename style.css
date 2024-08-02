@@ -509,8 +509,13 @@ nav {
         color: var(--text-color-mixed);
         position: relative;
         aspect-ratio: 1 / 1;
+        width: 45px;
         opacity: 0;
         transition: opacity 250ms ease;
+
+        >i {
+            vertical-align: middle;
+        }
 
         >svg {
             position: absolute;
