@@ -79,7 +79,7 @@ function generatePageContent(mainCategory, subcategoryContainers) {
                                 let imageContent = '';
                                 imageDescNumber = 0;
                                 item.imageSrc.forEach(function(src) {
-                                    imageContent += `<div class="carousel-item" data-weapon-number="${weaponNumber}" data-upgrade-number="${imageDescNumber++}"><img src="${src}" loading="lazy" alt=""></div>`;
+                                    imageContent += `<div class="carousel-item" data-weapon-number="${weaponNumber}" data-upgrade-number="${imageDescNumber++}"><img src="${src}" alt=""></div>`;
                                 });
                                 
                                 weaponNumber++;
@@ -113,7 +113,7 @@ function generatePageContent(mainCategory, subcategoryContainers) {
                                 let cardContent = `
                                     <div class="card-box on-hover-box">
                                         <div class="image-container">
-                                            <img src="${item.imageSrc[0]}" loading="lazy" alt="">
+                                            <img src="${item.imageSrc[0]}" alt="">
                                         </div>
                                         <div class="card-desc-container">
                                             <h3 class="card-title">${item.title}</h3>
@@ -251,6 +251,39 @@ function initializeColorPicker() {
         var rgbValues = `${rgb.r}, ${rgb.g}, ${rgb.b}`;
         $('html').css('--color-primary-rgb-values', rgbValues);
         localStorage.setItem('color-primary-rgb-values', rgbValues);
+    });
+}
+
+function scrollButton() {
+    const $button = $('#scroll-btn');
+    const $progressCircle = $('#progress-circle');
+    const circleRadius = $progressCircle.attr('r');
+    const circleCircumference = 2 * Math.PI * circleRadius;
+
+    $progressCircle.css({
+        strokeDasharray: circleCircumference,
+        strokeDashoffset: circleCircumference
+    });
+
+    $(window).scroll(function () {
+        const scrollTop = $(window).scrollTop();
+        const docHeight = $(document).height();
+        const winHeight = $(window).height();
+        const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+
+        const offset = circleCircumference - (scrollPercent / 100 * circleCircumference);
+        $progressCircle.css('stroke-dashoffset', offset);
+
+        if (scrollTop > 250) {
+            
+            $button.css({'opacity': '1', 'cursor': 'pointer', 'pointer-events': 'auto'});
+        } else {
+            $button.css({'opacity': '0', 'cursor': 'unset', 'pointer-events': 'none'});
+        }
+    });
+
+    $button.click(function () {
+        $('html, body').animate({ scrollTop: 0 }, 800);
     });
 }
 

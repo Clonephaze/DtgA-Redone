@@ -2,9 +2,27 @@ $(document).ready(function () {
     var pageContent;
     let testing = false; // Set to true and go to the root page to add content without the transitioner changing the content on screen.
 
-    if (navigator.serviceWorker) {
-        navigator.serviceWorker.register('/DtgA-Redone/service-worker.js', {scope: '/DtgA-Redone/'})
-      }
+    if (!testing && navigator.serviceWorker) {
+        navigator.serviceWorker.register('/DtgA-Redone/service-worker.js', { scope: '/DtgA-Redone/' })
+          .then(function(registration) {
+            //   console.log('Service worker registered with scope:', registration.scope);
+          }).catch(function(error) {
+              console.error('Service worker registration failed:', error);
+          });
+    }
+    
+    // To unregister the service worker during testing
+    if (testing && navigator.serviceWorker) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            for (let registration of registrations) {
+                registration.unregister().then(function() {
+                    console.log('Service worker unregistered');
+                });
+            }
+        }).catch(function(error) {
+            console.error('Error unregistering service workers:', error);
+        });
+    }
 
     /**
      * Fetches JSON data for page content and initializes page load based on URL hash.
@@ -99,6 +117,11 @@ $(document).ready(function () {
         } else {
             console.log("No content found for pageId:", pageId);
         }
+
+        $.getScript("SpecialActions.js", function () {
+            scrollButton();
+        })
+
     }
 
     /**
