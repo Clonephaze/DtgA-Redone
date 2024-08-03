@@ -138,6 +138,10 @@ nav {
         }
     }
 
+    & .nav-dropdown {
+        backdrop-filter: blur(3px);
+    }
+
     &::before {
         content: "";
         position: absolute;
@@ -253,7 +257,6 @@ nav {
             height: 0;
             overflow: hidden;
             background-color: hsla(0, 0%, 0%, 0.1);
-            backdrop-filter: blur(3px);
             transition: height 200ms ease;
             border-radius: 2vw;
             
@@ -329,8 +332,7 @@ nav {
     & .nav-dropdown {
         position: absolute;
         overflow: hidden;
-        background-color: hsla(0, 0%, 0%, 0.15);
-        backdrop-filter: blur(3px);
+        background-color: hsla(0, 0%, 0%, 0.25);
         border: var(--border-color) 2px solid;
         border-radius: 20px;
         translate: -25% 1rem;
