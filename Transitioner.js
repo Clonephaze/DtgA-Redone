@@ -4,9 +4,7 @@ var pageContent;
 $(document).ready(function () {
     serviceWorker();
 
-    /**
-     * Fetches JSON data for page content and initializes page load based on URL hash.
-     */
+    // Fetches JSON data for page content and initializes page load based on URL hash.
     $.getJSON("OtherPages/pageContent.json", function (data) {
         pageContent = data;
         loadPageFromURL();
@@ -14,6 +12,7 @@ $(document).ready(function () {
         // Event handler for navigation clicks
         $(".pageNav").on('click', function () {
             var pageId = $(this).attr('id');
+
             history.pushState({ pageId: pageId }, '', '#' + pageId);
             loadPage(pageId);
         });
@@ -49,9 +48,7 @@ $(document).ready(function () {
         console.log('testing');
     }
 
-    /**
-     * Handles browser history back/forward button clicks.
-     */
+    // Handles browser history back/forward button clicks.
     window.onpopstate = function (event) {
         if (event.state && event.state.pageId) {
             loadPage(event.state.pageId);
@@ -87,9 +84,7 @@ function serviceWorker() {
     }
 }
 
-/**
- * Loads the page based on the current URL hash.
- */
+//Loads the page based on the current URL hash.
 function loadPageFromURL() {
     var pageId = window.location.hash.substring(1);
     if (pageId && !testing) {
@@ -134,6 +129,9 @@ function loadPage(pageId) {
         $('.content-section').html(content.pageContent);
         document.title = content.title;
 
+        // Update the position of the indicator
+        updateIndicatorOnPageLoad(pageId);
+
         // Load additional scripts and initialize features
         $.getScript("SpecialActions.js", function () {
             generateTOC();
@@ -143,6 +141,44 @@ function loadPage(pageId) {
         handlePageTransition(pageId);
     } else {
         console.log("No content found for pageId:", pageId);
+    }
+}
+
+/**
+ * Updates the position of the indicator based on the current pageId.
+ * 
+ * @param {string} pageId - The ID of the current page.
+ */
+function updateIndicatorOnPageLoad(pageId) {
+    var $indicator = $('.indicator');
+    var $navLinks = $('.nav-item button');
+    var $wikiButton = $('#wiki-list-dropdown');
+    var wikiPages = ['newMechanicsPage', 'itemsPage', 'aspSpellcastingPage', 'enemiesPage', 'npcsPage', 'locationsPage'];
+
+    function updateIndicator($element) {
+        var leftPosition = $element.position().left;
+        var elementWidth = $element.outerWidth();
+
+        $indicator.css({
+            left: leftPosition,
+            width: elementWidth
+        });
+    }
+
+    // Determine which link should be active based on the pageId
+    var $activeLink = $navLinks.filter('[id="' + pageId + '"]');
+
+    if ($activeLink.length > 0 && wikiPages.includes(pageId)) {
+        // If the active link is not found among regular links, check if it's a wiki page
+        $activeLink = $wikiButton;
+    }
+
+    if ($activeLink.length > 0) {
+        updateIndicator($activeLink);
+        $navLinks.removeClass('active');
+        $navLinks.removeAttr('aria-current');
+        $activeLink.addClass('active');
+        $activeLink.attr('aria-current', 'page');
     }
 }
 

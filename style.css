@@ -141,6 +141,23 @@ nav {
         backdrop-filter: blur(3px);
     }
 
+    & .indicator {
+        position: absolute;
+        bottom: 0;
+        height: 3px;
+        background-color: var(--border-color);
+        transition: left 250ms ease, width 250ms ease;
+        border-radius: 50vw;
+
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+
+    & .mobile-indicator {
+        display: none;
+    }
+
     &::before {
         content: "";
         position: absolute;
@@ -193,6 +210,8 @@ nav {
         padding: 0.5rem 0.8rem;
     }
 }
+
+
 
 .nav-with-content {
     background-color: hsla(0, 0%, 0%, 0.25);
@@ -262,13 +281,16 @@ nav {
         }
     }
 
-    /* .mobile-nav-open {
-
-
-        >.nav-list {
-            outline: lime 1px dashed;
+    .nav-item {
+        position: relative;
+        & button[aria-current="page"]::before {
+            content: "\edfc";
+            font-family: 'Boxicons';
+            position: absolute;
+            transform: translate(-110%, -12%);
+            font-size: 1.5rem;
         }
-    } */
+    }
 }
 
 /** Desktop only Nav Rules **/
@@ -1525,4 +1547,9 @@ nav {
     font-family: 'PromptFont';
     src: url(Assets/Fonts/promptfont.otf) format('opentype');
     src: url(Assets/Fonts/promptfont.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Boxicons';
+    src: url(Assets/boxicons-2.1.4/fonts/boxicons.ttf);
 }
