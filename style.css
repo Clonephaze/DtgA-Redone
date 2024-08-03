@@ -283,12 +283,18 @@ nav {
 
     .nav-item {
         position: relative;
-        & button[aria-current="page"]::before {
+
+        & button::before {
             content: "\edfc";
             font-family: 'Boxicons';
             position: absolute;
             transform: translate(-110%, -12%);
             font-size: 1.5rem;
+            opacity: 0;
+            transition: opacity 250ms 250ms ease;
+        }
+        & button[aria-current="page"]::before {
+            opacity: 1;
         }
     }
 }
