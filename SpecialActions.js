@@ -142,6 +142,7 @@ function generatePageContent(mainCategory, subcategoryContainers) {
         });
 
         // Add event listeners for description toggles
+        $(document).off('click', '.desc-title');
         $(document).on('click', '.desc-title', function () {
             let $card = $(this).closest('.card-box');
             let $button = $(this);
@@ -173,6 +174,7 @@ function generatePageContent(mainCategory, subcategoryContainers) {
         });
 
         // Add event listener for location button
+        $(document).off('click', '.location-button');
         $(document).on('click', '.location-button', function () {
             let $button = $(this);
             let $locationText = $button.next('.location-holder');
