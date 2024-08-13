@@ -4,6 +4,176 @@
             {
                 "Armors": [
                     {
+                        "title": "Waking Headpiece",
+                        "description": "Link's Default Head Armor",
+                        "imageSrc": [
+                            "Icons/ArmorLinkDefaultHead.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "Given to the bearer of Power upon waking."
+                    },
+                    {
+                        "title": "Waking Trousers",
+                        "description": "Link's Default Lower Armor",
+                        "imageSrc": [
+                            "Icons/ArmorLinkDefaultLower.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "Given to the bearer of Power upon waking."
+                    },
+                    {
+                        "title": "Waking Earings",
+                        "description": "Linkle's Default Head Armor",
+                        "imageSrc": [
+                            "Icons/ArmorLinkleDefaultHead.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "Given to the bearer of Courage upon waking."
+                    },
+                    {
+                        "title": "Waking Shorts",
+                        "description": "",
+                        "imageSrc": [
+                            "Icons/ArmorLinkleDefaultLower.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "Given to the bearer of Courage upon waking."
+                    },
+                    {
+                        "title": "Waking Royal Crown",
+                        "description": "Zelda's Default Head Armor",
+                        "imageSrc": [
+                            "Icons/ArmorZeldaDefaultHead.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "Given to the bearer of Wisdom upon waking."
+                    },
+                    {
+                        "title": "Waking Royal Shorts",
+                        "description": "Zelda's Default Lower Armor",   
+                        "imageSrc": [
+                            "Icons/ArmorZeldaDefaultLower.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "Given to the bearer of Wisdom upon waking."
+                    },
+                    {
+                        "title": "Link's Doublet Set",
+                        "description": "A bundled set of armor that gives Link the doublet set of armor.",
+                        "imageSrc": [
+                            "Icons/ArmorLinkDoubletSet.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "TODO"
+                    },
+                    {
+                        "title": "Link's Field Set",
+                        "description": "A bundled set of armor that gives Link the field set of armor.",
+                        "imageSrc": [
+                            "Icons/ArmorLinkFieldSet.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "TODO"
+                    },
+                    {
+                        "title": "Linkle's Doublet Set",
+                        "description": "A bundled set of armor that gives Linkle the doublet set of armor.",
+                        "imageSrc": [
+                            "Icons/ArmorLinkleDoubletSet.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "TODO"
+                    },
+                    {
+                        "title": "Linkle's Field Set",
+                        "description": "A bundled set of armor that gives Linkle the field set of armor.",
+                        "imageSrc": [
+                            "Icons/ArmorLinkleFieldSet.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "TODO"
+                    },
+                    {
+                        "title": "Linkle's Desert Set",
+                        "description": "A bundled set of armor that gives Linkle the desert set of armor.",
+                        "imageSrc": [
+                            "Icons/ArmorLinkleDesertSet.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "TODO"
+                    },
+                    {
+                        "title": "Linkle's Domain Set",
+                        "description": "A bundled set of armor that gives Linkle the domain set of armor.",
+                        "imageSrc": [
+                            "Icons/ArmorLinkleDomainSet.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "TODO"
+                    },
+                    {
+                        "title": "Linkle's Hebra Set",
+                        "description": "A bundled set of armor that gives Linkle the hebra set of armor.",
+                        "imageSrc": [
+                            "Icons/ArmorLinkleHebraSet.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "TODO"
+                    },
+                    {
+                        "title": "Linkle's Necluda Set",
+                        "description": "A bundled set of armor that gives Linklese the necluda set of armor.",
+                        "imageSrc": [
+                            "Icons/ArmorLinkleNecludaSet.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "TODO"
+                    },
+                    {
+                        "title": "Linkle's Volcano Set",
+                        "description": "A bundled set of armor that gives Linkle the volcano set of armor.",
+                        "imageSrc": [
+                            "Icons/ArmorLinkleVolcanoSet.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "TODO"
+                    },
+                    {
+                        "title": "Zelda's Doublet Set",
+                        "description": "A bundled set of armor that gives Zelda the doublet set of armor.",
+                        "imageSrc": [
+                            "Icons/ArmorZeldaDoubletSet.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "TODO"
+                    },
+                    {
+                        "title": "Zelda's Field Set",
+                        "description": "A bundled set of armor that gives Zelda the field set of armor.",
+                        "imageSrc": [
+                            "Icons/ArmorZeldaFieldSet.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "TODO"
+                    },
+                    {
                         "title": "Old Cap",
                         "description": "This hat has been sitting in a chest for who who knows how long. Still- it's a nice fit.",
                         "imageSrc": [
@@ -117,6 +287,14 @@
                         ],
                         "directory": "Items",
                         "location": "Can be found in chests and shops all around Hyrule."
+                    },{
+                        "title": "Cracked Pot",
+                        "description": "An empty pot, maybe you can fill it with something at a crafting station.",
+                        "imageSrc": [
+                            "Icons/CrackedPot(Empty).webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be crafted at the alchemy tables found in towns and the Shrine of Resurrection."
                     },
                     {
                         "title": "Cracked Pyro Pot",
@@ -364,6 +542,46 @@
                         ],
                         "directory": "Items",
                         "location": "Can be recieved from 'Joon' in Kakariko Village."
+                    },
+                    {
+                        "title": "Belt of a Traveler",
+                        "description": "This belt has a special slot that can be used to hold an item for more convenient access.",
+                        "imageSrc": [
+                            "Icons/Belt(Traveler).webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "Can be found in the Cave of Awakening."
+                    },
+                    {
+                        "title": "Belt of an Adventurer",
+                        "description": "This belt has two special slots that can be used to hold a pair of items for even more convenient access.",
+                        "imageSrc": [
+                            "Icons/Belt(Adventurer).webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "TODO"
+                    },
+                    {
+                        "title": "Belt of a Soldier",
+                        "description": "This belt has three special slots that can be used to hold a trio of items for extra convenient access.",
+                        "imageSrc": [
+                            "Icons/Belt(Soldier).webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "TODO"
+                    },
+                    {
+                        "title": "Belt of a Hero",
+                        "description": "This belt has four special slots that can be used to hold up to four items for supremely convenient access.",
+                        "imageSrc": [
+                            "Icons/Belt(Hero).webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "TODO"
                     }
                 ],
                 "Souls": [
@@ -421,7 +639,7 @@
                         "title": "Soul of the Hero's Shade",
                         "description": "This soul is a memento from the first boss encounter the Lost One faces on Hope's Rise. It contains the essence of a valiant warrior who stood their ground.",
                         "imageSrc": [
-                            "Icons/SoulBoss.webp"
+                            "Icons/SoulofTheHerosShade.webp"
                         ],
                         
                         "directory": "Items",
@@ -708,6 +926,26 @@
                             "Icons/Bow7.webp"
                         ],
                         "location": "Can be found in the Temple of Time of Hope's Rise. (The Great Plateau)."
+                    },
+                    {
+                        "title": "Linkle's Crossbow",
+                        "description": "A simple wooden crossbow. Light and sturdy, it won't break, but it does consume ammo (NOT IMPLEMENTED).",
+                        "imageSrc": [
+                            "Icons/WeaponCrossbow.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "TODO"
+                    },
+                    {
+                        "title": "Staff of Wisdom",
+                        "description": "A magic staff imbued with the power of the winds. It won't break, but it runs out of mana quickly.",
+                        "imageSrc": [
+                            "Icons/WeaponStaffofWisdom.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "TODO"
                     }
                 ]
             }
