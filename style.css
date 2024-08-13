@@ -19,8 +19,7 @@
     --text-color-standard: 215, 215, 215;
     --text-color-mixed: color-mix(in srgb, rgb(var(--color-primary-rgb-values)) 90%, rgb(var(--text-color-standard)) 10%);
 
-    --standard-font: Arial, Helvetica, sans-serif;
-    --transitionDuration: 100ms;
+    --standard-font: -system-ui, Arial, Helvetica, sans-serif;
 }
 
 *,
@@ -38,10 +37,14 @@ main {
     scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+    * {animation-duration: 0.01s !important; transition-duration: 0.01s !important; scroll-behavior: auto !important;}
+}
+
 body {
     font-family: var(--standard-font);
     background-color: var(--bgColor);
-    transition: background-color var(--transitionDuration);
+    transition: background-color 100ms;
 }
 
 .homepageBg {

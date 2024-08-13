@@ -1,4 +1,4 @@
-// setupFAQPage.js
+// SpecialActions.js
 
 /**
  * Sets up the FAQ page by opening the first accordion item.
@@ -24,13 +24,13 @@ function handleAccordionClicks() {
         var content = $(this).next('.accordion-content');
 
         if (content.hasClass('show')) {
-            content.removeClass('show').stop().animate({ height: 0 }, 300);
+            content.removeClass('show').stop().animate({ height: 0 }, animationDurationShort);
         } else {
-            $('.accordion-content.show').not(content).removeClass('show').stop().animate({ height: 0 }, 300, function () {
+            $('.accordion-content.show').not(content).removeClass('show').stop().animate({ height: 0 }, animationDurationShort, function () {
                 $(this).css('height', ''); // Reset height after animation
             });
 
-            content.addClass('show').stop().animateAutoHeight(300, 'swing', function () {
+            content.addClass('show').stop().animateAutoHeight(animationDurationShort, 'swing', function () {
                 $(this).css('height', 'auto');
             });
         }
@@ -188,17 +188,17 @@ function addCardEventListeners() {
 
         // Collapse other descriptions in the same card and toggle their aria-expanded attribute
         $card.find('.desc-title').not($button).attr('aria-expanded', 'false');
-        $card.find('.weapon-desc').not($descContent).animate({ height: 0 }, 400);
+        $card.find('.weapon-desc').not($descContent).animate({ height: 0 }, animationDuration);
 
         // Slide down the selected description and toggle its aria-expanded attribute
         $button.attr('aria-expanded', !isExpanded);
 
         if (!isExpanded) {
-            $descContent.animateAutoHeight(400, 'swing', function () {
+            $descContent.animateAutoHeight(animationDuration, 'swing', function () {
                 $(this).css('height', 'auto');
             });
         } else {
-            $descContent.animate({ height: 0 }, 400);
+            $descContent.animate({ height: 0 }, animationDuration);
         }
 
         let weaponNumber = $(this).data('weapon-number');
@@ -222,11 +222,11 @@ function addCardEventListeners() {
 
         // Animate the location text
         if (!isExpanded) {
-            $locationText.animateAutoHeight(400, 'swing', function () {
+            $locationText.animateAutoHeight(animationDuration, 'swing', function () {
                 $(this).css('height', 'auto');
             });
         } else {
-            $locationText.animate({ height: 0 }, 400);
+            $locationText.animate({ height: 0 }, animationDuration);
         }
     });
 }
@@ -267,12 +267,12 @@ function initializeColorPicker() {
 
     // Open the color picker modal when the button is clicked
     $('#color-picker-btn').on('click', function () {
-        $('#color-picker-modal').stop().animate({ right: '10px' }, 500);
+        $('#color-picker-modal').stop().animate({ right: '10px' }, animationDuration);
     });
 
     // Function to close the color picker modal
     function closeModal() {
-        $('#color-picker-modal').stop().animate({ right: '-350px' }, 500);
+        $('#color-picker-modal').stop().animate({ right: '-350px' }, animationDuration);
     }
 
     // Close the modal when clicking outside of it or on specific buttons
@@ -438,12 +438,12 @@ function navbarHandler() {
 
         if (!dropdownExpanded) {
             // Expand dropdown and animate height to auto
-            dropdown.animateAutoHeight(250, 'linear', function () {
+            dropdown.animateAutoHeight(animationDurationShort, 'linear', function () {
                 $(this).css('height', 'auto');
             });
         } else {
             // Collapse dropdown to height 0
-            dropdown.animate({ height: "0" }, 200);
+            dropdown.animate({ height: "0" }, animationDurationShort);
         }
     });
 
@@ -457,13 +457,13 @@ function navbarHandler() {
         if (!ariaExpanded && !expanding) {
             expanding = true;
             // Expand navigation list and animate height to auto
-            $('.nav-list').animateAutoHeight(200, 'swing', function () {
+            $('.nav-list').animateAutoHeight(animationDurationShort, 'swing', function () {
                 $(this).css('height', 'auto');
             });
         } else {
             expanding = false;
             // Collapse navigation list to height 0
-            $('.nav-list').animate({ height: "0" }, 200);
+            $('.nav-list').animate({ height: "0" }, animationDurationShort);
         }
     });
 

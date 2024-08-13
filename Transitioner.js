@@ -1,5 +1,8 @@
+// Transitioner.js
 let testing = false; // Set to true and go to the root page to add content without the transitioner changing the content on screen.
-var pageContent;
+let animationDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 400; // Quick checks to see if the user prefers reduced motion
+let animationDurationShort = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 250; // Used a couple times in SpecialActions.js
+let pageContent;
 
 $(document).ready(function () {
     serviceWorker();
@@ -11,7 +14,7 @@ $(document).ready(function () {
 
         // Event handler for navigation clicks
         $(".pageNav").on('click', function () {
-            var pageId = $(this).attr('id');
+            const pageId = $(this).attr('id');
 
             history.pushState({ pageId: pageId }, '', '#' + pageId);
             loadPage(pageId);
@@ -22,11 +25,11 @@ $(document).ready(function () {
 
     // Event handler for site navigation buttons
     $(document).on('click', '#site-button', function () {
-        var href = $(this).data('href');
+        const href = $(this).data('href');
 
         if (href.startsWith('#')) {
             // Handle internal link
-            var pageId = href.substring(1);
+            const pageId = href.substring(1);
             history.pushState({ pageId: pageId }, '', href);
             loadPage(pageId);
         } else {
@@ -86,7 +89,7 @@ function serviceWorker() {
 
 //Loads the page based on the current URL hash.
 function loadPageFromURL() {
-    var pageId = window.location.hash.substring(1);
+    let pageId = window.location.hash.substring(1);
     if (pageId && !testing) {
         loadPage(pageId);
     } else if (!testing) {
@@ -104,7 +107,7 @@ function loadPage(pageId) {
     $('.nav-toggle').attr('aria-expanded', 'false');
 
     // Apply saved primary color from local storage
-    var savedColor = localStorage.getItem('color-primary-rgb-values');
+    let savedColor = localStorage.getItem('color-primary-rgb-values');
     if (savedColor) {
         $('html').css('--color-primary-rgb-values', savedColor);
     }
@@ -120,7 +123,7 @@ function loadPage(pageId) {
     }
 
     // Find the content for the specified pageId
-    var content = pageContent.find(function (page) {
+    let content = pageContent.find(function (page) {
         return page.pageId === pageId;
     });
 
@@ -150,14 +153,14 @@ function loadPage(pageId) {
  * @param {string} pageId - The ID of the current page.
  */
 function updateIndicatorOnPageLoad(pageId) {
-    var $indicator = $('.indicator');
-    var $navLinks = $('.nav-item button');
-    var $wikiButton = $('#wiki-list-dropdown');
-    var wikiPages = ['newMechanicsPage', 'itemsPage', 'aspSpellcastingPage', 'enemiesPage', 'npcsPage', 'locationsPage'];
+    const $indicator = $('.indicator');
+    const $navLinks = $('.nav-item button');
+    const $wikiButton = $('#wiki-list-dropdown');
+    let wikiPages = ['newMechanicsPage', 'itemsPage', 'aspSpellcastingPage', 'enemiesPage', 'npcsPage', 'locationsPage'];
 
     function updateIndicator($element) {
-        var leftPosition = $element.position().left;
-        var elementWidth = $element.outerWidth();
+        let leftPosition = $element.position().left;
+        let elementWidth = $element.outerWidth();
 
         $indicator.css({
             left: leftPosition,
@@ -166,7 +169,7 @@ function updateIndicatorOnPageLoad(pageId) {
     }
 
     // Determine which link should be active based on the pageId
-    var $activeLink = $navLinks.filter('[id="' + pageId + '"]');
+    let $activeLink = $navLinks.filter('[id="' + pageId + '"]');
 
     if ($activeLink.length > 0 && wikiPages.includes(pageId)) {
         // If the active link is not found among regular links, check if it's a wiki page
@@ -193,7 +196,7 @@ function handlePageTransition(pageId) {
             $.getScript("SpecialActions.js", function () {
                 manageTsParticles();
             })
-            $('.homepageBg').animate({ opacity: "100%" }, 400);
+            $('.homepageBg').animate({ opacity: "100%" }, animationDuration);
             $('nav').toggleClass('nav-with-content', false);
             $('.site-footer').css('display', 'none');
             break;
@@ -255,7 +258,7 @@ function handlePageTransition(pageId) {
             $('nav').toggleClass('nav-with-content', true);
             break;
         default:
-            $('.homepageBg').animate({ opacity: "0" }, 400);
+            $('.homepageBg').animate({ opacity: "0" }, animationDuration);
             $('.site-footer').css('display', 'flex');
             $('nav').toggleClass('nav-with-content', true);
             break;
