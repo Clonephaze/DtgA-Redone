@@ -225,16 +225,7 @@
                         "location": "Can be found in chests around Hyrule."
                     },
                     {
-                        "title": "Divine Vessel",
-                        "description": "A vessel strong enough to contain a portion of Hylia's Light, allowing the Lost One (you) to journey off Hope's Rise. While not consumable itself, this item produces your Estus Flasks from Hylia's Light when resting at a campfire.",
-                        "imageSrc": [
-                            "Icons/DivineVessel.webp"
-                        ],
-                        "directory": "Items",
-                        "location": "Can be recieved from the Old Man after completing the 4 shrines on Hope's Rise."
-                    },
-                    {
-                        "title": "Estus Flask",
+                        "title": "Flasks of Hylian Flame",
                         "description": "After recieving the Divine vessel you will recieve 5 of these whenever you rest at a campfire. Use these to restore your health and stamina! (Amount scales with Vitality and Endurance respectively) <br>Use with Dpad-down <span class=\"gamepadIcons\">↡</span> + Activate<span class=\"gamepadIcons\">⇓</span>",
                         "imageSrc": [
                             "Icons/EstusFlask.webp"
@@ -524,6 +515,22 @@
                         ],
                         "directory": "Items",
                         "location": "Can be found in the Eastern Shrine on Hope's Rise"
+                    },
+                    {
+                        "title": "Divine Vessel",
+                        "description": "A vessel strong enough to contain a portion of Hylia's Light, allowing the Lost One (you) to journey off Hope's Rise. While not consumable itself, this item produces your Estus Flasks from Hylia's Light when resting at a campfire.",
+                        "imageSrc": [
+                            "Icons/DivineVessel.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be recieved from the Old Man after completing the 4 shrines on Hope's Rise."
+                    },
+                    {
+                        "title": "Forbidden Sun Rite",
+                        "description": "This rite will allow the user to kindle bonfires beyond their normal limit. More flasks can now be pulled from the flames. <br> Lets you pull an extra 5 flasks per Sun Rite each time you rest at a campfire.",
+                        "imageSrc": [
+                            "Icons/ForbiddenSunRite.webp"
+                        ]
                     },
                     {
                         "title": "Twilight Mirror",
@@ -1315,6 +1322,104 @@
                         ],
                         "directory": "NPCs",
                         "location": "Can be found in the Black Market (And eventually all over hyrule)"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "StatsPage": [
+            {
+                "Stats": [
+                    {
+                        "title": "Agility",
+                        "description": "Increases:",
+                        "imageSrc": [
+                            "Icons/StatAgility.webp"
+                        ],
+                        "directory": "Stats",
+                        "location": "Summon the Coiled Sword"
+                    },
+                    {
+                        "title": "Courage",
+                        "description": "Increases:",
+                        "imageSrc": [
+                            "Icons/StatCourage.webp"
+                        ],
+                        "directory": "Stats",
+                        "location": "Summon the Coiled Sword"
+                    },
+                    {
+                        "title": "Dexterity",
+                        "description": "Increases:",
+                        "imageSrc": [
+                            "Icons/StatDexterity.webp"
+                        ],
+                        "directory": "Stats",
+                        "location": "Summon the Coiled Sword"
+                    },
+                    {
+                        "title": "Endurance",
+                        "description": "Increases:",
+                        "imageSrc": [
+                            "Icons/StatEndurance.webp"
+                        ],
+                        "directory": "Stats",
+                        "location": "Summon the Coiled Sword"
+                    },
+                    {
+                        "title": "Faith",
+                        "description": "Increases:",
+                        "imageSrc": [
+                            "Icons/StatFaith.webp"
+                        ],
+                        "directory": "Stats",
+                        "location": "Summon the Coiled Sword"
+                    },
+                    {
+                        "title": "Grudge",
+                        "description": "Increases:",
+                        "imageSrc": [
+                            "Icons/StatGrudge.webp"
+                        ],
+                        "directory": "Stats",
+                        "location": "Summon the Coiled Sword"
+                    },
+                    {
+                        "title": "Mana",
+                        "description": "Increases:",
+                        "imageSrc": [
+                            "Icons/StatMana.webp"
+                        ],
+                        "directory": "Stats",
+                        "location": "Summon the Coiled Sword"
+                    },
+                    {
+                        "title": "Strength",
+                        "description": "Increases:",
+                        "imageSrc": [
+                            "Icons/StatStrength.webp"
+                        ],
+                        "directory": "Stats",
+                        "location": "Summon the Coiled Sword"
+                    },
+                    {
+                        "title": "Vitality",
+                        "description": "Increases:",
+                        "imageSrc": [
+                            "Icons/StatVitality.webp"
+                        ],
+                        "directory": "Stats",
+                        "location": "Summon the Coiled Sword"
+                    },
+                    {
+                        "title": "Wisdom",
+                        "description": "Increases:",
+                        "imageSrc": [
+                            "Icons/StatWisdom.webp"
+                        ],
+                        "directory": "Stats",
+                        "location": "Summon the Coiled Sword"
                     }
                 ]
             }
