@@ -55,7 +55,7 @@
                     },
                     {
                         "title": "Waking Royal Shorts",
-                        "description": "Zelda's Default Lower Armor",   
+                        "description": "Zelda's Default Lower Armor",
                         "imageSrc": [
                             "Icons/ArmorZeldaDefaultLower.webp"
                         ],
@@ -232,7 +232,15 @@
                         ],
                         "directory": "Items",
                         "location": "Can be refilled by resting at a campfire after recivieving it from the Old Man."
-                        
+                    },
+                    {
+                        "title": "Flasks of Hylian Tears",
+                        "description": "This flask can hold the tears of Hylia, and drinking from it will rejuvenate the spirits of the undead.<br>Allows the Lost One to restore their mana.",
+                        "imageSrc": [
+                            "Icons/FlaskOfHylianTears.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in chests around Hyrule."
                     },
                     {
                         "title": "Goron Powder Keg",
@@ -278,7 +286,8 @@
                         ],
                         "directory": "Items",
                         "location": "Can be found in chests and shops all around Hyrule."
-                    },{
+                    },
+                    {
                         "title": "Cracked Pot",
                         "description": "An empty pot, maybe you can fill it with something at a crafting station.",
                         "imageSrc": [
@@ -598,7 +607,6 @@
                         "imageSrc": [
                             "Icons/SoulOfAFrightenedSoldier.webp"
                         ],
-                        
                         "directory": "Items",
                         "location": "Given to the Lost One by fallen Hylian Soldiers in lightly guarded areas, and around Hope's Rise."
                     },
@@ -608,7 +616,6 @@
                         "imageSrc": [
                             "Icons/SoulOfABraveKnight.webp"
                         ],
-                        
                         "directory": "Items",
                         "location": "Given to the Lost One by fallen Hylian Knights in moderately guarded areas, and around HC."
                     },
@@ -618,7 +625,6 @@
                         "imageSrc": [
                             "Icons/SoulOfARoyalGuard.webp"
                         ],
-                        
                         "directory": "Items",
                         "location": "Given to the Lost One by members of the Hylian Royal Soldiers in heavily guarded areas and fortresses."
                     },
@@ -628,7 +634,6 @@
                         "imageSrc": [
                             "Icons/SoulOfAWouldBeChampion.webp"
                         ],
-                        
                         "directory": "Items",
                         "location": "Given to the Lost One by members of the Hylian Royal Guard, only in the most dangerous areas."
                     },
@@ -638,7 +643,6 @@
                         "imageSrc": [
                             "Icons/SoulOfAnEnlightenedOne.webp"
                         ],
-                        
                         "directory": "Items",
                         "location": "Given to the Lost One by prospective champions who failed to impress the Sword that Seals the Darkness. These souls scattered after their failure and can be found all over Hyrule, usually heavily guarded."
                     },
@@ -648,7 +652,6 @@
                         "imageSrc": [
                             "Icons/SoulofTheHerosShade.webp"
                         ],
-                        
                         "directory": "Items",
                         "location": "Dropped by the first boss the Lost One faces on Hope's Rise. Used to upgrade the first level of special swords added by ReForged."
                     },
@@ -658,7 +661,6 @@
                         "imageSrc": [
                             "Icons/SoulBoss.webp"
                         ],
-                        
                         "directory": "Items",
                         "location": "Acquired by defeating Darknut at the Hyrule Castle Town Cathedral."
                     },
@@ -668,7 +670,6 @@
                         "imageSrc": [
                             "Icons/SoulBoss.webp"
                         ],
-                        
                         "directory": "Items",
                         "location": "Acquired by defeating Sir Gallahad at Fort Hateno."
                     },
@@ -678,7 +679,6 @@
                         "imageSrc": [
                             "Icons/SoulBoss.webp"
                         ],
-                        
                         "directory": "Items",
                         "location": "Acquired by defeating Sir Robin at the ruined Hateno shooting range."
                     },
@@ -688,7 +688,6 @@
                         "imageSrc": [
                             "Icons/SoulBoss.webp"
                         ],
-                        
                         "directory": "Items",
                         "location": "Acquired by defeating Sir Lancelot near the shrine of courage."
                     },
@@ -698,7 +697,6 @@
                         "imageSrc": [
                             "Icons/SoulBoss.webp"
                         ],
-                        
                         "directory": "Items",
                         "location": "Acquired by [Please provide additional information on how to acquire this soul.]"
                     },
@@ -708,7 +706,6 @@
                         "imageSrc": [
                             "Icons/SoulBoss.webp"
                         ],
-                        
                         "directory": "Items",
                         "location": "Acquired by [Please provide additional information on how to acquire this soul.]"
                     },
@@ -718,7 +715,6 @@
                         "imageSrc": [
                             "Icons/SoulBoss.webp"
                         ],
-                        
                         "directory": "Items",
                         "location": "Acquired by defeating Miko and Sibyl at Sanindin Park Ruins."
                     }
@@ -726,7 +722,7 @@
                 "Weapons": [
                     {
                         "title": "Axe",
-                        "genDesc":"These axes are great for all your chopping needs! ",
+                        "genDesc": "These axes are great for all your chopping needs! ",
                         "description": [
                             {
                                 "title": "Hatchet",
@@ -766,11 +762,11 @@
                     },
                     {
                         "title": "Sword",
-                        "genDesc":"One handed swords for quick short range attacks.",
+                        "genDesc": "One handed swords for quick short range attacks.",
                         "description": [
                             {
-                                "title":"Durable Rusty Sword",
-                                "content":"This old sword seems stronger than most."
+                                "title": "Durable Rusty Sword",
+                                "content": "This old sword seems stronger than most."
                             },
                             {
                                 "title": "The Vagrant's Sword",
@@ -801,7 +797,7 @@
                     },
                     {
                         "title": "Claymore",
-                        "genDesc":"Two handed swords for slow but powerful medium range attacks.",
+                        "genDesc": "Two handed swords for slow but powerful medium range attacks.",
                         "description": [
                             {
                                 "title": "Sturdy Rusted Claymore",
@@ -809,27 +805,27 @@
                             },
                             {
                                 "title": "Polished Claymore",
-                                "content": "That same old rusted claymore, with the rust scraped off and a sharpened blade. The hanlde has been smoothed and wrapped as well."   
+                                "content": "That same old rusted claymore, with the rust scraped off and a sharpened blade. The hanlde has been smoothed and wrapped as well."
                             },
                             {
                                 "title": "Bastard Sword",
-                                "content": "The Traveler's Greatsword has been polished, sharpened, and enchanted with the soul of a fallen soldier. It can now be swung up to five times."   
+                                "content": "The Traveler's Greatsword has been polished, sharpened, and enchanted with the soul of a fallen soldier. It can now be swung up to five times."
                             },
                             {
                                 "title": "Knight's Claymore",
-                                "content": "After being reforged, repommeled, reweighted, and further enchanted by an even stronger soul, belonging to a long  forgotten knight, this weapon looks nothing like it once did."   
+                                "content": "After being reforged, repommeled, reweighted, and further enchanted by an even stronger soul, belonging to a long  forgotten knight, this weapon looks nothing like it once did."
                             },
                             {
                                 "title": "Radiant Claymore",
-                                "content": "This claymore has been enhanced with a strange type of gold aloy. Its edge is supremely sharp, but since it was made of softer metal it will dull quickly."   
+                                "content": "This claymore has been enhanced with a strange type of gold aloy. Its edge is supremely sharp, but since it was made of softer metal it will dull quickly."
                             },
                             {
                                 "title": "Guardian's Claymore",
-                                "content": "This once humble weapon, storied, and tempered, is now without equal. Its razor sharp edge never dulls, owing to the daimond  coating, and the unbreakable spirit that dwells inside."   
+                                "content": "This once humble weapon, storied, and tempered, is now without equal. Its razor sharp edge never dulls, owing to the daimond  coating, and the unbreakable spirit that dwells inside."
                             },
                             {
                                 "title": "Save The King",
-                                "content": "Here lies the soul of the wolf, who guarded our king until the very end."   
+                                "content": "Here lies the soul of the wolf, who guarded our king until the very end."
                             }
                         ],
                         "imageSrc": [
@@ -936,7 +932,7 @@
                     },
                     {
                         "title": "Linkle's Crossbow",
-                        "description": "A simple wooden crossbow. Light and sturdy, it won't break, but it does consume ammo (NOT IMPLEMENTED).",
+                        "description": "A simple wooden crossbow. Light and sturdy, it won't break, but it will (eventually) consume ammo. Ammo consumption is not currently implemented.",
                         "imageSrc": [
                             "Icons/WeaponCrossbow.webp"
                         ],
@@ -965,7 +961,9 @@
                         "description": "Once a candidate for the Hero's title, he now tests you when you first wake. You'll find him in front of the first tower, and in each of the four shrines on Hope's Rise ready for battle. Prove your Hero's title, and he'll reward you with 4 weapons of unique potential.",
                         "imageType": "fullsize",
                         "directory": "Enemies",
-                        "imageSrc": ["Icons/HerosShade.webp"],
+                        "imageSrc": [
+                            "Icons/HerosShade.webp"
+                        ],
                         "location": "Can be found on Hope's Rise near the eastern shrine."
                     },
                     {
@@ -973,7 +971,9 @@
                         "description": "They're like thunderblight, but with more magic. Theres 4 versions so it won't be the same fight every time, each one having a couple of spells to attack you with along with their innate speed. Will appear when the sky turns pale blue.",
                         "imageType": "fullsize",
                         "directory": "Enemies",
-                        "imageSrc": ["Icons/CursedPuppet1.webp"],
+                        "imageSrc": [
+                            "Icons/CursedPuppet1.webp"
+                        ],
                         "location": "Can be found in the forests around Hyrule."
                     },
                     {
@@ -981,7 +981,9 @@
                         "description": "Currently a WIP. You can climb on him if you have stasis. He WILL break halfway through the fight.",
                         "imageType": "fullsize",
                         "directory": "Enemies",
-                        "imageSrc": ["Icons/Argorok.webp"],
+                        "imageSrc": [
+                            "Icons/Argorok.webp"
+                        ],
                         "location": "Found at the top of the Dueling Peaks."
                     },
                     {
@@ -989,7 +991,9 @@
                         "description": "Currently a WIP. You can't kill him yet as the fight will require the megaton hammer.",
                         "imageType": "fullsize",
                         "directory": "Enemies",
-                        "imageSrc": ["Icons/Darknut.webp"],
+                        "imageSrc": [
+                            "Icons/Darknut.webp"
+                        ],
                         "location": "Found at Castle Town Cathedral."
                     },
                     {
@@ -997,7 +1001,9 @@
                         "description": "Pretty straightforward, just stay close and nail your parries.",
                         "imageType": "fullsize",
                         "directory": "Enemies",
-                        "imageSrc": ["Icons/Galahad.webp"],
+                        "imageSrc": [
+                            "Icons/Galahad.webp"
+                        ],
                         "location": "Found at Fort Hateno."
                     },
                     {
@@ -1005,7 +1011,9 @@
                         "description": "Currently a WIP. He'll seem like he's stuck in an animation, but stagger him out of it and then stay far away from his spear.",
                         "imageType": "fullsize",
                         "directory": "Enemies",
-                        "imageSrc": ["Icons/Lancelot.webp"],
+                        "imageSrc": [
+                            "Icons/Lancelot.webp"
+                        ],
                         "location": "Found at the Shrine of Courage."
                     },
                     {
@@ -1013,7 +1021,9 @@
                         "description": "Can be a challenge, but you'll be fine if you take care of the adds and shoot well.",
                         "imageType": "fullsize",
                         "directory": "Enemies",
-                        "imageSrc": ["Icons/Robin.webp"],
+                        "imageSrc": [
+                            "Icons/Robin.webp"
+                        ],
                         "location": "Found at the Heteno shooting range."
                     },
                     {
@@ -1021,15 +1031,19 @@
                         "description": "These are fast, hit hard, and deal a TON of aoe damage. The arena is basicaly made of fire so bring some Fireproof potions or a flamebreaker set.",
                         "imageType": "fullsize",
                         "directory": "Enemies",
-                        "imageSrc": ["Icons/MikoAndSibyl.webp"],
+                        "imageSrc": [
+                            "Icons/MikoAndSibyl.webp"
+                        ],
                         "location": "Found in the Sanidin park."
                     }
                 ],
                 "commonEnemies": [
                     {
                         "title": "ReDead",
-                        "description": "The haunting return of a classic adversary! Undead and enduring, these foes withstand relentless assaults. Persistence is key, but victory is within reach! <br>Drop rupees and claw weapons upon death.", 
-                        "imageSrc": ["Icons/ReDead.webp"],
+                        "description": "The haunting return of a classic adversary! Undead and enduring, these foes withstand relentless assaults. Persistence is key, but victory is within reach! <br>Drop rupees and claw weapons upon death.",
+                        "imageSrc": [
+                            "Icons/ReDead.webp"
+                        ],
                         "imageType": "fullsize",
                         "directory": "Enemies",
                         "location": "Can be found all around Hyrule."
@@ -1037,7 +1051,9 @@
                     {
                         "title": "Skulltula",
                         "description": "Back in Hyrule with renewed menace, these eight-armed fiends are relentless. They swarm in numbers and boast formidable strength, demanding top-notch gear for a chance to conquer them. They are extremely weak to sources of fire. <br>Drop rupees upon death.",
-                        "imageSrc": ["Icons/Skulltula.webp"],
+                        "imageSrc": [
+                            "Icons/Skulltula.webp"
+                        ],
                         "imageType": "fullsize",
                         "directory": "Enemies",
                         "location": "Can be found all around Hyrule."
@@ -1045,7 +1061,9 @@
                     {
                         "title": "Gibdo",
                         "description": "Beware the Gibdo, ancient guardians of cursed tombs. These formidable foes endure strikes and wield dark arcane powers allowing them to warp around like the yiga. Approach with caution and arm yourself well for their relentless onslaught.",
-                        "imageSrc": ["Icons/Gibdo.webp"],
+                        "imageSrc": [
+                            "Icons/Gibdo.webp"
+                        ],
                         "imageType": "fullsize",
                         "directory": "Enemies",
                         "location": "Can be found in the Hyrule Desert."
@@ -1067,94 +1085,94 @@
                         "location": "Hopes Rise, east of the southern shrine."
                     },
                     {
-                       "title": "Frozen Ruins",
-                       "description": "Newly added ruins below the western shrine on Hope's Rise, hiding away the slingshot gadget.",
-                       "imageSrc": [
-                           "Icons/FrozenRuins.webp"
-                       ],
-                       "imageType": "fullsize",
-                       "directory": "Locations",
-                       "location": "Hopes Rise, below the western shrine."
+                        "title": "Frozen Ruins",
+                        "description": "Newly added ruins below the western shrine on Hope's Rise, hiding away the slingshot gadget.",
+                        "imageSrc": [
+                            "Icons/FrozenRuins.webp"
+                        ],
+                        "imageType": "fullsize",
+                        "directory": "Locations",
+                        "location": "Hopes Rise, below the western shrine."
                     },
                     {
-                       "title": "Cannon Cave",
-                       "description": "Newly added cave, here to offer the Cannon gadget and give you your first place to test it.",
-                       "imageSrc": [
-                           "Icons/CannonCave.webp"
-                       ],
-                       "imageType": "fullsize",
-                       "directory": "Locations",
-                       "location": "Behind the Woodland stable."
+                        "title": "Cannon Cave",
+                        "description": "Newly added cave, here to offer the Cannon gadget and give you your first place to test it.",
+                        "imageSrc": [
+                            "Icons/CannonCave.webp"
+                        ],
+                        "imageType": "fullsize",
+                        "directory": "Locations",
+                        "location": "Behind the Woodland stable."
                     },
                     {
-                       "title": "Lanayru Waterfall",
-                       "description": "The waterfall in Lanayru's Promenade, hiding away the Silver Gauntlets.",
-                       "imageSrc": [
-                           "Icons/LanayruWaterfall.webp"
-                       ],
-                       "imageType": "fullsize",
-                       "directory": "Locations",
-                       "location": "Lanayru Promenade, east of Kakariko Village."
+                        "title": "Lanayru Waterfall",
+                        "description": "The waterfall in Lanayru's Promenade, hiding away the Silver Gauntlets.",
+                        "imageSrc": [
+                            "Icons/LanayruWaterfall.webp"
+                        ],
+                        "imageType": "fullsize",
+                        "directory": "Locations",
+                        "location": "Lanayru Promenade, east of Kakariko Village."
                     },
                     {
-                       "title": "Desert Ruins",
-                       "description": "Newly added Desert Ruins in the westernmost reaches of the Gerudo desert, hiding away the Twilight Spinner.",
-                       "imageSrc": [
-                           "Icons/DesertRuins.webp"
-                       ],
-                       "imageType": "fullsize",
-                       "directory": "Locations" ,
-                       "location": "Just south-west of the Kema Zoos shrine, or the entrance to the valley leading to the Yiga Hideout."
+                        "title": "Desert Ruins",
+                        "description": "Newly added Desert Ruins in the westernmost reaches of the Gerudo desert, hiding away the Twilight Spinner.",
+                        "imageSrc": [
+                            "Icons/DesertRuins.webp"
+                        ],
+                        "imageType": "fullsize",
+                        "directory": "Locations",
+                        "location": "Just south-west of the Kema Zoos shrine, or the entrance to the valley leading to the Yiga Hideout."
                     },
                     {
-                       "title": "Hylian Waterworks",
-                       "description": "Newly added Hylian Waterworks, hiding away the Iron Boots.",
-                       "imageSrc": [
-                           "Icons/HylianWaterworks.webp"
-                       ],
-                       "imageType": "fullsize",
-                       "directory": "Locations",
-                       "location": "The very entrance of the Hylia Lake inlet, just south of Scout's Hill."
+                        "title": "Hylian Waterworks",
+                        "description": "Newly added Hylian Waterworks, hiding away the Iron Boots.",
+                        "imageSrc": [
+                            "Icons/HylianWaterworks.webp"
+                        ],
+                        "imageType": "fullsize",
+                        "directory": "Locations",
+                        "location": "The very entrance of the Hylia Lake inlet, just south of Scout's Hill."
                     },
                     {
-                       "title": "Hylian Royal Crypt",
-                       "description": "Resting underneath the Sanidin Park Ruins, the Royal Crypt hides away the Hover Boots.",
-                       "imageSrc": [
-                           "Icons/HylianRoyalCrypt.webp"
-                       ],
-                       "imageType": "fullsize",
-                       "directory": "Locations",
-                       "location": "Underneath the horse fountain in the Sanidin Park Ruins."
+                        "title": "Hylian Royal Crypt",
+                        "description": "Resting underneath the Sanidin Park Ruins, the Royal Crypt hides away the Hover Boots.",
+                        "imageSrc": [
+                            "Icons/HylianRoyalCrypt.webp"
+                        ],
+                        "imageType": "fullsize",
+                        "directory": "Locations",
+                        "location": "Underneath the horse fountain in the Sanidin Park Ruins."
                     },
                     {
-                       "title": "Dueling Monastery",
-                       "description": "Newly added Dueling Monastery, hiding away the Hookshot.",
-                       "imageSrc": [
-                           "Icons/DuelingMonastery.webp"
-                       ],
-                       "imageType": "fullsize",
-                       "directory": "Locations",
-                       "location": "Atop the Dueling Peaks, on the Southern peak."
+                        "title": "Dueling Monastery",
+                        "description": "Newly added Dueling Monastery, hiding away the Hookshot.",
+                        "imageSrc": [
+                            "Icons/DuelingMonastery.webp"
+                        ],
+                        "imageType": "fullsize",
+                        "directory": "Locations",
+                        "location": "Atop the Dueling Peaks, on the Southern peak."
                     },
                     {
-                       "title": "Hebra Mansion",
-                       "description": "Newly added structure in the Hebra Mountains, hiding away the Gust Jar.",
-                       "imageSrc": [
-                           "Icons/HebraMansion.webp"
-                       ],
-                       "imageType": "fullsize",
-                       "directory": "Locations",
-                       "location": "Rest's atop the northernmost part of the Hebra Headspring."
+                        "title": "Hebra Mansion",
+                        "description": "Newly added structure in the Hebra Mountains, hiding away the Gust Jar.",
+                        "imageSrc": [
+                            "Icons/HebraMansion.webp"
+                        ],
+                        "imageType": "fullsize",
+                        "directory": "Locations",
+                        "location": "Rest's atop the northernmost part of the Hebra Headspring."
                     },
                     {
-                       "title": "Fort Hateno Keep",
-                       "description": "The newly added Keep structure, towering over the Fort Hateno gates, hides away the Generator.",
-                       "imageSrc": [
-                           "Icons/FortHatenoKeep.webp"
-                       ],
-                       "imageType": "fullsize",
-                       "directory": "Locations",
-                       "location": "On the cliff just to the north and behind the Fort Hateno gates."
+                        "title": "Fort Hateno Keep",
+                        "description": "The newly added Keep structure, towering over the Fort Hateno gates, hides away the Generator.",
+                        "imageSrc": [
+                            "Icons/FortHatenoKeep.webp"
+                        ],
+                        "imageType": "fullsize",
+                        "directory": "Locations",
+                        "location": "On the cliff just to the north and behind the Fort Hateno gates."
                     }
                 ]
             }
@@ -1325,15 +1343,13 @@
                     }
                 ]
             }
-        ]
-    },
-    {
+        ],
         "StatsPage": [
             {
                 "Stats": [
                     {
                         "title": "Agility",
-                        "description": "Increases:",
+                        "description": "Agility is responsible for increasing movement speed, as well as improving skill with small swords. It also boosts attack speed and damage for weapons that scale with Agility. Some skills like Double Jump, Double Dodge, Dodge Roll, and Air Dash scale with Agility, increasing their distance and effectiveness. <br><br>At level 8, your sneak speed will be increased.",
                         "imageSrc": [
                             "Icons/StatAgility.webp"
                         ],
@@ -1342,7 +1358,7 @@
                     },
                     {
                         "title": "Courage",
-                        "description": "Increases:",
+                        "description": "Courage affects Master Sword cooldown rate, improves damage with the Master Sword, and increases its attack speed. It also boosts the health of all your allies and decreases the mana cost of Flurry Rush. <br><br>At level 8, your Master Sword will instantly recover its energy.",
                         "imageSrc": [
                             "Icons/StatCourage.webp"
                         ],
@@ -1351,7 +1367,7 @@
                     },
                     {
                         "title": "Dexterity",
-                        "description": "Increases:",
+                        "description": "Dexterity improves the damage and attack speed of all spear-type weapons and other weapons that scale with Dexterity. It also enhances the effect of some abilities and increases the speed of all dodges. If a thief expansion is added, Dexterity will be crucial for stealing, lockpicking, and pickpocketing. <br><br>At level 8, you will gain an automatic dodge when taking damage during combat.",
                         "imageSrc": [
                             "Icons/StatDexterity.webp"
                         ],
@@ -1360,7 +1376,7 @@
                     },
                     {
                         "title": "Endurance",
-                        "description": "Increases:",
+                        "description": "Endurance boosts stamina and climbing ability, increases the speed of ZGlide, and enhances your climbing, running, and sprinting speed. It also increases the stamina restored by the Flask of Hylian Flame and when resting at camp. <br><br>At level 8, your stamina will periodically restore automatically.",
                         "imageSrc": [
                             "Icons/StatEndurance.webp"
                         ],
@@ -1369,7 +1385,7 @@
                     },
                     {
                         "title": "Faith",
-                        "description": "Increases:",
+                        "description": "Faith increases Link's ability to summon allies, enhances ZGlider speed, and boosts the amount of health restored by Fierce Deity Mode. It also reduces the rupee cost of Fierce Deity Mode and decreases the amount of rupees lost on death. <br><br>At level 8, if a summon is present, there is a chance they will sacrifice their life to save the hero.",
                         "imageSrc": [
                             "Icons/StatFaith.webp"
                         ],
@@ -1378,7 +1394,7 @@
                     },
                     {
                         "title": "Grudge",
-                        "description": "Increases:",
+                        "description": "Grudge increases Link's resistance to Blight, poison, and other status effects, while also unlocking higher-tier incantations. It also boosts the power of special spells and increases movement speed when influenced by Grudge. <br><br>At level 8, the power of the Master Sword increases when under a status abnormality.",
                         "imageSrc": [
                             "Icons/StatGrudge.webp"
                         ],
@@ -1387,7 +1403,7 @@
                     },
                     {
                         "title": "Mana",
-                        "description": "Increases:",
+                        "description": "Mana increases spellcasting ability, improves mana regeneration rate, and decreases the mana cost for spells. It also increases the speed at which spirit orbs regenerate and boosts the number of spirit orbs restored by the Flask of Hylian Tears. <br><br>At level 8, you can attune spells from multiple elements.",
                         "imageSrc": [
                             "Icons/StatMana.webp"
                         ],
@@ -1396,7 +1412,7 @@
                     },
                     {
                         "title": "Strength",
-                        "description": "Increases:",
+                        "description": "Strength increases the damage and attack speed of all large swords and other weapons that scale with Strength. It also improves the cooldown for ZRush, enhances the damage of charge attacks, and boosts your carrying capacity, allowing you to carry more gadgets. <br><br>At level 8, you gain the ability to automatically block damage while dodging, walking, or standing still.",
                         "imageSrc": [
                             "Icons/StatStrength.webp"
                         ],
@@ -1405,7 +1421,7 @@
                     },
                     {
                         "title": "Vitality",
-                        "description": "Increases:",
+                        "description": "Vitality increases health and healing, boosts health restoration by the Flask of Hylian Flame, and improves health regeneration outside of combat. At higher levels, this regeneration extends to combat as well, and your resistance to damage increases. <br><br>At level 8, you will gain health regeneration outside of combat.",
                         "imageSrc": [
                             "Icons/StatVitality.webp"
                         ],
@@ -1414,7 +1430,7 @@
                     },
                     {
                         "title": "Wisdom",
-                        "description": "Increases:",
+                        "description": "Wisdom increases the number of spells you can recall, decreases the cooldown for all spells, and unlocks higher-tier incantations. It also increases the attack speed and damage for magical weapons and all spells that scale with Wisdom. Each level of Wisdom enhances the power of your spells, giving them new effects and substantially increasing their damage. <br><br>At level 8, you gain Mana Siphon when taking damage.",
                         "imageSrc": [
                             "Icons/StatWisdom.webp"
                         ],

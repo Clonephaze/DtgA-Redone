@@ -156,7 +156,7 @@ function updateIndicatorOnPageLoad(pageId) {
     const $indicator = $('.indicator');
     const $navLinks = $('.nav-item button');
     const $wikiButton = $('#wiki-list-dropdown');
-    let wikiPages = ['newMechanicsPage', 'itemsPage', 'aspSpellcastingPage', 'enemiesPage', 'npcsPage', 'locationsPage'];
+    let wikiPages = ['newMechanicsPage', 'itemsPage', 'aspSpellcastingPage', 'enemiesPage', 'npcsPage', 'locationsPage', 'statsPage'];
 
     function updateIndicator($element) {
         let leftPosition = $element.position().left;
@@ -251,6 +251,16 @@ function handlePageTransition(pageId) {
             $.getScript("SpecialActions.js", function () {
                 generatePageContent('gadgetLocations', {
                     'locations': 'locationsContainer'
+                });
+            });
+            $('.homepageBg').css('opacity', '0');
+            $('.site-footer').css('display', 'flex');
+            $('nav').toggleClass('nav-with-content', true);
+            break;
+        case 'statsPage':
+            $.getScript("SpecialActions.js", function () {
+                generatePageContent('StatsPage', {
+                    'Stats': 'stat-card-container'
                 });
             });
             $('.homepageBg').css('opacity', '0');
