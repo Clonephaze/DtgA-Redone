@@ -243,6 +243,15 @@
                         "location": "Can be found in chests around Hyrule."
                     },
                     {
+                        "title": "Stray Souls",
+                        "description": "A new form of currency obtained from slaying your foes, these can be exchanged alongside Rupees to level up your stats with the coiled sword.",
+                        "imageSrc": [
+                            "Icons/SoulStray.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found by slaying enemies."
+                    },
+                    {
                         "title": "Goron Powder Keg",
                         "description": "Portable exploding barrels! Drop them from your inventory to pick them up to place or throw them. Can be exploded with the Slingshot.",
                         "imageSrc": [
