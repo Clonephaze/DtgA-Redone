@@ -237,7 +237,7 @@
                         "title": "Flasks of Hylian Tears",
                         "description": "This flask can hold the tears of Hylia, and drinking from it will rejuvenate the spirits of the undead.<br>Allows the Lost One to restore their mana.",
                         "imageSrc": [
-                            "Icons/FlaskOfHylianTears.webp"
+                            "Icons/FlaskofHylianTears.webp"
                         ],
                         "directory": "Items",
                         "location": "Can be found in chests around Hyrule."
