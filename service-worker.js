@@ -1,10 +1,9 @@
 // Constants for the service worker
-const APP_PREFIX = 'DtgA_';        // Identifier for this app
-const VERSION = 'version_017';      // Version of the offline cache, itterate this number if changes are made and old caches should be cleared
+const APP_PREFIX = 'DtgA_';  // Identifier for this app
+const VERSION = 'version_018'; // Version of the offline cache, itterate this number if changes are made and old caches should be cleared
 const CACHE_NAME = APP_PREFIX + VERSION; // Cache name combining app prefix and version
 const REPOSITORY = '/DtgA-Redone'; // Base path for repository, required for making a service worker work for github pages.
 const MAX_AGE = 24 * 60 * 60 * 1000; // Max age for cached resources in milliseconds (24 hours)
-
 
 // List of files to cache
 const URLS = [
@@ -153,6 +152,7 @@ const URLS = [
     '/Icons/SoulOfARoyalGuard.webp',
     '/Icons/SoulOfAWouldBeChampion.webp',
     '/Icons/SoulofTheHerosShade.webp',
+    '/Icons/SoulStray.webp',
     '/Icons/Spear1.webp',
     '/Icons/Spear2.webp',
     '/Icons/Spear3.webp',
@@ -195,60 +195,64 @@ const URLS = [
     '/Icons/Yunobo.webp'
 ].map(url => REPOSITORY + url); // Prepend the REPOSITORY to each URL `/DtgA-Redone/index.html`
 
-// Function to check if the cached response is stale
+// Function to check if a cached response is stale
 function isResponseStale(response) {
-    const dateHeader = response.headers.get('date');
-    if (!dateHeader) return false;
-    const age = new Date() - new Date(dateHeader);
-    return age > MAX_AGE;
+    const dateHeader = response.headers.get('date'); // Get the 'date' header from the response
+    if (!dateHeader) return false; // If no date header is found, consider the response as not stale
+    const age = new Date() - new Date(dateHeader); // Calculate the age of the cached response
+    return age > MAX_AGE; // Return true if the age exceeds the MAX_AGE
 }
 
-// Respond with cached resources if cache is available, and check for stale resources
+// Respond to fetch events
 self.addEventListener('fetch', function (e) {
     console.log('fetch request : ' + e.request.url);
     const strippedUrl = new URL(e.request.url);
-    strippedUrl.search = ''; // Remove query parameters, timestamps, etc from URL requests to find the correct file
+    strippedUrl.search = ''; // Remove query parameters, timestamps, etc., from URL requests to find the correct cached file
 
     e.respondWith(
         caches.match(strippedUrl).then(function (response) {
             if (response && !isResponseStale(response)) {
+                // If the resource is cached and not stale, return it
                 console.log('responding with cache : ' + e.request.url);
                 return response;
             } else {
+                // If the resource is not cached or is stale, fetch it from the network
                 console.log('file is not cached or is stale, fetching : ' + e.request.url);
                 return fetch(e.request).then(function (networkResponse) {
                     if (networkResponse.ok) {
+                        // Cache the fetched resource if the response is valid
                         return caches.open(CACHE_NAME).then(function (cache) {
                             cache.put(strippedUrl, networkResponse.clone());
-                            return networkResponse;
+                            return networkResponse; // Return the network response
                         });
                     }
-                    return networkResponse;
+                    return networkResponse; // Return the network response even if it's not ok (e.g., 404)
                 });
             }
         })
     );
 });
 
-// Cache resources during installation
+// Cache resources during the installation of the service worker
 self.addEventListener('install', function (e) {
     e.waitUntil(
         caches.open(CACHE_NAME).then(function (cache) {
             console.log('installing cache : ' + CACHE_NAME);
-            return cache.addAll(URLS);
+            return cache.addAll(URLS); // Add all specified URLs to the cache
         })
     );
 });
 
-// Delete outdated caches during activation
+// Delete outdated caches during the activation of the service worker
 self.addEventListener('activate', function (e) {
     e.waitUntil(
         caches.keys().then(function (keyList) {
             const cacheWhitelist = keyList.filter(key => key.indexOf(APP_PREFIX) === 0);
-            cacheWhitelist.push(CACHE_NAME);
+            cacheWhitelist.push(CACHE_NAME); // Include the current cache name in the whitelist
 
             return Promise.all(keyList.map(function (key, i) {
                 if (cacheWhitelist.indexOf(key) === -1) {
+                    // Delete caches that are not in the whitelist
                     console.log('deleting cache : ' + keyList[i]);
                     return caches.delete(keyList[i]);
                 }
