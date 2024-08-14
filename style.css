@@ -897,7 +897,7 @@ nav {
 .new-mech-card-container {
     display: grid;
     width: min(120%, 95vw);
-    grid-template-columns: repeat(auto-fit, minmax(min(400px, 95vw), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 95vw), 1fr));
     gap: 2rem;
     color: rgb(var(--text-color-standard));
 
