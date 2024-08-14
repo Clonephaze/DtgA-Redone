@@ -395,7 +395,7 @@
                             "Icons/ItemFlintStrike.webp"
                         ],
                         "directory": "Items",
-                        "location": "Can be found in the <a class=\"location-popover DtgA-popover-link\" id=\"Old Man's Cabin\">Old Man's Hut</a> on Hope's Rise (the plateau)."
+                        "location": "Given to the player after they complete the first shrine in Hope's Rise."
                     },
                     {
                         "title": "Slingshot",
@@ -499,7 +499,7 @@
                 ],
                 "KeyItems": [
                     {
-                        "title": "Magic Pouch",
+                        "title": "Ravio's Magic Pouch",
                         "description": "The Magic Pouch is a way of keeping all your gadgets on you without wasting inventory slots. Call it with Crouch <span class=\"gamepadIcons\">↺</span> + Activate <span class=\"gamepadIcons\">⇓</span>.",
                         "imageSrc": [
                             "Icons/MagicPouch.webp"
@@ -931,8 +931,8 @@
                         "location": "Can be found in the Temple of Time of Hope's Rise. (The Great Plateau)."
                     },
                     {
-                        "title": "Linkle's Crossbow",
-                        "description": "A simple wooden crossbow. Light and sturdy, it won't break, but it will (eventually) consume ammo. Ammo consumption is not currently implemented.",
+                        "title": "Courageous Crossbow",
+                        "description": "A simple wooden crossbow. Light and sturdy, it won't break, but it will (eventually) consume ammo. Ammo consumption is not currently implemented. <br><br>Linkle's Signature Weapon.",
                         "imageSrc": [
                             "Icons/WeaponCrossbow.webp"
                         ],
@@ -942,9 +942,19 @@
                     },
                     {
                         "title": "Staff of Wisdom",
-                        "description": "A magic staff imbued with the power of the winds. It won't break, but it runs out of mana quickly.",
+                        "description": "A magic staff imbued with the power of the winds. It won't break, but it runs out of mana quickly. <br><br>Zelda's Signature Weapon.",
                         "imageSrc": [
                             "Icons/WeaponStaffofWisdom.webp"
+                        ],
+                        "imageType": "",
+                        "directory": "Items",
+                        "location": "TODO"
+                    },
+                    {
+                        "title": "Power's Broken Blade",
+                        "description": "A broken sword that feels very comfortable in your hands. Doesn't deal much damage, but a deeper power slumbers inside. <br><br>Link's Signature Weapon.",
+                        "imageSrc": [
+                            "Icons/WeaponPowerSword.webp"
                         ],
                         "imageType": "",
                         "directory": "Items",
