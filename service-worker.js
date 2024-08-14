@@ -1,8 +1,10 @@
 // Constants for the service worker
 const APP_PREFIX = 'DtgA_';        // Identifier for this app
-const VERSION = 'version_011';      // Version of the offline cache, itterate this number if changes are made and old caches should be cleared
+const VERSION = 'version_013';      // Version of the offline cache, itterate this number if changes are made and old caches should be cleared
 const CACHE_NAME = APP_PREFIX + VERSION; // Cache name combining app prefix and version
 const REPOSITORY = '/DtgA-Redone'; // Base path for repository, required for making a service worker work for github pages.
+const MAX_AGE = 24 * 60 * 60 * 1000; // Max age for cached resources in milliseconds (24 hours)
+
 
 // List of files to cache
 const URLS = [
@@ -32,8 +34,29 @@ const URLS = [
     '/Assets/boxicons-2.1.4/fonts/boxicons.woff2',
     '/Icons/Aero.webp',
     '/Icons/Argorok.webp',
+    '/Icons/ArmorLinkDefaultHead.webp',
+    '/Icons/ArmorLinkDefaultLower.webp',
+    '/Icons/ArmorLinkDoubletSet.webp',
+    '/Icons/ArmorLinkFieldSet.webp',
+    '/Icons/ArmorLinkleDefaultHead.webp',
+    '/Icons/ArmorLinkleDefaultLower.webp',
+    '/Icons/ArmorLinkleDesertSet.webp',
+    '/Icons/ArmorLinkleDomainSet.webp',
+    '/Icons/ArmorLinkleDoubletSet.webp',
+    '/Icons/ArmorLinkleFieldSet.webp',
+    '/Icons/ArmorLinkleHebraSet.webp',
+    '/Icons/ArmorLinkleNecludaSet.webp',
+    '/Icons/ArmorLinkleVolcanoSet.webp',
+    '/Icons/ArmorZeldaDefaultHead.webp',
+    '/Icons/ArmorZeldaDefaultLower.webp',
+    '/Icons/ArmorZeldaDoubletSet.webp',
+    '/Icons/ArmorZeldaFieldSet.webp',
     '/Icons/Balloon.webp',
     '/Icons/Beedle.webp',
+    '/Icons/Belt(Adventurer).webp',
+    '/Icons/Belt(Hero).webp',
+    '/Icons/Belt(Soldier).webp',
+    '/Icons/Belt(Traveler).webp',
     '/Icons/BlueCap.webp',
     '/Icons/Bow1.webp',
     '/Icons/Bow2.webp',
@@ -49,6 +72,7 @@ const URLS = [
     '/Icons/CrackedPot(Air).webp',
     '/Icons/CrackedPot(Dark).webp',
     '/Icons/CrackedPot(Earth).webp',
+    '/Icons/CrackedPot(Empty).webp',
     '/Icons/CrackedPot(Fire).webp',
     '/Icons/CrackedPot(Holy).webp',
     '/Icons/CrackedPot(Ice).webp',
@@ -68,6 +92,8 @@ const URLS = [
     '/Icons/DuelingMonastery.webp',
     '/Icons/Electro.webp',
     '/Icons/EstusFlask.webp',
+    '/Icons/FlaskofHylianTears.webp',
+    '/Icons/ForbiddenSunRite.webp',
     '/Icons/FortHatenoKeep.webp',
     '/Icons/FrightenedSoldiers.webp',
     '/Icons/FrozenRuins.webp',
@@ -126,6 +152,7 @@ const URLS = [
     '/Icons/SoulOfAnEnlightenedOne.webp',
     '/Icons/SoulOfARoyalGuard.webp',
     '/Icons/SoulOfAWouldBeChampion.webp',
+    '/Icons/SoulofTheHerosShade.webp',
     '/Icons/Spear1.webp',
     '/Icons/Spear2.webp',
     '/Icons/Spear3.webp',
@@ -134,6 +161,16 @@ const URLS = [
     '/Icons/Spear6.webp',
     '/Icons/Spear7.webp',
     '/Icons/SpellBook.webp',
+    '/Icons/StatAgility.webp',
+    '/Icons/StatCourage.webp',
+    '/Icons/StatDexterity.webp',
+    '/Icons/StatEndurance.webp',
+    '/Icons/StatFaith.webp',
+    '/Icons/StatGrudge.webp',
+    '/Icons/StatMana.webp',
+    '/Icons/StatStrength.webp',
+    '/Icons/StatVitality.webp',
+    '/Icons/StatWisdom.webp',
     '/Icons/SwiftSail.webp',
     '/Icons/Sword1.webp',
     '/Icons/Sword2.webp',
@@ -144,6 +181,8 @@ const URLS = [
     '/Icons/TwilightMirror.webp',
     '/Icons/TwilightSpinner.webp',
     '/Icons/Urbosa.webp',
+    '/Icons/WeaponCrossbow.webp',
+    '/Icons/WeaponStaffofWisdom.webp',
     '/Icons/WoodAxe1.webp',
     '/Icons/WoodAxe2.webp',
     '/Icons/WoodAxe3.webp',
@@ -156,7 +195,15 @@ const URLS = [
     '/Icons/Yunobo.webp'
 ].map(url => REPOSITORY + url); // Prepend the REPOSITORY to each URL `/DtgA-Redone/index.html`
 
-// Respond with cached resources if cache is available
+// Function to check if the cached response is stale
+function isResponseStale(response) {
+    const dateHeader = response.headers.get('date');
+    if (!dateHeader) return false;
+    const age = new Date() - new Date(dateHeader);
+    return age > MAX_AGE;
+}
+
+// Respond with cached resources if cache is available, and check for stale resources
 self.addEventListener('fetch', function (e) {
     console.log('fetch request : ' + e.request.url);
     const strippedUrl = new URL(e.request.url);
@@ -164,14 +211,20 @@ self.addEventListener('fetch', function (e) {
 
     e.respondWith(
         caches.match(strippedUrl).then(function (response) {
-            if (response) {
-                // If cache is available, respond with cache
+            if (response && !isResponseStale(response)) {
                 console.log('responding with cache : ' + e.request.url);
                 return response;
             } else {
-                // If there are no cache, try fetching the request
-                console.log('file is not cached, fetching : ' + e.request.url);
-                return fetch(e.request);
+                console.log('file is not cached or is stale, fetching : ' + e.request.url);
+                return fetch(e.request).then(function (networkResponse) {
+                    if (networkResponse.ok) {
+                        return caches.open(CACHE_NAME).then(function (cache) {
+                            cache.put(strippedUrl, networkResponse.clone());
+                            return networkResponse;
+                        });
+                    }
+                    return networkResponse;
+                });
             }
         })
     );
@@ -191,12 +244,7 @@ self.addEventListener('install', function (e) {
 self.addEventListener('activate', function (e) {
     e.waitUntil(
         caches.keys().then(function (keyList) {
-            // `keyList` contains all cache names under USERNAME.github.io
-            // Filter out ones that have this app prefix to create a whitelist
-            const cacheWhitelist = keyList.filter(function (key) {
-                return key.indexOf(APP_PREFIX) === 0;
-            });
-            // Add current cache name to white list
+            const cacheWhitelist = keyList.filter(key => key.indexOf(APP_PREFIX) === 0);
             cacheWhitelist.push(CACHE_NAME);
 
             return Promise.all(keyList.map(function (key, i) {
