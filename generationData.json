@@ -1191,6 +1191,30 @@
             {
                 "companions": [
                     {
+                        "title": "Zelda",
+                        "description": "While playing as Link or Linkle you can have Zelda join in you in your travels and in battle! Summon them by pressing <span class=\"gamepadIcons\">⇓</span>+<span class=\"gamepadIcons\">⇒</span>+<span class=\"gamepadIcons\">⇑</span>+<span class=\"gamepadIcons\">⇐</span>.",
+                        "imageSrc": [
+                            "Icons/Zelda.webp"
+                        ],
+                        "location": "Found initially in the cave of ressurrection, and in the Temple of Time from then on."
+                    },
+                    {
+                        "title": "Linkle",
+                        "description": "While playing as Link or Zelda you can have Linkle join in you in your travels and in battle! Summon them by pressing <span class=\"gamepadIcons\">⇓</span>+<span class=\"gamepadIcons\">⇒</span>+<span class=\"gamepadIcons\">⇑</span>+<span class=\"gamepadIcons\">⇐</span>.",
+                        "imageSrc": [
+                            "Icons/Linkle.webp"
+                        ],
+                        "location": "Found initially in the cave of ressurrection, and in the Temple of Time from then on."
+                    },
+                    {
+                        "title": "Link",
+                        "description": "Part of the Hero module, while playing as Zelda or Linkle you can have Link join in you in your travels and in battle by summoning them by pressing <span class=\"gamepadIcons\">⇓</span>+<span class=\"gamepadIcons\">⇒</span>+<span class=\"gamepadIcons\">⇑</span>+<span class=\"gamepadIcons\">⇐</span>.",
+                        "imageSrc": [
+                            "Icons/Link.webp"
+                        ],
+                        "location": "Found initially in the cave of ressurrection, and in the Temple of Time from then on."
+                    },
+                    {
                         "title": "Sidon",
                         "description": "One of the many who have decided to join you on your adventure. Summon them with the Twilight Mirror!",
                         "imageSrc": [
