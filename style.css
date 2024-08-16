@@ -144,7 +144,12 @@ nav {
     }
 
     & .nav-dropdown {
-        backdrop-filter: blur(3px);
+        background-color: var(--bgColor);
+        
+        @supports(backdrop-filter: none) {
+            background-color: unset;
+            backdrop-filter: blur(3px);
+        }
     }
 
     & .indicator {
@@ -234,7 +239,14 @@ nav {
         right: 0;
         bottom: 0;
         z-index: -1;
-        backdrop-filter: blur(2px)
+        background-color: hsla(0, 0%, 0%, 0.8);
+    }
+
+    @supports (backdrop-filter: none) {
+        &::after {
+            background-color: unset;
+            backdrop-filter: blur(2px)
+        }
     }
 }
 
