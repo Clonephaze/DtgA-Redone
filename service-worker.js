@@ -279,6 +279,7 @@ export function registerServiceWorker() {
                 // Uncomment the line below to log successful registration
                 // console.log('Service worker registered with scope:', registration.scope);
             }).catch(function (error) {
+                console.log(error);
                 console.error('Service worker registration failed:', error);
             });
     }
