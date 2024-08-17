@@ -271,6 +271,7 @@ self.addEventListener('activate', function (e) {
 });
 
 export function registerServiceWorker() {
+    console.log('registering service worker');
     // Register the service worker
     if (navigator.serviceWorker) {
         navigator.serviceWorker.register('/DtgA-Redone/service-worker.js', { scope: '/DtgA-Redone/' })
