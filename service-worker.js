@@ -278,7 +278,8 @@ self.addEventListener('install', (event) => {
 self.addEventListener('activate', (event) => {
     console.log('Service Worker activating.');
 });
-export function registerServiceWorker() {
+
+function registerServiceWorker() {
     console.log('registering service worker');
     // Register the service worker
     if (navigator.serviceWorker) {
@@ -291,3 +292,5 @@ export function registerServiceWorker() {
             });
     }
 }
+
+registerServiceWorker();

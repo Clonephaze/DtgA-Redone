@@ -4,13 +4,11 @@
 import { navbarHandler } from "./NavbarHandler.js";
 import { initializeColorPicker } from "./ColorPicker.js";
 import { scrollButton } from "./ScrolltoTop.js";
-import { registerServiceWorker } from "../../service-worker.js";
 import { loadPageFromURL, loadPage } from "./PageLoader.js";
 
 let pageContent;
 
 $(document).ready(function () {
-    registerServiceWorker();
 
     // Fetches JSON data for page content and initializes page load based on URL hash.
     $.getJSON("OtherPages/pageContent.json", function (data) {
