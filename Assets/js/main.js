@@ -7,6 +7,7 @@ import { scrollButton } from "./ScrolltoTop.js";
 import { loadPageFromURL, loadPage } from "./PageLoader.js";
 
 let pageContent;
+let testing = false;
 
 $(document).ready(function () {
     // Register service worker
@@ -59,14 +60,27 @@ $(document).ready(function () {
 });
 
 function registerServiceWorker() {
-    // Register the service worker
-    if (navigator.serviceWorker) {
-        navigator.serviceWorker.register('../../DtgA-Redone/service-worker.js', { scope: '/DtgA-Redone/' })
+    // Register the service worker if not in testing mode
+    if (!testing && navigator.serviceWorker) {
+        navigator.serviceWorker.register('/DtgA-Redone/service-worker.js', { scope: '/DtgA-Redone/' })
             .then(function (registration) {
                 // Uncomment the line below to log successful registration
-                console.log('Service worker registered with scope:', registration.scope);
+                // console.log('Service worker registered with scope:', registration.scope);
             }).catch(function (error) {
                 console.error('Service worker registration failed:', error);
             });
+    }
+
+    // Unregister the service worker during testing
+    if (testing && navigator.serviceWorker) {
+        navigator.serviceWorker.getRegistrations().then(function (registrations) {
+            for (let registration of registrations) {
+                registration.unregister().then(function () {
+                    console.log('Service worker unregistered');
+                });
+            }
+        }).catch(function (error) {
+            console.error('Error unregistering service workers:', error);
+        });
     }
 }
