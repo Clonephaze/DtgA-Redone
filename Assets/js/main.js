@@ -9,6 +9,8 @@ import { loadPageFromURL, loadPage } from "./PageLoader.js";
 let pageContent;
 
 $(document).ready(function () {
+    // Register service worker
+    registerServiceWorker();    
 
     // Fetches JSON data for page content and initializes page load based on URL hash.
     $.getJSON("OtherPages/pageContent.json", function (data) {
@@ -55,3 +57,16 @@ $(document).ready(function () {
         }
     };
 });
+
+function registerServiceWorker() {
+    // Register the service worker
+    if (navigator.serviceWorker) {
+        navigator.serviceWorker.register('/DtgA-Redone/service-worker.js', { scope: '/DtgA-Redone/' })
+            .then(function (registration) {
+                // Uncomment the line below to log successful registration
+                // console.log('Service worker registered with scope:', registration.scope);
+            }).catch(function (error) {
+                console.error('Service worker registration failed:', error);
+            });
+    }
+}
