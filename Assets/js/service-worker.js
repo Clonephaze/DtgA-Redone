@@ -275,7 +275,7 @@ export function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             // Register the service worker
-            navigator.serviceWorker.register('/DtgA-Redone/service-worker.js', { scope: '/DtgA-Redone/' })
+            navigator.serviceWorker.register('/DtgA-Redone/Assets/js/service-worker.js', { scope: '/DtgA-Redone/' })
                 .then(function(registration) {
                     console.log('Service worker registered with scope:', registration.scope);
                 }).catch(function(error) {
