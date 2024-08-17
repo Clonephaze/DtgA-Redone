@@ -4,7 +4,7 @@
 import { navbarHandler } from "./NavbarHandler.js";
 import { initializeColorPicker } from "./ColorPicker.js";
 import { scrollButton } from "./ScrolltoTop.js";
-import { registerServiceWorker } from "./service-worker.js";
+import { registerServiceWorker } from "../../service-worker.js";
 import { loadPageFromURL, loadPage } from "./PageLoader.js";
 
 let pageContent;
