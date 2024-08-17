@@ -242,34 +242,42 @@ self.addEventListener('fetch', function (e) {
     );
 });
 
-// Cache resources during the installation of the service worker
-self.addEventListener('install', function (e) {
-    e.waitUntil(
-        caches.open(CACHE_NAME).then(function (cache) {
-            // console.log('installing cache : ' + CACHE_NAME);
-            return cache.addAll(URLS); // Add all specified URLs to the cache
-        })
-    );
+// // Cache resources during the installation of the service worker
+// self.addEventListener('install', function (e) {
+//     e.waitUntil(
+//         caches.open(CACHE_NAME).then(function (cache) {
+//             // console.log('installing cache : ' + CACHE_NAME);
+//             return cache.addAll(URLS); // Add all specified URLs to the cache
+//         })
+//     );
+// });
+
+// // Delete outdated caches during the activation of the service worker
+// self.addEventListener('activate', function (e) {
+//     e.waitUntil(
+//         caches.keys().then(function (keyList) {
+//             const cacheWhitelist = keyList.filter(key => key.indexOf(APP_PREFIX) === 0);
+//             cacheWhitelist.push(CACHE_NAME); // Include the current cache name in the whitelist
+
+//             return Promise.all(keyList.map(function (key, i) {
+//                 if (cacheWhitelist.indexOf(key) === -1) {
+//                     // Delete caches that are not in the whitelist
+//                     // console.log('deleting cache : ' + keyList[i]);
+//                     return caches.delete(keyList[i]);
+//                 }
+//             }));
+//         })
+//     );
+// });
+
+// Basic service worker for testing
+self.addEventListener('install', (event) => {
+    console.log('Service Worker installing.');
 });
 
-// Delete outdated caches during the activation of the service worker
-self.addEventListener('activate', function (e) {
-    e.waitUntil(
-        caches.keys().then(function (keyList) {
-            const cacheWhitelist = keyList.filter(key => key.indexOf(APP_PREFIX) === 0);
-            cacheWhitelist.push(CACHE_NAME); // Include the current cache name in the whitelist
-
-            return Promise.all(keyList.map(function (key, i) {
-                if (cacheWhitelist.indexOf(key) === -1) {
-                    // Delete caches that are not in the whitelist
-                    // console.log('deleting cache : ' + keyList[i]);
-                    return caches.delete(keyList[i]);
-                }
-            }));
-        })
-    );
+self.addEventListener('activate', (event) => {
+    console.log('Service Worker activating.');
 });
-
 export function registerServiceWorker() {
     console.log('registering service worker');
     // Register the service worker
@@ -279,7 +287,6 @@ export function registerServiceWorker() {
                 // Uncomment the line below to log successful registration
                 // console.log('Service worker registered with scope:', registration.scope);
             }).catch(function (error) {
-                console.log(error);
                 console.error('Service worker registration failed:', error);
             });
     }
