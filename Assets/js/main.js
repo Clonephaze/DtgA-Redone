@@ -59,7 +59,6 @@ $(document).ready(function () {
 });
 
 function registerServiceWorker() {
-    console.log('Registering service worker...');
     // Register the service worker
     if (navigator.serviceWorker) {
         navigator.serviceWorker.register('../../DtgA-Redone/service-worker.js', { scope: '/DtgA-Redone/' })
