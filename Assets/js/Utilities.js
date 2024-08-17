@@ -17,3 +17,14 @@ function animateAutoHeight(duration, easing, callback) {
 * eg. $(selector).animateAutoHeight(500, 'swing', function() {});
 */
 jQuery.fn.animateAutoHeight = animateAutoHeight;
+
+
+export function animateMobileButtonPress(element) {
+    if (!element.hasClass('accordion-button')) {
+        element.addClass('button-tapped');
+
+        setTimeout(() => {
+            element.removeClass('button-tapped');
+        }, 125);
+    }
+}

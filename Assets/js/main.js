@@ -5,6 +5,7 @@ import { navbarHandler } from "./NavbarHandler.js";
 import { initializeColorPicker } from "./ColorPicker.js";
 import { scrollButton } from "./ScrolltoTop.js";
 import { loadPageFromURL, loadPage } from "./PageLoader.js";
+import { animateMobileButtonPress } from "./Utilities.js";
 
 let pageContent;
 let testing = false;
@@ -42,6 +43,11 @@ $(document).ready(function () {
             // Handle external link
             window.open(href, '_blank', 'noopener,noreferrer');
         }
+    });
+
+    $(document).on('touchend', 'button', function () {
+        let button = $(this);
+        animateMobileButtonPress(button);
     });
 
     // Load additional functions

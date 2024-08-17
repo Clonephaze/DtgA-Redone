@@ -60,6 +60,13 @@ body {
     z-index: -1;
 }
 
+button {
+    transition: transform 100ms ease;
+}
+.button-tapped {
+    transform: scale(0.9);
+}
+
 /****** NAV ******/
 nav {
     display: flex;
