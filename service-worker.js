@@ -222,11 +222,11 @@ self.addEventListener('fetch', function (e) {
         caches.match(strippedUrl).then(function (response) {
             if (response && !isResponseStale(response)) {
                 // If the resource is cached and not stale, return it
-                // console.log('responding with cache : ' + e.request.url);
+                console.log('responding with cache : ' + e.request.url);
                 return response;
             } else {
                 // If the resource is not cached or is stale, fetch it from the network
-                // console.log('file is not cached or is stale, fetching : ' + e.request.url);
+                console.log('file is not cached or is stale, fetching : ' + e.request.url);
                 return fetch(e.request).then(function (networkResponse) {
                     if (networkResponse.ok) {
                         // Cache the fetched resource if the response is valid
@@ -244,10 +244,9 @@ self.addEventListener('fetch', function (e) {
 
 // Cache resources during the installation of the service worker
 self.addEventListener('install', function (e) {
-    console.log('installing ' + CACHE_NAME);
     e.waitUntil(
         caches.open(CACHE_NAME).then(function (cache) {
-            // console.log('installing cache : ' + CACHE_NAME);
+            console.log('installing cache : ' + CACHE_NAME);
             return cache.addAll(URLS); // Add all specified URLs to the cache
         })
     );
@@ -255,7 +254,6 @@ self.addEventListener('install', function (e) {
 
 // Delete outdated caches during the activation of the service worker
 self.addEventListener('activate', function (e) {
-    console.log('activating ' + CACHE_NAME);
     e.waitUntil(
         caches.keys().then(function (keyList) {
             const cacheWhitelist = keyList.filter(key => key.indexOf(APP_PREFIX) === 0);
@@ -264,11 +262,10 @@ self.addEventListener('activate', function (e) {
             return Promise.all(keyList.map(function (key, i) {
                 if (cacheWhitelist.indexOf(key) === -1) {
                     // Delete caches that are not in the whitelist
-                    // console.log('deleting cache : ' + keyList[i]);
+                    console.log('deleting cache : ' + keyList[i]);
                     return caches.delete(keyList[i]);
                 }
             }));
         })
     );
 });
-
