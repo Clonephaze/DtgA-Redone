@@ -61,7 +61,7 @@ $(document).ready(function () {
 function registerServiceWorker() {
     // Register the service worker
     if (navigator.serviceWorker) {
-        navigator.serviceWorker.register('/DtgA-Redone/service-worker.js', { scope: '/DtgA-Redone/' })
+        navigator.serviceWorker.register('../../DtgA-Redone/service-worker.js', { scope: '/DtgA-Redone/' })
             .then(function (registration) {
                 // Uncomment the line below to log successful registration
                 // console.log('Service worker registered with scope:', registration.scope);
