@@ -271,16 +271,14 @@ self.addEventListener('activate', function (e) {
 });
 
 export function registerServiceWorker() {
-    // Check if service workers are supported
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            // Register the service worker
-            navigator.serviceWorker.register('/DtgA-Redone/service-worker.js', { scope: '/DtgA-Redone/' })
-                .then(function(registration) {
-                    console.log('Service worker registered with scope:', registration.scope);
-                }).catch(function(error) {
-                    console.error('Service worker registration failed:', error);
-                });
-        });
+    // Register the service worker
+    if (navigator.serviceWorker) {
+        navigator.serviceWorker.register('/DtgA-Redone/service-worker.js', { scope: '/DtgA-Redone/' })
+            .then(function (registration) {
+                // Uncomment the line below to log successful registration
+                // console.log('Service worker registered with scope:', registration.scope);
+            }).catch(function (error) {
+                console.error('Service worker registration failed:', error);
+            });
     }
 }
