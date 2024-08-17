@@ -244,6 +244,7 @@ self.addEventListener('fetch', function (e) {
 
 // Cache resources during the installation of the service worker
 self.addEventListener('install', function (e) {
+    console.log('installing ' + CACHE_NAME);
     e.waitUntil(
         caches.open(CACHE_NAME).then(function (cache) {
             // console.log('installing cache : ' + CACHE_NAME);
@@ -254,6 +255,7 @@ self.addEventListener('install', function (e) {
 
 // Delete outdated caches during the activation of the service worker
 self.addEventListener('activate', function (e) {
+    console.log('activating ' + CACHE_NAME);
     e.waitUntil(
         caches.keys().then(function (keyList) {
             const cacheWhitelist = keyList.filter(key => key.indexOf(APP_PREFIX) === 0);

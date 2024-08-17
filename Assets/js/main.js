@@ -51,20 +51,21 @@ $(document).ready(function () {
     // Handles browser history back/forward button clicks.
     window.onpopstate = function (event) {
         if (event.state && event.state.pageId) {
-            loadPage(event.state.pageId);
+            loadPage(event.state.pageId, pageContent);
         } else {
-            loadPage('homePage');
+            loadPage('homePage', pageContent);
         }
     };
 });
 
 function registerServiceWorker() {
+    console.log('Registering service worker...');
     // Register the service worker
     if (navigator.serviceWorker) {
         navigator.serviceWorker.register('../../DtgA-Redone/service-worker.js', { scope: '/DtgA-Redone/' })
             .then(function (registration) {
                 // Uncomment the line below to log successful registration
-                // console.log('Service worker registered with scope:', registration.scope);
+                console.log('Service worker registered with scope:', registration.scope);
             }).catch(function (error) {
                 console.error('Service worker registration failed:', error);
             });
