@@ -160,11 +160,17 @@ function addCardEventListeners() {
         $button.attr('aria-expanded', !isExpanded);
 
         if (!isExpanded) {
-            $descContent.animateAutoHeight(animationDuration, 'swing', 5, function () {
+            $descContent.animateAutoHeight(function () {
                 $(this).css('height', 'auto');
             });
         } else {
-            $descContent.animate({ height: 0 }, animationDuration);
+            // Collapse the content to height 0
+            let currentHeight = $descContent.height(); // Get the current height of the content
+            $descContent.height(currentHeight); // Set to current height
+            // Trigger a reflow to ensure the height is applied before animating to 0
+            requestAnimationFrame(function () {
+                $descContent.css({ height: "0" });
+            });
         }
 
         let weaponNumber = $(this).data('weapon-number');
@@ -188,11 +194,17 @@ function addCardEventListeners() {
 
         // Animate the location text
         if (!isExpanded) {
-            $locationText.animateAutoHeight(animationDuration, 'swing', function () {
+            $locationText.animateAutoHeight(function () {
                 $(this).css('height', 'auto');
             });
         } else {
-            $locationText.animate({ height: 0 }, animationDuration);
+            // Collapse the content to height 0
+            let currentHeight = $locationText.height(); // Get the current height of the content
+            $locationText.height(currentHeight); // Set to current height
+            // Trigger a reflow to ensure the height is applied before animating to 0
+            requestAnimationFrame(function () {
+                $locationText.css({ height: "0" });
+            });
         }
     });
 }

@@ -15,12 +15,17 @@ export function navbarHandler() {
 
         if (!dropdownExpanded) {
             // Expand dropdown and animate height to auto
-            dropdown.animateAutoHeight(animationDurationShort, 'swing', function () {
+            dropdown.animateAutoHeight(function () {
                 $(this).css('height', 'auto');
             });
         } else {
             // Collapse dropdown to height 0
-            dropdown.animate({ height: "0" }, animationDurationShort);
+            let currentHeight = dropdown.height(); // Get the current height of the dropdown
+            dropdown.height(currentHeight); // Set to current height
+            // Trigger a reflow to ensure the height is applied before animating to 0
+            requestAnimationFrame(function () {
+                dropdown.css({ height: "0" });
+            });
         }
     });
 
@@ -34,13 +39,16 @@ export function navbarHandler() {
         if (!ariaExpanded && !expanding) {
             expanding = true;
             // Expand navigation list and animate height to auto
-            $('.nav-list').animateAutoHeight(animationDurationShort, 'linear', 10, function () {
+            $('.nav-list').animateAutoHeight(function () {
                 $(this).css('height', 'auto');
             });
         } else {
-            expanding = false;
-            // Collapse navigation list to height 0
-            $('.nav-list').animate({ height: "0" }, animationDurationShort);
+            let currentHeight = $('.nav-list').height();
+            $('.nav-list').height(currentHeight); // Set to current height
+            // Trigger a reflow to ensure the height is applied before animating to 0
+            requestAnimationFrame(function () {
+                $('.nav-list').css({ height: "0" });
+            });
         }
     });
 

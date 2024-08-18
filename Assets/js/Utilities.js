@@ -2,26 +2,25 @@
 export let animationDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300; // Quick checks to see if the user prefers reduced motion
 
 // Function to animate element height to its auto height
-function animateAutoHeight(duration, easing, bounceHeight, callback) {
+function animateAutoHeight(callback) {
     const elem = $(this),
-        bounceHeightValue = bounceHeight || 0,
         originalHeight = elem.height(),
         autoHeight = elem.css('height', 'auto').height();
-    let bounce = autoHeight + bounceHeightValue;
 
-    if (typeof bounceHeight === 'number') {
-        // Set the element's height to the original height and stop any ongoing animations
-        elem.height(originalHeight).stop().animate({ height: bounce }, duration, easing, function () {
-            // Transition to the actual height smoothly
-            $(this).animate({ height: autoHeight }, duration*0.4, 'swing', function () {
-                if (typeof callback === 'function') callback.call(this);
+    // Temporarily reset height back to original height
+    elem.height(originalHeight);
+
+    // Use requestAnimationFrame to ensure the height is set after any previous animations or layout reflows
+    requestAnimationFrame(function () {
+        elem.height(autoHeight);
+
+        // If a callback is provided, set it to run after the transition ends
+        if (typeof callback === 'function') {
+            elem.one('transitionend', function () {
+                callback.call(this);
             });
-        });
-    } else {
-        elem.height(originalHeight).stop().animate({ height: autoHeight }, duration, easing, function () {
-            if (typeof callback === 'function') callback.call(this);
-        });
-    }
+        }
+    });
 }
 
 /* Attach the function to jQuery directly, so it can be used as a jQuery plugin

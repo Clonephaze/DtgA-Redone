@@ -33,7 +33,7 @@ function handleAccordionClicks() {
                 $(this).css('height', ''); // Reset height after animation
             });
 
-            content.addClass('show').stop().animateAutoHeight(animationDuration, 'swing', function () {
+            content.addClass('show').stop().animateAutoHeight(function () {
                 $(this).css('height', 'auto');
             });
         }
