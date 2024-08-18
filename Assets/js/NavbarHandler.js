@@ -15,7 +15,7 @@ export function navbarHandler() {
 
         if (!dropdownExpanded) {
             // Expand dropdown and animate height to auto
-            dropdown.animateAutoHeight(animationDurationShort, 'linear', function () {
+            dropdown.animateAutoHeight(animationDurationShort, 'swing', function () {
                 $(this).css('height', 'auto');
             });
         } else {
@@ -34,7 +34,7 @@ export function navbarHandler() {
         if (!ariaExpanded && !expanding) {
             expanding = true;
             // Expand navigation list and animate height to auto
-            $('.nav-list').animateAutoHeight(animationDurationShort, 'swing', function () {
+            $('.nav-list').animateAutoHeight(animationDurationShort, 'linear', 10, function () {
                 $(this).css('height', 'auto');
             });
         } else {

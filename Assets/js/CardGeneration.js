@@ -1,4 +1,5 @@
 // CardGeneration.js
+import { animationDuration } from "./Utilities.js";
 
 /**
  * Fetches the generationData.json file and generates cards for each item in each subcategory for each main category.
@@ -159,7 +160,7 @@ function addCardEventListeners() {
         $button.attr('aria-expanded', !isExpanded);
 
         if (!isExpanded) {
-            $descContent.animateAutoHeight(animationDuration, 'swing', function () {
+            $descContent.animateAutoHeight(animationDuration, 'swing', 5, function () {
                 $(this).css('height', 'auto');
             });
         } else {

@@ -61,10 +61,18 @@ body {
 }
 
 button {
-    transition: transform 100ms ease;
+    transition: transform 180ms cubic-bezier(.8,.8,0.5,2);
+
+    & h2 {
+        transition: transform 180ms cubic-bezier(.8,.8,0.5,2);
+    }
 }
-.button-tapped {
-    transform: scale(0.9);
+button.button-tapped {
+    transform: scale(0.93);
+}
+
+h2.button-tapped {
+    transform: scale(0.97);
 }
 
 /****** NAV ******/
