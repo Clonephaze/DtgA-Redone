@@ -30,7 +30,6 @@
     <!-- Scripts -->
     <link rel="canonical" href="https://clonephaze.github.io/DtgA-Redone/">
     <script src="./Assets/js/OtherCreatorsJs/jquery-3.7.1.min.js"></script>
-    <script src="./Assets/js/OtherCreatorsJs/jquery.bez.min.js"></script>
     <script src="./Assets/js/main.js" type="module"></script>
     <script src="./Assets/js/OtherCreatorsJs/tsparticles.bundle.min.js"></script>
     <script src="./Assets/js/OtherCreatorsJs/TSParticlesjquery.js"></script>
@@ -54,24 +53,24 @@
             </path>
         </svg>
         <ul class="nav-list" aria-label="Dangerous to go Alone Wiki">
-            <li role="none" class="nav-item"><button role="menuitem" class="pageNav" role="link" id="homePage">Home</button></li>
-            <li role="none" class="nav-item"><button role="menuitem" class="pageNav" role="link" id="aboutPage">About</button></li>
-            <li role="none" class="nav-item"><button role="menuitem" class="pageNav" role="link" id="gettingStartedPage">Getting Started</button></li>
+            <li role="none" class="nav-item"><button role="menuitem" class="pageNav" role="link" data-href="#homePage">Home</button></li>
+            <li role="none" class="nav-item"><button role="menuitem" class="pageNav" role="link" data-href="#aboutPage">About</button></li>
+            <li role="none" class="nav-item"><button role="menuitem" class="pageNav" role="link" data-href="#gettingStartedPage">Getting Started</button></li>
             <li role="none" class="nav-item">
                 <button id="wiki-list-dropdown" aria-label="Wiki Dropdown button" role="menuitem" aria-expanded="false" aria-controls="nav-dropdown">Wiki</button>
                 <div class="nav-dropdown" aria-label="Wiki Dropdown">
                     <ul aria-label="Wiki">
-                        <li role="none"><button role="menuitem" class="pageNav" id="newMechanicsPage">New Mechanics</button></li>
-                        <li role="none"><button role="menuitem" class="pageNav" id="statsPage">Stats & Leveling Up</button></li>
-                        <li role="none"><button role="menuitem" class="pageNav" id="itemsPage">DtgA Items</button></li>
-                        <li role="none"><button role="menuitem" class="pageNav" id="aspSpellcastingPage">Spellcasting</button></li>
-                        <li role="none"><button role="menuitem" class="pageNav" id="enemiesPage">Enemies</button></li>
-                        <li role="none"><button role="menuitem" class="pageNav" id="npcsPage">Vendors and Companions</button></li>
-                        <li role="none"><button role="menuitem" class="pageNav" id="locationsPage">Gadget Locations</button></li>
+                        <li role="none"><button role="menuitem" class="pageNav" data-href="#newMechanicsPage">New Mechanics</button></li>
+                        <li role="none"><button role="menuitem" class="pageNav" data-href="#statsPage">Stats & Leveling Up</button></li>
+                        <li role="none"><button role="menuitem" class="pageNav" data-href="#itemsPage">DtgA Items</button></li>
+                        <li role="none"><button role="menuitem" class="pageNav" data-href="#aspSpellcastingPage">Spellcasting</button></li>
+                        <li role="none"><button role="menuitem" class="pageNav" data-href="#enemiesPage">Enemies</button></li>
+                        <li role="none"><button role="menuitem" class="pageNav" data-href="#npcsPage">Vendors and Companions</button></li>
+                        <li role="none"><button role="menuitem" class="pageNav" data-href="#locationsPage">Gadget Locations</button></li>
                     </ul>
                 </div>
             </li>
-            <li role="none" class="nav-item"><button role="menuitem" class="pageNav" id="faqPage">FAQ</button></li>
+            <li role="none" class="nav-item"><button role="menuitem" class="pageNav" data-href="#faqPage">FAQ</button></li>
             <div class="indicator"></div>
             <button aria-haspopup="true" aria-label="Open Color Picker" aria-controls="color-picker-modal" title="Customize the site's primary color!" id="color-picker-btn"><i class='bx bxs-palette'></i></button>
         </ul>
@@ -90,9 +89,9 @@
 
         </div>
         <div class="site-footer">
-            <div class="social-media-button" id="site-button" data-href="https://discord.gg/qNyn26aWKB" role="link" aria-label="D t g A Discord Link"><i class='bx bxl-discord-alt'></i></div>
-            <div class="social-media-button" id="site-button" data-href="https://github.com/Clonephaze/DtgA" role="link" aria-label="Git Hub for clonephaze link"><i class='bx bxl-github'></i></div>
-            <div class="social-media-button" id="site-button" data-href="https://www.patreon.com/ZoeyEule/posts" role="link" aria-label="Zoey's Patreon Link"><i class='bx bxl-patreon'></i></div>
+            <div class="social-media-button pageNav" data-href="https://discord.gg/qNyn26aWKB" role="link" aria-label="D t g A Discord Link"><i class='bx bxl-discord-alt'></i></div>
+            <div class="social-media-button pageNav" data-href="https://github.com/Clonephaze/DtgA" role="link" aria-label="Git Hub for clonephaze link"><i class='bx bxl-github'></i></div>
+            <div class="social-media-button pageNav" data-href="https://www.patreon.com/ZoeyEule/posts" role="link" aria-label="Zoey's Patreon Link"><i class='bx bxl-patreon'></i></div>
         </div>
         <div class="scroll-button-container">
             <button title="Scroll to top" class="scroll-button" id="scroll-btn">

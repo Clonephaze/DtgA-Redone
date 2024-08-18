@@ -19,19 +19,19 @@ $(document).ready(function () {
         pageContent = data;
         loadPageFromURL(pageContent);
 
-        // Event handler for navigation clicks
-        $(".pageNav").on('click', function () {
-            const pageId = $(this).attr('id');
-
-            history.pushState({ pageId: pageId }, '', '#' + pageId);
-            loadPage(pageId, pageContent);
-        });
     }).fail(function () {
         console.error("Failed to load page content.");
     });
+    
+    // Event handler for navigation clicks
+    // $(".pageNav").on('click', function () {
+    //     const pageId = $(this).attr('id');
 
+    //     history.pushState({ pageId: pageId }, '', '#' + pageId);
+    //     loadPage(pageId, pageContent);
+    // });
     // Event handler for site navigation buttons
-    $(document).on('click', '#site-button', function () {
+    $(document).on('click', '.pageNav', function () {
         const href = $(this).data('href');
 
         if (href.startsWith('#')) {

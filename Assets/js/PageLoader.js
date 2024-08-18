@@ -90,7 +90,9 @@ function updateIndicatorOnPageLoad(pageId) {
     }
 
     // Determine which link should be active based on the pageId
-    let $activeLink = $navLinks.filter('[id="' + pageId + '"]');
+    let $activeLink = $navLinks.filter(function() {
+        return $(this).data('href') === '#' + pageId;
+    });
 
     if ($activeLink.length > 0 && wikiPages.includes(pageId)) {
         // If the active link is not found among regular links, check if it's a wiki page
