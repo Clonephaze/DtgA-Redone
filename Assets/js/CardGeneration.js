@@ -46,7 +46,7 @@ export function generatePageContent(mainCategory, subcategoryContainers) {
  * @param {object} subcategoryContainers - An object mapping subcategories to their container IDs.
  */
 function generateCard(subcategoryData, subcategory, subcategoryContainers) {
-    let weaponNumber = 0; 
+    let weaponNumber = 0;
     subcategoryData.forEach(function (item) {
         let cardContent;
         // Checks if the item has multiple descriptions, activates the appropriate function
@@ -156,12 +156,14 @@ function addCardEventListeners() {
         $card.find('.desc-title').not($button).attr('aria-expanded', 'false');
         $card.find('.weapon-desc').not($descContent).animate({ height: 0 }, animationDuration);
 
-        // Slide down the selected description and toggle its aria-expanded attribute
+        // Toggle the aria-expanded attribute for the selected description
         $button.attr('aria-expanded', !isExpanded);
 
         if (!isExpanded) {
-            $descContent.animateAutoHeight(function () {
-                $(this).css('height', 'auto');
+            $descContent.setAutoHeight(function () {
+                requestAnimationFrame(function () {
+                    $descContent.css({ height: "auto" });
+                });
             });
         } else {
             // Collapse the content to height 0
@@ -173,9 +175,9 @@ function addCardEventListeners() {
             });
         }
 
-        let weaponNumber = $(this).data('weapon-number');
-        let upgradeNumber = $(this).data('upgrade-number');
-        let $carousel = $(this).closest('.card-box').find('.image-carousel');
+        let weaponNumber = $button.data('weapon-number');
+        let upgradeNumber = $button.data('upgrade-number');
+        let $carousel = $card.find('.image-carousel');
         let $targetItem = $carousel.find(`.carousel-item[data-weapon-number="${weaponNumber}"][data-upgrade-number="${upgradeNumber}"]`);
         $carousel.animate({
             scrollLeft: $carousel.scrollLeft() + $targetItem.position().left
@@ -194,8 +196,10 @@ function addCardEventListeners() {
 
         // Animate the location text
         if (!isExpanded) {
-            $locationText.animateAutoHeight(function () {
-                $(this).css('height', 'auto');
+            $locationText.setAutoHeight(function () {
+                requestAnimationFrame(function () {
+                    $locationText.css({ height: "auto" });
+                });
             });
         } else {
             // Collapse the content to height 0

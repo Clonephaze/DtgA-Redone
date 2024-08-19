@@ -1,8 +1,8 @@
 // Utilities.js
 export let animationDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300; // Quick checks to see if the user prefers reduced motion
 
-// Function to animate element height to its auto height
-function animateAutoHeight(callback) {
+// Function to set the element height to its auto height
+function setAutoHeight(callback) {
     const elem = $(this),
         originalHeight = elem.height(),
         autoHeight = elem.css('height', 'auto').height();
@@ -24,10 +24,10 @@ function animateAutoHeight(callback) {
 }
 
 /* Attach the function to jQuery directly, so it can be used as a jQuery plugin
-* eg. $(selector).animateAutoHeight(500, 'swing'); or
-* eg. $(selector).animateAutoHeight(500, 'swing', function() {});
+* eg. $(selector).setAutoHeight(); or
+* eg. $(selector).setAutoHeight(function() {});
 */
-jQuery.fn.animateAutoHeight = animateAutoHeight;
+jQuery.fn.setAutoHeight = setAutoHeight;
 
 
 export function animateMobileButtonPress(element) {
