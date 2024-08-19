@@ -38,11 +38,12 @@ export function loadPage(pageId, pageContent) {
     // Responsive handling for navigation menu animation
     if ($(window).width() <= 768) {
         $('.nav-list').animate({ height: "0" }, 200).attr('aria-expanded', 'false');
-        $('.nav-dropdown').animate({ height: "0" }, 200);
+        $('.nav-dropdown').animate({ height: "0" }, 200).attr('aria-expanded', 'false');
         $('#wiki-list-dropdown').attr('aria-expanded', 'false');
     } else {
-        $('.nav-dropdown').animate({ height: "0" }, 200);
+        $('.nav-dropdown').animate({ height: "0" }).attr('aria-expanded', 'false');
         $('#wiki-list-dropdown').attr('aria-expanded', 'false');
+
     }
 
     // Find the content for the specified pageId
