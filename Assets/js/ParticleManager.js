@@ -105,11 +105,11 @@ export async function initializeParticles() {
             reduceDuplicates: false,
             shape: { close: true, fill: true, options: {}, type: "circle" },
             size: {
-                value: { min: 1, max: 3 },
+                value: { min: 2, max: 3 },
                 animation: {
                     count: 0,
-                    enable: false,
-                    speed: 5,
+                    enable: true,
+                    speed: 1,
                     decay: 0,
                     delay: 0,
                     sync: false,
