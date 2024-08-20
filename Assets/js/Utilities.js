@@ -1,47 +1,106 @@
-// Utilities.js
-export let animationDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300; // Quick checks to see if the user prefers reduced motion
+export let animationDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300; // Quick check to see if the user prefers reduced motion
 
-// Function to set the element height to its auto height
-function setAutoHeight(callback) {
-    const elem = $(this),
-        originalHeight = elem.height(),
-        autoHeight = elem.css('height', 'auto').height();
+/**
+ * Function to set the element height to its auto height.
+ * 
+ * @param {function} [callback] - Optional callback to run after the transition ends.
+ */
+export function setAutoHeight(element, callback) {
+    let hasStyle = element.getAttribute('style');
+    if (element.classList.contains('transitioning')|| hasStyle === 'height: auto') return; // Prevent multiple transitions
 
-    // Temporarily reset height back to original height
-    elem.height(originalHeight);
+    element.classList.add('transitioning'); // Add transitioning class
 
-    // Use requestAnimationFrame to ensure the height is set after any previous animations or layout reflows
-    requestAnimationFrame(function () {
-        elem.height(autoHeight);
+    // Ensure the element has a transition set up in CSS
+    const originalHeight = element.clientHeight;
 
-        // If a callback is provided, set it to run after the transition ends
+    // Temporarily set height to auto to get the natural height
+    element.style.height = 'auto';
+    const autoHeight = element.scrollHeight + 'px';
+
+    // Reset height to the original height to trigger the transition
+    element.style.height = originalHeight + 'px';
+
+    // Trigger a reflow to ensure the transition works correctly
+    void element.offsetHeight; // This forces a reflow
+
+    // Apply the auto height
+    element.style.height = autoHeight;
+
+    // If a callback is provided, run it after the transition ends
+    const transitionEndCallback = () => {
+        element.style.height = 'auto'; // Ensure height is set to auto after the transition
+        element.classList.remove('transitioning'); // Remove transitioning class
+        element.removeEventListener('transitionend', transitionEndCallback);
         if (typeof callback === 'function') {
-            elem.one('transitionend', function () {
-                callback.call(this);
-            });
+            callback.call(element);
         }
-    });
+    };
+
+    element.addEventListener('transitionend', transitionEndCallback);
+
+    // Handle cases where the transitionend event might not fire
+    setTimeout(() => {
+        if (element.classList.contains('transitioning')) {
+            element.style.height = 'auto'; // Ensure height is set to auto if transition does not end
+            element.classList.remove('transitioning'); // Remove transitioning class
+        }
+    }, 500); // Adjust timeout duration if needed
 }
 
-/* Attach the function to jQuery directly, so it can be used as a jQuery plugin
-* eg. $(selector).setAutoHeight(); or
-* eg. $(selector).setAutoHeight(function() {});
-*/
-jQuery.fn.setAutoHeight = setAutoHeight;
+export function collapseContent(element) {
+    if (element.classList.contains('transitioning')) return; // Prevent multiple transitions
 
+    element.classList.add('transitioning'); // Add transitioning class
 
+    const currentHeight = element.clientHeight + 'px';
+    element.style.height = currentHeight;
+
+    // Force reflow
+    void element.offsetHeight;
+
+    requestAnimationFrame(() => {
+        element.style.height = '0'; // Collapse the content
+    });
+
+    // If a callback is provided, run it after the transition ends
+    const transitionEndCallback = () => {
+        element.removeAttribute('style'); // Ensure height is reset
+        element.classList.remove('transitioning'); // Remove transitioning class
+        element.removeEventListener('transitionend', transitionEndCallback);
+    };
+
+    element.addEventListener('transitionend', transitionEndCallback);
+
+    // Handle cases where the transitionend event might not fire
+    setTimeout(() => {
+        if (element.classList.contains('transitioning')) {
+            element.removeAttribute('style'); // Ensure height is reset if transition does not end
+            element.classList.remove('transitioning'); // Remove transitioning class
+        }
+    }, 500); // Adjust timeout duration if needed
+}
+
+/**
+ * Function to animate the button press effect on mobile.
+ * 
+ * @param {HTMLElement} element - The button element to animate.
+ */
 export function animateMobileButtonPress(element) {
-    if (!element.hasClass('accordion-button')) {
-        element.addClass('button-tapped');
+    if (!element.classList.contains('accordion-button')) {
+        element.classList.add('button-tapped');
 
         setTimeout(() => {
-            element.removeClass('button-tapped');
+            element.classList.remove('button-tapped');
         }, 125);
     } else {
-        element.find('h2').addClass('button-tapped');
+        const h2Element = element.querySelector('h2');
+        if (h2Element) {
+            h2Element.classList.add('button-tapped');
 
-        setTimeout(() => {
-            element.find('h2').removeClass('button-tapped');
-        }, 125);
+            setTimeout(() => {
+                h2Element.classList.remove('button-tapped');
+            }, 125);
+        }
     }
 }

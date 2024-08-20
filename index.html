@@ -29,12 +29,9 @@
     <meta name="theme-color" content="color-mix(in srgb, rgb(165, 100%, 76%) 15%, rgb(0, 0, 5))">
     <!-- Scripts -->
     <link rel="canonical" href="https://clonephaze.github.io/DtgA-Redone/">
-    <script src="./Assets/js/OtherCreatorsJs/jquery-3.7.1.min.js"></script>
-    <script src="./Assets/js/main.js" type="module"></script>
     <script src="./Assets/js/OtherCreatorsJs/tsparticles.bundle.min.js"></script>
-    <script src="./Assets/js/OtherCreatorsJs/TSParticlesjquery.js"></script>
     <script src="./Assets/js/OtherCreatorsJs/iro.min.js"></script>
-    <script src="./service-worker.js"></script>
+    <script src="./Assets/js/main.js" type="module"></script>
 </head>
 <body>
     <div class="homepageBg"></div>
@@ -80,7 +77,9 @@
                     <button title="Reset back to the default color for DtgA!" id="reset-button" class="reset-btn"><i role="none" aria-hidden="true" class='bx bx-reset'></i></button>
                     <button title="Close the color picker" aria-controls="color-picker-modal" id="modal-close-button" class="close-btn"><i role="none" aria-hidden="true" class='bx bx-x'></i></button>
                 </div>
-                <div id="picker" aria-description="A circle containing a spectrum of colors going round, like a clock. Going in clockwise order, yellow orange red purple pink blue teal green and back to yellow. The color you choose will be the primary color of the site."></div>
+                <div id="picker"
+                    aria-description="A circle containing a spectrum of colors going round, like a clock. Going in clockwise order, yellow orange red purple pink blue teal green and back to yellow. The color you choose will be the primary color of the site.">
+                </div>
             </div>
         </div>
     </nav>

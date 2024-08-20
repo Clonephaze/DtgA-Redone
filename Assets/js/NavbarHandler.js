@@ -1,6 +1,8 @@
-// NavbarHandler.js
-let animationDurationShort = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 200;
-/*
+import { collapseContent, setAutoHeight } from "./Utilities.js";
+
+// let animationDurationShort = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 200;
+
+/**
  * Handles the behavior of the navigation bar, including dropdown menus and mobile navigation toggles.
  * Adjusts the layout based on user interactions and viewport size.
  *
@@ -8,45 +10,49 @@ let animationDurationShort = window.matchMedia('(prefers-reduced-motion: reduce)
  */
 export function navbarHandler() {
     // Handle click event on the wiki list dropdown
-    $('#wiki-list-dropdown').on('click', function () {
-        let dropdownExpanded = $(this).attr('aria-expanded');
-        const navDropdown = $('.nav-dropdown');
-        if (dropdownExpanded === 'false') {
-            $(this).attr('aria-expanded', 'true');
-            navDropdown.attr('aria-expanded', 'true');
-            navDropdown.setAutoHeight(function () {
-                requestAnimationFrame(function () {
-                    navDropdown.css({ height: "auto" });
-                })
-            });
-        } else if (dropdownExpanded === 'true') {
-            $(this).attr('aria-expanded', 'false');
-            navDropdown.attr('aria-expanded', 'false');
-            navDropdown.animate({ height: "0" });
-        }
-    });
+    const wikiDropdown = document.getElementById('wiki-list-dropdown');
+    const navDropdown = document.querySelector('.nav-dropdown');
 
-    // Handle click event on the navigation toggle for mobile view
-    $('.nav-toggle').on('click', function () {
-        let ariaExpanded = $(this).attr('aria-expanded');
-        const navList = $('.nav-list');
-        if (ariaExpanded === 'false') {
-            $(this).attr('aria-expanded', 'true');
-            navList.attr('aria-expanded', 'true');
-            navList.setAutoHeight(function () {
-                requestAnimationFrame(function () {
-                    navList.css({ height: "auto" });
-                })
-            });
-        } else if (ariaExpanded === 'true') {
-            $(this).attr('aria-expanded', 'false');
-            navList.attr('aria-expanded', 'false');
-            navList.animate({ height: 0 });
-        }
-    });
+    if (wikiDropdown && navDropdown) {
+        wikiDropdown.addEventListener('click', function () {
+            const dropdownExpanded = wikiDropdown.getAttribute('aria-expanded');
+            if (dropdownExpanded === 'false') {
+                wikiDropdown.setAttribute('aria-expanded', 'true');
+                navDropdown.setAttribute('aria-expanded', 'true');
+                setAutoHeight(navDropdown);
+            } else if (dropdownExpanded === 'true') {
+                wikiDropdown.setAttribute('aria-expanded', 'false');
+                navDropdown.setAttribute('aria-expanded', 'false');
+                collapseContent(navDropdown);
+            }
+        });
+    }
+    
+    const navToggle = document.querySelector('.nav-toggle');
+    const navList = document.querySelector('.nav-list');
+    
+    if (navToggle && navList) {
+        navToggle.addEventListener('click', function () {
+            const ariaExpanded = navToggle.getAttribute('aria-expanded');
+            if (ariaExpanded === 'false') {
+                navToggle.setAttribute('aria-expanded', 'true');
+                navList.setAttribute('aria-expanded', 'true');
+                setAutoHeight(navList);
+            } else if (ariaExpanded === 'true') {
+                navToggle.setAttribute('aria-expanded', 'false');
+                navList.setAttribute('aria-expanded', 'false');
+                collapseContent(navList);
+            }
+        });
+    }
 
     // Adjust padding-top of the content section based on navbar height
-    const navbarHeight = $('nav').height();
-    const navbarOffset = navbarHeight + 25;
-    $('.content-section').css('padding-top', navbarOffset);
+    const navbar = document.querySelector('nav');
+    const contentSection = document.querySelector('.content-section');
+
+    if (navbar && contentSection) {
+        const navbarHeight = navbar.offsetHeight;
+        const navbarOffset = navbarHeight + 25;
+        contentSection.style.paddingTop = navbarOffset + 'px';
+    }
 }

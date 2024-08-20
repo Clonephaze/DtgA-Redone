@@ -1,5 +1,5 @@
-// FAQPage.js
-import { animationDuration } from "./Utilities.js";
+import { animationDuration, setAutoHeight, collapseContent } from "./Utilities.js";
+
 /**
  * Sets up the FAQ page by opening the first accordion item.
  */
@@ -9,33 +9,48 @@ export function setupFAQPage() {
     setupFAQPage.isInitialized = true;
 
     // Open the first accordion item by default
-    $('.accordion-content').first().addClass('show').css('height', 'auto');
-
-    // Handle click events for accordion buttons
-    handleAccordionClicks();
+    const firstContent = document.querySelector('.accordion-content');
+    if (firstContent) {
+        firstContent.classList.add('show');
+        firstContent.style.height = 'auto';
+    }
 }
 
 /**
  * Handles click events for accordion buttons.
  */
-function handleAccordionClicks() {
+export function handleAccordionClicks() {
     // Unbind previous click handlers to prevent multiple bindings
-    $(document).off('click', '.accordion-button');
+    document.querySelectorAll('.accordion-button').forEach(button => {
+        button.removeEventListener('click', handleAccordionClick);
+    });
 
     // Bind the click handler
-    $(document).on('click', '.accordion-button', function () {
-        let content = $(this).next('.accordion-content');
-
-        if (content.hasClass('show')) {
-            content.removeClass('show').stop().animate({ height: 0 }, animationDuration);
-        } else {
-            $('.accordion-content.show').not(content).removeClass('show').stop().animate({ height: 0 }, animationDuration, function () {
-                $(this).css('height', ''); // Reset height after animation
-            });
-
-            content.addClass('show').stop().setAutoHeight(function () {
-                $(this).css('height', 'auto');
-            });
-        }
+    document.querySelectorAll('.accordion-button').forEach(button => {
+        button.addEventListener('click', handleAccordionClick);
     });
+}
+
+/**
+ * Handles the individual accordion click.
+ */
+function handleAccordionClick(event) {
+    const button = event.currentTarget;
+    const content = button.nextElementSibling;
+
+    if (content.classList.contains('show')) {
+        collapseContent(content);
+        content.classList.remove('show');
+    } else {
+        // Collapse other open accordion content
+        document.querySelectorAll('.show').forEach(openContent => {
+            if (openContent !== content) {
+                collapseContent(openContent);
+                openContent.classList.remove('show');
+            }
+        });
+
+        content.classList.add('show');
+        setAutoHeight(content);
+    }
 }

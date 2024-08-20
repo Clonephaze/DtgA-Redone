@@ -1,5 +1,4 @@
-// CardGeneration.js
-import { animationDuration } from "./Utilities.js";
+import { animationDuration, setAutoHeight, collapseContent } from "./Utilities.js";
 
 /**
  * Fetches the generationData.json file and generates cards for each item in each subcategory for each main category.
@@ -9,33 +8,32 @@ import { animationDuration } from "./Utilities.js";
  * @param {string} mainCategory - The main category to search within (e.g., 'Items', 'Enemies').
  * @param {object} subcategoryContainers - An object mapping subcategories to their container IDs.
  */
-
-
 export function generatePageContent(mainCategory, subcategoryContainers) {
     // Fetch the JSON file
-    $.getJSON('./Assets/js/generationData.json', function (data) {
-        // Loops through the data array to find the matching main category
-        data.forEach(function (element) {
-            if (element[mainCategory]) {
-                let mainCategoryData = element[mainCategory][0];
-                // Loops through each subcategory in the main category
-                for (let subcategory in mainCategoryData) {
-                    if (mainCategoryData.hasOwnProperty(subcategory)) {
-                        let subcategoryData = mainCategoryData[subcategory];
-                        generateCard(subcategoryData, subcategory, subcategoryContainers);
+    fetch('./Assets/js/generationData.json')
+        .then(response => {
+            if (!response.ok) throw new Error('Failed to fetch JSON data.');
+            return response.json();
+        })
+        .then(data => {
+            data.forEach(element => {
+                if (element[mainCategory]) {
+                    let mainCategoryData = element[mainCategory][0];
+                    for (let subcategory in mainCategoryData) {
+                        if (mainCategoryData.hasOwnProperty(subcategory)) {
+                            let subcategoryData = mainCategoryData[subcategory];
+                            generateCard(subcategoryData, subcategory, subcategoryContainers);
+                        }
                     }
+                } else {
+                    console.error(`Main category '${mainCategory}' not found.`);
                 }
-            } else {
-                console.error(`Main category '${mainCategory}' not found.`);
-            }
-        });
+            });
 
-        // Add event listeners for the location reveal and weapon description reaveal buttons
-        addCardEventListeners();
-
-    }).fail(function () {
-        console.error('Failed to fetch JSON data.');
-    });
+            // Add event listeners for the location reveal and weapon description reveal buttons
+            addCardEventListeners();
+        })
+        .catch(error => console.error(error.message));
 }
 
 /**
@@ -47,18 +45,17 @@ export function generatePageContent(mainCategory, subcategoryContainers) {
  */
 function generateCard(subcategoryData, subcategory, subcategoryContainers) {
     let weaponNumber = 0;
-    subcategoryData.forEach(function (item) {
+    subcategoryData.forEach(item => {
         let cardContent;
-        // Checks if the item has multiple descriptions, activates the appropriate function
         if (Array.isArray(item.description) && Array.isArray(item.imageSrc)) {
             cardContent = generateWeaponCard(item, weaponNumber);
         } else {
             cardContent = generateNormalCard(item);
         }
 
-        // Append the generated cards to their respective subcategory container
-        if (subcategoryContainers[subcategory]) {
-            $(`#${subcategoryContainers[subcategory]}`).append(cardContent);
+        const container = document.getElementById(subcategoryContainers[subcategory]);
+        if (container) {
+            container.insertAdjacentHTML('beforeend', cardContent);
         } else {
             console.error(`Container for subcategory '${subcategory}' not found.`);
         }
@@ -73,12 +70,12 @@ function generateCard(subcategoryData, subcategory, subcategoryContainers) {
  * @param {number} weaponNumber - The index of the item in the list.
  * @returns {string} - The generated HTML string.
  */
-function generateWeaponCard(item, weaponNumber) {
+export function generateWeaponCard(item, weaponNumber) {
     let descriptionContent = '';
     let imageContent = '';
     let imageDescNumber = 0;
 
-    item.description.forEach(function (desc) {
+    item.description.forEach(desc => {
         descriptionContent += `
             <button class="desc-title" data-weapon-number="${weaponNumber}" data-upgrade-number="${imageDescNumber}" aria-expanded="false">
                 <h4>${desc.title}</h4>
@@ -92,7 +89,7 @@ function generateWeaponCard(item, weaponNumber) {
     });
 
     imageDescNumber = 0;
-    item.imageSrc.forEach(function (src) {
+    item.imageSrc.forEach(src => {
         imageContent += `<div class="carousel-item" data-weapon-number="${weaponNumber}" data-upgrade-number="${imageDescNumber++}"><img src="${src}" alt=""></div>`;
     });
 
@@ -145,71 +142,76 @@ function generateNormalCard(item) {
  */
 function addCardEventListeners() {
     // Event listener for description toggles
-    $(document).off('click', '.desc-title');
-    $(document).on('click', '.desc-title', function () {
-        let $card = $(this).closest('.card-box');
-        let $button = $(this);
-        let $descContent = $(this).next('.weapon-desc');
-        let isExpanded = $button.attr('aria-expanded') === 'true';
-
-        // Collapse other descriptions in the same card and toggle their aria-expanded attribute
-        $card.find('.desc-title').not($button).attr('aria-expanded', 'false');
-        $card.find('.weapon-desc').not($descContent).animate({ height: 0 }, animationDuration);
-
-        // Toggle the aria-expanded attribute for the selected description
-        $button.attr('aria-expanded', !isExpanded);
-
-        if (!isExpanded) {
-            $descContent.setAutoHeight(function () {
-                requestAnimationFrame(function () {
-                    $descContent.css({ height: "auto" });
-                });
-            });
-        } else {
-            // Collapse the content to height 0
-            let currentHeight = $descContent.height(); // Get the current height of the content
-            $descContent.height(currentHeight); // Set to current height
-            // Trigger a reflow to ensure the height is applied before animating to 0
-            requestAnimationFrame(function () {
-                $descContent.css({ height: "0" });
-            });
-        }
-
-        let weaponNumber = $button.data('weapon-number');
-        let upgradeNumber = $button.data('upgrade-number');
-        let $carousel = $card.find('.image-carousel');
-        let $targetItem = $carousel.find(`.carousel-item[data-weapon-number="${weaponNumber}"][data-upgrade-number="${upgradeNumber}"]`);
-        $carousel.animate({
-            scrollLeft: $carousel.scrollLeft() + $targetItem.position().left
-        }, 400);
-    });
+    document.removeEventListener('click', handleDescToggle);
+    document.addEventListener('click', handleDescToggle);
 
     // Event listener for location buttons
-    $(document).off('click', '.location-button');
-    $(document).on('click', '.location-button', function () {
-        let $button = $(this);
-        let $locationText = $button.next('.location-holder');
-        let isExpanded = $button.attr('aria-expanded') === 'true';
-
-        // Toggle aria-expanded state
-        $button.attr('aria-expanded', !isExpanded);
-
-        // Animate the location text
-        if (!isExpanded) {
-            $locationText.setAutoHeight(function () {
-                requestAnimationFrame(function () {
-                    $locationText.css({ height: "auto" });
-                });
-            });
-        } else {
-            // Collapse the content to height 0
-            let currentHeight = $locationText.height(); // Get the current height of the content
-            $locationText.height(currentHeight); // Set to current height
-            // Trigger a reflow to ensure the height is applied before animating to 0
-            requestAnimationFrame(function () {
-                $locationText.css({ height: "0" });
-            });
-        }
-    });
+    document.removeEventListener('click', handleLocationToggle);
+    document.addEventListener('click', handleLocationToggle);
 }
 
+function handleDescToggle(event) {
+    const button = event.target.closest('.desc-title');
+    if (!button) return;
+
+    const card = button.closest('.card-box');
+    const descContent = button.nextElementSibling;
+    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+    // Collapse other descriptions in the same card
+    card.querySelectorAll('.desc-title').forEach(btn => {
+        if (btn !== button) {
+            btn.setAttribute('aria-expanded', 'false');
+            const otherDescContent = btn.nextElementSibling;
+            if (otherDescContent) {
+                collapseContent(otherDescContent);
+            }
+        }
+    });
+
+    // Toggle the aria-expanded attribute for the selected description
+    button.setAttribute('aria-expanded', !isExpanded);
+
+    if (!isExpanded) {
+        setAutoHeight(descContent);
+    } else {
+        collapseContent(descContent);
+    }
+
+    // Scroll to the corresponding image
+    const weaponNumber = button.dataset.weaponNumber;
+    const upgradeNumber = button.dataset.upgradeNumber;
+    const carousel = card.querySelector('.image-carousel');
+    const targetItem = carousel.querySelector(`.carousel-item[data-weapon-number="${weaponNumber}"][data-upgrade-number="${upgradeNumber}"]`);
+
+    if (targetItem) {
+        const targetPosition = targetItem.offsetLeft - (carousel.offsetWidth / 2) + (targetItem.offsetWidth / 2);
+        carousel.scrollTo({
+            left: targetPosition,
+            behavior: 'smooth'
+        });
+    }
+}
+
+function handleLocationToggle(event) {
+    if (event.target.closest('.location-button')) {
+        const button = event.target.closest('.location-button');
+        const locationText = button.nextElementSibling;
+        const isExpanded = button.getAttribute('aria-expanded');
+
+        if (isExpanded === 'false') {
+            button.setAttribute('aria-expanded', 'true');
+            setAutoHeight(locationText);
+        } else if (isExpanded === 'true') {
+            button.setAttribute('aria-expanded', 'false');
+            collapseContent(locationText);
+        }
+
+        if (button.getAttribute('aria-expanded') === 'false' && locationText.getAttribute('style') !== 'height: 0px;') {
+            // This is to catch cases of the text being expanded even though it should be collapsed. 
+            button.setAttribute('aria-expanded', 'false');
+            locationText.removeAttribute('style');
+            console.error('Location text not collapsed');
+        }
+    }
+}

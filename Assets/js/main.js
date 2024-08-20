@@ -1,5 +1,3 @@
-// main.js
-
 // Function imports
 import { navbarHandler } from "./NavbarHandler.js";
 import { initializeColorPicker } from "./ColorPicker.js";
@@ -10,44 +8,43 @@ import { animateMobileButtonPress } from "./Utilities.js";
 let pageContent;
 let testing = false;
 
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', () => {
     // Register service worker
-    registerServiceWorker();    
+    registerServiceWorker();
 
     // Fetches JSON data for page content and initializes page load based on URL hash.
-    $.getJSON("OtherPages/pageContent.json", function (data) {
-        pageContent = data;
-        loadPageFromURL(pageContent);
+    fetch("OtherPages/pageContent.json")
+        .then(response => response.json())
+        .then(data => {
+            pageContent = data;
+            loadPageFromURL(pageContent);
+        })
+        .catch(() => {
+            console.error("Failed to load page content.");
+        });
 
-    }).fail(function () {
-        console.error("Failed to load page content.");
-    });
-    
-    // Event handler for navigation clicks
-    // $(".pageNav").on('click', function () {
-    //     const pageId = $(this).attr('id');
-
-    //     history.pushState({ pageId: pageId }, '', '#' + pageId);
-    //     loadPage(pageId, pageContent);
-    // });
     // Event handler for site navigation buttons
-    $(document).on('click', '.pageNav', function () {
-        const href = $(this).data('href');
+    document.addEventListener('click', (event) => {
+        if (event.target.classList.contains('pageNav')) {
+            const href = event.target.getAttribute('data-href');
 
-        if (href.startsWith('#')) {
-            // Handle internal link
-            const pageId = href.substring(1);
-            history.pushState({ pageId: pageId }, '', href);
-            loadPage(pageId, pageContent);
-        } else {
-            // Handle external link
-            window.open(href, '_blank', 'noopener,noreferrer');
+            if (href.startsWith('#')) {
+                // Handle internal link
+                const pageId = href.substring(1);
+                history.pushState({ pageId: pageId }, '', href);
+                loadPage(pageId, pageContent);
+            } else {
+                // Handle external link
+                window.open(href, '_blank', 'noopener,noreferrer');
+            }
         }
     });
 
-    $(document).on('touchend', 'button', function () {
-        let button = $(this);
-        animateMobileButtonPress(button);
+    document.addEventListener('touchend', (event) => {
+        if (event.target.tagName === 'BUTTON') {
+            let button = event.target;
+            animateMobileButtonPress(button);
+        }
     });
 
     // Load additional functions
@@ -56,7 +53,7 @@ $(document).ready(function () {
     navbarHandler();
 
     // Handles browser history back/forward button clicks.
-    window.onpopstate = function (event) {
+    window.onpopstate = (event) => {
         if (event.state && event.state.pageId) {
             loadPage(event.state.pageId, pageContent);
         } else {
@@ -67,26 +64,30 @@ $(document).ready(function () {
 
 function registerServiceWorker() {
     // Register the service worker if not in testing mode
-    if (!testing && navigator.serviceWorker) {
+    if (!testing && 'serviceWorker' in navigator) {
         navigator.serviceWorker.register('/DtgA-Redone/service-worker.js', { scope: '/DtgA-Redone/' })
-            .then(function (registration) {
+            .then((registration) => {
                 // Uncomment the line below to log successful registration
                 // console.log('Service worker registered with scope:', registration.scope);
-            }).catch(function (error) {
+            })
+            .catch((error) => {
                 console.error('Service worker registration failed:', error);
             });
     }
 
     // Unregister the service worker during testing
-    if (testing && navigator.serviceWorker) {
-        navigator.serviceWorker.getRegistrations().then(function (registrations) {
-            for (let registration of registrations) {
-                registration.unregister().then(function () {
-                    console.log('Service worker unregistered');
+    if (testing && 'serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations()
+            .then((registrations) => {
+                registrations.forEach((registration) => {
+                    registration.unregister()
+                        .then(() => {
+                            console.log('Service worker unregistered');
+                        });
                 });
-            }
-        }).catch(function (error) {
-            console.error('Error unregistering service workers:', error);
-        });
+            })
+            .catch((error) => {
+                console.error('Error unregistering service workers:', error);
+            });
     }
 }

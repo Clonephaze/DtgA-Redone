@@ -3,26 +3,33 @@
  * and set up the TOC buttons to scroll smoothly to the respective sections.
  */
 export function generateTOC() {
-    let toc = $('.toc');
+    const toc = document.querySelector('.toc');
+    
     // Check if the TOC container exists
-    if (toc.length) {
-        toc.empty();
+    if (toc) {
+        toc.innerHTML = '';
 
         // Iterate over each element with the class 'toc-place'
-        $('.toc-place').each(function (index, element) {
-            let id = 'toc-place-' + index;
-            $(element).attr('id', id);
-            toc.append('<button class="toc-button" data-target="#' + id + '">' + $(element).data('name') + '</button>');
+        document.querySelectorAll('.toc-place').forEach((element, index) => {
+            const id = 'toc-place-' + index;
+            element.setAttribute('id', id);
+            const button = document.createElement('button');
+            button.className = 'toc-button';
+            button.dataset.target = `#${id}`;
+            button.textContent = element.dataset.name;
+            toc.appendChild(button);
         });
 
         // Set up click event for TOC buttons to scroll to the target section
-        $('.toc-button').on('click', function () {
-            let target = $($(this).data('target'));
-            let navbarHeight = $('nav').height();
-            let navbarOffset = navbarHeight + 10;
-            let targetPosition = target.offset().top - navbarOffset;
+        document.querySelectorAll('.toc-button').forEach(button => {
+            button.addEventListener('click', function () {
+                const target = document.querySelector(this.dataset.target);
+                const navbarHeight = document.querySelector('nav').offsetHeight;
+                const navbarOffset = navbarHeight + 10;
+                const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarOffset;
 
-            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            });
         });
     } else {
         return;

@@ -1,4 +1,5 @@
 import { animationDuration } from "./Utilities.js";
+
 /**
  * Initialize the color picker and set up the modal functionality.
  * This function sets up a color picker widget using the iro.js library,
@@ -7,62 +8,64 @@ import { animationDuration } from "./Utilities.js";
  */
 export function initializeColorPicker() {
     // Clear any existing color picker content
-    $('#picker').empty();
+    const pickerElement = document.getElementById('picker');
+    while (pickerElement.firstChild) {
+        pickerElement.removeChild(pickerElement.firstChild);
+    }
 
     // Retrieve saved color values from local storage
     const savedColorItems = localStorage.getItem('color-primary-rgb-values');
-    const savedColor = "rgb(" + savedColorItems + ")";
+    const savedColor = savedColorItems ? `rgb(${savedColorItems})` : null;
 
-    let colorPicker
     // Initialize the color picker with the saved color or a default color
-    if (savedColorItems) {
-        colorPicker = new iro.ColorPicker("#picker", {
-            width: 300,
-            color: savedColor,
-            wheelLightness: true,
-            borderWidth: 2,
-            borderColor: "rgb(255, 255, 255)",
-        });
-    } else {
-        colorPicker = new iro.ColorPicker("#picker", {
-            width: 300,
-            color: "rgb(133, 255, 225)",
-            wheelLightness: true,
-            borderWidth: 2,
-            borderColor: "rgb(255, 255, 255)",
-        });
-    }
+    const colorPicker = new iro.ColorPicker("#picker", {
+        width: 300,
+        color: savedColor || "rgb(133, 255, 225)",
+        wheelLightness: true,
+        borderWidth: 2,
+        borderColor: "rgb(255, 255, 255)",
+    });
 
     // Open the color picker modal when the button is clicked
-    $('#color-picker-btn').on('click', function () {
-        $('#color-picker-modal').stop().animate({ right: '10px' }, animationDuration);
+    const colorPickerBtn = document.getElementById('color-picker-btn');
+    const colorPickerModal = document.getElementById('color-picker-modal');
+
+    colorPickerBtn.addEventListener('click', () => {
+        colorPickerModal.style.transition = `right ${animationDuration}ms`;
+        colorPickerModal.style.right = '10px';
     });
 
     // Function to close the color picker modal
     function closeModal() {
-        $('#color-picker-modal').stop().animate({ right: '-350px' }, animationDuration);
+        colorPickerModal.style.transition = `right ${animationDuration}ms`;
+        colorPickerModal.style.right = '-350px';
     }
 
     // Close the modal when clicking outside of it or on specific buttons
-    $(document).on('click', function (event) {
-        if (!$(event.target).closest('#color-picker-modal, #color-picker-btn').length) {
+    document.addEventListener('click', (event) => {
+        if (!colorPickerModal.contains(event.target) && event.target !== colorPickerBtn) {
             closeModal();
         }
-        if ($('#modal-close-button') && $(event.target).closest('#modal-close-button').length) {
+
+        const modalCloseButton = document.getElementById('modal-close-button');
+        const resetButton = document.getElementById('reset-button');
+
+        if (modalCloseButton && modalCloseButton.contains(event.target)) {
             closeModal();
         }
-        if ($('#reset-button') && $(event.target).closest('#reset-button').length) {
+
+        if (resetButton && resetButton.contains(event.target)) {
             localStorage.setItem('color-primary-rgb-values', '133, 255, 225');
-            $('html').css('--color-primary-rgb-values', '133, 255, 225');
+            document.documentElement.style.setProperty('--color-primary-rgb-values', '133, 255, 225');
             closeModal();
         }
     });
 
     // Update the CSS variable and local storage when the color changes
     colorPicker.on('color:change', function (color) {
-        const rgb = color.rgb;
-        const rgbValues = `${rgb.r}, ${rgb.g}, ${rgb.b}`;
-        $('html').css('--color-primary-rgb-values', rgbValues);
+        const { r, g, b } = color.rgb;
+        const rgbValues = `${r}, ${g}, ${b}`;
+        document.documentElement.style.setProperty('--color-primary-rgb-values', rgbValues);
         localStorage.setItem('color-primary-rgb-values', rgbValues);
     });
 }
