@@ -640,7 +640,6 @@ nav {
     font-size: clamp(2.25rem, 1.8173rem + 1.9231vw, 3.5rem);
 
     >img {
-        max-height: 750px;
         width: 95vw;
         max-width: 900px;
     }
