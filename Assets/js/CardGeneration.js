@@ -90,13 +90,13 @@ export function generateWeaponCard(item, weaponNumber) {
 
     imageDescNumber = 0;
     item.imageSrc.forEach(src => {
-        imageContent += `<div class="carousel-item" data-weapon-number="${weaponNumber}" data-upgrade-number="${imageDescNumber++}"><img src="${src}" alt=""></div>`;
+        imageContent += `<div class="carousel-item" data-weapon-number="${weaponNumber}" data-upgrade-number="${imageDescNumber++}"><img src="${src}" alt="" height="250" width="250"></div>`;
     });
 
     return `
         <div class="card-box on-hover-box">
             <div class="image-container">
-                <div class="image-carousel">
+                <div class="image-carousel" tabindex="-1">
                     ${imageContent}
                 </div>
             </div>
@@ -120,11 +120,32 @@ export function generateWeaponCard(item, weaponNumber) {
  * @returns {string} - The generated HTML string.
  */
 function generateNormalCard(item) {
+    let imageType;
+
+    if (item.imageSrc.length > 0) {
+        /* This section creates an js Image object using the first image in the source array. 
+        * If the image is larger than 250px in width it'll set the default height and width to a 16:9 ratio.
+        * Lets me use lazy loading and still tell the browser what the size will be to avoid layout shifts or a huge data dump.
+        */
+        const img = new Image();
+        img.src = item.imageSrc[0];
+        let width, height = 250;
+
+        if (img.width > 250) {
+            width = 444;
+            height = 250;
+        }
+
+        imageType = `<div class="image-container">
+                <img src="${item.imageSrc[0]}" alt="" height="${height}" width="${width}" loading="lazy">
+            </div>`;
+    }
+
     return `
         <div class="card-box on-hover-box">
-            <div class="image-container">
-                <img src="${item.imageSrc[0]}" alt="">
-            </div>
+            ${imageType || `<div class="image-container">
+                <img src="${item.imageSrc[0]}" alt="" height="250" width="250" loading="lazy">
+            </div>`}
             <div class="card-desc-container">
                 <h3 class="card-title">${item.title}</h3>
                 <p class="card-desc">${item.description}</p>

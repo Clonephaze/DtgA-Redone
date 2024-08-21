@@ -29,8 +29,6 @@
     <meta name="theme-color" content="color-mix(in srgb, rgb(165, 100%, 76%) 15%, rgb(0, 0, 5))">
     <!-- Scripts -->
     <link rel="canonical" href="https://clonephaze.github.io/DtgA-Redone/">
-    <script src="./Assets/js/OtherCreatorsJs/tsparticles.bundle.min.js"></script>
-    <script src="./Assets/js/OtherCreatorsJs/iro.min.js"></script>
     <script src="./Assets/js/main.js" type="module"></script>
 </head>
 <body>
@@ -56,7 +54,7 @@
             <li role="none" class="nav-item">
                 <button id="wiki-list-dropdown" aria-label="Wiki Dropdown button" role="menuitem" aria-expanded="false" aria-controls="nav-dropdown">Wiki</button>
                 <div class="nav-dropdown" aria-label="Wiki Dropdown" aria-expanded="false">
-                    <ul aria-label="Wiki">
+                    <ul aria-label="Wiki" role="menu">
                         <li role="none"><button role="menuitem" class="pageNav" data-href="#newMechanicsPage">New Mechanics</button></li>
                         <li role="none"><button role="menuitem" class="pageNav" data-href="#statsPage">Stats & Leveling Up</button></li>
                         <li role="none"><button role="menuitem" class="pageNav" data-href="#itemsPage">DtgA Items</button></li>
@@ -88,18 +86,20 @@
 
         </div>
         <div class="site-footer">
-            <div class="social-media-button pageNav" data-href="https://discord.gg/qNyn26aWKB" role="link" aria-label="D t g A Discord Link"><i class='bx bxl-discord-alt'></i></div>
-            <div class="social-media-button pageNav" data-href="https://github.com/Clonephaze/DtgA" role="link" aria-label="Git Hub for clonephaze link"><i class='bx bxl-github'></i></div>
-            <div class="social-media-button pageNav" data-href="https://www.patreon.com/ZoeyEule/posts" role="link" aria-label="Zoey's Patreon Link"><i class='bx bxl-patreon'></i></div>
+            <button class="social-media-button pageNav" data-href="https://discord.gg/qNyn26aWKB" role="link" aria-label="D t g A Discord Link"><i class='bx bxl-discord-alt'></i></button>
+            <button class="social-media-button pageNav" data-href="https://github.com/Clonephaze/DtgA" role="link" aria-label="Git Hub for clonephaze link"><i class='bx bxl-github'></i></button>
+            <button class="social-media-button pageNav" data-href="https://www.patreon.com/ZoeyEule/posts" role="link" aria-label="Zoey's Patreon Link"><i class='bx bxl-patreon'></i></button>
         </div>
         <div class="scroll-button-container">
             <button title="Scroll to top" class="scroll-button" id="scroll-btn">
                 <i class='bx bx-up-arrow-alt' alt=""></i>
-                <svg role="img" alt="" width="50" height="50" viewBox="0 0 36 36">
+                <svg width="50" height="50" viewBox="0 0 36 36">
                     <circle id="progress-circle" cx="18" cy="18" r="16" />
                 </svg>
             </button>
         </div>
     </main>
+    <script src="./Assets/js/OtherCreatorsJs/tsparticles.bundle.min.js"></script>
+    <script src="./Assets/js/OtherCreatorsJs/iro.min.js"></script>
 </body>
 </html>

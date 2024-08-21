@@ -28,10 +28,10 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    -webkit-tap-highlight-color: transparent;
     /** Removes stupid highlight on tap *feelsgoodmeme* **/
-    transition: height 325ms ease-in-out;
+    -webkit-tap-highlight-color: transparent;
     /* Default animation for elements getting their height set via setAutoHeight(); */
+    transition: height 325ms ease-in-out;
 }
 
 html,
@@ -75,9 +75,13 @@ body {
 }
 button {
     transition: transform 180ms cubic-bezier(.8, .8, 0.5, 2);
+    border: none;
+    background: unset;
+    text-decoration: none;
+    font: inherit;
 
-    & h2 {
-        transition: transform 180ms cubic-bezier(.8, .8, 0.5, 2);
+    >* {
+        pointer-events: none;
     }
 }
 
@@ -126,10 +130,6 @@ nav {
             fill: rgb(var(--color-primary-rgb-values));
         }
 
-        >.hamburger {
-            pointer-events: none;
-        }
-
         @media (min-width: 768px) {
             display: none;
         }
@@ -165,10 +165,6 @@ nav {
         padding: 0.3rem 0.8rem;
         font-weight: bold;
         cursor: pointer;
-
-        >* {
-            pointer-events: none;
-        }
 
         >i {
             vertical-align: middle;
@@ -246,11 +242,7 @@ nav {
     }
 
     & button {
-        text-decoration: none;
-        background: none;
-        border: none;
         color: var(--text-color-mixed);
-        font: inherit;
         cursor: pointer;
         position: relative;
     }
@@ -496,8 +488,6 @@ nav {
     width: min(250px, 9vw);
 
     >button {
-        background-color: unset;
-        border: none;
         color: var(--text-color-mixed);
         font-family: 'HyliaSerif';
         font-weight: 500;
@@ -558,8 +548,6 @@ nav {
     >.scroll-button {
         font-size: 2rem;
         cursor: unset;
-        background: unset;
-        border: none;
         text-align: center;
         border-radius: 50%;
         box-shadow: 0 0 3px 2px hsla(0, 0%, 0%, 0.3);
@@ -760,8 +748,6 @@ nav {
             }
 
             & button {
-                background: none;
-                border: none;
                 color: var(--text-color-mixed);
                 text-decoration: underline;
                 font-family: var(--standard-font);
@@ -1050,15 +1036,13 @@ nav {
         letter-spacing: 0.05em;
         padding-bottom: 0.2rem;
         padding-left: 1rem;
-        background-color: unset;
         width: 100%;
-        border: none;
         border-bottom: 2px solid var(--border-color);
         cursor: pointer;
 
-        >h2 {
-            margin: 0.3rem;
-            pointer-events: none;
+        > .accordion-title {
+            margin: 0.3rem;  
+            transition: transform 180ms cubic-bezier(.8, .8, 0.5, 2);
         }
 
         &:nth-last-of-type(1) {
@@ -1081,8 +1065,6 @@ nav {
             }
 
             >ol>li>button {
-                background: none;
-                border: none;
                 color: var(--text-color-mixed);
                 text-decoration: underline;
                 font-family: var(--standard-font);
@@ -1162,8 +1144,6 @@ nav {
         }
 
         >.location-button {
-            background-color: unset;
-            border: none;
             cursor: pointer;
             color: color-mix(in srgb, rgb(var(--standard-font)) 50%, rgb(16, 16, 16));
             place-self: start;
@@ -1212,6 +1192,7 @@ nav {
 .gamepadIcons {
     font-family: 'promptfont';
     font-size: 1.5rem;
+    
 }
 
 /****** Items Page ******/
@@ -1618,32 +1599,24 @@ nav {
     }
 
     .social-media-button {
+        transition: transform 200ms ease-out, color 200ms ease;
 
-        >i {
-            transition: font-size 200ms ease, color 250ms ease;
+        &:hover {  
+            transform: scale(1.1);
 
-            &:hover {
-                font-size: 2.2rem;
-            }
-        }
-
-        &:nth-of-type(1)>i {
-            &:hover {
+            &:nth-of-type(1) {
                 color: hsl(226.7, 58.4%, 65.1%);
             }
-        }
-
-        &:nth-of-type(2)>i {
-            &:hover {
+    
+            &:nth-of-type(2) {
                 color: hsl(0, 0%, 96.1%);
             }
-        }
-
-        &:nth-of-type(3)>i {
-            &:hover {
+    
+            &:nth-of-type(3) {
                 color: hsl(6.6, 70.7%, 54.5%);
             }
         }
+
     }
 
     .toc-button {
@@ -1687,25 +1660,30 @@ nav {
 @font-face {
     font-family: 'BreathOfWild';
     src: url(Assets/Fonts/TheWildBreathofZelda.otf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'HyliaSerif';
     src: url(Assets/Fonts/HyliaSerifBeta-Regular.otf);
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'TriForce';
     src: url(Assets/Fonts/Triforce-y07d.ttf);
+    font-display: block;
 }
 
 @font-face {
     font-family: 'PromptFont';
     src: url(Assets/Fonts/promptfont.otf) format('opentype');
     src: url(Assets/Fonts/promptfont.ttf) format('truetype');
+    font-display: block;
 }
 
 @font-face {
     font-family: 'Boxicons';
     src: url(Assets/boxicons-2.1.4/fonts/boxicons.ttf);
+    font-display: block;
 }
