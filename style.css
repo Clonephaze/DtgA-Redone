@@ -1256,6 +1256,7 @@ nav {
         letter-spacing: 0.05em;
         color: var(--text-color-mixed);
         font-size: clamp(0.875rem, 0.8472rem + 0.1235vw, 1rem);
+        cursor: pointer;
         place-self: start;
         display: flex;
 
