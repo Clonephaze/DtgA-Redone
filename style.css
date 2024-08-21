@@ -641,7 +641,9 @@ nav {
 
     >img {
         width: 95vw;
+        height: auto;
         max-width: 900px;
+        max-height: 100%;
     }
 
     &::after {
