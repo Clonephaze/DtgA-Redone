@@ -6,14 +6,13 @@
         </button>
         <div class="accordion-content">
             <div class="content-centerer">
-                <p>If you're experiencing an infinite loading screen, you have a bug with BCML. It's an easy enough fix, but it may take a couple of tries to clear it up.</p>
+                <p>If you're experiencing an infinite loading screen, you might have installed the mods in an incorrect order, causing a load order issue. It's an easy enough fix though!</p>
                 <ol>
-                    <li>Delete your BCML Merged Folder, Win+R and type <p class="code-box">%localappdata%\bcml</p> to find the folder.</li>
-                    <li>Open a command prompt window</li>
-                    <li>Enter <p class="code-box">pip uninstall bcml --yes</p></li>
-                    <li>Enter <p class="code-box">pip install bcml==3.10.4</p></li>
-                    <li>Open bcml and remerge your mods</li>
-                    <li>Launch and play your game, if the issue persists start again at step 1 until it clears up</li>
+                    <li>First things first, ensure you have the ReBorn module installed with a higher priority than the ReAnimated module. This is <b>REQUIRED</b>.</li>
+                    <li>If ReBorn is lower down, enable the drag handles with the button in the bottom left of bcml that looks like 3 of the same length lines.</li>
+                    <li>Drag ReBorn above ReAnimated, but keep it below Collision Actors like all DtgA modules shoud be.</li>
+                    <li>Confirm your changes and let BCML do its thing. When it's done, launch and play your game.</li>
+                    <li>If you still have an issue, unisntall and reinstall the ReBorn module fresh and try again. From all reports these fixes have worked every time, though if you find yourself still expieriencing an issue please let us know and we'll do our best to help.</li>
                 </ol>
             </div>
         </div>
