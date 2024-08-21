@@ -9,7 +9,6 @@
                         "imageSrc": [
                             "Icons/ArmorLinkDefaultHead.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "Given to the bearer of Power upon waking."
                     },
@@ -19,7 +18,6 @@
                         "imageSrc": [
                             "Icons/ArmorLinkDefaultLower.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "Given to the bearer of Power upon waking."
                     },
@@ -29,7 +27,6 @@
                         "imageSrc": [
                             "Icons/ArmorLinkleDefaultHead.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "Given to the bearer of Courage upon waking."
                     },
@@ -39,7 +36,6 @@
                         "imageSrc": [
                             "Icons/ArmorLinkleDefaultLower.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "Given to the bearer of Courage upon waking."
                     },
@@ -49,7 +45,6 @@
                         "imageSrc": [
                             "Icons/ArmorZeldaDefaultHead.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "Given to the bearer of Wisdom upon waking."
                     },
@@ -59,7 +54,6 @@
                         "imageSrc": [
                             "Icons/ArmorZeldaDefaultLower.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "Given to the bearer of Wisdom upon waking."
                     },
@@ -69,7 +63,6 @@
                         "imageSrc": [
                             "Icons/ArmorLinkDoubletSet.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "TODO"
                     },
@@ -79,7 +72,6 @@
                         "imageSrc": [
                             "Icons/ArmorLinkFieldSet.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "TODO"
                     },
@@ -89,7 +81,6 @@
                         "imageSrc": [
                             "Icons/ArmorLinkleDoubletSet.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "TODO"
                     },
@@ -99,7 +90,6 @@
                         "imageSrc": [
                             "Icons/ArmorLinkleFieldSet.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "TODO"
                     },
@@ -109,7 +99,6 @@
                         "imageSrc": [
                             "Icons/ArmorLinkleDesertSet.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "TODO"
                     },
@@ -119,7 +108,6 @@
                         "imageSrc": [
                             "Icons/ArmorLinkleDomainSet.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "TODO"
                     },
@@ -129,7 +117,6 @@
                         "imageSrc": [
                             "Icons/ArmorLinkleHebraSet.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "TODO"
                     },
@@ -139,7 +126,6 @@
                         "imageSrc": [
                             "Icons/ArmorLinkleNecludaSet.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "TODO"
                     },
@@ -149,7 +135,6 @@
                         "imageSrc": [
                             "Icons/ArmorLinkleVolcanoSet.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "TODO"
                     },
@@ -159,7 +144,6 @@
                         "imageSrc": [
                             "Icons/ArmorZeldaDoubletSet.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "TODO"
                     },
@@ -169,7 +153,6 @@
                         "imageSrc": [
                             "Icons/ArmorZeldaFieldSet.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "TODO"
                     },
@@ -179,7 +162,6 @@
                         "imageSrc": [
                             "Icons/OldCap.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "Can be found in the Cave of Awakening."
                     },
@@ -189,7 +171,6 @@
                         "imageSrc": [
                             "Icons/BlueCap.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "Can be found in the Zora City Shop."
                     },
@@ -199,7 +180,6 @@
                         "imageSrc": [
                             "Icons/GreenCap.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "Can be found in the Great Deku tree shop."
                     },
@@ -209,7 +189,6 @@
                         "imageSrc": [
                             "Icons/RedCap.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "Can be found in the Goron City Shop."
                     }
@@ -407,13 +386,22 @@
                         "location": "Given to the player after they complete the first shrine in Hope's Rise."
                     },
                     {
+                        "title": "Lantern",
+                        "description": "A lantern that can be used to light your way in the darkest corners of Hyrule, and allow for safer travel at night.",
+                        "imageSrc": [
+                            "Icons/Lantern.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Given by the old man if you talk to him in the woods on Hope's Rise."
+                    },
+                    {
                         "title": "Slingshot",
                         "description": "Arrows are scarce with DtgA, and thats where the slingshot comes in. It fires pebbles, so youll never be without ammo! It doesnt hit hard, but it can break ice, and even move small objects.",
                         "imageSrc": [
                             "Icons/Slingshot.webp"
                         ],
                         "directory": "Items",
-                        "location": "Can be found at the newly added <a class=\"location-popover DtgA-popover-link\" id=\"Frozen Ruins\">Frozen Ruins</a> below the shrine in the snowy mountains on Hope's Rise."
+                        "location": "Can be found in the newly added <a class=\"location-popover DtgA-popover-link\" id=\"Hopes Watch\">Hopes Watch</a> dungeon below the shrine in the snowy mountains on Hope's Rise."
                     },
                     {
                         "title": "Cannon",
@@ -574,7 +562,6 @@
                         "imageSrc": [
                             "Icons/Belt(Traveler).webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "Can be found in the Cave of Awakening."
                     },
@@ -584,7 +571,6 @@
                         "imageSrc": [
                             "Icons/Belt(Adventurer).webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "TODO"
                     },
@@ -594,7 +580,6 @@
                         "imageSrc": [
                             "Icons/Belt(Soldier).webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "TODO"
                     },
@@ -604,7 +589,6 @@
                         "imageSrc": [
                             "Icons/Belt(Hero).webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "TODO"
                     }
@@ -945,7 +929,6 @@
                         "imageSrc": [
                             "Icons/WeaponCrossbow.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "TODO"
                     },
@@ -955,7 +938,6 @@
                         "imageSrc": [
                             "Icons/WeaponStaffofWisdom.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "TODO"
                     },
@@ -965,7 +947,6 @@
                         "imageSrc": [
                             "Icons/WeaponPowerSword.webp"
                         ],
-                        "imageType": "",
                         "directory": "Items",
                         "location": "TODO"
                     }
@@ -978,7 +959,6 @@
                     {
                         "title": "The Hero's Shade",
                         "description": "Once a candidate for the Hero's title, he now tests you when you first wake. You'll find him in front of the first tower, and in each of the four shrines on Hope's Rise ready for battle. Prove your Hero's title, and he'll reward you with 4 weapons of unique potential.",
-                        "imageType": "fullsize",
                         "directory": "Enemies",
                         "imageSrc": [
                             "Icons/HerosShade.webp"
@@ -988,7 +968,6 @@
                     {
                         "title": "Cursed Puppets",
                         "description": "They're like thunderblight, but with more magic. Theres 4 versions so it won't be the same fight every time, each one having a couple of spells to attack you with along with their innate speed. Will appear when the sky turns pale blue.",
-                        "imageType": "fullsize",
                         "directory": "Enemies",
                         "imageSrc": [
                             "Icons/CursedPuppet1.webp"
@@ -998,7 +977,6 @@
                     {
                         "title": "Argorok",
                         "description": "Currently a WIP. You can climb on him if you have stasis. He WILL break halfway through the fight.",
-                        "imageType": "fullsize",
                         "directory": "Enemies",
                         "imageSrc": [
                             "Icons/Argorok.webp"
@@ -1008,7 +986,6 @@
                     {
                         "title": "Darknut",
                         "description": "Currently a WIP. You can't kill him yet as the fight will require the megaton hammer.",
-                        "imageType": "fullsize",
                         "directory": "Enemies",
                         "imageSrc": [
                             "Icons/Darknut.webp"
@@ -1018,7 +995,6 @@
                     {
                         "title": "Galahad",
                         "description": "Pretty straightforward, just stay close and nail your parries.",
-                        "imageType": "fullsize",
                         "directory": "Enemies",
                         "imageSrc": [
                             "Icons/Galahad.webp"
@@ -1028,7 +1004,6 @@
                     {
                         "title": "Lancelot",
                         "description": "Currently a WIP. He'll seem like he's stuck in an animation, but stagger him out of it and then stay far away from his spear.",
-                        "imageType": "fullsize",
                         "directory": "Enemies",
                         "imageSrc": [
                             "Icons/Lancelot.webp"
@@ -1038,7 +1013,6 @@
                     {
                         "title": "Robin",
                         "description": "Can be a challenge, but you'll be fine if you take care of the adds and shoot well.",
-                        "imageType": "fullsize",
                         "directory": "Enemies",
                         "imageSrc": [
                             "Icons/Robin.webp"
@@ -1048,7 +1022,6 @@
                     {
                         "title": "Miko and Sibyl",
                         "description": "These are fast, hit hard, and deal a TON of aoe damage. The arena is basicaly made of fire so bring some Fireproof potions or a flamebreaker set.",
-                        "imageType": "fullsize",
                         "directory": "Enemies",
                         "imageSrc": [
                             "Icons/MikoAndSibyl.webp"
@@ -1063,7 +1036,6 @@
                         "imageSrc": [
                             "Icons/ReDead.webp"
                         ],
-                        "imageType": "fullsize",
                         "directory": "Enemies",
                         "location": "Can be found all around Hyrule."
                     },
@@ -1073,7 +1045,6 @@
                         "imageSrc": [
                             "Icons/Skulltula.webp"
                         ],
-                        "imageType": "fullsize",
                         "directory": "Enemies",
                         "location": "Can be found all around Hyrule."
                     },
@@ -1083,7 +1054,6 @@
                         "imageSrc": [
                             "Icons/Gibdo.webp"
                         ],
-                        "imageType": "fullsize",
                         "directory": "Enemies",
                         "location": "Can be found in the Hyrule Desert."
                     }
@@ -1099,17 +1069,15 @@
                         "imageSrc": [
                             "Icons/OldMansCabin.webp"
                         ],
-                        "imageType": "fullsize",
                         "directory": "Locations",
                         "location": "Hopes Rise, east of the southern shrine."
                     },
                     {
-                        "title": "Frozen Ruins",
-                        "description": "Newly added ruins below the western shrine on Hope's Rise, hiding away the slingshot gadget.",
+                        "title": "Hopes Watch",
+                        "description": "Newly added Dungeon below the western shrine on Hope's Rise, hiding away the slingshot gadget (among other things).",
                         "imageSrc": [
                             "Icons/FrozenRuins.webp"
                         ],
-                        "imageType": "fullsize",
                         "directory": "Locations",
                         "location": "Hopes Rise, below the western shrine."
                     },
@@ -1119,7 +1087,6 @@
                         "imageSrc": [
                             "Icons/CannonCave.webp"
                         ],
-                        "imageType": "fullsize",
                         "directory": "Locations",
                         "location": "Behind the Woodland stable."
                     },
@@ -1129,7 +1096,6 @@
                         "imageSrc": [
                             "Icons/LanayruWaterfall.webp"
                         ],
-                        "imageType": "fullsize",
                         "directory": "Locations",
                         "location": "Lanayru Promenade, east of Kakariko Village."
                     },
@@ -1139,7 +1105,6 @@
                         "imageSrc": [
                             "Icons/DesertRuins.webp"
                         ],
-                        "imageType": "fullsize",
                         "directory": "Locations",
                         "location": "Just south-west of the Kema Zoos shrine, or the entrance to the valley leading to the Yiga Hideout."
                     },
@@ -1149,7 +1114,6 @@
                         "imageSrc": [
                             "Icons/HylianWaterworks.webp"
                         ],
-                        "imageType": "fullsize",
                         "directory": "Locations",
                         "location": "The very entrance of the Hylia Lake inlet, just south of Scout's Hill."
                     },
@@ -1159,7 +1123,6 @@
                         "imageSrc": [
                             "Icons/HylianRoyalCrypt.webp"
                         ],
-                        "imageType": "fullsize",
                         "directory": "Locations",
                         "location": "Underneath the horse fountain in the Sanidin Park Ruins."
                     },
@@ -1169,7 +1132,6 @@
                         "imageSrc": [
                             "Icons/DuelingMonastery.webp"
                         ],
-                        "imageType": "fullsize",
                         "directory": "Locations",
                         "location": "Atop the Dueling Peaks, on the Southern peak."
                     },
@@ -1179,7 +1141,6 @@
                         "imageSrc": [
                             "Icons/HebraMansion.webp"
                         ],
-                        "imageType": "fullsize",
                         "directory": "Locations",
                         "location": "Rest's atop the northernmost part of the Hebra Headspring."
                     },
@@ -1189,7 +1150,6 @@
                         "imageSrc": [
                             "Icons/FortHatenoKeep.webp"
                         ],
-                        "imageType": "fullsize",
                         "directory": "Locations",
                         "location": "On the cliff just to the north and behind the Fort Hateno gates."
                     }
@@ -1307,7 +1267,6 @@
                 "lostSouls": [
                     {
                         "title": "Frightened Soldiers",
-                        "imageType": "fullsize",
                         "directory": "NPCs",
                         "description": "Ghosts of soldiers who cowered or fled during the calamity, who give the Lost One their soul in hopes it may help in battle against Ganon.",
                         "imageSrc": [
@@ -1317,7 +1276,6 @@
                     },
                     {
                         "title": "Brave Knights",
-                        "imageType": "fullsize",
                         "directory": "NPCs",
                         "description": "Ghosts of soldiers who sacrificed themselves to save others during the calamity, who give the Lost One their soul in hopes it may help in battle against Ganon.",
                         "imageSrc": [
@@ -1327,7 +1285,6 @@
                     },
                     {
                         "title": "Royal Knights",
-                        "imageType": "fullsize",
                         "directory": "NPCs",
                         "description": "Ghosts of distinguished knights who served under the Royal Guard, who give the Lost One their soul in hopes it may help in battle against Ganon.",
                         "imageSrc": [
@@ -1337,7 +1294,6 @@
                     },
                     {
                         "title": "Royal Guardsmen",
-                        "imageType": "fullsize",
                         "directory": "NPCs",
                         "description": "Ghosts of who served at the side of the royal family, who give the Lost One their soul in hopes it may help in battle against Ganon.",
                         "imageSrc": [
@@ -1347,7 +1303,6 @@
                     },
                     {
                         "title": "Would be Champions",
-                        "imageType": "fullsize",
                         "directory": "NPCs",
                         "description": "Ghosts of former rivals and prospective heroes, who give the Lost One their soul in hopes it may help in battle against Ganon.",
                         "imageSrc": [
