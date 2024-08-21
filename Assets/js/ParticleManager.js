@@ -1,5 +1,5 @@
 export async function initializeParticles() {
-    await loadFull(tsParticles);
+    await loadBasic(tsParticles);
     // Retrieve custom color from local storage or use default
     let rgbValues = localStorage.getItem('color-primary-rgb-values') || '133, 255, 225';
     let particleColor = `rgb(${rgbValues})`;
