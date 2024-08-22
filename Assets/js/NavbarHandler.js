@@ -1,7 +1,5 @@
 import { collapseContent, setAutoHeight } from "./Utilities.js";
 
-// let animationDurationShort = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 200;
-
 /**
  * Handles the behavior of the navigation bar, including dropdown menus and mobile navigation toggles.
  * Adjusts the layout based on user interactions and viewport size.

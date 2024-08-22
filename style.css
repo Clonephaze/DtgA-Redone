@@ -417,6 +417,7 @@ nav {
     border: 2px solid var(--border-color);
     border-radius: 10px;
     backdrop-filter: blur(1px);
+    transition: right 300ms ease-in;
 
 
     &:before {

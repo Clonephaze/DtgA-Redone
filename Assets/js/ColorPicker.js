@@ -1,5 +1,3 @@
-import { animationDuration } from "./Utilities.js";
-
 /**
  * Initialize the color picker and set up the modal functionality.
  * This function sets up a color picker widget using the iro.js library,
@@ -31,14 +29,12 @@ export function initializeColorPicker() {
     const colorPickerModal = document.getElementById('color-picker-modal');
 
     colorPickerBtn.addEventListener('click', () => {
-        colorPickerModal.style.transition = `right ${animationDuration}ms`;
         colorPickerModal.style.right = '10px';
     });
 
     // Function to close the color picker modal
     function closeModal() {
-        colorPickerModal.style.transition = `right ${animationDuration}ms`;
-        colorPickerModal.style.right = '-350px';
+        colorPickerModal.removeAttribute('style');
     }
 
     // Close the modal when clicking outside of it or on specific buttons

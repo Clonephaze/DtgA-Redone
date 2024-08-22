@@ -1,4 +1,4 @@
-import { animationDuration, setAutoHeight, collapseContent } from "./Utilities.js";
+import { setAutoHeight, collapseContent } from "./Utilities.js";
 
 /**
  * Fetches the generationData.json file and generates cards for each item in each subcategory for each main category.

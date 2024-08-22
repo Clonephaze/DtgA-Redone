@@ -1,4 +1,4 @@
-import { animationDuration, setAutoHeight, collapseContent } from "./Utilities.js";
+import { setAutoHeight, collapseContent } from "./Utilities.js";
 
 /**
  * Sets up the FAQ page by opening the first accordion item.
