@@ -8,7 +8,9 @@ import { setAutoHeight, collapseContent } from "./Utilities.js";
  * @param {string} mainCategory - The main category to search within (e.g., 'Items', 'Enemies').
  * @param {object} subcategoryContainers - An object mapping subcategories to their container IDs.
  */
+let generatedCardCount; // Keep track of the number of generated cards, used for lazy loading logic in the generateCard function
 export function generatePageContent(mainCategory, subcategoryContainers) {
+    generatedCardCount = 0;
     // Fetch the JSON file
     fetch('./Assets/js/generationData.json')
         .then(response => {
@@ -125,17 +127,18 @@ function generateNormalCard(item) {
     if (item.imageSrc.length > 0) {
         const img = new Image();
         img.src = item.imageSrc[0];
-
         img.onload = function () {
             const imageElement = document.querySelector(`img[src="${item.imageSrc[0]}"]`);
             if (imageElement) {
                 imageElement.setAttribute('width', img.width);
             }
         };
-
+        const lazyLoad = generatedCardCount >= 6 ? ' loading="lazy"' : ''; // Ensures that the first 6 images are not lazy loaded to avoid FOUC
         imageType = `<div class="image-container">
-                <img src="${item.imageSrc[0]}" alt="" height="250" loading="lazy">
-            </div>`;
+        <img src="${item.imageSrc[0]}" alt="" height="250" ${lazyLoad}>
+        </div>`;
+        generatedCardCount++;
+        console.log(`Generated card count: ${generatedCardCount}, lazy load: ${lazyLoad}`);
     }
 
     return `
