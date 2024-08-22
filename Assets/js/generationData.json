@@ -1,7 +1,106 @@
 [
     {
         "Items": [
-            {
+            {   
+                "KeyItems": [
+                    {
+                        "title": "Ravio's Magic Pouch",
+                        "description": "The Magic Pouch is a way of keeping all your gadgets on you without wasting inventory slots. Call it with Crouch <span class=\"gamepadIcons\" aria-hidden=\"true\">↺</span> + Activate <span class=\"gamepadIcons\" aria-hidden=\"true\">⇓</span>.",
+                        "imageSrc": [
+                            "Icons/MagicPouch.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in the Northern Shrine on Hope's Rise."
+                    },
+                    {
+                        "title": "Coiled Sword",
+                        "description": "This mysterious sword is constantly glowing, as if it had just been pulled from a forge. There's an inscription: The Siphon of Souls. Trade rupees to upgrade your stats. Call it with Crouch <span class=\"gamepadIcons\" aria-hidden=\"true\">↺</span> + Attack <span class=\"gamepadIcons\" aria-hidden=\"true\">⇐</span>.",
+                        "imageSrc": [
+                            "Icons/CoiledSword.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in the Western Shrine on Hope's Rise"
+                    },
+                    {
+                        "title": "Spellbook",
+                        "description": "This spellbook contains the magic kept secret by Wizzrobes and Bokoblins. By memorizing the passages, I can call upon the same power as the Yiga Clan. Read it (switch your active spell crystal) with Activate <span class=\"gamepadIcons\" aria-hidden=\"true\">⇓</span> + Dpad Down <span class=\"gamepadIcons\" aria-hidden=\"true\">↡</span>.",
+                        "imageSrc": [
+                            "Icons/SpellBook.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in the Eastern Shrine on Hope's Rise"
+                    },
+                    {
+                        "title": "Divine Vessel",
+                        "description": "A vessel strong enough to contain a portion of Hylia's Light, allowing the Lost One (you) to journey off Hope's Rise. While not consumable itself, this item produces your Estus Flasks from Hylia's Light when resting at a campfire.",
+                        "imageSrc": [
+                            "Icons/DivineVessel.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be recieved from the Old Man after completing the 4 shrines on Hope's Rise."
+                    },
+                    {
+                        "title": "Forbidden Sun Rite",
+                        "description": "This rite will allow the user to kindle bonfires beyond their normal limit. More flasks can now be pulled from the flames. <br> Lets you pull an extra 5 flasks per Sun Rite each time you rest at a campfire.",
+                        "imageSrc": [
+                            "Icons/ForbiddenSunRite.webp"
+                        ]
+                    },
+                    {
+                        "title": "Twilight Mirror",
+                        "description": "This mysterious stone mirror gives off a strange light. The reflections cast in it look eerily like people I've met in my travels. Can be used to summon all npc characters that have decided to join you on your journey. Call it with Crouch <span class=\"gamepadIcons\" aria-hidden=\"true\">↺</span> + Jump <span class=\"gamepadIcons\" aria-hidden=\"true\">⇑</span>.",
+                        "imageSrc": [
+                            "Icons/TwilightMirror.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in the Southern Shrine on Hope's Rise"
+                    },
+                    {
+                        "title": "Neko-Te",
+                        "description": "Unleash your inner feline with Neko-Te, climbing claws that gift the hero the agility to conquer any ascent. Master sheer cliffs and ancient structures, scaling heights with unmatched ease, unveiling hidden realms and vistas with nimble prowess. Before you can climb anywhere with DtgA, you will need to find these claws.",
+                        "imageSrc": [
+                            "Icons/Neko-Te.webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be recieved from 'Joon' in Kakariko Village."
+                    },
+                    {
+                        "title": "Belt of a Traveler",
+                        "description": "This belt has a special slot that can be used to hold an item for more convenient access.",
+                        "imageSrc": [
+                            "Icons/Belt(Traveler).webp"
+                        ],
+                        "directory": "Items",
+                        "location": "Can be found in the Cave of Awakening."
+                    },
+                    {
+                        "title": "Belt of an Adventurer",
+                        "description": "This belt has two special slots that can be used to hold a pair of items for even more convenient access.",
+                        "imageSrc": [
+                            "Icons/Belt(Adventurer).webp"
+                        ],
+                        "directory": "Items",
+                        "location": "TODO"
+                    },
+                    {
+                        "title": "Belt of a Soldier",
+                        "description": "This belt has three special slots that can be used to hold a trio of items for extra convenient access.",
+                        "imageSrc": [
+                            "Icons/Belt(Soldier).webp"
+                        ],
+                        "directory": "Items",
+                        "location": "TODO"
+                    },
+                    {
+                        "title": "Belt of a Hero",
+                        "description": "This belt has four special slots that can be used to hold up to four items for supremely convenient access.",
+                        "imageSrc": [
+                            "Icons/Belt(Hero).webp"
+                        ],
+                        "directory": "Items",
+                        "location": "TODO"
+                    }
+                ],
                 "Armors": [
                     {
                         "title": "Waking Headpiece",
@@ -494,105 +593,6 @@
                         "location": "Can be found at the newly added <a class=\"location-popover DtgA-popover-link\" id=\"Hebra Mansion\">Hebra Mansion</a>, on the Hebra Frozen River"
                     }
                 ],
-                "KeyItems": [
-                    {
-                        "title": "Ravio's Magic Pouch",
-                        "description": "The Magic Pouch is a way of keeping all your gadgets on you without wasting inventory slots. Call it with Crouch <span class=\"gamepadIcons\" aria-hidden=\"true\">↺</span> + Activate <span class=\"gamepadIcons\" aria-hidden=\"true\">⇓</span>.",
-                        "imageSrc": [
-                            "Icons/MagicPouch.webp"
-                        ],
-                        "directory": "Items",
-                        "location": "Can be found in the Northern Shrine on Hope's Rise."
-                    },
-                    {
-                        "title": "Coiled Sword",
-                        "description": "This mysterious sword is constantly glowing, as if it had just been pulled from a forge. There's an inscription: The Siphon of Souls. Trade rupees to upgrade your stats. Call it with Crouch <span class=\"gamepadIcons\" aria-hidden=\"true\">↺</span> + Attack <span class=\"gamepadIcons\" aria-hidden=\"true\">⇐</span>.",
-                        "imageSrc": [
-                            "Icons/CoiledSword.webp"
-                        ],
-                        "directory": "Items",
-                        "location": "Can be found in the Western Shrine on Hope's Rise"
-                    },
-                    {
-                        "title": "Spellbook",
-                        "description": "This spellbook contains the magic kept secret by Wizzrobes and Bokoblins. By memorizing the passages, I can call upon the same power as the Yiga Clan. Read it (switch your active spell crystal) with Activate <span class=\"gamepadIcons\" aria-hidden=\"true\">⇓</span> + Dpad Down <span class=\"gamepadIcons\" aria-hidden=\"true\">↡</span>.",
-                        "imageSrc": [
-                            "Icons/SpellBook.webp"
-                        ],
-                        "directory": "Items",
-                        "location": "Can be found in the Eastern Shrine on Hope's Rise"
-                    },
-                    {
-                        "title": "Divine Vessel",
-                        "description": "A vessel strong enough to contain a portion of Hylia's Light, allowing the Lost One (you) to journey off Hope's Rise. While not consumable itself, this item produces your Estus Flasks from Hylia's Light when resting at a campfire.",
-                        "imageSrc": [
-                            "Icons/DivineVessel.webp"
-                        ],
-                        "directory": "Items",
-                        "location": "Can be recieved from the Old Man after completing the 4 shrines on Hope's Rise."
-                    },
-                    {
-                        "title": "Forbidden Sun Rite",
-                        "description": "This rite will allow the user to kindle bonfires beyond their normal limit. More flasks can now be pulled from the flames. <br> Lets you pull an extra 5 flasks per Sun Rite each time you rest at a campfire.",
-                        "imageSrc": [
-                            "Icons/ForbiddenSunRite.webp"
-                        ]
-                    },
-                    {
-                        "title": "Twilight Mirror",
-                        "description": "This mysterious stone mirror gives off a strange light. The reflections cast in it look eerily like people I've met in my travels. Can be used to summon all npc characters that have decided to join you on your journey. Call it with Crouch <span class=\"gamepadIcons\" aria-hidden=\"true\">↺</span> + Jump <span class=\"gamepadIcons\" aria-hidden=\"true\">⇑</span>.",
-                        "imageSrc": [
-                            "Icons/TwilightMirror.webp"
-                        ],
-                        "directory": "Items",
-                        "location": "Can be found in the Southern Shrine on Hope's Rise"
-                    },
-                    {
-                        "title": "Neko-Te",
-                        "description": "Unleash your inner feline with Neko-Te, climbing claws that gift the hero the agility to conquer any ascent. Master sheer cliffs and ancient structures, scaling heights with unmatched ease, unveiling hidden realms and vistas with nimble prowess. Before you can climb anywhere with DtgA, you will need to find these claws.",
-                        "imageSrc": [
-                            "Icons/Neko-Te.webp"
-                        ],
-                        "directory": "Items",
-                        "location": "Can be recieved from 'Joon' in Kakariko Village."
-                    },
-                    {
-                        "title": "Belt of a Traveler",
-                        "description": "This belt has a special slot that can be used to hold an item for more convenient access.",
-                        "imageSrc": [
-                            "Icons/Belt(Traveler).webp"
-                        ],
-                        "directory": "Items",
-                        "location": "Can be found in the Cave of Awakening."
-                    },
-                    {
-                        "title": "Belt of an Adventurer",
-                        "description": "This belt has two special slots that can be used to hold a pair of items for even more convenient access.",
-                        "imageSrc": [
-                            "Icons/Belt(Adventurer).webp"
-                        ],
-                        "directory": "Items",
-                        "location": "TODO"
-                    },
-                    {
-                        "title": "Belt of a Soldier",
-                        "description": "This belt has three special slots that can be used to hold a trio of items for extra convenient access.",
-                        "imageSrc": [
-                            "Icons/Belt(Soldier).webp"
-                        ],
-                        "directory": "Items",
-                        "location": "TODO"
-                    },
-                    {
-                        "title": "Belt of a Hero",
-                        "description": "This belt has four special slots that can be used to hold up to four items for supremely convenient access.",
-                        "imageSrc": [
-                            "Icons/Belt(Hero).webp"
-                        ],
-                        "directory": "Items",
-                        "location": "TODO"
-                    }
-                ],
                 "Souls": [
                     {
                         "title": "Soul of a Frightened Soldier",
@@ -954,7 +954,36 @@
             }
         ],
         "Enemies": [
-            {
+            {   
+                "commonEnemies": [
+                    {
+                        "title": "ReDead",
+                        "description": "The haunting return of a classic adversary! Undead and enduring, these foes withstand relentless assaults. Persistence is key, but victory is within reach! <br>Drop rupees and claw weapons upon death.",
+                        "imageSrc": [
+                            "Icons/ReDead.webp"
+                        ],
+                        "directory": "Enemies",
+                        "location": "Can be found all around Hyrule."
+                    },
+                    {
+                        "title": "Skulltula",
+                        "description": "Back in Hyrule with renewed menace, these eight-armed fiends are relentless. They swarm in numbers and boast formidable strength, demanding top-notch gear for a chance to conquer them. They are extremely weak to sources of fire. <br>Drop rupees upon death.",
+                        "imageSrc": [
+                            "Icons/Skulltula.webp"
+                        ],
+                        "directory": "Enemies",
+                        "location": "Can be found all around Hyrule."
+                    },
+                    {
+                        "title": "Gibdo",
+                        "description": "Beware the Gibdo, ancient guardians of cursed tombs. These formidable foes endure strikes and wield dark arcane powers allowing them to warp around like the yiga. Approach with caution and arm yourself well for their relentless onslaught.",
+                        "imageSrc": [
+                            "Icons/Gibdo.webp"
+                        ],
+                        "directory": "Enemies",
+                        "location": "Can be found in the Hyrule Desert."
+                    }
+                ],
                 "Bosses": [
                     {
                         "title": "The Hero's Shade",
@@ -1027,35 +1056,6 @@
                             "Icons/MikoAndSibyl.webp"
                         ],
                         "location": "Found in the Sanidin park."
-                    }
-                ],
-                "commonEnemies": [
-                    {
-                        "title": "ReDead",
-                        "description": "The haunting return of a classic adversary! Undead and enduring, these foes withstand relentless assaults. Persistence is key, but victory is within reach! <br>Drop rupees and claw weapons upon death.",
-                        "imageSrc": [
-                            "Icons/ReDead.webp"
-                        ],
-                        "directory": "Enemies",
-                        "location": "Can be found all around Hyrule."
-                    },
-                    {
-                        "title": "Skulltula",
-                        "description": "Back in Hyrule with renewed menace, these eight-armed fiends are relentless. They swarm in numbers and boast formidable strength, demanding top-notch gear for a chance to conquer them. They are extremely weak to sources of fire. <br>Drop rupees upon death.",
-                        "imageSrc": [
-                            "Icons/Skulltula.webp"
-                        ],
-                        "directory": "Enemies",
-                        "location": "Can be found all around Hyrule."
-                    },
-                    {
-                        "title": "Gibdo",
-                        "description": "Beware the Gibdo, ancient guardians of cursed tombs. These formidable foes endure strikes and wield dark arcane powers allowing them to warp around like the yiga. Approach with caution and arm yourself well for their relentless onslaught.",
-                        "imageSrc": [
-                            "Icons/Gibdo.webp"
-                        ],
-                        "directory": "Enemies",
-                        "location": "Can be found in the Hyrule Desert."
                     }
                 ]
             }
