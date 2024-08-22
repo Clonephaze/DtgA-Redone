@@ -123,28 +123,24 @@ function generateNormalCard(item) {
     let imageType;
 
     if (item.imageSrc.length > 0) {
-        /* This section creates an js Image object using the first image in the source array. 
-        * If the image is larger than 250px in width it'll set the default height and width to a 16:9 ratio.
-        * Lets me use lazy loading and still tell the browser what the size will be to avoid layout shifts or a huge data dump.
-        */
         const img = new Image();
         img.src = item.imageSrc[0];
-        let width = 250;
 
-        if (img.width > 250) {
-            width = 444;
-        }
+        img.onload = function () {
+            const imageElement = document.querySelector(`img[src="${item.imageSrc[0]}"]`);
+            if (imageElement) {
+                imageElement.setAttribute('width', img.width);
+            }
+        };
 
         imageType = `<div class="image-container">
-                <img src="${item.imageSrc[0]}" alt="" height="250" width="${width}" loading="lazy">
+                <img src="${item.imageSrc[0]}" alt="" height="250" loading="lazy">
             </div>`;
     }
 
     return `
         <div class="card-box on-hover-box">
-            ${imageType || `<div class="image-container">
-                <img src="${item.imageSrc[0]}" alt="" height="250" width="250" loading="lazy">
-            </div>`}
+            ${imageType}
             <div class="card-desc-container">
                 <h3 class="card-title">${item.title}</h3>
                 <p class="card-desc">${item.description}</p>
