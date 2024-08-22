@@ -129,15 +129,14 @@ function generateNormalCard(item) {
         */
         const img = new Image();
         img.src = item.imageSrc[0];
-        let width, height = 250;
+        let width = 250;
 
         if (img.width > 250) {
             width = 444;
-            height = 250;
         }
 
         imageType = `<div class="image-container">
-                <img src="${item.imageSrc[0]}" alt="" height="${height}" width="${width}" loading="lazy">
+                <img src="${item.imageSrc[0]}" alt="" height="250" width="${width}" loading="lazy">
             </div>`;
     }
 
