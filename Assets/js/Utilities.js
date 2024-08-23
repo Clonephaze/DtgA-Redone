@@ -1,5 +1,3 @@
-export let animationDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300; // Quick check to see if the user prefers reduced motion
-
 /**
  * Function to set the element height to its auto height.
  * 
