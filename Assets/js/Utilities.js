@@ -46,6 +46,11 @@ export function setAutoHeight(element, callback) {
     }, 500); // Adjust timeout duration if needed
 }
 
+/**
+ * Animates the collapse of the element's content by setting its height to 0.
+ * 
+ * @param {HTMLElement} element - The element to collapse.
+ */
 export function collapseContent(element) {
     if (element.classList.contains('transitioning')) return; // Prevent multiple transitions
 
