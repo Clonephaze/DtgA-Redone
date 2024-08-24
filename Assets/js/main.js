@@ -4,6 +4,7 @@ import { initializeColorPicker } from "./ColorPicker.js";
 import { scrollButton } from "./ScrolltoTop.js";
 import { loadPageFromURL, loadPage } from "./PageLoader.js";
 import { animateMobileButtonPress } from "./Utilities.js";
+import { cardPopover } from "./PopOvers.js";
 
 let pageContent;
 let testing = false;
@@ -51,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollButton();
     initializeColorPicker();
     navbarHandler();
-
+    cardPopover();
     // Handles browser history back/forward button clicks.
     window.onpopstate = (event) => {
         if (event.state && event.state.pageId) {
