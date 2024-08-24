@@ -38,7 +38,9 @@ html,
 body,
 main {
     height: 100%;
+    max-width: 100vw;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -639,6 +641,28 @@ nav {
     padding: 5px;
     border-radius: 4px;
     z-index: 50;
+}
+
+#mousePopover {
+    z-index: 9999;
+    position: fixed;
+    background: var(--bgColor);
+    padding: 0.5rem;
+    color: var(--text-color-mixed);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-family: 'HyliaSerif';
+    font-size: 0.8rem;
+    opacity: 0;
+    transform-origin: center;
+    transform: scale(0);
+    transition: transform 125ms ease, opacity 25ms 50ms ease;
+}
+
+#mousePopover.show {
+    transition: transform 125ms ease, opacity 25ms ease;
+    transform: scale(1);
+    opacity: 1;
 }
 
 /****** HOME PAGE ******/
