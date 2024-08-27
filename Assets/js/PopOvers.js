@@ -22,30 +22,26 @@ export function initiatePopovers() {
  * @param {HTMLElement} triggerElement - The element that triggers the popover on hover or focus.
  */
 function setupPopover(triggerElement) {
-	let hoverTimer;
-	const popoverElement = document.getElementById("popoverElement");
+	let hoverTimer; // Timer for showing the popover
+	const popoverElement = document.getElementById("popoverElement"); // Gets everything wanting a popover in the dom
 	
+	// Checks if the user has a touch input
 	let touchInput = false;
 	window.addEventListener('touchstart', () => {
 		touchInput = true;
 	}, { passive: true });
 
-	// window.addEventListener('mousemove', () => {
-	// 	touchInput = false;
-	// }, { passive: true });
-
 	['mouseenter', 'mouseleave', 'focus', 'blur'].forEach(event => {
 		triggerElement.addEventListener(event, () => {
-			if (touchInput) return;
+			if (touchInput) return; // Stop the rest of the function if the user has a touch input
 			if (event === 'mouseenter' || event === 'focus') {
-				console.log('hovering');
 				hoverTimer = setTimeout(() => {
 					updatePopPosition(triggerElement, popoverElement);
 					showPopover(popoverElement, triggerElement);
-				}, 300);
+				}, 300); // Updates the position of the requested popover after 300ms then shows it.
 			} else if (event === 'mouseleave' || event === 'blur') {
-				clearTimeout(hoverTimer);
-				hidePopover(popoverElement);
+				clearTimeout(hoverTimer); // Clears the hover timer, avoids showing popovers if the user just moves over the trigger
+				hidePopover(popoverElement); 
 			}
 		});
 	});
@@ -54,7 +50,7 @@ function setupPopover(triggerElement) {
 /**
  * Updates the position of the popover relative to the trigger element using the Floating UI library.
  *
- * This function computes the ideal position of the popover based on the trigger element's position
+ * This function computes the position of the popover based on the trigger element's position
  * and adjusts the popover's position dynamically as the page layout changes. The placement of the popover
  * can be controlled via the 'data-popSide' attribute on the trigger element.
  * 
@@ -62,14 +58,13 @@ function setupPopover(triggerElement) {
  * @param {HTMLElement} popoverElement - The popover element whose position is being updated.
  */
 function updatePopPosition(triggerElement, popoverElement) {
-	if (!popoverElement) return;
+	if (!popoverElement) return; // If the popover element doesn't exist, exit the function
 
 	// Determine placement from the data-popSide attribute
 	const placement = triggerElement.getAttribute('data-popSide') || 'top';
 
+	// Get and set the position
 	document.body.appendChild(popoverElement);
-
-	// Compute and set position
 	autoUpdate(
 		triggerElement,
 		popoverElement,
@@ -109,6 +104,7 @@ function showPopover(popoverElement, triggerElement) {
 	const popCard = triggerElement.getAttribute('data-popCard');
 
 	if (popInfo) {
+		// Set the popover text to the value of the 'data-popInfo' attribute
 		popoverElement.textContent = popInfo;
 	} else if (popCard) {
 		fetch("./generationData.json")
@@ -127,10 +123,11 @@ function showPopover(popoverElement, triggerElement) {
 			popoverElement.textContent = 'Item not found';
 		}
 	} else if (popCard && popInfo) {
+		// Error handling if both 'data-popCard' and 'data-popInfo' are present
 		console.error("Both 'data-popCard' and 'data-popInfo' attributes are present on element:", triggerElement);
 	}
-	popoverElement.style.display = '';
-	popoverElement.classList.add('show');
+	popoverElement.style.display = ''; // Removes initial inline display: none style to avoid flashing on page load
+	popoverElement.classList.add('show'); // Adds the "show" class, which animates the popover in
 }
 
 /**
@@ -139,12 +136,14 @@ function showPopover(popoverElement, triggerElement) {
  * @param {HTMLElement} element - The popover element to be hidden.
  */
 function hidePopover(element) {
-	element.classList.remove("show");
+	element.classList.remove("show"); // Removes the "show" class, which animates the popover out
 }
 
 /**
  * Generates HTML content for the popover based on the provided item data.
  *
+ * VERY MUCH WORK IN PROGRESS, NOT BEING USED THOUGH SO PUSH ON
+ * 
  * This function creates a structured HTML snippet with details such as title, description,
  * image, and location, which is then inserted into the popover element.
  * 
