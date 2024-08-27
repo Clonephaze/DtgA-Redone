@@ -685,7 +685,8 @@ nav {
     max-width: min(50vw, 300px);
     
     >h3 {
-        grid-area: title;
+        grid-area: 1/1;
+        text-align: center;
     }
     >img {
         grid-area: image;
