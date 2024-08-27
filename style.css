@@ -652,15 +652,17 @@ nav {
     }
 }
 
-.popover-text {
-    /** This styles text that will initiate a popover **/
-    display: inline;
-    color: var(--text-color-mixed);
-    text-decoration: underline;
-    font-weight: 600;
-    
-    cursor: help;
-    text-wrap: nowrap;
+.popover-text {display: inline;}
+
+@media not (pointer: coarse) {
+    .popover-text {
+        /** This styles text that will initiate a popover **/
+        color: var(--text-color-mixed);
+        text-decoration: underline;
+        font-weight: 600;
+        cursor: help;
+        text-wrap: nowrap;
+    }
 }
 
 .card-pop-wrapper {
