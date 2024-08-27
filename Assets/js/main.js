@@ -28,8 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (event) => {
         if (event.target.classList.contains('pageNav')) {
             const href = event.target.getAttribute('data-href');
-
+            const currentPage = window.location.hash.substring(1);
             if (href.startsWith('#')) {
+                if (href === `#${currentPage}`) {
+                    // Do nothing if the link is to the current page
+                    return;
+                }
                 // Handle internal link
                 const pageId = href.substring(1);
                 history.pushState({ pageId: pageId }, '', href);
