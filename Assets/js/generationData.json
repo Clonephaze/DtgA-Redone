@@ -1,7 +1,7 @@
 [
     {
         "Items": [
-            {   
+            {
                 "KeyItems": [
                     {
                         "title": "Ravio's Magic Pouch",
@@ -954,7 +954,7 @@
             }
         ],
         "Enemies": [
-            {   
+            {
                 "commonEnemies": [
                     {
                         "title": "ReDead",
