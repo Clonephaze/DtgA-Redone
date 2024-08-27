@@ -1,6 +1,7 @@
 // PopOvers.js
 // Floating UI imports
 const { computePosition, flip, offset, shift, autoUpdate } = window.FloatingUIDOM;
+let jsonData = null;
 
 /**
  * Initializes popover functionality by setting up event listeners on elements with the class 'get-popped'.
@@ -24,7 +25,7 @@ export function initiatePopovers() {
 function setupPopover(triggerElement) {
 	let hoverTimer; // Timer for showing the popover
 	const popoverElement = document.getElementById("popoverElement"); // Gets everything wanting a popover in the dom
-	
+
 	// Checks if the user has a touch input
 	let touchInput = false;
 	window.addEventListener('touchstart', () => {
@@ -38,10 +39,10 @@ function setupPopover(triggerElement) {
 				hoverTimer = setTimeout(() => {
 					updatePopPosition(triggerElement, popoverElement);
 					showPopover(popoverElement, triggerElement);
-				}, 300); // Updates the position of the requested popover after 300ms then shows it.
+				}, 500); // Updates the position of the requested popover after 500ms then shows it. 500ms is rougly the same as the normal hover html title.
 			} else if (event === 'mouseleave' || event === 'blur') {
 				clearTimeout(hoverTimer); // Clears the hover timer, avoids showing popovers if the user just moves over the trigger
-				hidePopover(popoverElement); 
+				hidePopover(popoverElement);
 			}
 		});
 	});
@@ -112,20 +113,21 @@ function showPopover(popoverElement, triggerElement) {
 		// Set the popover text to the value of the 'data-popInfo' attribute
 		popoverElement.textContent = popInfo;
 	} else if (popCard) {
-		fetch("./generationData.json")
-			.then(response => {
-				if (!response.ok) throw new Error("Failed to fetch JSON data.");
-				return response.json();
-			})
-			.then(data => {
-				jsonData = data;
-			})
-			.catch(error => console.error(error.message));
-		const item = jsonData.find(item => item.title === popCard); // Replace 'title' with the relevant key
-		if (item) {
-			popoverElement.innerHTML = createPopoverContent(item); // Custom function to generate HTML content
+		// Load the json file only once.
+		if (!jsonData) {
+			// Fetch the data from the JSON file
+			fetch('./Assets/js/generationData.json')
+				.then(response => {
+					if (!response.ok) throw new Error('Failed to fetch JSON data.');
+					return response.json();
+				})
+				.then(data => {
+					jsonData = data;
+					handlePopCardDisplay(popCard, popoverElement);
+				})
+				.catch(error => console.error(error.message));
 		} else {
-			popoverElement.textContent = 'Item not found';
+			handlePopCardDisplay(popCard, popoverElement);
 		}
 	} else if (popCard && popInfo) {
 		// Error handling if both 'data-popCard' and 'data-popInfo' are present
@@ -135,14 +137,65 @@ function showPopover(popoverElement, triggerElement) {
 	popoverElement.classList.add('show'); // Adds the "show" class, which animates the popover in
 }
 
-/**
- * Hides the popover element by removing the "show" class and making it invisible.
- *
- * @param {HTMLElement} element - The popover element to be hidden.
- */
-function hidePopover(element) {
-	element.classList.remove("show"); // Removes the "show" class, which animates the popover out
+function handlePopCardDisplay(popCard, popoverElement) {
+	const [path, title] = popCard.split(' ');
+	if (!popCard || !jsonData) return;
+	const itemTitle = searchJson(jsonData, path, title);
+	if (itemTitle) {
+		popoverElement.innerHTML = createPopoverContent(itemTitle);
+	} else {
+		popoverElement.textContent = "Item not found";
+	}
 }
+
+function searchJson(jsonData, path, title) {
+    const levels = path.split('.'); // Split the path like 'Items.KeyItems'
+    let currentLevel = jsonData;
+
+    // Navigate through the JSON structure based on the path
+    for (const level of levels) {
+        // console.log(`Navigating to level: ${level}`, currentLevel);
+
+        if (Array.isArray(currentLevel)) {
+            // If it's an array, access the first object in the array
+            currentLevel = currentLevel[0];
+            if (currentLevel && typeof currentLevel === 'object') {
+                currentLevel = currentLevel[level];
+            } else {
+                console.error(`Level ${level} not found in JSON data.`);
+                return null;
+            }
+        } else if (typeof currentLevel === 'object' && currentLevel !== null) {
+            // If it's an object, access the property
+            currentLevel = currentLevel[level];
+            if (!currentLevel) {
+                console.error(`Level ${level} not found in JSON data.`);
+                return null;
+            }
+        } else {
+            console.error("Current level is neither an array nor an object:", currentLevel);
+            return null;
+        }
+    }
+
+    // console.log("Final level found:", currentLevel);
+
+    // Now search within the final level for the item title
+    if (Array.isArray(currentLevel)) {
+        const item = currentLevel.find(item => item.title === title);
+        if (item) {
+            // console.log("Item found:", item);
+            return item;
+        } else {
+            console.error("Item with title not found:", title);
+            return null;
+        }
+    } else {
+        console.error("Final level is not an array, cannot search for item.");
+        return null;
+    }
+}
+
 
 /**
  * Generates HTML content for the popover based on the provided item data.
@@ -157,9 +210,21 @@ function hidePopover(element) {
  */
 function createPopoverContent(item) {
 	return `
-		<h3>${item.title}</h3>
-		<p>${item.description}</p>
-		<img src="${item.imageSrc}" alt="${item.title}" />
-		<p>Location: ${item.location}</p>
-		`
+		<div class="card-pop-wrapper">
+			<img src="${item.imageSrc}" alt="${item.title}" />
+			<div class="text-wrapper">
+				<h3>${item.title}</h3>
+				<p>${item.description}</p>
+			</div>
+		</div>
+	`;
+}
+
+/**
+ * Hides the popover element by removing the "show" class and making it invisible.
+ *
+ * @param {HTMLElement} element - The popover element to be hidden.
+ */
+function hidePopover(element) {
+	element.classList.remove("show"); // Removes the "show" class, which animates the popover out
 }
