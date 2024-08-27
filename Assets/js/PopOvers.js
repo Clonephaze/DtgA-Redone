@@ -24,7 +24,8 @@ export function initiatePopovers() {
  */
 function setupPopover(triggerElement) {
 	let hoverTimer; // Timer for showing the popover
-	const popoverElement = document.getElementById("popoverElement"); // Gets everything wanting a popover in the dom
+	let mobileOpen = false;
+	const popoverElement = document.getElementById("popoverElement");
 
 	// Checks if the user has a touch input
 	let touchInput = false;
@@ -32,26 +33,48 @@ function setupPopover(triggerElement) {
 		touchInput = true;
 	}, { passive: true });
 
-	['mouseenter', 'mouseleave', 'focus', 'blur'].forEach(event => {
-		triggerElement.addEventListener(event, () => {
-			if (touchInput) return; // Stop the rest of the function if the user has a touch input
-			if (event === 'mouseenter' || event === 'focus') {
-				hoverTimer = setTimeout(() => {
-					updatePopPosition(triggerElement, popoverElement);
-					showPopover(popoverElement, triggerElement);
-				}, 500); // Updates the position of the requested popover after 500ms then shows it. 500ms is rougly the same as the normal hover html title.
-			} else if (event === 'mouseleave' || event === 'blur') {
-				clearTimeout(hoverTimer); // Clears the hover timer, avoids showing popovers if the user just moves over the trigger
-				hidePopover(popoverElement);
+	const showPopoverHandler = () => {
+		clearTimeout(hoverTimer);
+		updatePopPosition(triggerElement, popoverElement);
+		showPopover(popoverElement, triggerElement, touchInput);
+	};
+
+	const hidePopoverHandler = () => {
+		clearTimeout(hoverTimer);
+		hidePopover(popoverElement);
+		mobileOpen = false;
+	};
+
+	const handleDocumentClick = (e) => {
+		if (mobileOpen && !triggerElement.contains(e.target) && !popoverElement.contains(e.target)) {
+			hidePopoverHandler();
+		}
+	};
+
+	// Add global event listeners for clicks and touches
+	window.addEventListener('mousedown', handleDocumentClick);
+	window.addEventListener('touchend', handleDocumentClick);
+
+	['mouseenter', 'mouseleave', 'focus', 'blur', 'touchend'].forEach(event => {
+		triggerElement.addEventListener(event, (e) => {
+			if (!touchInput) {
+				if (event === 'mouseleave' || event === 'blur') {
+					clearTimeout(hoverTimer);
+					hidePopoverHandler();
+					console.log("mouseleave");
+				} else if (event === 'mouseenter' || event === 'focus') {
+					hoverTimer = setTimeout(showPopoverHandler, 500);
+				}
+			} else {
+				if (event === 'touchend' && !mobileOpen) {
+					showPopoverHandler();
+					mobileOpen = true;
+				}
 			}
 		});
 	});
-
-	triggerElement.addEventListener('click', () => {
-		clearTimeout(hoverTimer);
-		hidePopover(popoverElement);
-	});
 }
+
 
 /**
  * Updates the position of the popover relative to the trigger element using the Floating UI library.
@@ -105,14 +128,19 @@ function updatePopPosition(triggerElement, popoverElement) {
  * @param {HTMLElement} popoverElement - The popover element to be displayed.
  * @param {HTMLElement} triggerElement - The element that triggered the popover.
  */
-function showPopover(popoverElement, triggerElement) {
+function showPopover(popoverElement, triggerElement, touchInput) {
 	const popInfo = triggerElement.getAttribute('data-popInfo');
 	const popCard = triggerElement.getAttribute('data-popCard');
 
 	if (popInfo) {
 		// Set the popover text to the value of the 'data-popInfo' attribute
-		popoverElement.textContent = popInfo;
+		if (touchInput === false) {
+			popoverElement.textContent = popInfo;
+		} else {
+			popoverElement.style.visibility = 'hidden';
+		}
 	} else if (popCard) {
+		popoverElement.style.visibility = 'visible';
 		// Load the json file only once.
 		if (!jsonData) {
 			// Fetch the data from the JSON file

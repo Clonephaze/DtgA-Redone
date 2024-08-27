@@ -652,18 +652,26 @@ nav {
     }
 }
 
-.popover-text {display: inline;}
+.popover-text {
+    display: inline;
+    
+    color: var(--text-color-mixed);
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: help;
+    text-wrap: nowrap;
+}
 
-@media not (pointer: coarse) {
+/* @media not (pointer: coarse) {
     .popover-text {
-        /** This styles text that will initiate a popover **/
+        
         color: var(--text-color-mixed);
         text-decoration: underline;
         font-weight: 600;
         cursor: help;
         text-wrap: nowrap;
     }
-}
+} */
 
 .card-pop-wrapper {
     /* display: flex;
