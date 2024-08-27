@@ -1,5 +1,3 @@
-export let animationDuration = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300; // Quick check to see if the user prefers reduced motion
-
 /**
  * Function to set the element height to its auto height.
  * 
@@ -48,6 +46,11 @@ export function setAutoHeight(element, callback) {
     }, 500); // Adjust timeout duration if needed
 }
 
+/**
+ * Animates the collapse of the element's content by setting its height to 0.
+ * 
+ * @param {HTMLElement} element - The element to collapse.
+ */
 export function collapseContent(element) {
     if (element.classList.contains('transitioning')) return; // Prevent multiple transitions
 
