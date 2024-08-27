@@ -88,7 +88,8 @@ function updatePopPosition(triggerElement, popoverElement) {
  *
  * This function populates the popover with text or HTML content depending on whether the trigger element
  * has the 'data-popInfo' or 'data-popCard' attribute. If 'data-popCard' is present, it fetches the relevant
- * data from a JSON file and uses it to populate the popover content.
+ * data from a JSON file and uses it to populate the popover content. If 'data-popInfo' is present, it sets
+ * the popover text to the value of the 'data-popInfo' attribute.
  * 
  * @param {HTMLElement} popoverElement - The popover element to be displayed.
  * @param {HTMLElement} triggerElement - The element that triggered the popover.
@@ -115,6 +116,8 @@ function showPopover(popoverElement, triggerElement) {
 		} else {
 			popoverElement.textContent = 'Item not found';
 		}
+	} else if (popCard && popInfo) {
+		console.error("Both 'data-popCard' and 'data-popInfo' attributes are present on element:", triggerElement);
 	}
 	popoverElement.style.display = '';
 	popoverElement.classList.add('show');
