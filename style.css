@@ -693,6 +693,7 @@ nav {
     }
     
     >p {
+        grid-area: right;
         font-family: var(--standard-font);
         color: rgb(var(--text-color-standard));
         text-wrap: balance;
