@@ -138,7 +138,6 @@ function generateNormalCard(item) {
         <img src="${item.imageSrc[0]}" alt="" height="250" ${lazyLoad}>
         </div>`;
         generatedCardCount++;
-        console.log(`Generated card count: ${generatedCardCount}, lazy load: ${lazyLoad}`);
     }
 
     return `
