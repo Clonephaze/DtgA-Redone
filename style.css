@@ -652,13 +652,46 @@ nav {
     }
 }
 
-#popoverItem {
+.popover-text {
     /** This styles text that will initiate a popover **/
     display: inline;
     color: var(--text-color-mixed);
     text-decoration: underline;
+    font-weight: 600;
+    
     cursor: help;
     text-wrap: nowrap;
+}
+
+.card-pop-wrapper {
+    /* display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem; */
+    display: grid;
+    grid-template-areas: "image text";
+    grid-template-columns: 100px 1fr;
+    max-width: min(50vw, 300px);
+
+    >.text-wrapper {
+        grid-area: text;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        >p {
+            font-family: var(--standard-font);
+            color: rgb(var(--text-color-standard));
+            text-wrap: balance;
+            text-wrap: pretty;
+        }
+    }
+
+    >img {
+        grid-area: image;
+        width: 100%;
+        height: auto;
+    }
 }
 
 /****** HOME PAGE ******/
