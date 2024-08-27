@@ -40,7 +40,6 @@ main {
     height: 100%;
     max-width: 100vw;
     scroll-behavior: smooth;
-    overflow-x: hidden;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -627,42 +626,39 @@ nav {
 }
 
 /****** Popovers ******/
-#cardPopover {
+#popoverElement {
+    /** This styles the popover itself **/
     width: max-content;
     position: absolute;
-    opacity: 1;
     top: 0;
     left: 0;
-    display: none;
-    pointer-events: none;
-    background: #000000;
-    color: white;
-    font-weight: bold;
-    padding: 5px;
-    border-radius: 4px;
-    z-index: 50;
-}
-
-#mousePopover {
-    z-index: 9999;
-    position: fixed;
+    opacity: 0;
     background: var(--bgColor);
     padding: 0.5rem;
     color: var(--text-color-mixed);
     border: 2px solid var(--border-color);
     border-radius: 10px;
     font-family: 'HyliaSerif';
-    font-size: 0.8rem;
-    opacity: 0;
-    transform-origin: center;
-    transform: scale(0);
-    transition: transform 125ms ease, opacity 25ms 50ms ease;
+    font-size: clamp(0.625rem, 0.5833rem + 0.1852vw, 0.8125rem);
+    letter-spacing: 0.05em;
+    --animation-time: 250ms;
+    animation: fadeOut var(--animation-time) forwards ;
+    transition-behavior: allow-discrete;
+    z-index: 9999;
+    
+    &.show {
+        display: block;
+        animation: fadeIn var(--animation-time) forwards;
+    }
 }
 
-#mousePopover.show {
-    transition: transform 125ms ease, opacity 25ms ease;
-    transform: scale(1);
-    opacity: 1;
+#popoverItem {
+    /** This styles text that will initiate a popover **/
+    display: inline;
+    color: var(--text-color-mixed);
+    text-decoration: underline;
+    cursor: help;
+    text-wrap: nowrap;
 }
 
 /****** HOME PAGE ******/
@@ -1645,7 +1641,7 @@ nav {
     .social-media-button {
         transition: transform 200ms ease-out, color 200ms ease;
 
-        &:hover {
+        &:hover, &:focus {
             transform: scale(1.1);
 
             &:nth-of-type(1) {
@@ -1730,4 +1726,26 @@ nav {
     font-family: 'Boxicons';
     src: url(Assets/boxicons-2.1.4/fonts/boxicons.ttf);
     font-display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        display: none;
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        display: block;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        display: block;
+    }
+    to {
+        opacity: 0;
+        display: none;
+    }
 }
