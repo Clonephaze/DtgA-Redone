@@ -3,8 +3,9 @@ import { setupFAQPage, handleAccordionClicks } from "./FaqPage.js";
 import { initializeParticles } from "./ParticleManager.js";
 import { generatePageContent } from "./CardGeneration.js";
 import { collapseContent } from "./Utilities.js";
+import { initiatePopovers } from "./PopOvers.js";
 
-let testing = true; // Set to true here and in main.js and go to the root page to add content without the transitioner changing the content on screen.
+let testing = false; // Set to true here and in main.js and go to the root page to add content without the transitioner changing the content on screen.
 
 /**
  * Loads the page based on the current URL hash.
@@ -64,6 +65,9 @@ export function loadPage(pageId, pageContent) {
 
         // Generate the table of contents if the requested page has the correct element
         generateTOC();
+
+        // Connect to get-popped popovers
+        initiatePopovers();
 
         // Handle page-specific transitions
         handlePageTransition(pageId);

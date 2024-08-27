@@ -7,7 +7,7 @@ import { animateMobileButtonPress } from "./Utilities.js";
 import { initiatePopovers } from "./PopOvers.js";
 
 let pageContent;
-let testing = true; // set to true here and in PageLoader.js and go to the root page to add content without the transitioner changing the content on screen.
+let testing = false; // set to true here and in PageLoader.js and go to the root page to add content without the transitioner changing the content on screen.
 
 document.addEventListener('DOMContentLoaded', () => {
     // Register service worker
@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollButton();
     initializeColorPicker();
     navbarHandler();
-    initiatePopovers();
 
     // Handles browser history back/forward button clicks.
     window.onpopstate = (event) => {
