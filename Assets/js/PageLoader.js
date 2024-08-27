@@ -4,7 +4,7 @@ import { initializeParticles } from "./ParticleManager.js";
 import { generatePageContent } from "./CardGeneration.js";
 import { collapseContent } from "./Utilities.js";
 
-let testing = false; // Set to true and go to the root page to add content without the transitioner changing the content on screen.
+let testing = true; // Set to true here and in main.js and go to the root page to add content without the transitioner changing the content on screen.
 
 /**
  * Loads the page based on the current URL hash.
