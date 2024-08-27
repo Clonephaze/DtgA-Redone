@@ -679,46 +679,27 @@ nav {
     align-items: center;
     gap: 0.5rem; */
     display: grid;
-    grid-template-areas: "left right";
+    grid-template-areas: "title title" "image description";
+    grid-template-rows: 1.5rem 1fr;
     grid-template-columns: 100px 1fr;
     max-width: min(50vw, 300px);
     
-    >.left-wrapper {
-        grid-area: left;
-        
-        >img {
-            width: 100%;
-            height: auto;
-        }
+    >h3 {
+        grid-area: title;
+    }
+    >img {
+        grid-area: image;
+        width: 100%;
+        height: auto;
     }
     
     >p {
-        grid-area: right;
+        grid-area: description;
         font-family: var(--standard-font);
         color: rgb(var(--text-color-standard));
         text-wrap: balance;
         text-wrap: pretty;
     }
-
-    /* >.text-wrapper {
-        grid-area: text;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-
-        >p {
-            font-family: var(--standard-font);
-            color: rgb(var(--text-color-standard));
-            text-wrap: balance;
-            text-wrap: pretty;
-        }
-    }
-
-    >img {
-        grid-area: image;
-        width: 100%;
-        height: auto;
-    }*/
 }
 
 /****** HOME PAGE ******/
