@@ -24,9 +24,19 @@ export function initiatePopovers() {
 function setupPopover(triggerElement) {
 	let hoverTimer;
 	const popoverElement = document.getElementById("popoverElement");
+	
+	let touchInput = false;
+	window.addEventListener('touchstart', () => {
+		touchInput = true;
+	}, { passive: true });
+
+	// window.addEventListener('mousemove', () => {
+	// 	touchInput = false;
+	// }, { passive: true });
 
 	['mouseenter', 'mouseleave', 'focus', 'blur'].forEach(event => {
 		triggerElement.addEventListener(event, () => {
+			if (touchInput) return;
 			if (event === 'mouseenter' || event === 'focus') {
 				console.log('hovering');
 				hoverTimer = setTimeout(() => {
