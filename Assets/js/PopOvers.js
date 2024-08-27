@@ -45,6 +45,11 @@ function setupPopover(triggerElement) {
 			}
 		});
 	});
+
+	triggerElement.addEventListener('click', () => {
+		clearTimeout(hoverTimer);
+		hidePopover(popoverElement);
+	});
 }
 
 /**
