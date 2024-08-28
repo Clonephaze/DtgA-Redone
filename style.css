@@ -648,6 +648,7 @@ nav {
     &.show:empty {
         display: none;
         animation: unset;
+        opacity: 0;
     }
 
     &.show {
