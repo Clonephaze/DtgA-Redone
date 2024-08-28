@@ -644,7 +644,11 @@ nav {
     --animation-time: 250ms;
     transition-behavior: allow-discrete;
     z-index: 9999;
-
+    
+    &.show:blank {
+        display: hidden;
+        animation: none;
+    }
 
     &.show {
         display: block;
