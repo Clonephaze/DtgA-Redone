@@ -239,9 +239,9 @@ function searchJson(jsonData, path, title) {
 function createPopoverContent(item) {
 	return `
 	<div class="card-pop-wrapper">
-		<p>${item.description}</p>	
-		<img src="${item.imageSrc}" alt="${item.title}" />
 		<h3>${item.title}</h3>
+		<img src="${item.imageSrc}" alt="${item.title}" />
+		<p>${item.description}</p>	
 	</div>
 	`;
 }

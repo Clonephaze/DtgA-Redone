@@ -642,64 +642,71 @@ nav {
     font-size: clamp(0.625rem, 0.5833rem + 0.1852vw, 0.8125rem);
     letter-spacing: 0.05em;
     --animation-time: 250ms;
-    animation: fadeOut var(--animation-time) forwards ;
+    animation: fadeOut var(--animation-time) forwards;
     transition-behavior: allow-discrete;
     z-index: 9999;
-    
+
     &.show {
         display: block;
         animation: fadeIn var(--animation-time) forwards;
+    }
+
+    &:has(>.card-pop-wrapper) {
+        padding: 0;
+        box-shadow: 0 0 10px 5px hsla(0, 0%, 0%, 0.3);
     }
 }
 
 .popover-text {
     display: inline;
-    
     color: var(--text-color-mixed);
     text-decoration: underline;
     font-weight: 600;
     cursor: help;
     text-wrap: nowrap;
+
+    @media (pointer: coarse) {
+        text-decoration: dotted underline;
+    }
 }
 
-/* @media not (pointer: coarse) {
-    .popover-text {
-        
-        color: var(--text-color-mixed);
-        text-decoration: underline;
-        font-weight: 600;
-        cursor: help;
-        text-wrap: nowrap;
-    }
-} */
-
 .card-pop-wrapper {
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem; */
     display: grid;
-    grid-template-areas: "title description" "image description";
-    grid-template-rows: 1.5rem 1fr;
+    grid-template-areas:
+        "title title"
+        "image description";
+    grid-template-rows: 2em 1fr;
     grid-template-columns: 100px 1fr;
-    max-width: min(50vw, 300px);
-    
+    max-width: min(80vw, 300px);
+    padding-bottom: 0.3em;
+    margin-inline: 1em;
+
     >h3 {
         grid-area: title;
-        text-align: center;
+        text-align: start;
+        align-self: center;
+        font-family: 'breathofwild';
+        font-size: clamp(0.875rem, 0.8194rem + 0.2469vw, 1.125rem);
     }
+
     >img {
         grid-area: image;
-        width: 100%;
+        width: 80%;
         height: auto;
     }
-    
+
     >p {
         grid-area: description;
         font-family: var(--standard-font);
         color: rgb(var(--text-color-standard));
         text-wrap: balance;
         text-wrap: pretty;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        line-clamp: 6;
+        -webkit-line-clamp: 6;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 
@@ -1683,7 +1690,8 @@ nav {
     .social-media-button {
         transition: transform 200ms ease-out, color 200ms ease;
 
-        &:hover, &:focus {
+        &:hover,
+        &:focus {
             transform: scale(1.1);
 
             &:nth-of-type(1) {
@@ -1775,6 +1783,7 @@ nav {
         display: none;
         opacity: 0;
     }
+
     to {
         opacity: 1;
         display: block;
@@ -1786,6 +1795,7 @@ nav {
         opacity: 1;
         display: block;
     }
+
     to {
         opacity: 0;
         display: none;
