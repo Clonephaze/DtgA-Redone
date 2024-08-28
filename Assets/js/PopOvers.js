@@ -136,6 +136,7 @@ function showPopover(popoverElement, triggerElement, touchInput) {
 	if (popInfo) {
 		if (touchInput === false) {
 			popoverElement.textContent = popInfo;
+			showPopWhenReady(popoverElement); // Show after setting text
 		} else {
 			popoverElement.style.visibility = 'hidden';
 		}
@@ -154,20 +155,25 @@ function showPopover(popoverElement, triggerElement, touchInput) {
 				})
 				.then(content => {
 					popoverElement.innerHTML = content;
+					showPopWhenReady(popoverElement); // Show after setting content
 				})
 				.catch(error => console.error(error.message));
 		} else {
 			handlePopCardDisplay(popCard, popoverElement)
 				.then(content => {
 					popoverElement.innerHTML = content;
+					showPopWhenReady(popoverElement); // Show after setting content
 				});
 		}
 	} else if (popCard && popInfo) {
 		console.error("Both 'data-popCard' and 'data-popInfo' attributes are present on element:", triggerElement);
 	}
-	popoverElement.style.display = ''; 
+}
+
+function showPopWhenReady(popoverElement) {
+	popoverElement.style.display = '';
 	popoverElement.classList.remove('hide');
-	popoverElement.classList.add('show'); 
+	popoverElement.classList.add('show');
 }
 
 function handlePopCardDisplay(popCard, popoverElement) {
