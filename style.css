@@ -645,11 +645,6 @@ nav {
     transition-behavior: allow-discrete;
     z-index: 9999;
 
-    &.show:blank {
-        display: hidden;
-        animation: none;
-    }
-
     &.show {
         display: block;
         animation: fadeIn var(--animation-time) forwards;
