@@ -676,22 +676,23 @@ nav {
         "title title"
         "image description";
     grid-template-rows: 2em 1fr;
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: 80px 1fr;
     max-width: min(80vw, 300px);
     padding-bottom: 0.3em;
     margin-inline: 1em;
+    gap: 0.5em;
 
     >h3 {
         grid-area: title;
         text-align: start;
         align-self: center;
         font-family: 'breathofwild';
-        font-size: clamp(0.875rem, 0.8194rem + 0.2469vw, 1.125rem);
+        font-size: 1.25rem;
     }
 
     >img {
         grid-area: image;
-        width: 80%;
+        width: 90%;
         height: auto;
     }
 
@@ -701,12 +702,15 @@ nav {
         color: rgb(var(--text-color-standard));
         text-wrap: balance;
         text-wrap: pretty;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
+        /** All below control the number of lines in the description **/
         line-clamp: 6;
         -webkit-line-clamp: 6;
-        overflow: hidden;
+        display: -webkit-box;
+        font-size: 0.75rem; /** Needs to be hard value not dynamic to avoid cliping the webkit box **/
+        -webkit-box-orient: vertical;
         text-overflow: ellipsis;
+        white-space: preserve-break;
+        overflow: hidden;
     }
 }
 
