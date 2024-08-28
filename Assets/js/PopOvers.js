@@ -166,7 +166,7 @@ function showPopover(popoverElement, triggerElement, touchInput) {
 }
 
 function handlePopCardDisplay(popCard, popoverElement) {
-	const [path, title] = popCard.split(' ');
+	const [path, title] = popCard.split(',');
 	if (!popCard || !jsonData) return;
 	const itemTitle = searchJson(jsonData, path, title);
 	if (itemTitle) {

@@ -679,13 +679,13 @@ nav {
     align-items: center;
     gap: 0.5rem; */
     display: grid;
-    grid-template-areas: "title title" "image description";
+    grid-template-areas: "title description" "image description";
     grid-template-rows: 1.5rem 1fr;
     grid-template-columns: 100px 1fr;
     max-width: min(50vw, 300px);
     
     >h3 {
-        grid-area: 1/1;
+        grid-area: title;
         text-align: center;
     }
     >img {
