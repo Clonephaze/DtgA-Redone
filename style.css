@@ -649,6 +649,7 @@ nav {
         display: none;
         animation: unset;
         opacity: 0;
+        transition: all 0ms;
     }
 
     &.show {
