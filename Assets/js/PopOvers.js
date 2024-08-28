@@ -93,7 +93,7 @@ function updatePopPosition(triggerElement, popoverElement) {
 	const placement = triggerElement.getAttribute('data-popSide') || 'top';
 
 	// Get and set the position
-	document.body.appendChild(popoverElement);
+	
 	autoUpdate(
 		triggerElement,
 		popoverElement,
@@ -133,7 +133,6 @@ function showPopover(popoverElement, triggerElement, touchInput) {
 	const popCard = triggerElement.getAttribute('data-popCard');
 
 	if (popInfo) {
-		// Set the popover text to the value of the 'data-popInfo' attribute
 		if (touchInput === false) {
 			popoverElement.textContent = popInfo;
 		} else {
@@ -141,9 +140,8 @@ function showPopover(popoverElement, triggerElement, touchInput) {
 		}
 	} else if (popCard) {
 		popoverElement.style.visibility = 'visible';
-		// Load the json file only once.
+
 		if (!jsonData) {
-			// Fetch the data from the JSON file
 			fetch('./Assets/js/generationData.json')
 				.then(response => {
 					if (!response.ok) throw new Error('Failed to fetch JSON data.');
@@ -151,28 +149,34 @@ function showPopover(popoverElement, triggerElement, touchInput) {
 				})
 				.then(data => {
 					jsonData = data;
-					handlePopCardDisplay(popCard, popoverElement);
+					return handlePopCardDisplay(popCard, popoverElement);
+				})
+				.then(content => {
+					popoverElement.innerHTML = content;
 				})
 				.catch(error => console.error(error.message));
 		} else {
-			handlePopCardDisplay(popCard, popoverElement);
+			handlePopCardDisplay(popCard, popoverElement)
+				.then(content => {
+					popoverElement.innerHTML = content;
+				});
 		}
 	} else if (popCard && popInfo) {
-		// Error handling if both 'data-popCard' and 'data-popInfo' are present
 		console.error("Both 'data-popCard' and 'data-popInfo' attributes are present on element:", triggerElement);
 	}
-	popoverElement.style.display = ''; // Removes initial inline display: none style to avoid flashing on page load
-	popoverElement.classList.add('show'); // Adds the "show" class, which animates the popover in
+	popoverElement.style.display = ''; 
+	popoverElement.classList.remove('hide');
+	popoverElement.classList.add('show'); 
 }
 
 function handlePopCardDisplay(popCard, popoverElement) {
 	const [path, title] = popCard.split(',');
-	if (!popCard || !jsonData) return;
+	if (!popCard || !jsonData) return Promise.resolve('');
 	const itemTitle = searchJson(jsonData, path, title);
 	if (itemTitle) {
-		popoverElement.innerHTML = createPopoverContent(itemTitle);
+		return createPopoverContent(itemTitle);
 	} else {
-		popoverElement.textContent = "Item not found";
+		return Promise.resolve("Item not found");
 	}
 }
 
@@ -249,16 +253,16 @@ function createPopoverContent(item) {
 			let imgClass;
 
 			if (imgWidth > 250) {
-				imgClass = 'class="large"'; // Assign the 'large' class if the width is greater than 250
+				imgClass = 'large'; // Assign the 'large' class if the width is greater than 250
 			} else {
-				imgClass = '';
+				imgClass = ''; 
 			}
 
 			// Create the HTML content
 			const content = `
 				<div class="card-pop-wrapper">
 					<h3>${item.title}</h3>
-					<img src="${item.imageSrc}" alt="${item.title}" ${imgClass} />
+					<img src="${item.imageSrc}" alt="${item.title}" class="${imgClass}" />
 					<p>${item.description}</p>	
 				</div>
 			`;
@@ -288,5 +292,6 @@ function createPopoverContent(item) {
  */
 function hidePopover(element) {
 	element.classList.remove("show"); // Removes the "show" class, which animates the popover out
+	element.classList.add("hide"); 
 	element.style.pointerEvents = "none";
 }

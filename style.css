@@ -642,8 +642,6 @@ nav {
     font-size: clamp(0.625rem, 0.5833rem + 0.1852vw, 0.8125rem);
     letter-spacing: 0.05em;
     --animation-time: 250ms;
-    animation: fadeOut var(--animation-time) forwards;
-    animation: fadeOut var(--animation-time) forwards;
     transition-behavior: allow-discrete;
     z-index: 9999;
 
@@ -651,6 +649,10 @@ nav {
     &.show {
         display: block;
         animation: fadeIn var(--animation-time) forwards;
+    }
+
+    &.hide {
+        animation: fadeOut var(--animation-time) forwards;
     }
 
     &:has(>.card-pop-wrapper) {
@@ -663,14 +665,10 @@ nav {
     /** This styles text that will initiate a popover **/
     display: inline;
     color: var(--text-color-mixed);
-    text-decoration: underline;
+    text-decoration: 1px dotted underline;
     font-weight: 600;
     cursor: help;
     text-wrap: nowrap;
-
-    @media (pointer: coarse) {
-        text-decoration: dotted underline;
-    }
 }
 
 .card-pop-wrapper {
@@ -682,7 +680,7 @@ nav {
     grid-template-columns: 80px 1fr;
     max-width: min(80vw, 300px);
     padding-bottom: 0.3em;
-    margin-inline: 1em;
+    margin: 1em;
     gap: 0.5em;
 
     >h3 {
@@ -730,8 +728,8 @@ nav {
         grid-template-columns: 80px 1fr;
 
         >img {
-            max-height: 120px;
-            aspect-ratio: 1/1;
+            height: 80px;
+            aspect-ratio: auto;
             place-self: end;
         }
     }
