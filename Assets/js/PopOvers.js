@@ -131,6 +131,7 @@ function updatePopPosition(triggerElement, popoverElement) {
 function showPopover(popoverElement, triggerElement, touchInput) {
 	const popInfo = triggerElement.getAttribute('data-popInfo');
 	const popCard = triggerElement.getAttribute('data-popCard');
+	popoverElement.innerHTML = '';
 
 	if (popInfo) {
 		if (touchInput === false) {
