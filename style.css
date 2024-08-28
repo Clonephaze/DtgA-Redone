@@ -643,8 +643,10 @@ nav {
     letter-spacing: 0.05em;
     --animation-time: 250ms;
     animation: fadeOut var(--animation-time) forwards;
+    animation: fadeOut var(--animation-time) forwards;
     transition-behavior: allow-discrete;
     z-index: 9999;
+
 
     &.show {
         display: block;
@@ -658,6 +660,7 @@ nav {
 }
 
 .popover-text {
+    /** This styles text that will initiate a popover **/
     display: inline;
     color: var(--text-color-mixed);
     text-decoration: underline;
@@ -694,6 +697,11 @@ nav {
         grid-area: image;
         width: 90%;
         height: auto;
+
+        &.large {
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+        }
     }
 
     >p {
@@ -706,11 +714,26 @@ nav {
         line-clamp: 6;
         -webkit-line-clamp: 6;
         display: -webkit-box;
-        font-size: 0.75rem; /** Needs to be hard value not dynamic to avoid cliping the webkit box **/
+        font-size: 0.75rem;
+        /** Needs to be hard value not dynamic to avoid cliping the webkit box **/
         -webkit-box-orient: vertical;
         text-overflow: ellipsis;
         white-space: preserve-break;
         overflow: hidden;
+    }
+
+    &:has(>img.large) {
+        grid-template-areas:
+            "title image"
+            "description description";
+        grid-template-rows: auto 1fr;
+        grid-template-columns: 80px 1fr;
+
+        >img {
+            max-height: 120px;
+            aspect-ratio: 1/1;
+            place-self: end;
+        }
     }
 }
 

@@ -237,13 +237,48 @@ function searchJson(jsonData, path, title) {
  * @returns {string} The generated HTML content for the popover.
  */
 function createPopoverContent(item) {
-	return `
-	<div class="card-pop-wrapper">
-		<h3>${item.title}</h3>
-		<img src="${item.imageSrc}" alt="${item.title}" />
-		<p>${item.description}</p>	
-	</div>
-	`;
+	return new Promise((resolve) => {
+		const img = new Image();
+		img.src = item.imageSrc;
+
+		// Once the image has loaded, check its dimensions
+		img.onload = function () {
+			let imgWidth = img.width;
+
+			// Determine the class and styles based on the image width
+			let imgClass;
+
+			if (imgWidth > 250) {
+				imgClass = 'class="large"'; // Assign the 'large' class if the width is greater than 250
+			} else {
+				imgClass = '';
+			}
+
+			// Create the HTML content
+			const content = `
+				<div class="card-pop-wrapper">
+					<h3>${item.title}</h3>
+					<img src="${item.imageSrc}" alt="${item.title}" ${imgClass} />
+					<p>${item.description}</p>	
+				</div>
+			`;
+
+			// Resolve the promise with the generated content
+			resolve(content);
+		};
+
+		// Handle image load errors
+		img.onerror = function () {
+			console.error("Failed to load image:", item.imageSrc);
+			resolve(`
+				<div class="card-pop-wrapper">
+					<h3>${item.title}</h3>
+					<p>${item.description}</p>	
+					<p><em>Image could not be loaded.</em></p>
+				</div>
+			`);
+		};
+	});
 }
 
 /**
@@ -253,4 +288,5 @@ function createPopoverContent(item) {
  */
 function hidePopover(element) {
 	element.classList.remove("show"); // Removes the "show" class, which animates the popover out
+	element.style.pointerEvents = "none";
 }
