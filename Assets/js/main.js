@@ -4,7 +4,6 @@ import { initializeColorPicker } from "./ColorPicker.js";
 import { scrollButton } from "./ScrolltoTop.js";
 import { loadPageFromURL, loadPage } from "./PageLoader.js";
 import { animateMobileButtonPress } from "./Utilities.js";
-import { initiatePopovers } from "./PopOvers.js";
 
 let pageContent;
 let testing = false; // set to true here and in PageLoader.js and go to the root page to add content without the transitioner changing the content on screen.
