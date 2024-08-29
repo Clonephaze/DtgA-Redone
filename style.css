@@ -695,6 +695,7 @@ nav {
         align-self: center;
         font-family: 'breathofwild';
         font-size: 1.25rem;
+        color: var(--text-color-mixed);
     }
 
     >img {

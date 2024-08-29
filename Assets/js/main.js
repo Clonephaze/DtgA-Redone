@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target.classList.contains('pageNav')) {
             const href = event.target.getAttribute('data-href');
             const currentPage = window.location.hash.substring(1);
+            const popover = document.getElementById("popoverElement");
             if (href.startsWith('#')) {
                 if (href === `#${currentPage}`) {
                     // Do nothing if the link is to the current page
@@ -36,6 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Handle internal link
                 const pageId = href.substring(1);
                 history.pushState({ pageId: pageId }, '', href);
+                if (popover) {
+                    popover.style.display = 'none';
+                    popover.classList.remove('show');
+                    popover.classList.add('hide');
+                }
                 loadPage(pageId, pageContent);
             } else {
                 // Handle external link

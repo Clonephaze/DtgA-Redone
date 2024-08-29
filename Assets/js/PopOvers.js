@@ -23,56 +23,81 @@ export function initiatePopovers() {
  * @param {HTMLElement} triggerElement - The element that triggers the popover on hover or focus.
  */
 function setupPopover(triggerElement) {
-	let hoverTimer; // Timer for showing the popover
-	let mobileOpen = false;
-	const popoverElement = document.getElementById("popoverElement");
+    let hoverTimer; // Timer for showing the popover
+    let hideTimer; // Timer for hiding the HTML popover
+    let mobileOpen = false;
+    const popoverElement = document.getElementById("popoverElement");
 
-	// Checks if the user has a touch input
-	let touchInput = false;
-	window.addEventListener('touchstart', () => {
-		touchInput = true;
-	}, { passive: true });
+    // Checks if the user has a touch input
+    let touchInput = false;
+    window.addEventListener('touchstart', () => {
+        touchInput = true;
+    }, { passive: true });
 
-	const showPopoverHandler = () => {
-		clearTimeout(hoverTimer);
-		updatePopPosition(triggerElement, popoverElement);
-		showPopover(popoverElement, triggerElement, touchInput);
-	};
+    const showPopoverHandler = () => {
+        clearTimeout(hoverTimer);
+        clearTimeout(hideTimer);
+        updatePopPosition(triggerElement, popoverElement);
+        showPopover(popoverElement, triggerElement, touchInput);
+    };
 
-	const hidePopoverHandler = () => {
-		clearTimeout(hoverTimer);
-		hidePopover(popoverElement);
-		mobileOpen = false;
-	};
+    const hidePopoverHandler = () => {
+        if (triggerElement.getAttribute('data-popCard')) {
+            hideTimer = setTimeout(() => {
+                hidePopover(popoverElement);
+                mobileOpen = false;
+            }, 1000); // Delay for HTML popovers
+        } else {
+            hidePopover(popoverElement);
+            mobileOpen = false;
+        }
+    };
 
-	const handleDocumentClick = (e) => {
-		if (mobileOpen && !triggerElement.contains(e.target) && !popoverElement.contains(e.target)) {
-			hidePopoverHandler();
-		}
-	};
+    const handleDocumentClick = (e) => {
+        if (mobileOpen && !triggerElement.contains(e.target) && !popoverElement.contains(e.target)) {
+            hidePopoverHandler();
+        }
+    };
 
-	// Add global event listeners for clicks and touches
-	window.addEventListener('mousedown', handleDocumentClick);
-	window.addEventListener('touchend', handleDocumentClick);
+    // Add global event listeners for clicks and touches
+    window.addEventListener('mousedown', handleDocumentClick);
+    window.addEventListener('touchend', handleDocumentClick);
 
-	['mouseenter', 'mouseleave', 'focus', 'blur', 'touchend'].forEach(event => {
-		triggerElement.addEventListener(event, (e) => {
-			if (!touchInput) {
-				if (event === 'mouseleave' || event === 'blur') {
-					clearTimeout(hoverTimer);
-					hidePopoverHandler();
-					console.log("mouseleave");
-				} else if (event === 'mouseenter' || event === 'focus') {
-					hoverTimer = setTimeout(showPopoverHandler, 500);
-				}
-			} else {
-				if (event === 'touchend' && !mobileOpen) {
-					showPopoverHandler();
-					mobileOpen = true;
-				}
-			}
-		});
-	});
+    ['mouseenter', 'mouseleave', 'focus', 'blur', 'touchend'].forEach(event => {
+        triggerElement.addEventListener(event, (e) => {
+            if (!touchInput) {
+                if (event === 'mouseleave' || event === 'blur') {
+                    clearTimeout(hoverTimer);
+                    hidePopoverHandler();
+                } else if (event === 'mouseenter' || event === 'focus') {
+                    clearTimeout(hideTimer);
+                    hoverTimer = setTimeout(showPopoverHandler, 500);
+                }
+            } else {
+                if (event === 'touchend' && !mobileOpen) {
+                    showPopoverHandler();
+                    mobileOpen = true;
+                }
+            }
+        });
+    });
+
+    // Hover over popover itself
+    popoverElement.addEventListener('mouseenter', () => {
+        clearTimeout(hideTimer);
+    });
+
+    popoverElement.addEventListener('mouseleave', hidePopoverHandler);
+
+    // Make popover clickable for HTML content
+    popoverElement.addEventListener('click', () => {
+        if (triggerElement.getAttribute('data-popCard')) {
+            const popCard = triggerElement.getAttribute('data-popCard');
+            const mainCategory = popCard.split('.')[0];
+            console.log("Navigating to page for:", mainCategory);
+            // Future: Handle page navigation based on mainCategory
+        }
+    });
 }
 
 
@@ -129,45 +154,45 @@ function updatePopPosition(triggerElement, popoverElement) {
  * @param {HTMLElement} triggerElement - The element that triggered the popover.
  */
 function showPopover(popoverElement, triggerElement, touchInput) {
-	const popInfo = triggerElement.getAttribute('data-popInfo');
-	const popCard = triggerElement.getAttribute('data-popCard');
-	popoverElement.innerHTML = '';
+    const popInfo = triggerElement.getAttribute('data-popInfo');
+    const popCard = triggerElement.getAttribute('data-popCard');
+    popoverElement.innerHTML = '';
 
-	if (popInfo) {
-		if (touchInput === false) {
-			popoverElement.textContent = popInfo;
-			showPopWhenReady(popoverElement); // Show after setting text
-		} else {
-			popoverElement.style.visibility = 'hidden';
-		}
-	} else if (popCard) {
-		popoverElement.style.visibility = 'visible';
+    if (popInfo) {
+        if (touchInput === false) {
+            popoverElement.textContent = popInfo;
+            showPopWhenReady(popoverElement); // Show after setting text
+        } else {
+            popoverElement.style.visibility = 'hidden';
+        }
+    } else if (popCard) {
+        popoverElement.style.visibility = 'visible';
 
-		if (!jsonData) {
-			fetch('./Assets/js/generationData.json')
-				.then(response => {
-					if (!response.ok) throw new Error('Failed to fetch JSON data.');
-					return response.json();
-				})
-				.then(data => {
-					jsonData = data;
-					return handlePopCardDisplay(popCard, popoverElement);
-				})
-				.then(content => {
-					popoverElement.innerHTML = content;
-					showPopWhenReady(popoverElement); // Show after setting content
-				})
-				.catch(error => console.error(error.message));
-		} else {
-			handlePopCardDisplay(popCard, popoverElement)
-				.then(content => {
-					popoverElement.innerHTML = content;
-					showPopWhenReady(popoverElement); // Show after setting content
-				});
-		}
-	} else if (popCard && popInfo) {
-		console.error("Both 'data-popCard' and 'data-popInfo' attributes are present on element:", triggerElement);
-	}
+        if (!jsonData) {
+            fetch('./Assets/js/generationData.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('Failed to fetch JSON data.');
+                    return response.json();
+                })
+                .then(data => {
+                    jsonData = data;
+                    return handlePopCardDisplay(popCard, popoverElement);
+                })
+                .then(content => {
+                    popoverElement.innerHTML = content;
+                    showPopWhenReady(popoverElement); // Show after setting content
+                })
+                .catch(error => console.error(error.message));
+        } else {
+            handlePopCardDisplay(popCard, popoverElement)
+                .then(content => {
+                    popoverElement.innerHTML = content;
+                    showPopWhenReady(popoverElement); // Show after setting content
+                });
+        }
+    } else if (popCard && popInfo) {
+        console.error("Both 'data-popCard' and 'data-popInfo' attributes are present on element:", triggerElement);
+    }
 }
 
 function showPopWhenReady(popoverElement) {
@@ -178,10 +203,29 @@ function showPopWhenReady(popoverElement) {
 
 function handlePopCardDisplay(popCard, popoverElement) {
 	const [path, title] = popCard.split(',');
+	const pageNav = popCard.split('.')[0];
+	let pageNavVal;
+	switch (pageNav) {
+		case 'Items':
+			pageNavVal = '#itemsPage'
+			break;
+		case 'Enemies':
+			pageNavVal = '#enemiesPage'
+			break;
+		case 'StatsPage':
+			pageNavVal = '#statsPage'
+			break;
+		case 'NPCs':
+			pageNavVal = '#npcsPage'
+			break;
+		default:
+			console.error(`Invalid pageNav: ${pageNav}`);
+			break;
+	}
 	if (!popCard || !jsonData) return Promise.resolve('');
 	const itemTitle = searchJson(jsonData, path, title);
 	if (itemTitle) {
-		return createPopoverContent(itemTitle);
+		return createPopoverContent(itemTitle, pageNavVal);
 	} else {
 		return Promise.resolve("Item not found");
 	}
@@ -247,7 +291,7 @@ function searchJson(jsonData, path, title) {
  * @param {Object} item - The item data used to generate the popover content.
  * @returns {string} The generated HTML content for the popover.
  */
-function createPopoverContent(item) {
+function createPopoverContent(item, pageNavVal) {
 	return new Promise((resolve) => {
 		const img = new Image();
 		img.src = item.imageSrc;
@@ -267,12 +311,13 @@ function createPopoverContent(item) {
 
 			// Create the HTML content
 			const content = `
-				<div class="card-pop-wrapper">
+				<button class="card-pop-wrapper pageNav" data-href="${pageNavVal}">
 					<h3>${item.title}</h3>
 					<img src="${item.imageSrc}" alt="${item.title}" class="${imgClass}" />
 					<p>${item.description}</p>	
-				</div>
+				</button>
 			`;
+
 
 			// Resolve the promise with the generated content
 			resolve(content);
@@ -282,11 +327,11 @@ function createPopoverContent(item) {
 		img.onerror = function () {
 			console.error("Failed to load image:", item.imageSrc);
 			resolve(`
-				<div class="card-pop-wrapper">
+				<button class="card-pop-wrapper pageNav" data-href="">
 					<h3>${item.title}</h3>
 					<p>${item.description}</p>	
 					<p><em>Image could not be loaded.</em></p>
-				</div>
+				</button>
 			`);
 		};
 	});
@@ -295,10 +340,12 @@ function createPopoverContent(item) {
 /**
  * Hides the popover element by removing the "show" class and making it invisible.
  *
- * @param {HTMLElement} element - The popover element to be hidden.
+ * @param {HTMLElement} ele`ment - The popover element to be hidden.
  */
-function hidePopover(element) {
-	element.classList.remove("show"); // Removes the "show" class, which animates the popover out
-	element.classList.add("hide"); 
-	element.style.pointerEvents = "none";
+function hidePopover(popoverElement) {
+    popoverElement.classList.remove('show');
+    popoverElement.classList.add('hide');
+    setTimeout(() => {
+        popoverElement.style.display = 'none';
+    }, 300); // Wait for CSS transition
 }
