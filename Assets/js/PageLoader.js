@@ -40,7 +40,7 @@ export function loadPage(pageId, pageContent, optItemId) {
     // Responsive handling for navigation menu animation
     if (window.innerWidth <= 768) {
         let navList = document.querySelector('.nav-list')
-        let navDropdown =document.querySelector('.nav-dropdown')
+        let navDropdown = document.querySelector('.nav-dropdown')
         collapseContent(navList);
         collapseContent(navDropdown);
         document.querySelector('.nav-list').setAttribute('aria-expanded', 'false');
@@ -73,21 +73,33 @@ export function loadPage(pageId, pageContent, optItemId) {
         handlePageTransition(pageId);
 
         if (optItemId !== null) {
-            console.log(optItemId)
-            // Scroll to the selected item
-            // Wait until the new content is loaded and in the DOM
+            console.log(optItemId);
+
             setTimeout(() => {
                 const item = document.getElementById(optItemId);
                 if (item) {
                     item.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    item.classList.add('quick-flash');
-                    setTimeout(() => {
-                        item.classList.remove('quick-flash');
-                    }, 1200);
+
+                    const observer = new IntersectionObserver((entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                // Element is in view, add the flash class
+                                item.classList.add('quick-flash');
+                                
+                                // Stop observing the element since the animation is done
+                                observer.disconnect();
+                            }
+                        });
+                    }, { threshold: 1 }); // Trigger when 50% of the item is in view
+
+                    // Start observing the item
+                    observer.observe(item);
                 } else {
                     console.log("No element found with id:", optItemId);
                 }
             }, 250);
+        } else {
+            console.log("No content found for pageId:", pageId);
         }
     } else {
         console.log("No content found for pageId:", pageId);

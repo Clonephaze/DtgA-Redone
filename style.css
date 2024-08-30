@@ -745,7 +745,7 @@ nav {
 
 /****** Animation Classes ******/
 .quick-flash{
-    animation: quickFlash 800ms 350ms forwards;
+    animation: quickFlash 800ms 100ms forwards;
 }
 
 /****** HOME PAGE ******/
