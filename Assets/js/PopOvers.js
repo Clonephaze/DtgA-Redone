@@ -53,6 +53,12 @@ function setupPopover(triggerElement) {
         }
     };
 
+    const handleDocumentClick = (e) => {
+        if (mobileOpen && !triggerElement.contains(e.target) && !popoverElement.contains(e.target)) {
+            hidePopoverHandler();
+        }
+    };
+
     // Add global event listeners for clicks and touches
     window.addEventListener('mousedown', handleDocumentClick);
     window.addEventListener('touchend', handleDocumentClick);
