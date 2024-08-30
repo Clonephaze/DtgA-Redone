@@ -42,11 +42,12 @@ function setupPopover(triggerElement) {
     };
 
     const hidePopoverHandler = () => {
+		const timerTime = touchInput ? '0' : '500';
         if (triggerElement.getAttribute('data-popCard')) {
             hideTimer = setTimeout(() => {
                 hidePopover(popoverElement);
                 mobileOpen = false;
-            }, 1000); // Delay for HTML popovers
+            }, timerTime); // Delay for HTML popovers
         } else {
             hidePopover(popoverElement);
             mobileOpen = false;
@@ -55,6 +56,7 @@ function setupPopover(triggerElement) {
 
     const handleDocumentClick = (e) => {
         if (mobileOpen && !triggerElement.contains(e.target) && !popoverElement.contains(e.target)) {
+			mobileOpen = false;
             hidePopoverHandler();
         }
     };
@@ -88,16 +90,6 @@ function setupPopover(triggerElement) {
     });
 
     popoverElement.addEventListener('mouseleave', hidePopoverHandler);
-
-    // Make popover clickable for HTML content
-    popoverElement.addEventListener('click', () => {
-        if (triggerElement.getAttribute('data-popCard')) {
-            const popCard = triggerElement.getAttribute('data-popCard');
-            const mainCategory = popCard.split('.')[0];
-            console.log("Navigating to page for:", mainCategory);
-            // Future: Handle page navigation based on mainCategory
-        }
-    });
 }
 
 
@@ -204,7 +196,7 @@ function showPopWhenReady(popoverElement) {
 function handlePopCardDisplay(popCard, popoverElement) {
 	const [path, title] = popCard.split(',');
 	const pageNav = popCard.split('.')[0];
-	let pageNavVal;
+	let pageNavVal = '';
 	switch (pageNav) {
 		case 'Items':
 			pageNavVal = '#itemsPage'
@@ -217,6 +209,9 @@ function handlePopCardDisplay(popCard, popoverElement) {
 			break;
 		case 'NPCs':
 			pageNavVal = '#npcsPage'
+			break;
+		case 'gadgetLocations':
+			pageNavVal = '#locationsPage'
 			break;
 		default:
 			console.error(`Invalid pageNav: ${pageNav}`);
@@ -293,7 +288,10 @@ function searchJson(jsonData, path, title) {
  */
 function createPopoverContent(item, pageNavVal) {
 	return new Promise((resolve) => {
+		const itemNameShort = item.title.split(' ').join('').replace("'","").replace("-","");
+        const itemElemId = itemNameShort;
 		const img = new Image();
+		
 		img.src = item.imageSrc;
 
 		// Once the image has loaded, check its dimensions
@@ -311,7 +309,7 @@ function createPopoverContent(item, pageNavVal) {
 
 			// Create the HTML content
 			const content = `
-				<button class="card-pop-wrapper pageNav" data-href="${pageNavVal}">
+				<button class="card-pop-wrapper pageNav" data-href="${pageNavVal}" data-ItemId="${itemElemId}">
 					<h3>${item.title}</h3>
 					<img src="${item.imageSrc}" alt="${item.title}" class="${imgClass}" />
 					<p>${item.description}</p>	
@@ -340,12 +338,17 @@ function createPopoverContent(item, pageNavVal) {
 /**
  * Hides the popover element by removing the "show" class and making it invisible.
  *
- * @param {HTMLElement} ele`ment - The popover element to be hidden.
+ * @param {HTMLElement} element - The popover element to be hidden.
  */
 function hidePopover(popoverElement) {
-    popoverElement.classList.remove('show');
-    popoverElement.classList.add('hide');
-    setTimeout(() => {
-        popoverElement.style.display = 'none';
-    }, 300); // Wait for CSS transition
+	popoverElement.classList.remove('show');
+	popoverElement.classList.add('hide');
+	popoverElement.style.display = 'none';
+	// if (touchInput === true) {
+	// 	popoverElement.style.display = 'none';
+	// } else {
+	// 	setTimeout(() => {
+	// 		popoverElement.style.display = 'none';
+	// 	}, 300); // Wait for CSS transition
+	// }
 }

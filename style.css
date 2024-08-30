@@ -688,6 +688,7 @@ nav {
     padding-bottom: 0.3em;
     margin: 1em;
     gap: 0.5em;
+    cursor: pointer;
 
     >h3 {
         grid-area: title;
@@ -740,6 +741,11 @@ nav {
             place-self: end;
         }
     }
+}
+
+/****** Animation Classes ******/
+.quick-flash{
+    animation: quickFlash 800ms 350ms forwards;
 }
 
 /****** HOME PAGE ******/
@@ -1831,5 +1837,32 @@ nav {
     to {
         opacity: 0;
         display: none;
+    }
+}
+
+@keyframes quickFlash {
+    0% {
+        scale: 1;
+        box-shadow: none;
+    }
+
+    20% {
+        scale: 1.025;
+        box-shadow: 0 0 10px 5px rgba(var(--color-primary-rgb-values), 0.5);
+    }
+
+    40% {
+        scale: 1;
+        box-shadow: none;
+    }
+
+    60% {
+        scale: 1.025;
+        box-shadow: 0 0 10px 5px rgba(var(--color-primary-rgb-values), 0.5);
+    }
+
+    80% {
+        scale: 1;
+        box-shadow: none;
     }
 }

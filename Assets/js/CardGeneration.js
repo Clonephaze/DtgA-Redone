@@ -49,10 +49,13 @@ function generateCard(subcategoryData, subcategory, subcategoryContainers) {
     let weaponNumber = 0;
     subcategoryData.forEach(item => {
         let cardContent;
+
+        const itemNameShort = item.title.split(' ').join('').replace("'","").replace("-","");
+        const itemElemId = itemNameShort;
         if (Array.isArray(item.description) && Array.isArray(item.imageSrc)) {
-            cardContent = generateWeaponCard(item, weaponNumber);
+            cardContent = generateWeaponCard(item, weaponNumber, itemElemId);
         } else {
-            cardContent = generateNormalCard(item);
+            cardContent = generateNormalCard(item, itemElemId);
         }
 
         const container = document.getElementById(subcategoryContainers[subcategory]);
@@ -121,7 +124,7 @@ export function generateWeaponCard(item, weaponNumber) {
  * @param {object} item - The item object containing a single description and image.
  * @returns {string} - The generated HTML string.
  */
-function generateNormalCard(item) {
+function generateNormalCard(item, itemElemId) {
     let imageType;
 
     if (item.imageSrc.length > 0) {
@@ -141,7 +144,7 @@ function generateNormalCard(item) {
     }
 
     return `
-        <div class="card-box on-hover-box">
+        <div class="card-box on-hover-box" id="${itemElemId}">
             ${imageType}
             <div class="card-desc-container">
                 <h3 class="card-title">${item.title}</h3>

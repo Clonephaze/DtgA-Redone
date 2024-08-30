@@ -27,7 +27,7 @@ export function loadPageFromURL(pageContent) {
  * 
  * @param {string} pageId - The ID of the page to load.
  */
-export function loadPage(pageId, pageContent) {
+export function loadPage(pageId, pageContent, optItemId) {
     // Close the navigation menu
     document.querySelector('.nav-toggle').setAttribute('aria-expanded', 'false');
 
@@ -71,6 +71,24 @@ export function loadPage(pageId, pageContent) {
 
         // Handle page-specific transitions
         handlePageTransition(pageId);
+
+        if (optItemId !== null) {
+            console.log(optItemId)
+            // Scroll to the selected item
+            // Wait until the new content is loaded and in the DOM
+            setTimeout(() => {
+                const item = document.getElementById(optItemId);
+                if (item) {
+                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    item.classList.add('quick-flash');
+                    setTimeout(() => {
+                        item.classList.remove('quick-flash');
+                    }, 1200);
+                } else {
+                    console.log("No element found with id:", optItemId);
+                }
+            }, 250);
+        }
     } else {
         console.log("No content found for pageId:", pageId);
     }

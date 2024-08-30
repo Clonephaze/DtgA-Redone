@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const href = event.target.getAttribute('data-href');
             const currentPage = window.location.hash.substring(1);
             const popover = document.getElementById("popoverElement");
+            let itemId = null;
             if (href.startsWith('#')) {
                 if (href === `#${currentPage}`) {
                     // Do nothing if the link is to the current page
@@ -36,13 +37,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 // Handle internal link
                 const pageId = href.substring(1);
+                if (event.target.getAttribute('data-itemID')) {
+                    itemId = event.target.getAttribute('data-itemID');
+                }
                 history.pushState({ pageId: pageId }, '', href);
                 if (popover) {
                     popover.style.display = 'none';
                     popover.classList.remove('show');
                     popover.classList.add('hide');
                 }
-                loadPage(pageId, pageContent);
+                loadPage(pageId, pageContent, itemId);
             } else {
                 // Handle external link
                 window.open(href, '_blank', 'noopener,noreferrer');
