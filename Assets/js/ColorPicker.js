@@ -4,8 +4,7 @@
  * initializes the color picker with a saved color from local storage (if available),
  * and handles the opening and closing of the color picker modal.
  */
-export async function initializeColorPicker() {
-    await window.iro;
+export function initializeColorPicker() {
     // Clear any existing color picker content
     const pickerElement = document.getElementById('picker');
     while (pickerElement.firstChild) {
