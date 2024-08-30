@@ -2,6 +2,7 @@
 // Floating UI imports
 const { computePosition, flip, offset, shift, autoUpdate } = window.FloatingUIDOM;
 let jsonData = null;
+let mobileOpen = false;
 
 /**
  * Initializes popover functionality by setting up event listeners on elements with the class 'get-popped'.
@@ -23,10 +24,9 @@ export function initiatePopovers() {
  * @param {HTMLElement} triggerElement - The element that triggers the popover on hover or focus.
  */
 function setupPopover(triggerElement) {
-    let hoverTimer; // Timer for showing the popover
+	let hoverTimer; // Timer for showing the popover
     let hideTimer; // Timer for hiding the HTML popover
-    let mobileOpen = false;
-    const popoverElement = document.getElementById("popoverElement");
+	const popoverElement = document.getElementById("popoverElement");
 
     // Checks if the user has a touch input
     let touchInput = false;
@@ -92,6 +92,9 @@ function setupPopover(triggerElement) {
     popoverElement.addEventListener('mouseleave', hidePopoverHandler);
 }
 
+export function setMobileOpenClosed() {
+	mobileOpen = false;
+}
 
 /**
  * Updates the position of the popover relative to the trigger element using the Floating UI library.
