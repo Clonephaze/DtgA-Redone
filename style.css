@@ -58,7 +58,7 @@ body {
 
 .homepageBg {
     background-color: black;
-    height: 100%;
+    height: 100lvh;
     width: 100%;
     position: fixed;
     z-index: -1;
@@ -71,7 +71,7 @@ body {
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
+    height: 100lvh;
     z-index: -1;
 }
 
@@ -481,7 +481,6 @@ nav {
     /* position: fixed;
     top: 150;
     left: 0; */
-    margin-inline: 1rem;
     display: flex;
     flex-direction: column;
     border: 2px solid var(--border-color);
@@ -525,8 +524,8 @@ nav {
     } */
     display: grid;
     grid-template-areas: "toc content scrollToTop";
-    grid-template-columns: 1fr 8fr 1fr;
-    gap: 2.5rem;
+    grid-template-columns: 10% 80% 10%;
+ 
 
     >.toc {
         grid-area: toc;
@@ -538,6 +537,11 @@ nav {
 
     >.scroll-button-container {
         grid-area: scrollToTop;
+    }
+
+    &:has(> .logo-centerer) {
+        display: unset;
+        height: 100lvh;
     }
 
     @media (max-width: 1280px) {
@@ -623,6 +627,8 @@ nav {
 .highlight-bar {
     font-family: 'HyliaSerif';
     width: 100%;
+    max-width: 98vw;
+    margin-inline: auto;
     text-align: center;
     border: 3px solid var(--border-color);
     border-radius: 15px;
@@ -814,7 +820,6 @@ nav {
     align-items: center;
     gap: 1rem;
     color: var(--text-color-mixed);
-    padding: 1rem;
 }
 
 .about-title {
@@ -946,6 +951,8 @@ nav {
     flex-direction: column;
     align-items: center;
     color: rgb(var(--text-color-standard));
+    max-width: 98vw;
+    margin-inline: auto;
 
     & li {
         padding-left: 0.25rem;
@@ -1339,7 +1346,7 @@ nav {
 }
 
 /****** Items Page ******/
-.items-page-container,
+/* .items-page-container,
 .enemies-page-container,
 .npc-page-container {
 
@@ -1347,7 +1354,7 @@ nav {
         max-width: 80vw;
         margin-inline: auto;
     }
-}
+} */
 
 .section-title {
     font-family: 'HyliaSerif';
@@ -1663,6 +1670,8 @@ nav {
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    max-width: 98vw;
+    margin-inline: auto;
 
     >h1 {
         font-family: 'HyliaSerif';
