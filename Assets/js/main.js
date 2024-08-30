@@ -1,7 +1,6 @@
 // Function imports
 import { navbarHandler } from "./NavbarHandler.js";
 import { initializeColorPicker } from "./ColorPicker.js";
-import { scrollButton } from "./ScrolltoTop.js";
 import { loadPageFromURL, loadPage } from "./PageLoader.js";
 import { animateMobileButtonPress } from "./Utilities.js";
 import { setMobileOpenClosed } from "./PopOvers.js";
@@ -64,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Load additional functions
-    scrollButton();
     initializeColorPicker();
     navbarHandler();
 

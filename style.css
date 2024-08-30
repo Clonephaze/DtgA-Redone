@@ -478,9 +478,9 @@ nav {
 
 /****** Table of Contents ******/
 .toc {
-    position: fixed;
+    /* position: fixed;
     top: 150;
-    left: 0;
+    left: 0; */
     margin-inline: 1rem;
     display: flex;
     flex-direction: column;
@@ -488,7 +488,8 @@ nav {
     border-radius: 15px;
     box-shadow: 0 0 4px 4px rgba(var(--color-primary-rgb-values), 0.15);
     overflow: hidden;
-    width: min(250px, 9vw);
+    height: min-content;
+    width: 100%;
 
     >button {
         color: var(--text-color-mixed);
@@ -507,7 +508,6 @@ nav {
     }
 
     @media (max-width: 1280px) {
-        position: initial;
         max-width: 95vw;
         width: 600px;
         margin-inline: auto;
@@ -516,12 +516,33 @@ nav {
 
 /****** General Content Styling ******/
 .content-section {
-    width: min(95vw, 1280px);
+    /* width: min(95vw, 1280px);
     margin: 0 auto;
     padding-top: 15px;
 
     &:has(> .logo-centerer) {
         height: 100%;
+    } */
+    display: grid;
+    grid-template-areas: "toc content scrollToTop";
+    grid-template-columns: 1fr 8fr 1fr;
+    gap: 2.5rem;
+
+    >.toc {
+        grid-area: toc;
+    }
+
+    >.content {
+        grid-area: content;
+    }
+
+    >.scroll-button-container {
+        grid-area: scrollToTop;
+    }
+
+    @media (max-width: 1280px) {
+        grid-template-areas: "toc" "content" "scrollToTop";
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1213,7 +1234,6 @@ nav {
     display: flex;
     flex-direction: column;
     background-color: color-mix(in srgb, rgba(var(--color-primary-rgb-values), 0.3) 50%, rgb(var(--color-secondary-rgb-values)));
-    min-width: 300px;
     width: calc(33% - 1rem);
     max-width: 98vw;
 
@@ -1305,14 +1325,11 @@ nav {
 }
 
 .card-container {
-    /* display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(400px, 95vw), 1fr));
-    gap: 1.5rem; */
-
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.5rem;
+    
 }
 
 .gamepadIcons {

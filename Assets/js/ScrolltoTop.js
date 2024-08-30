@@ -2,7 +2,7 @@
  * Set up the scroll button functionality to show/hide a button based on scroll position
  * and update a progress circle based on the scroll progress.
  */
-export function scrollButton() {
+function scrollButton() {
     const button = document.getElementById('scroll-btn');
     const progressCircle = document.getElementById('progress-circle');
     const circleRadius = progressCircle.getAttribute('r');
@@ -37,4 +37,20 @@ export function scrollButton() {
     button.addEventListener('click', function () {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+}
+
+export function appendScrollButton(element) {
+    const button = `        
+            <div class="scroll-button-container">
+                <button title="Scroll to top" class="scroll-button" id="scroll-btn">
+                    <i class='bx bx-up-arrow-alt' alt=""></i>
+                    <svg width="50" height="50" viewBox="0 0 36 36">
+                        <circle id="progress-circle" cx="18" cy="18" r="16" />
+                    </svg>
+                </button>
+            </div>
+            `;
+    element.insertAdjacentHTML('beforeend', button);
+
+    scrollButton();
 }

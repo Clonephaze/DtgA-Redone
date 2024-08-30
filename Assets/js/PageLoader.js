@@ -4,6 +4,7 @@ import { initializeParticles } from "./ParticleManager.js";
 import { generatePageContent } from "./CardGeneration.js";
 import { collapseContent } from "./Utilities.js";
 import { initiatePopovers } from "./PopOvers.js";
+import { appendScrollButton } from "./ScrolltoTop.js";
 
 let testing = false; // Set to true here and in main.js and go to the root page to add content without the transitioner changing the content on screen.
 
@@ -56,8 +57,10 @@ export function loadPage(pageId, pageContent, optItemId) {
     const content = pageContent.find(page => page.pageId === pageId);
 
     if (content) {
+        
+        const contentSection = document.querySelector('.content-section');
         // Load the page content and update the document title
-        document.querySelector('.content-section').innerHTML = content.pageContent;
+        contentSection.innerHTML = content.pageContent;
         document.title = content.title;
 
         // Update the position of the indicator
@@ -72,9 +75,10 @@ export function loadPage(pageId, pageContent, optItemId) {
         // Handle page-specific transitions
         handlePageTransition(pageId);
 
-        if (optItemId !== null) {
-            console.log(optItemId);
+        // Create Scroll Button
+        appendScrollButton(contentSection);
 
+        if (optItemId !== null) {
             setTimeout(() => {
                 const item = document.getElementById(optItemId);
                 if (item) {
@@ -94,12 +98,10 @@ export function loadPage(pageId, pageContent, optItemId) {
 
                     // Start observing the item
                     observer.observe(item);
-                } else {
-                    console.log("No element found with id:", optItemId);
                 }
             }, 250);
-        } else {
-            console.log("No content found for pageId:", pageId);
+        } else if (optItemId === null) {
+            return;
         }
     } else {
         console.log("No content found for pageId:", pageId);
