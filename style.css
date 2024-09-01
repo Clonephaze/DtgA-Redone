@@ -527,7 +527,7 @@ nav {
     display: grid;
     grid-template-areas: "toc content scrollToTop";
     grid-template-columns: 13% 74% 13%;
- 
+
 
     >.toc {
         grid-area: toc;
@@ -676,7 +676,7 @@ nav {
     --animation-time: 250ms;
     transition-behavior: allow-discrete;
     z-index: 9999;
-    
+
     &.show:empty {
         display: none;
         animation: unset;
@@ -776,7 +776,7 @@ nav {
 }
 
 /****** Animation Classes ******/
-.quick-flash{
+.quick-flash {
     animation: quickFlash 800ms 250ms forwards;
 }
 
@@ -948,7 +948,7 @@ nav {
     letter-spacing: 0.05em;
     font-weight: 700;
     margin-block: 0.5rem;
-    
+
 }
 
 .get-sta-container {
@@ -959,7 +959,7 @@ nav {
     max-width: 98vw;
     margin-inline: auto;
     padding-inline: 0.5rem;
-    
+
     & li {
         padding-left: 0.25rem;
 
@@ -1118,7 +1118,7 @@ nav {
 
 .new-mech-card-container {
     display: grid;
-    width: min(150%, 95vw);
+    width: min(175%, 95vw);
     grid-template-columns: repeat(auto-fit, minmax(min(350px, 95vw), 1fr));
     gap: 2rem;
     color: rgb(var(--text-color-standard));
@@ -1342,7 +1342,7 @@ nav {
     flex-wrap: wrap;
     justify-content: center;
     gap: 1.5rem;
-    
+
 }
 
 .gamepadIcons {
