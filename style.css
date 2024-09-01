@@ -478,9 +478,8 @@ nav {
 
 /****** Table of Contents ******/
 .toc {
-    /* position: fixed;
-    top: 150;
-    left: 0; */
+    position: sticky;
+    top: 100px;
     display: flex;
     flex-direction: column;
     border: 2px solid var(--border-color);
@@ -489,6 +488,8 @@ nav {
     overflow: hidden;
     height: min-content;
     width: 100%;
+    max-width: 170px;
+    margin-inline: auto;
 
     >button {
         color: var(--text-color-mixed);
@@ -510,6 +511,7 @@ nav {
         max-width: 95vw;
         width: 600px;
         margin-inline: auto;
+        position: unset;
     }
 }
 
@@ -524,15 +526,18 @@ nav {
     } */
     display: grid;
     grid-template-areas: "toc content scrollToTop";
-    grid-template-columns: 10% 80% 10%;
+    grid-template-columns: 13% 74% 13%;
  
 
     >.toc {
         grid-area: toc;
+
     }
 
     >.content {
         grid-area: content;
+        max-width: min(100%, 1280px);
+        margin-inline: auto;
     }
 
     >.scroll-button-container {
@@ -943,7 +948,7 @@ nav {
     letter-spacing: 0.05em;
     font-weight: 700;
     margin-block: 0.5rem;
-
+    
 }
 
 .get-sta-container {
@@ -953,7 +958,8 @@ nav {
     color: rgb(var(--text-color-standard));
     max-width: 98vw;
     margin-inline: auto;
-
+    padding-inline: 0.5rem;
+    
     & li {
         padding-left: 0.25rem;
 
@@ -1053,8 +1059,9 @@ nav {
         }
 
         @media (max-width: 768px) {
-            grid-template-rows: 85% 15%;
+            grid-template-rows: auto;
             grid-template-columns: none;
+            gap: 0.5rem;
         }
     }
 }
@@ -1111,7 +1118,7 @@ nav {
 
 .new-mech-card-container {
     display: grid;
-    width: min(120%, 95vw);
+    width: min(150%, 95vw);
     grid-template-columns: repeat(auto-fit, minmax(min(350px, 95vw), 1fr));
     gap: 2rem;
     color: rgb(var(--text-color-standard));
