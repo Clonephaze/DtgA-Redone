@@ -92,6 +92,11 @@ export function loadPage(pageId, pageContent, optItemId) {
                                 
                                 // Stop observing the element since the animation is done
                                 observer.disconnect();
+
+                                // Remove the flash class after the animation is complete
+                                setTimeout(() => {
+                                    item.classList.remove('quick-flash');
+                                }, 900);
                             }
                         });
                     }, { threshold: 1 }); // Trigger when 50% of the item is in view
@@ -99,7 +104,7 @@ export function loadPage(pageId, pageContent, optItemId) {
                     // Start observing the item
                     observer.observe(item);
                 }
-            }, 250);
+            }, 100);
         } else if (optItemId === null) {
             return;
         }
