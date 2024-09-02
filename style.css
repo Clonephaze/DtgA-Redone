@@ -1098,12 +1098,11 @@ nav {
 
 /****** New Mechanics Page ******/
 
-.new-mechanics-page-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0 1rem;
+.content-section >.new-mechanics-page-container.content {
+    /** Specificity 3 with above selector, for overriding the grid column **/
+    grid-column: 1 / span 3;
+    width: 100%;
+    max-width: min(98vw, 1440px);
 }
 
 .new-mech-title {
@@ -1118,23 +1117,26 @@ nav {
 
 .new-mech-card-container {
     display: grid;
-    width: min(175%, 95vw);
-    grid-template-columns: repeat(auto-fit, minmax(min(350px, 95vw), 1fr));
-    gap: 2rem;
+    width: 100%;
     color: rgb(var(--text-color-standard));
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 95vw), 1fr));
+    justify-content: center;
 
     >.new-mech-card {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        grid-template-rows: subgrid;
+        grid-row: auto / span 2;
+        display: grid;
         border: 2px solid var(--border-color);
         border-radius: 15px;
         box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.2), inset 0 0 3px 2px rgba(0, 0, 0, 0.3);
         max-width: 450px;
         margin-inline: auto;
         overflow: hidden;
+        margin: 0.75rem;
+        justify-self: center;
 
         >.new-mech-card-title {
+            grid-row: 1;
             color: var(--text-color-mixed);
             font-family: 'HyliaSerif';
             font-size: clamp(1.125rem, 1.0625rem + 0.2778vw, 1.25rem);
@@ -1146,27 +1148,34 @@ nav {
             background-image: var(--bgColorGradient);
             padding: 0.7rem 1rem;
             box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.3);
-
-
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         >.new-mech-card-description {
-            padding: 0.8rem 2rem;
-            font-size: clamp(0.9rem, 0.625rem + 0.5556vw, 1rem);
+            grid-row: 2;
+            font-size: clamp(0.875rem, 0.8314rem + 0.1362vw, 1rem);
+            min-height: min-content;
+            overflow-y: auto; /** firefox tends to be weird around 5-600px, this "fixes" it **/
 
-            >ul>li {
-                margin-block: 0.25rem;
-
-                &::marker {
-                    content: '* ';
-                    color: rgb(var(--color-primary-rgb-values));
-                    font-size: 1.2rem;
-                    font-family: 'TriForce';
+            >ul {
+                height: max-content;
+                margin-inline: 2rem;
+                margin-block: 1rem;
+                >li {
+                    margin-block: 0.25rem;
+                    text-wrap: pretty;
+                    text-wrap: balance;
+                    &::marker {
+                        content: '* ';
+                        color: rgb(var(--color-primary-rgb-values));
+                        font-size: 1.2rem;
+                        font-family: 'TriForce';
+                    }
                 }
             }
         }
-
-
     }
 }
 
