@@ -82,7 +82,7 @@ function loadContentAndScripts(pageId, optItemId) {
             pageTitle = 'New Mechanics | Dangerous to go Alone Wiki | Mod for BOTW';
             break;
         case 'faqPage':
-            fileName = 'Faq';
+            fileName = 'FAQ';
             pageTitle = 'FAQ | Dangerous to go Alone Wiki | Mod for BOTW';
             break;
         case 'gettingStartedPage':
