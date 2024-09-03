@@ -12,16 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Register service worker
     registerServiceWorker();
 
-    // Fetches JSON data for page content and initializes page load based on URL hash.
-    fetch("OtherPages/pageContent.json")
-        .then(response => response.json())
-        .then(data => {
-            pageContent = data;
-            loadPageFromURL(pageContent);
-        })
-        .catch(() => {
-            console.error("Failed to load page content.");
-        });
+    // Load the appropriate HTML content based on the URL hash.
+    loadPageFromURL();
 
     // Event handler for site navigation buttons
     document.addEventListener('click', (event) => {
@@ -32,10 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let itemId = null;
             if (href.startsWith('#')) {
                 if (href === `#${currentPage}`) {
-                    // Do nothing if the link is to the current page
-                    return;
+                    return; // Do nothing if the link is to the current page
                 }
-                // Handle internal link
                 const pageId = href.substring(1);
                 if (event.target.getAttribute('data-itemID')) {
                     itemId = event.target.getAttribute('data-itemID');
@@ -47,9 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     popover.classList.add('hide');
                     setMobileOpenClosed();
                 }
-                loadPage(pageId, pageContent, itemId);
+                loadPage(pageId, itemId);
             } else {
-                // Handle external link
                 window.open(href, '_blank', 'noopener,noreferrer');
             }
         }
@@ -69,9 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handles browser history back/forward button clicks.
     window.onpopstate = (event) => {
         if (event.state && event.state.pageId) {
-            loadPage(event.state.pageId, pageContent);
+            loadPage(event.state.pageId);
         } else {
-            loadPage('homePage', pageContent);
+            loadPage('homePage');
         }
     };
 });

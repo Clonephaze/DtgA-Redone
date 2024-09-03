@@ -11,24 +11,16 @@ let testing = false; // Set to true here and in main.js and go to the root page 
 /**
  * Loads the page based on the current URL hash.
  */
-export function loadPageFromURL(pageContent) {
+export function loadPageFromURL() {
     const pageId = window.location.hash.substring(1);
-    if (pageId && !testing) {
-        loadPage(pageId, pageContent);
-    } else if (!testing) {
-        loadPage('homePage', pageContent);
-    } else if (testing) {
-        document.querySelector('.homepageBg').style.background = 'none';
-        console.log('testing');
+    if (pageId) {
+        loadPage(pageId);
+    } else {
+        loadPage('homePage');
     }
 }
 
-/**
- * Loads the specified page content and handles related UI changes.
- * 
- * @param {string} pageId - The ID of the page to load.
- */
-export function loadPage(pageId, pageContent, optItemId) {
+export function loadPage(pageId, optItemId) {
     // Close the navigation menu
     document.querySelector('.nav-toggle').setAttribute('aria-expanded', 'false');
 
@@ -40,8 +32,8 @@ export function loadPage(pageId, pageContent, optItemId) {
 
     // Responsive handling for navigation menu animation
     if (window.innerWidth <= 768) {
-        let navList = document.querySelector('.nav-list')
-        let navDropdown = document.querySelector('.nav-dropdown')
+        let navList = document.querySelector('.nav-list');
+        let navDropdown = document.querySelector('.nav-dropdown');
         collapseContent(navList);
         collapseContent(navDropdown);
         document.querySelector('.nav-list').setAttribute('aria-expanded', 'false');
@@ -53,41 +45,89 @@ export function loadPage(pageId, pageContent, optItemId) {
         document.getElementById('wiki-list-dropdown').setAttribute('aria-expanded', 'false');
     }
 
-    loadContentAndScripts(pageId, pageContent, optItemId);
+    // Load the corresponding minified HTML file
+    loadContentAndScripts(pageId, optItemId);
 }
 
-function loadContentAndScripts(pageId, pageContent, optItemId) {
-    // Find the content for the specified pageId
-    const content = pageContent.find(page => page.pageId === pageId);
-
-    if (content) {
-
-        const contentSection = document.querySelector('.content-section');
-        // Load the page content and update the document title
-        contentSection.innerHTML = content.pageContent;
-        document.title = content.title;
-
-        // Update the position of the indicator
-        updateIndicatorOnPageLoad(pageId);
-        // Handle page-specific transitions
-        handlePageTransition(pageId);
-
-        
-        // Connect to get-popped popovers
-        initiatePopovers();
-        
-        // Generate the table of contents if the requested page has the correct element
-        generateTOC();
-        
-        // Create Scroll Button 
-        appendScrollButton(contentSection);
-
-        // If an optional item ID is provided, scroll to it
-        handleOptionalItemId(optItemId);
-
-    } else {
-        console.log("No content found for pageId:", pageId);
+function loadContentAndScripts(pageId, optItemId) {
+    let fileName;
+    let pageTitle;
+    switch (pageId) {
+        case 'locationsPage':
+            fileName = 'Locations';
+            pageTitle = 'Locations | Dangerous to go Alone Wiki | Mod for BOTW'; 
+            break;
+        case 'npcsPage':
+            fileName = 'Npcs';
+            pageTitle = 'NPCs | Dangerous to go Alone Wiki | Mod for BOTW';
+            break;
+        case 'enemiesPage':
+            fileName = 'Enemies';
+            pageTitle = 'Enemies | Dangerous to go Alone Wiki | Mod for BOTW';
+            break;
+        case 'aspSpellcastingPage':
+            fileName = 'Spellcasting';
+            pageTitle = 'Spell Casting | Dangerous to go Alone Wiki | Mod for BOTW';
+            break;
+        case 'itemsPage':
+            fileName = 'Items';
+            pageTitle = 'Items | Dangerous to go Alone Wiki | Mod for BOTW';
+            break;
+        case 'statsPage':
+            fileName = 'StatsPage';
+            pageTitle = 'Stats and Leveling Up | Dangerous to go Alone Wiki | Mod for BOTW';
+            break;
+        case 'newMechanicsPage':
+            fileName = 'NewMechanics';
+            pageTitle = 'New Mechanics | Dangerous to go Alone Wiki | Mod for BOTW';
+            break;
+        case 'faqPage':
+            fileName = 'Faq';
+            pageTitle = 'FAQ | Dangerous to go Alone Wiki | Mod for BOTW';
+            break;
+        case 'gettingStartedPage':
+            fileName = 'GettingStarted';
+            pageTitle = 'Getting Started | Dangerous to go Alone Wiki | Mod for BOTW';
+            break;
+        case 'aboutPage':
+            fileName = 'About';
+            pageTitle = 'About Us | Dangerous to go Alone Wiki | Mod for BOTW';
+            break;
+        case 'homePage':
+        default:
+            fileName = 'index';
+            pageTitle = 'Home | Dangerous to go Alone Wiki | Mod for BOTW';
+            break;
     }
+
+    fetch(`OtherPages/${fileName}.min.html`)
+        .then(response => response.text())
+        .then(htmlContent => {
+            const contentSection = document.querySelector('.content-section');
+            contentSection.innerHTML = htmlContent;
+            document.title = pageTitle;
+
+            // Update the position of the indicator
+            updateIndicatorOnPageLoad(pageId);
+
+            // Handle page-specific transitions
+            handlePageTransition(pageId);
+
+            // Connect to get-popped popovers
+            initiatePopovers();
+
+            // Generate the table of contents if the requested page has the correct element
+            generateTOC();
+
+            // Create Scroll Button 
+            appendScrollButton(contentSection);
+
+            // If an optional item ID is provided, scroll to it
+            handleOptionalItemId(optItemId);
+        })
+        .catch(() => {
+            console.error(`Failed to load ${fileName}.`);
+        });
 }
 
 function handleOptionalItemId(optItemId) {
