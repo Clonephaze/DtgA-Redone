@@ -118,6 +118,9 @@ function loadContentAndScripts(pageId, optItemId) {
             // Generate the table of contents if the requested page has the correct element
             generateTOC();
 
+            // Handle Card Buttons 
+            addCardEventListeners();
+
             // Create Scroll Button 
             appendScrollButton(contentSection);
 
@@ -225,31 +228,26 @@ function handlePageTransition(pageId) {
             siteFooter.style.display = 'flex';
             break;
         case 'itemsPage':
-            addCardEventListeners();
             homepageBg.style.opacity = '0';
             siteFooter.style.display = 'flex';
             nav.classList.add('nav-with-content');
             break;
         case 'enemiesPage':
-            addCardEventListeners();
             homepageBg.style.opacity = '0';
             siteFooter.style.display = 'flex';
             nav.classList.add('nav-with-content');
             break;
         case 'npcsPage':
-            addCardEventListeners();
             homepageBg.style.opacity = '0';
             siteFooter.style.display = 'flex';
             nav.classList.add('nav-with-content');
             break;
         case 'locationsPage':
-            addCardEventListeners();
             homepageBg.style.opacity = '0';
             siteFooter.style.display = 'flex';
             nav.classList.add('nav-with-content');
             break;
         case 'statsPage':
-            addCardEventListeners();
             homepageBg.style.opacity = '0';
             siteFooter.style.display = 'flex';
             nav.classList.add('nav-with-content');
