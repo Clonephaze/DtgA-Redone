@@ -55,48 +55,48 @@ function loadContentAndScripts(pageId, optItemId) {
     switch (pageId) {
         case 'locationsPage':
             fileName = 'Locations';
-            pageTitle = 'Locations | Dangerous to go Alone Wiki | Mod for BOTW'; 
+            pageTitle = 'Locations'; 
             break;
         case 'npcsPage':
-            fileName = 'Npcs';
-            pageTitle = 'NPCs | Dangerous to go Alone Wiki | Mod for BOTW';
+            fileName = 'NPCs';
+            pageTitle = 'NPCs';
             break;
         case 'enemiesPage':
             fileName = 'Enemies';
-            pageTitle = 'Enemies | Dangerous to go Alone Wiki | Mod for BOTW';
+            pageTitle = 'Enemies';
             break;
         case 'aspSpellcastingPage':
             fileName = 'Spellcasting';
-            pageTitle = 'Spell Casting | Dangerous to go Alone Wiki | Mod for BOTW';
+            pageTitle = 'Spell Casting';
             break;
         case 'itemsPage':
             fileName = 'Items';
-            pageTitle = 'Items | Dangerous to go Alone Wiki | Mod for BOTW';
+            pageTitle = 'Items';
             break;
         case 'statsPage':
             fileName = 'StatsPage';
-            pageTitle = 'Stats and Leveling Up | Dangerous to go Alone Wiki | Mod for BOTW';
+            pageTitle = 'Stats and Leveling Up';
             break;
         case 'newMechanicsPage':
             fileName = 'NewMechanics';
-            pageTitle = 'New Mechanics | Dangerous to go Alone Wiki | Mod for BOTW';
+            pageTitle = 'New Mechanics';
             break;
         case 'faqPage':
             fileName = 'FAQ';
-            pageTitle = 'FAQ | Dangerous to go Alone Wiki | Mod for BOTW';
+            pageTitle = 'FAQ';
             break;
         case 'gettingStartedPage':
             fileName = 'GettingStarted';
-            pageTitle = 'Getting Started | Dangerous to go Alone Wiki | Mod for BOTW';
+            pageTitle = 'Getting Started';
             break;
         case 'aboutPage':
             fileName = 'About';
-            pageTitle = 'About Us | Dangerous to go Alone Wiki | Mod for BOTW';
+            pageTitle = 'About Us';
             break;
         case 'homePage':
         default:
             fileName = 'index';
-            pageTitle = 'Home | Dangerous to go Alone Wiki | Mod for BOTW';
+            pageTitle = 'Home';
             break;
     }
 
@@ -105,7 +105,7 @@ function loadContentAndScripts(pageId, optItemId) {
         .then(htmlContent => {
             const contentSection = document.querySelector('.content-section');
             contentSection.innerHTML = htmlContent;
-            document.title = pageTitle;
+            document.title = pageTitle + ' | Dangerous to go Alone Wiki | Mod for BOTW';
 
             // Update the position of the indicator
             updateIndicatorOnPageLoad(pageId);
