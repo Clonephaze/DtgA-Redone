@@ -5,7 +5,7 @@
  */
 export function setAutoHeight(element, callback) {
     let hasStyle = element.getAttribute('style');
-    if (element.classList.contains('transitioning')|| hasStyle === 'height: auto') return; // Prevent multiple transitions
+    if (element.classList.contains('transitioning') || hasStyle === 'height: auto') return; // Prevent multiple transitions
 
     element.classList.add('transitioning'); // Add transitioning class
 
@@ -104,6 +104,85 @@ export function animateMobileButtonPress(element) {
             setTimeout(() => {
                 h2Element.classList.remove('button-tapped');
             }, 125);
+        }
+    }
+}
+
+/**
+ * Adds event listeners for description toggles and location buttons.
+ */
+export function addCardEventListeners() {
+    // Event listener for description toggles
+    document.removeEventListener('click', handleDescToggle);
+    document.addEventListener('click', handleDescToggle);
+
+    // Event listener for location buttons
+    document.removeEventListener('click', handleLocationToggle);
+    document.addEventListener('click', handleLocationToggle);
+
+    function handleDescToggle(event) {
+        const button = event.target.closest('.desc-title');
+        if (!button) return;
+
+        const card = button.closest('.card-box');
+        const descContent = button.nextElementSibling;
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+        // Collapse other descriptions in the same card
+        card.querySelectorAll('.desc-title').forEach(btn => {
+            if (btn !== button) {
+                btn.setAttribute('aria-expanded', 'false');
+                const otherDescContent = btn.nextElementSibling;
+                if (otherDescContent) {
+                    collapseContent(otherDescContent);
+                }
+            }
+        });
+
+        // Toggle the aria-expanded attribute for the selected description
+        button.setAttribute('aria-expanded', !isExpanded);
+
+        if (!isExpanded) {
+            setAutoHeight(descContent);
+        } else {
+            collapseContent(descContent);
+        }
+
+        // Scroll to the corresponding image
+        const weaponNumber = button.dataset.weaponNumber;
+        const upgradeNumber = button.dataset.upgradeNumber;
+        const carousel = card.querySelector('.image-carousel');
+        const targetItem = carousel.querySelector(`.carousel-item[data-weapon-number="${weaponNumber}"][data-upgrade-number="${upgradeNumber}"]`);
+
+        if (targetItem) {
+            const targetPosition = targetItem.offsetLeft - (carousel.offsetWidth / 2) + (targetItem.offsetWidth / 2);
+            carousel.scrollTo({
+                left: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    function handleLocationToggle(event) {
+        if (event.target.closest('.location-button')) {
+            const button = event.target.closest('.location-button');
+            const locationText = button.nextElementSibling;
+            const isExpanded = button.getAttribute('aria-expanded');
+
+            if (isExpanded === 'false') {
+                button.setAttribute('aria-expanded', 'true');
+                setAutoHeight(locationText);
+            } else if (isExpanded === 'true') {
+                button.setAttribute('aria-expanded', 'false');
+                collapseContent(locationText);
+            }
+
+            if (button.getAttribute('aria-expanded') === 'false' && locationText.getAttribute('style') !== 'height: 0px;') {
+                // This is to catch cases of the text being expanded even though it should be collapsed. 
+                button.setAttribute('aria-expanded', 'false');
+                locationText.removeAttribute('style');
+                console.error('Location text not collapsed');
+            }
         }
     }
 }
