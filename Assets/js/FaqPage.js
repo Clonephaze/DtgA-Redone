@@ -1,22 +1,6 @@
 import { setAutoHeight, collapseContent } from "./Utilities.js";
 
 /**
- * Sets up the FAQ page by opening the first accordion item.
- */
-export function setupFAQPage() {
-    // Ensure this only runs once
-    if (setupFAQPage.isInitialized) return;
-    setupFAQPage.isInitialized = true;
-
-    // Open the first accordion item by default
-    const firstContent = document.querySelector('.accordion-content');
-    if (firstContent) {
-        firstContent.classList.add('show');
-        firstContent.style.height = 'auto';
-    }
-}
-
-/**
  * Handles click events for accordion buttons.
  */
 export function handleAccordionClicks() {
@@ -41,6 +25,9 @@ function handleAccordionClick(event) {
     if (content.classList.contains('show')) {
         collapseContent(content);
         content.classList.remove('show');
+        if (content.style.height) {
+            content.style.height = '';
+        }
     } else {
         // Collapse other open accordion content
         document.querySelectorAll('.show').forEach(openContent => {
