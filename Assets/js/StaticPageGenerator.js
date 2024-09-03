@@ -94,6 +94,7 @@ function generateStaticPages() {
     });
 }
 
+let generatedCardCount;
 /**
  * Generates the page content by inserting dynamically created cards into the appropriate containers.
  * 
