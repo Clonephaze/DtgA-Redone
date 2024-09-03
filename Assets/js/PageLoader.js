@@ -213,49 +213,13 @@ function handlePageTransition(pageId) {
     const siteFooter = document.querySelector('.site-footer');
     const nav = document.querySelector('nav');
 
-    switch (pageId) {
-        case 'homePage':
-            // manageTsParticles();
-            initializeParticles();
-            homepageBg.style.opacity = '100%';
-            nav.classList.remove('nav-with-content');
-            siteFooter.style.display = 'none';
-            break;
-        case 'faqPage':
-            handleAccordionClicks();
-            homepageBg.style.opacity = '0';
-            nav.classList.add('nav-with-content');
-            siteFooter.style.display = 'flex';
-            break;
-        case 'itemsPage':
-            homepageBg.style.opacity = '0';
-            siteFooter.style.display = 'flex';
-            nav.classList.add('nav-with-content');
-            break;
-        case 'enemiesPage':
-            homepageBg.style.opacity = '0';
-            siteFooter.style.display = 'flex';
-            nav.classList.add('nav-with-content');
-            break;
-        case 'npcsPage':
-            homepageBg.style.opacity = '0';
-            siteFooter.style.display = 'flex';
-            nav.classList.add('nav-with-content');
-            break;
-        case 'locationsPage':
-            homepageBg.style.opacity = '0';
-            siteFooter.style.display = 'flex';
-            nav.classList.add('nav-with-content');
-            break;
-        case 'statsPage':
-            homepageBg.style.opacity = '0';
-            siteFooter.style.display = 'flex';
-            nav.classList.add('nav-with-content');
-            break;
-        default:
-            homepageBg.style.opacity = '0';
-            siteFooter.style.display = 'flex';
-            nav.classList.add('nav-with-content');
-            break;
+    if (pageId === 'homePage') {
+        homepageBg.style.opacity = '100%';
+        nav.classList.remove('nav-with-content');
+        siteFooter.style.display = 'none';
+    } else {
+        homepageBg.style.opacity = '0';
+        siteFooter.style.display = 'flex';
+        nav.classList.add('nav-with-content');
     }
 }
