@@ -5,16 +5,16 @@ import { loadPageFromURL, loadPage } from "./PageLoader.js";
 import { animateMobileButtonPress } from "./Utilities.js";
 import { setMobileOpenClosed } from "./PopOvers.js";
 
-let pageContent;
-let testing = false; // set to true here and in PageLoader.js and go to the root page to add content without the transitioner changing the content on screen.
+// Load the appropriate HTML content based on the URL hash.
+loadPageFromURL();
 
+// Wait for DOM content to load
 document.addEventListener('DOMContentLoaded', () => {
     // Register service worker
     registerServiceWorker();
 
-    // Load the appropriate HTML content based on the URL hash.
-    loadPageFromURL();
-
+    
+    
     // Event handler for site navigation buttons
     document.addEventListener('click', (event) => {
         if (event.target.classList.contains('pageNav')) {
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function registerServiceWorker() {
     // Register the service worker if not in testing mode
-    if (!testing && 'serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/DtgA-Redone/service-worker.js', { scope: '/DtgA-Redone/' })
             .then((registration) => {
                 // Uncomment the line below to log successful registration
@@ -75,22 +75,6 @@ function registerServiceWorker() {
             })
             .catch((error) => {
                 console.error('Service worker registration failed:', error);
-            });
-    }
-
-    // Unregister the service worker during testing
-    if (testing && 'serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations()
-            .then((registrations) => {
-                registrations.forEach((registration) => {
-                    registration.unregister()
-                        .then(() => {
-                            console.log('Service worker unregistered');
-                        });
-                });
-            })
-            .catch((error) => {
-                console.error('Error unregistering service workers:', error);
             });
     }
 }

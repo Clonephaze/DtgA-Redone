@@ -5,8 +5,6 @@ import { collapseContent, addCardEventListeners } from "./Utilities.js";
 import { initiatePopovers } from "./PopOvers.js";
 import { appendScrollButton } from "./ScrolltoTop.js";
 
-let testing = false; // Set to true here and in main.js and go to the root page to add content without the transitioner changing the content on screen.
-
 /**
  * Loads the page based on the current URL hash.
  */
