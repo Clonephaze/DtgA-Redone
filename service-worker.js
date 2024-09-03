@@ -1,6 +1,6 @@
 // Constants for the service worker
 const APP_PREFIX = 'DtgA_';  // Identifier for this app
-const VERSION = 'version_30'; // Version of the offline cache, itterate this number if changes are made and old caches should be cleared
+const VERSION = 'version_31'; // Version of the offline cache, itterate this number if changes are made and old caches should be cleared
 const CACHE_NAME = APP_PREFIX + VERSION; // Cache name combining app prefix and version
 const REPOSITORY = '/DtgA-Redone'; // Base path for repository, required for making a service worker work for github pages.
 const MAX_AGE = 24 * 60 * 60 * 1000; // Max age for cached resources in milliseconds (24 hours)
@@ -12,17 +12,17 @@ const URLS = [
     '/style.css',
     '/manifest.json',
     '/service-worker.js',
-    '/OtherPages/FAQ.min.html',
-    '/OtherPages/StatsPage.gen.min.html',
-    '/OtherPages/Spellcasting.min.html',
+    '/OtherPages/FAQ.html',
+    '/OtherPages/StatsPage.gen.html',
+    '/OtherPages/Spellcasting.html',
     '/OtherPages/NPCs.min.gen.html',
-    '/OtherPages/NewMechanics.min.html',
-    '/OtherPages/Locations.gen.min.html',
-    '/OtherPages/GettingStarted.min.html',
-    '/OtherPages/Enemies.gen.min.html',
-    '/OtherPages/About.min.html',
-    '/OtherPages/index.min.html',
-    '/OtherPages/Items.gen.min.html',
+    '/OtherPages/NewMechanics.html',
+    '/OtherPages/Locations.gen.html',
+    '/OtherPages/GettingStarted.html',
+    '/OtherPages/Enemies.gen.html',
+    '/OtherPages/About.html',
+    '/OtherPages/index.html',
+    '/OtherPages/Items.gen.html',
     '/Assets/js/ColorPicker.js',
     '/Assets/js/FaqPage.js',
     '/Assets/js/main.js',
