@@ -1,5 +1,5 @@
 import { generateTOC } from "./TableOfContentsGen.js";
-import { setupFAQPage, handleAccordionClicks } from "./FaqPage.js";
+import { handleAccordionClicks } from "./FaqPage.js";
 import { initializeParticles } from "./ParticleManager.js";
 import { generatePageContent } from "./CardGeneration.js";
 import { collapseContent } from "./Utilities.js";
@@ -53,11 +53,15 @@ export function loadPage(pageId, pageContent, optItemId) {
         document.getElementById('wiki-list-dropdown').setAttribute('aria-expanded', 'false');
     }
 
+    loadContentAndScripts(pageId, pageContent, optItemId);
+}
+
+function loadContentAndScripts(pageId, pageContent, optItemId) {
     // Find the content for the specified pageId
     const content = pageContent.find(page => page.pageId === pageId);
 
     if (content) {
-        
+
         const contentSection = document.querySelector('.content-section');
         // Load the page content and update the document title
         contentSection.innerHTML = content.pageContent;
@@ -65,51 +69,57 @@ export function loadPage(pageId, pageContent, optItemId) {
 
         // Update the position of the indicator
         updateIndicatorOnPageLoad(pageId);
-
-        // Generate the table of contents if the requested page has the correct element
-        generateTOC();
-
-        // Connect to get-popped popovers
-        initiatePopovers();
-
         // Handle page-specific transitions
         handlePageTransition(pageId);
 
-        // Create Scroll Button
+        
+        // Connect to get-popped popovers
+        initiatePopovers();
+        
+        // Generate the table of contents if the requested page has the correct element
+        generateTOC();
+        
+        // Create Scroll Button 
         appendScrollButton(contentSection);
 
-        if (optItemId !== null) {
-            setTimeout(() => {
-                const item = document.getElementById(optItemId);
-                if (item) {
-                    item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // If an optional item ID is provided, scroll to it
+        handleOptionalItemId(optItemId);
 
-                    const observer = new IntersectionObserver((entries, observer) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                // Element is in view, add the flash class
-                                item.classList.add('quick-flash');
-                                
-                                // Stop observing the element since the animation is done
-                                observer.disconnect();
-
-                                // Remove the flash class after the animation is complete
-                                setTimeout(() => {
-                                    item.classList.remove('quick-flash');
-                                }, 900);
-                            }
-                        });
-                    }, { threshold: 1 }); // Trigger when 50% of the item is in view
-
-                    // Start observing the item
-                    observer.observe(item);
-                }
-            }, 100);
-        } else if (optItemId === null) {
-            return;
-        }
     } else {
         console.log("No content found for pageId:", pageId);
+    }
+}
+
+function handleOptionalItemId(optItemId) {
+    if (optItemId !== null) {
+        setTimeout(() => {
+            const item = document.getElementById(optItemId);
+            if (item) {
+                item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            // Element is in view, add the flash class
+                            item.classList.add('quick-flash');
+
+                            // Stop observing the element since the animation is done
+                            observer.disconnect();
+
+                            // Remove the flash class after the animation is complete
+                            setTimeout(() => {
+                                item.classList.remove('quick-flash');
+                            }, 900);
+                        }
+                    });
+                }, { threshold: 1 }); // Trigger when 50% of the item is in view
+
+                // Start observing the item
+                observer.observe(item);
+            }
+        }, 100);
+    } else if (optItemId === null) {
+        return;
     }
 }
 
@@ -170,7 +180,6 @@ function handlePageTransition(pageId) {
             siteFooter.style.display = 'none';
             break;
         case 'faqPage':
-            setupFAQPage();
             handleAccordionClicks();
             homepageBg.style.opacity = '0';
             nav.classList.add('nav-with-content');
