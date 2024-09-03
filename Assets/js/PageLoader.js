@@ -1,8 +1,7 @@
 import { generateTOC } from "./TableOfContentsGen.js";
 import { handleAccordionClicks } from "./FaqPage.js";
 import { initializeParticles } from "./ParticleManager.js";
-import { generatePageContent } from "./CardGeneration.js";
-import { collapseContent } from "./Utilities.js";
+import { collapseContent, addCardEventListeners } from "./Utilities.js";
 import { initiatePopovers } from "./PopOvers.js";
 import { appendScrollButton } from "./ScrolltoTop.js";
 
@@ -54,15 +53,15 @@ function loadContentAndScripts(pageId, optItemId) {
     let pageTitle;
     switch (pageId) {
         case 'locationsPage':
-            fileName = 'Locations';
+            fileName = 'Locations.gen';
             pageTitle = 'Locations'; 
             break;
         case 'npcsPage':
-            fileName = 'NPCs';
+            fileName = 'NPCs.gen';
             pageTitle = 'NPCs';
             break;
         case 'enemiesPage':
-            fileName = 'Enemies';
+            fileName = 'Enemies.gen';
             pageTitle = 'Enemies';
             break;
         case 'aspSpellcastingPage':
@@ -70,11 +69,11 @@ function loadContentAndScripts(pageId, optItemId) {
             pageTitle = 'Spell Casting';
             break;
         case 'itemsPage':
-            fileName = 'Items';
+            fileName = 'Items.gen';
             pageTitle = 'Items';
             break;
         case 'statsPage':
-            fileName = 'StatsPage';
+            fileName = 'StatsPage.gen';
             pageTitle = 'Stats and Leveling Up';
             break;
         case 'newMechanicsPage':
@@ -100,7 +99,7 @@ function loadContentAndScripts(pageId, optItemId) {
             break;
     }
 
-    fetch(`OtherPages/${fileName}.min.html`)
+    fetch(`OtherPages/${fileName}.html`)
         .then(response => response.text())
         .then(htmlContent => {
             const contentSection = document.querySelector('.content-section');
@@ -226,49 +225,31 @@ function handlePageTransition(pageId) {
             siteFooter.style.display = 'flex';
             break;
         case 'itemsPage':
-            generatePageContent('Items', {
-                'Armors': 'armorsContainer',
-                'Consumables': 'consumablesContainer',
-                'Gadgets': 'gadgetsContainer',
-                'KeyItems': 'keyitemsContainer',
-                'Souls': 'soulsContainer',
-                'Weapons': 'weaponsContainer'
-            });
+            addCardEventListeners();
             homepageBg.style.opacity = '0';
             siteFooter.style.display = 'flex';
             nav.classList.add('nav-with-content');
             break;
         case 'enemiesPage':
-            generatePageContent('Enemies', {
-                'commonEnemies': 'commonEnemiesContainer',
-                'Bosses': 'bossesContainer'
-            });
+            addCardEventListeners();
             homepageBg.style.opacity = '0';
             siteFooter.style.display = 'flex';
             nav.classList.add('nav-with-content');
             break;
         case 'npcsPage':
-            generatePageContent('NPCs', {
-                'companions': 'companionsContainer',
-                'vendors': 'vendorsContainer',
-                'lostSouls': 'lostSoulsContainer'
-            });
+            addCardEventListeners();
             homepageBg.style.opacity = '0';
             siteFooter.style.display = 'flex';
             nav.classList.add('nav-with-content');
             break;
         case 'locationsPage':
-            generatePageContent('gadgetLocations', {
-                'locations': 'locationsContainer'
-            });
+            addCardEventListeners();
             homepageBg.style.opacity = '0';
             siteFooter.style.display = 'flex';
             nav.classList.add('nav-with-content');
             break;
         case 'statsPage':
-            generatePageContent('StatsPage', {
-                'Stats': 'stat-card-container'
-            });
+            addCardEventListeners();
             homepageBg.style.opacity = '0';
             siteFooter.style.display = 'flex';
             nav.classList.add('nav-with-content');
