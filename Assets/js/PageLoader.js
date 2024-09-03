@@ -214,9 +214,15 @@ function handlePageTransition(pageId) {
     const nav = document.querySelector('nav');
 
     if (pageId === 'homePage') {
+        initializeParticles();
         homepageBg.style.opacity = '100%';
         nav.classList.remove('nav-with-content');
         siteFooter.style.display = 'none';
+    } else if (pageId === 'faqPage') {
+        handleAccordionClicks();
+        homepageBg.style.opacity = '0';
+        siteFooter.style.display = 'flex';
+        nav.classList.add('nav-with-content');
     } else {
         homepageBg.style.opacity = '0';
         siteFooter.style.display = 'flex';
