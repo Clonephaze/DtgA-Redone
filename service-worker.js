@@ -1,6 +1,6 @@
 // Constants for the service worker
 const APP_PREFIX = 'DtgA_';  // Identifier for this app
-const VERSION = 'version_31'; // Version of the offline cache, itterate this number if changes are made and old caches should be cleared
+const VERSION = 'version_32'; // Version of the offline cache, itterate this number if changes are made and old caches should be cleared
 const CACHE_NAME = APP_PREFIX + VERSION; // Cache name combining app prefix and version
 const REPOSITORY = '/DtgA-Redone'; // Base path for repository, required for making a service worker work for github pages.
 const MAX_AGE = 24 * 60 * 60 * 1000; // Max age for cached resources in milliseconds (24 hours)
@@ -23,19 +23,7 @@ const URLS = [
     '/OtherPages/NPCs.gen.html',
     '/OtherPages/Spellcasting.html',
     '/OtherPages/StatsPage.gen.html',
-    '/Assets/js/ColorPicker.js',
-    '/Assets/js/FaqPage.js',
-    '/Assets/js/main.js',
-    '/Assets/js/NavbarHandler.js',
-    '/Assets/js/PageLoader.js',
-    '/Assets/js/ParticleManager.js',
-    '/Assets/js/PopOvers.js',
-    '/Assets/js/ScrolltoTop.js',
-    '/Assets/js/TableOfContentsGen.js',
-    '/Assets/js/Utilities.js',
-    '/Assets/js/OtherCreatorsJs/iro.min.js',
-    '/Assets/js/OtherCreatorsJs/tsparticles.basic.bundle.min.js',
-    '/Assets/js/generationData.json',
+    '/Assets/jsMin/bundle.js',
     '/Assets/DtgA-logo_Final-GaplessBW.webp',
     '/Assets/Fonts/HyliaSerifBeta-Regular.otf',
     '/Assets/Fonts/promptfont.otf',
