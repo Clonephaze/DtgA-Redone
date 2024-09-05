@@ -12,7 +12,6 @@ loadPageFromURL();
 document.addEventListener('DOMContentLoaded', () => {
     // Register service worker
     registerServiceWorker();
-
     
     
     // Event handler for site navigation buttons
@@ -64,6 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 });
+
+window.addEventListener('hashchange', loadPageFromURL);
 
 function registerServiceWorker() {
     // Register the service worker if not in testing mode

@@ -9,11 +9,17 @@ import { appendScrollButton } from "./ScrolltoTop.js";
  * Loads the page based on the current URL hash.
  */
 export function loadPageFromURL() {
-    const pageId = window.location.hash.substring(1);
-    if (pageId) {
-        loadPage(pageId);
+    const hash = window.location.hash.substring(1); // Get the part after '#'
+    
+    if (hash) {
+        if (hash.includes('|')) {
+            const [pageId, itemId] = hash.split('|'); 
+            loadPage(pageId, itemId); // Pass pageId and itemId
+        } else {
+            loadPage(hash); // No '|', so just pass the hash as pageId
+        }
     } else {
-        loadPage('homePage');
+        loadPage('homePage'); 
     }
 }
 
