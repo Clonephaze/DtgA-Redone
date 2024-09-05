@@ -1,24 +1,14 @@
 :root {
-    --color-primary: 165, 100%, 76%;
     --color-primary-rgb-values: 133, 255, 225;
-
-    --color-secondary: 210, 11%, 15%;
     --color-secondary-rgb-values: 0, 0, 5;
-
-    --color-primary-full: hsl(var(--color-primary));
-
     --bgColor: color-mix(in srgb, rgb(var(--color-primary-rgb-values)) 15%, rgb(var(--color-secondary-rgb-values)));
-    --bgColorDark: color-mix(in hsl shorter hue, hsl(var(--color-primary)) 10%, hsl(var(--color-secondary)) 100%);
-    --bgColorHeading: color-mix(in hsl shorter hue, hsl(var(--color-primary), 30%) 80%, hsl(0, 0%, 13%) 20%);
-    --bgColorGradient-old: linear-gradient(to bottom, color-mix(in hsl shorter hue, hsl(var(--color-primary)) 30%, black 70%) 0%, var(--bgColor) 80%);
-
-    --bgColorGradient: linear-gradient(to bottom, var(--bgColor) 10%, rgba(var(--color-primary-rgb-values), 0.2) 98%, transparent 100%);
-
-    --border-color: color-mix(in srgb, rgb(var(--color-primary-rgb-values)) 70%, rgb(10, 10, 10) 60%);
-
+    --sub-bgColor: color-mix(in srgb, currentcolor 20%, rgb(var(--color-secondary-rgb-values)));
+    --bgColorGradient: linear-gradient(in hsl, var(--bgColor) 10%, rgba(var(--color-primary-rgb-values), 0.2) 98%, transparent 100%);
+    --border-color: color-mix(in hsl, rgb(var(--color-primary-rgb-values)) 70%, rgb(10, 10, 10) 60%);
     --text-color-standard: 215, 215, 215;
-    --text-color-mixed: color-mix(in srgb, rgb(var(--color-primary-rgb-values)) 90%, rgb(var(--text-color-standard)) 10%);
-
+    --text-color-mixed: color-mix(in hsl, rgb(var(--color-primary-rgb-values)) 90%, rgb(var(--text-color-standard)) 10%);
+    --bx-shdw-light: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.2);
+    --bx-shdw-dark: 0 0 3px 2px rgba(0, 0, 0, 0.3);
     --standard-font: -system-ui, Arial, Helvetica, sans-serif;
 }
 
@@ -43,6 +33,7 @@ main {
 }
 
 @media (prefers-reduced-motion: reduce) {
+    /** Removes animations if users have set that preference in their browser or on their device **/
     * {
         animation-duration: 0.01s !important;
         transition-duration: 0.01s !important;
@@ -212,8 +203,7 @@ nav {
         left: 0;
         right: 0;
         bottom: 0;
-        background-image: linear-gradient(to bottom, var(--bgColor) 10%, rgba(var(--color-primary-rgb-values), 0.35) 98%, transparent 100%);
-        ;
+        background-image: linear-gradient(in hsl, transparent 10%, rgba(var(--color-primary-rgb-values), 0.35) 98%, transparent 100%);
         opacity: 0;
         transition: opacity 400ms ease;
         z-index: -1;
@@ -402,8 +392,8 @@ nav {
     & .nav-dropdown[aria-expanded="true"] {
         opacity: 1;
         transition:
-            height 250ms cubic-bezier(.5, 2.07, .79, .31),
-            opacity 100ms 50ms ease-in;
+            height 250ms ease-out,
+            opacity 50ms 50ms ease-in;
     }
 }
 
@@ -414,7 +404,7 @@ nav {
     right: -350px;
     /* Hidden off-screen initially */
     width: 350px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: var(--bx-shdw-dark);
     z-index: 1000;
     border: 2px solid var(--border-color);
     border-radius: 10px;
@@ -484,7 +474,7 @@ nav {
     flex-direction: column;
     border: 2px solid var(--border-color);
     border-radius: 15px;
-    box-shadow: 0 0 4px 4px rgba(var(--color-primary-rgb-values), 0.15);
+    box-shadow: var(--bx-shdw-light);
     overflow: hidden;
     height: min-content;
     width: 100%;
@@ -500,7 +490,7 @@ nav {
         cursor: pointer;
         border-bottom: 2px solid var(--border-color);
         padding: 0.25rem 0.5rem;
-        box-shadow: inset 0 0 3px 2px hsla(0, 0%, 0%, 0.3);
+        box-shadow: inset var(--bx-shdw-dark);
 
         &:last-of-type {
             border-bottom: none;
@@ -583,7 +573,7 @@ nav {
         cursor: unset;
         text-align: center;
         border-radius: 50%;
-        box-shadow: 0 0 3px 2px hsla(0, 0%, 0%, 0.3);
+        box-shadow: var(--bx-shdw-dark);
         color: var(--text-color-mixed);
         position: relative;
         aspect-ratio: 1 / 1;
@@ -637,11 +627,11 @@ nav {
     text-align: center;
     border: 3px solid var(--border-color);
     border-radius: 15px;
-    padding: 0.8rem 1rem 0.5rem 1rem;
+    padding: 1rem 1rem 0.7rem 1rem;
     margin-block: 1rem;
     color: var(--text-color-mixed);
-    box-shadow: 0 0 6px 2px rgba(var(--color-primary-rgb-values), 0.3), inset 0 0 4px 2px rgba(var(--color-primary-rgb-values), 0.3);
-    background-color: color-mix(in srgb, currentcolor 20%, rgb(var(--color-secondary-rgb-values)));
+    box-shadow: var(--bx-shdw-light), inset var(--bx-shdw-light);
+    background-color: var(--sub-bgColor);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -695,7 +685,7 @@ nav {
 
     &:has(>.card-pop-wrapper) {
         padding: 0;
-        box-shadow: 0 0 10px 5px hsla(0, 0%, 0%, 0.3);
+        box-shadow: var(--bx-shdw-dark);
     }
 }
 
@@ -845,7 +835,7 @@ nav {
     margin: auto;
     border-radius: 15px;
     margin-block: 1rem;
-    box-shadow: 0 0 4px 4px rgba(var(--color-primary-rgb-values), 0.15), inset 0 0 3px 2px hsla(0, 0%, 0%, 0.3);
+    box-shadow: var(--bx-shdw-light), inset var(--bx-shdw-dark);
     border: 2px solid var(--border-color);
 
 
@@ -863,7 +853,7 @@ nav {
         padding: 0.3rem 0.5rem;
         background-color: hsla(0, 0%, 0%, 0.15);
         background-image: var(--bgColorGradient);
-        box-shadow: 0 3px 3px 2px hsla(0, 0%, 0%, 0.2);
+        box-shadow: var(--bx-shdw-dark);
 
 
         &::before,
@@ -930,7 +920,7 @@ nav {
     cursor: pointer;
     padding: 0.5rem 0.8rem;
     margin: 0.25rem 0.5rem;
-    box-shadow: inset -2px 5px 3px 1px rgba(var(--color-primary-rgb-values), 0.1), 0 0 4px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px transparent, inset var(--bx-shdw-dark);
 
     >i {
         padding-right: 0.25rem;
@@ -959,6 +949,7 @@ nav {
     max-width: 98vw;
     margin-inline: auto;
     padding-inline: 0.5rem;
+    row-gap: 1rem;
 
     & li {
         padding-left: 0.25rem;
@@ -973,16 +964,13 @@ nav {
         }
     }
 
-    >.gs-download-container {
+    >.get-sta-download-container,
+    >.install-container,
+    >.what-to-know-container{
         width: 100%;
-    }
-
-    >.install-container {
-        width: 100%;
-    }
-
-    >.what-to-know-container {
-        width: 100%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
     }
 }
 
@@ -1000,7 +988,8 @@ nav {
         border: 2px solid var(--border-color);
         border-radius: 15px;
         padding: 1rem;
-        box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.1);
+        /** lighter than normal box shadow, unique to these cards due to overlap of the shadows **/
+        box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.1), inset var(--bx-shdw-dark);
 
         >h2 {
             font-family: 'BreathOfWild';
@@ -1027,13 +1016,13 @@ nav {
     border: 2px solid var(--border-color);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.1);
+    box-shadow: var(--bx-shdw-light);
 
     >.install-card {
         display: grid;
         grid-template-columns: 85% 15%;
         padding: 0.8rem 1.8rem;
-        box-shadow: inset 0 0 5px 3px rgba(var(--color-primary-rgb-values), 0.1);
+        box-shadow: inset var(--bx-shdw-dark);
 
         &:nth-child(2),
         &:nth-child(3) {
@@ -1070,7 +1059,7 @@ nav {
     border: 2px solid var(--border-color);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.1), inset 0 0 5px 3px rgba(var(--color-primary-rgb-values), 0.1);
+    box-shadow: var(--bx-shdw-light), inset var(--bx-shdw-dark);
     padding: 0.8rem 1.8rem;
 
     & .what-to-know-title,
@@ -1098,7 +1087,7 @@ nav {
 
 /****** New Mechanics Page ******/
 
-.content-section >.new-mechanics-page-container.content {
+.content-section>.new-mechanics-page-container.content {
     /** Specificity 3 with above selector, for overriding the grid column **/
     grid-column: 1 / span 3;
     width: 100%;
@@ -1128,7 +1117,7 @@ nav {
         display: grid;
         border: 2px solid var(--border-color);
         border-radius: 15px;
-        box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.2), inset 0 0 3px 2px rgba(0, 0, 0, 0.3);
+        box-shadow: var(--bx-shdw-light), inset var(--bx-shdw-dark);
         max-width: 450px;
         margin-inline: auto;
         overflow: hidden;
@@ -1147,7 +1136,7 @@ nav {
             width: 100%;
             background-image: var(--bgColorGradient);
             padding: 0.7rem 1rem;
-            box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--bx-shdw-dark);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1157,16 +1146,19 @@ nav {
             grid-row: 2;
             font-size: clamp(0.875rem, 0.8314rem + 0.1362vw, 1rem);
             min-height: min-content;
-            overflow-y: auto; /** firefox tends to be weird around 5-600px, this "fixes" it **/
+            overflow-y: auto;
+            /** firefox tends to be weird around 5-600px, this "fixes" it **/
 
             >ul {
                 height: max-content;
                 margin-inline: 2rem;
                 margin-block: 1rem;
+
                 >li {
                     margin-block: 0.25rem;
                     text-wrap: pretty;
                     text-wrap: balance;
+
                     &::marker {
                         content: '* ';
                         color: rgb(var(--color-primary-rgb-values));
@@ -1193,7 +1185,7 @@ nav {
     color: rgb(var(--text-color-standard));
     border: 2px solid var(--border-color);
     border-radius: 15px;
-    box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.2), inset 0 0 3px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--bx-shdw-light), inset var(--bx-shdw-dark);
     overflow: hidden;
 
     >.accordion-button {
@@ -1222,7 +1214,7 @@ nav {
 
     >.accordion-content {
         font-size: clamp(0.9rem, 0.625rem + 0.5556vw, 1rem);
-        box-shadow: inset 0 0 6px 4px rgba(0, 0, 0, 0.3);
+        box-shadow: inset var(--bx-shdw-dark);
         overflow: hidden;
         height: 0;
 
@@ -1252,10 +1244,9 @@ nav {
     border-radius: 15px;
     padding: 1rem;
     color: var(--text-color-mixed);
-    background-color: color-mix(in srgb, currentcolor 20%, rgb(var(--color-secondary-rgb-values)));
     display: flex;
     flex-direction: column;
-    background-color: color-mix(in srgb, rgba(var(--color-primary-rgb-values), 0.3) 50%, rgb(var(--color-secondary-rgb-values)));
+    background-color: var(--sub-bgColor);
     width: calc(33% - 1rem);
     max-width: 98vw;
 
@@ -1269,7 +1260,7 @@ nav {
 
 
     >.image-container {
-        box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.2), inset 0 0 4px 2px rgba(var(--color-primary-rgb-values), 0.3);
+        box-shadow: var(--bx-shdw-light), inset 0 0 4px 2px rgba(var(--color-primary-rgb-values), 0.3);
         border-radius: 10px;
         overflow: hidden;
         object-fit: contain;
@@ -1285,7 +1276,6 @@ nav {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
-
         background-color: color-mix(in srgb, rgb(var(--color-primary-rgb-values)) 26%, rgb(var(--color-secondary-rgb-values)));
         border-radius: 10px;
         padding: 1rem;
@@ -1313,7 +1303,7 @@ nav {
 
         >.location-button {
             cursor: pointer;
-            color: color-mix(in srgb, rgb(var(--standard-font)) 50%, rgb(16, 16, 16));
+            color: var(--text-color-mixed);
             place-self: start;
             font-size: 0.8rem;
 
@@ -1340,7 +1330,7 @@ nav {
                 font-size: 0.8rem;
                 background-color: var(--bgColor);
                 border-radius: 15px;
-                box-shadow: inset 0 0 6px 4px rgba(0, 0, 0, 0.3);
+                box-shadow: inset var(--bx-shdw-dark);
             }
         }
     }
@@ -1449,7 +1439,7 @@ nav {
         overflow: hidden;
 
         background-color: var(--bgColor);
-        box-shadow: inset 0 0 6px 4px rgba(0, 0, 0, 0.3);
+        box-shadow: inset var(--bx-shdw-dark);
         border-radius: 15px;
 
         >.desc-content {
@@ -1489,7 +1479,7 @@ nav {
     overflow: hidden;
     border-radius: 15px;
     border: 2px solid var(--border-color);
-    box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.2), inset 0 0 3px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--bx-shdw-light), inset var(--bx-shdw-dark);
     max-width: 1080px;
 
     >h2 {
@@ -1528,7 +1518,7 @@ nav {
         overflow: hidden;
         border-radius: 15px;
         border: 2px solid var(--border-color);
-        box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.2), inset 0 0 3px 2px rgba(0, 0, 0, 0.3);
+        box-shadow: var(--bx-shdw-light), inset var(--bx-shdw-dark);
         min-width: 300px;
         width: calc(33% - 1rem);
         max-width: 98vw;
@@ -1710,7 +1700,7 @@ nav {
     overflow: hidden;
     border-radius: 15px;
     border: 2px solid var(--border-color);
-    box-shadow: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.2), inset 0 0 3px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--bx-shdw-light), inset var(--bx-shdw-dark);
     max-width: 1080px;
 
     >h2 {
@@ -1747,22 +1737,21 @@ nav {
 /****** Hover Rules ******/
 @media (hover: hover) {
     .on-hover-box {
-        transition: scale 250ms ease, box-shadow 250ms ease;
+        transition: scale 150ms ease, box-shadow 250ms ease;
 
         &:hover {
-            box-shadow: inset 0 0 3px 3px hsla(0, 0%, 0%, 0.1), 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.2);
-            scale: 1.01;
+            box-shadow: inset var(--bx-shdw-dark), var(--bx-shdw-light);
+            scale: 1.005;
             transform-origin: center;
         }
     }
 
     .on-button-hover {
-        transition: scale 200ms ease, box-shadow 200ms ease;
+        transition: box-shadow 200ms ease, text-shadow 200ms ease;
 
         &:hover {
-            box-shadow: inset -2px 5px 3px 1px rgba(var(--color-primary-rgb-values), 0.1), 0 0 4px 1px rgba(var(--color-primary-rgb-values), 0.2);
-            scale: 1.01;
-            transform-origin: center;
+            box-shadow: var(--bx-shdw-light), inset var(--bx-shdw-dark);
+            text-shadow: 0 0 3px rgba(var(--color-primary-rgb-values), 0.2);
         }
     }
 
@@ -1789,11 +1778,10 @@ nav {
     }
 
     .toc-button {
-        transition: color 250ms ease;
+        transition: color 250ms ease, text-shadow 250ms ease;
 
         &:hover {
-            color: hsl(var(--color-primary), 0.8);
-            scale: 1.005;
+            text-shadow: 0 0 3px rgba(var(--color-primary-rgb-values), 0.7);
         }
     }
 
@@ -1821,6 +1809,14 @@ nav {
         &:hover {
             background-image: radial-gradient(rgba(var(--color-primary-rgb-values), 0.2) 0%, transparent 65%);
             background-size: 100% 100%;
+        }
+    }
+
+    #color-picker-btn {
+        transition: box-shadow 250ms ease;
+
+        &:hover {
+            box-shadow: inset var(--bx-shdw-dark), var(--bx-shdw-light);
         }
     }
 }
