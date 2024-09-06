@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <style>
+        html {
+            background-color: black;
+        }
+    </style>
     <script>
-        //get the url and extract the last part after the last "/"
-        const url = window.location.href;
-        const destination = url.split("/").pop();
-        
-        let redirectUrl = "https://clonephaze.github.io/DtgA-Redone/#" + destination;
-        window.location.href = redirectUrl;
+        const url=window.location.href;let destination=url.split("/").pop().split("#").pop();const correctPages=["homePage","locationsPage","npcsPage","enemiesPage","aspSpellcastingPage","itemsPage","statsPage","newMechanicsPage","faqPage","gettingStartedPage","aboutPage"],page=destination.split("|")[0];window.location.href=correctPages.includes(page)?`https://clonephaze.github.io/DtgA-Redone/#${destination}`:`https://clonephaze.github.io/DtgA-Redone/`;
     </script>
 </head>
 <body>
-    
+
 </body>
 </html>
