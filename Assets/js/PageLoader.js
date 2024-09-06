@@ -12,11 +12,12 @@ export function loadPageFromURL() {
     const hash = window.location.hash.substring(1); // Get the part after '#'
     
     if (hash) {
-        if (hash.includes('|')) {
-            const [pageId, itemId] = hash.split('|'); 
+        if (hash.includes('?')) {
+            const [pageId, itemId] = hash.split('?'); 
             loadPage(pageId, itemId); // Pass pageId and itemId
+            console.log(pageId, itemId);
         } else {
-            loadPage(hash); // No '|', so just pass the hash as pageId
+            loadPage(hash); // No '?', so just pass the hash as pageId
         }
     } else {
         loadPage('homePage'); 
