@@ -8,7 +8,9 @@
         //get the url and extract the last part after the last "/"
         const url = window.location.href;
         const destination = url.split("/").pop();
-        console.log(destination);
+        
+        let redirectUrl = "https://clonephaze.github.io/DtgA-Redone/#" + destination;
+        window.location.href = redirectUrl;
     </script>
 </head>
 <body>
