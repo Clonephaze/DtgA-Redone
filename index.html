@@ -62,7 +62,7 @@
             <li role="none" class="nav-item"><button role="menuitem" class="pageNav" role="link" data-href="#gettingStartedPage">Getting Started</button></li>
             <li role="none" class="nav-item">
                 <button id="wiki-list-dropdown" aria-label="Wiki Dropdown button" role="menuitem" aria-expanded="false" aria-controls="nav-dropdown">Wiki</button>
-                <div class="nav-dropdown" aria-label="Wiki Dropdown" aria-expanded="false">
+                <div class="nav-dropdown" aria-label="Wiki Dropdown" aria-expanded="false" role="menu">
                     <ul aria-label="Wiki" role="menu">
                         <li role="none"><button role="menuitem" class="pageNav" data-href="#newMechanicsPage">New Mechanics</button></li>
                         <li role="none"><button role="menuitem" class="pageNav" data-href="#statsPage">Stats & Leveling Up</button></li>
@@ -75,14 +75,14 @@
                 </div>
             </li>
             <li role="none" class="nav-item"><button role="menuitem" class="pageNav" data-href="#faqPage">FAQ</button></li>
-            <div class="indicator"></div>
-            <button aria-haspopup="true" aria-label="Open Color Picker" aria-controls="color-picker-modal" id="color-picker-btn" class="get-popped" data-popSide="bottom" data-popInfo="Customize the primary color of the site!"><i class='bx bxs-palette'></i></button>
+            <div role="none" class="indicator"></div>
+            <button role="none" aria-haspopup="true" aria-label="Open Color Picker" aria-controls="color-picker-modal" id="color-picker-btn" class="get-popped" data-popSide="bottom" data-popInfo="Customize the primary color of the site!"><i class='bx bxs-palette'></i></button>
         </ul>
         <div id="color-picker-modal" role="dialog" aria-label="Color Picker Modal">
             <div class="modal-content">
                 <div class="button-row">
                     <button id="reset-button" class="reset-btn get-popped" data-popInfo="Reset back to the default color for DtgA"
-                    araia-label="Reset Color" data-popSide="bottom"><i role="none" aria-hidden="true" class='bx bx-reset'></i></button>
+                    aria-label="Reset Color" data-popSide="bottom"><i role="none" aria-hidden="true" class='bx bx-reset'></i></button>
                     <button aria-label="Close Color Picker" title="Close the color picker" aria-controls="color-picker-modal" id="modal-close-button" class="close-btn"><i role="none" aria-hidden="true" class='bx bx-x'></i></button>
                 </div>
                 <div id="picker"
