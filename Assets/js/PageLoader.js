@@ -55,51 +55,75 @@ export function loadPage(pageId, optItemId) {
 function loadContentAndScripts(pageId, optItemId) {
     let fileName;
     let pageTitle;
+    let metaDescription;
+    let cononicalLink;
     switch (pageId) {
         case 'locationsPage':
             fileName = 'Locations.gen';
             pageTitle = 'Locations'; 
+            metaDescription = 'Locations of all Gadgets in Dangerous to go Alone, an overhaul mod for Breath of the Wild.';
+            cononicalLink = 'https://clonephaze.github.io/DtgA-Redone/locationsPage'
             break;
         case 'npcsPage':
             fileName = 'NPCs.gen';
             pageTitle = 'NPCs';
+            metaDescription = 'All Vendors, shop owners, and companions in Dangerous to go Alone, an overhaul mod for Breath of the Wild.';
+            cononicalLink = 'https://clonephaze.github.io/DtgA-Redone/npcsPage'
             break;
         case 'enemiesPage':
             fileName = 'Enemies.gen';
             pageTitle = 'Enemies';
+            metaDescription = 'All enemies and bosses in Dangerous to go Alone, an overhaul mod for Breath of the Wild.';
+            cononicalLink = 'https://clonephaze.github.io/DtgA-Redone/enemiesPage'
             break;
         case 'aspSpellcastingPage':
             fileName = 'Spellcasting';
             pageTitle = 'Spell Casting';
+            metaDescription = 'Introduction to the spellcasting offered in Dangerous to go Alone, an overhaul mod for Breath of the Wild.';
+            cononicalLink = 'https://clonephaze.github.io/DtgA-Redone/aspSpellcastingPage'
             break;
         case 'itemsPage':
             fileName = 'Items.gen';
             pageTitle = 'Items';
+            metaDescription = 'All Key Items, Gadgets, Weapons, Armors, Consumables, and Souls in Dangerous to go Alone, an overhaul mod for Breath of the Wild.';
+            cononicalLink = 'https://clonephaze.github.io/DtgA-Redone/itemsPage'
             break;
         case 'statsPage':
             fileName = 'StatsPage.gen';
             pageTitle = 'Stats and Leveling Up';
+            metaDescription = 'How Stats and Leveling Up works in Dangerous to go Alone, an overhaul mod for Breath of the Wild.';
+            cononicalLink = 'https://clonephaze.github.io/DtgA-Redone/statsPage'
             break;
         case 'newMechanicsPage':
             fileName = 'NewMechanics';
             pageTitle = 'New Mechanics';
+            metaDescription = 'Everything that Dangerous to go Alone has to offer from companions to gadgets, from weapons to spells, from from enemies to dungeons, and more!';
+            cononicalLink = 'https://clonephaze.github.io/DtgA-Redone/newMechanicsPage'
             break;
         case 'faqPage':
             fileName = 'FAQ';
             pageTitle = 'FAQ';
+            metaDescription = 'Frequently Asked Questions about Dangerous to go Alone, an overhaul mod for Breath of the Wild.';
+            cononicalLink = 'https://clonephaze.github.io/DtgA-Redone/faqPage'
             break;
         case 'gettingStartedPage':
             fileName = 'GettingStarted';
             pageTitle = 'Getting Started';
+            metaDescription = 'Installation and first step instructions for Dangerous to go Alone, an overhaul mod for Breath of the Wild.';
+            cononicalLink = 'https://clonephaze.github.io/DtgA-Redone/gettingStartedPage'
             break;
         case 'aboutPage':
             fileName = 'About';
             pageTitle = 'About Us';
+            metaDescription = 'About the purpose of the site itself, the creator of the mod, and the maker of website behind Dangerous to go Alone, an overhaul mod for Breath of the Wild.';
+            cononicalLink = 'https://clonephaze.github.io/DtgA-Redone/aboutPage'
             break;
         case 'homePage':
         default:
             fileName = 'index';
             pageTitle = 'Home';
+            metaDescription = 'Dangerous to go Alone, a MASSIVE overhaul mod for Breath of the Wild that offers everything from companions to gadgets, from weapons to spells, from from enemies to dungeons, and more!';
+            cononicalLink = 'https://clonephaze.github.io/DtgA-Redone/'
             break;
     }
 
@@ -109,6 +133,15 @@ function loadContentAndScripts(pageId, optItemId) {
             const contentSection = document.querySelector('.content-section');
             contentSection.innerHTML = htmlContent;
             document.title = pageTitle + ' | Dangerous to go Alone Wiki | Mod for BOTW';
+            // Update the meta description and canonical link
+            const metaDescriptionElement = document.querySelector('meta[name="description"]');
+            const cononicalLinkElement = document.querySelector('link[rel="canonical"]');
+            if (metaDescriptionElement) {
+                metaDescriptionElement.content = metaDescription;
+            }
+            if (cononicalLinkElement) {
+                cononicalLinkElement.href = cononicalLink;
+            }
 
             // Update the position of the indicator
             updateIndicatorOnPageLoad(pageId);
