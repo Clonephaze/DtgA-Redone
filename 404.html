@@ -9,7 +9,7 @@
         }
     </style>
     <script>
-        const url=window.location.href;let destination=url.split("/").pop().split("#").pop();const correctPages=["homePage","locationsPage","npcsPage","enemiesPage","aspSpellcastingPage","itemsPage","statsPage","newMechanicsPage","faqPage","gettingStartedPage","aboutPage"],page=destination.split("|")[0];window.location.href=correctPages.includes(page)?`https://clonephaze.github.io/DtgA-Redone/#${destination}`:`https://clonephaze.github.io/DtgA-Redone/`;
+        const url=window.location.href;let destination=url.split("/").pop().split("#").pop();const correctPages=["homePage","locationsPage","npcsPage","enemiesPage","aspSpellcastingPage","itemsPage","statsPage","newMechanicsPage","faqPage","gettingStartedPage","aboutPage"],page=destination.split("?")[0];window.location.href=correctPages.includes(page)?`https://clonephaze.github.io/DtgA-Redone/#${destination}`:`https://clonephaze.github.io/DtgA-Redone/`;
     </script>
 </head>
 <body>
