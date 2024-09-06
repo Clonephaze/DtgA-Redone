@@ -135,12 +135,20 @@ export async function initializeParticles() {
         zLayers: 100,
         motion: { disable: false, reduce: { factor: 4, value: true } }
     }
+    
+    // Retry mechanism for tsParticles load
+    const retryLoadParticles = async (retryInterval = 100) => {
+        try {
+            await tsParticles.load({
+                id: "tsparticles",
+                options: defaultConfig
+            });
+        } catch (error) {
+            console.error("Error loading particles, retrying...", error);
+            setTimeout(() => retryLoadParticles(retryInterval), retryInterval); // Retry after 100ms
+        }
+    };
 
-    // Initialize tsParticles with the default configuration
-    await tsParticles.load({
-        id: "tsparticles",
-        options: defaultConfig
-    }).catch(error => {
-        console.error(error);
-    });
+    // Start the first attempt
+    retryLoadParticles();
 }
