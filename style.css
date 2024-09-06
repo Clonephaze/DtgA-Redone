@@ -129,7 +129,6 @@ nav {
     }
 
     >svg {
-        height: 56px;
         order: 1;
         fill: rgb(var(--color-primary-rgb-values));
     }
