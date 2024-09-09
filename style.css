@@ -128,9 +128,9 @@ nav {
         }
     }
 
-    >svg {
+    >object {
+        color: inherit;
         order: 1;
-        fill: rgb(var(--color-primary-rgb-values));
     }
 
     & .nav-list {
@@ -292,7 +292,7 @@ nav {
             align-items: flex-end;
         }
 
-        >svg {
+        >object {
             grid-area: nav-icon;
         }
 
