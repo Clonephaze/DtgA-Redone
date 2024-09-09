@@ -45,6 +45,8 @@ export function initializeColorPicker() {
 
         const modalCloseButton = document.getElementById('modal-close-button');
         const resetButton = document.getElementById('reset-button');
+        const svgObject = document.getElementById('nav-logo');
+        const svgDoc = svgObject.contentDocument;
 
         if (modalCloseButton && modalCloseButton.contains(event.target)) {
             closeModal();
@@ -53,6 +55,7 @@ export function initializeColorPicker() {
         if (resetButton && resetButton.contains(event.target)) {
             localStorage.setItem('color-primary-rgb-values', '133, 255, 225');
             document.documentElement.style.setProperty('--color-primary-rgb-values', '133, 255, 225');
+            svgDoc.documentElement.style.setProperty('--color-primary-rgb-values', '133, 255, 225');
             closeModal();
         }
     });
@@ -63,5 +66,13 @@ export function initializeColorPicker() {
         const rgbValues = `${r}, ${g}, ${b}`;
         document.documentElement.style.setProperty('--color-primary-rgb-values', rgbValues);
         localStorage.setItem('color-primary-rgb-values', rgbValues);
+        const svgObject = document.getElementById('nav-logo');
+        const svgDoc = svgObject.contentDocument;
+
+        if (!svgDoc) {
+            return;
+        } else {
+            svgDoc.documentElement.style.setProperty('--color-primary-rgb-values', rgbValues);
+        }
     });
 }
