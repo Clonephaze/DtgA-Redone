@@ -10,12 +10,12 @@ export function generateTOC() {
         toc.innerHTML = '';
 
         // Iterate over each element with the class 'toc-place'
-        document.querySelectorAll('.toc-place').forEach((element, index) => {
-            const id = 'toc-place-' + index;
-            element.setAttribute('id', id);
+        document.querySelectorAll('.toc-place').forEach((element) => {
+            const id = element.getAttribute('data-name'), idSmall = id.split(' ').join('');
+            element.setAttribute('id', idSmall);
             const button = document.createElement('button');
             button.className = 'toc-button';
-            button.dataset.target = `#${id}`;
+            button.dataset.target = `#${idSmall}`;
             button.textContent = element.dataset.name;
             toc.appendChild(button);
         });

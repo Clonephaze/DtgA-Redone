@@ -4,7 +4,7 @@
     --bgColor: color-mix(in srgb, rgb(var(--color-primary-rgb-values)) 15%, rgb(var(--color-secondary-rgb-values)));
     --sub-bgColor: color-mix(in srgb, currentcolor 20%, rgb(var(--color-secondary-rgb-values)));
     --bgColorGradient: linear-gradient(in hsl, transparent 10%, rgba(var(--color-primary-rgb-values), 0.2) 98%, transparent 100%);
-    --border-color: color-mix(in hsl, rgb(var(--color-primary-rgb-values)) 70%, rgb(10, 10, 10) 60%);
+    --border-color: color-mix(in srgb, rgb(var(--color-primary-rgb-values)) 70%, rgb(10, 10, 10) 60%);
     --text-color-standard: 215, 215, 215;
     --text-color-mixed: color-mix(in hsl, rgb(var(--color-primary-rgb-values)) 90%, rgb(var(--text-color-standard)) 10%);
     --bx-shdw-light: 0 0 6px 4px rgba(var(--color-primary-rgb-values), 0.2);
