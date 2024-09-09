@@ -124,7 +124,7 @@ function loadContentAndScripts(pageId, optItemId) {
             fileName = 'index';
             pageTitle = 'Home';
             metaDescription = 'Dangerous to go Alone, a MASSIVE overhaul mod for Breath of the Wild that offers everything from companions to gadgets, from weapons to spells, from from enemies to dungeons, and more!';
-            cononicalLink = 'https://clonephaze.github.io/DtgA-Redone/'
+            cononicalLink = 'https://clonephaze.github.io/DtgA-Redone/index.html'
             break;
     }
 
