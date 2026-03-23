@@ -136,16 +136,20 @@ export async function initializeParticles() {
         motion: { disable: false, reduce: { factor: 4, value: true } }
     }
     
-    // Retry mechanism for tsParticles load
-    const retryLoadParticles = async (retryInterval = 100) => {
+    // Retry mechanism for tsParticles load — capped at 5 attempts with exponential backoff
+    const retryLoadParticles = async (retries = 0, maxRetries = 5) => {
         try {
             await tsParticles.load({
                 id: "tsparticles",
                 options: defaultConfig
             });
         } catch (error) {
-            console.error("Error loading particles, retrying...", error);
-            setTimeout(() => retryLoadParticles(retryInterval), retryInterval); // Retry after 100ms
+            if (retries < maxRetries) {
+                console.error(`Error loading particles, retrying (${retries + 1}/${maxRetries})...`, error);
+                setTimeout(() => retryLoadParticles(retries + 1, maxRetries), 200 * (retries + 1));
+            } else {
+                console.error("Particles failed to load after max retries.", error);
+            }
         }
     };
 

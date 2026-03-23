@@ -94,7 +94,7 @@ function generateStaticPages() {
     });
 }
 
-let generatedCardCount;
+let generationActive = false;
 /**
  * Generates the page content by inserting dynamically created cards into the appropriate containers.
  * 
@@ -117,10 +117,11 @@ async function generatePageContent(document, mainCategory, subcategoryContainers
                 jsonData.forEach(element => {
                     if (element[mainCategory]) {
                         let mainCategoryData = element[mainCategory][0];
+                        const counter = { count: 0 };
                         for (let subcategory in mainCategoryData) {
                             if (mainCategoryData.hasOwnProperty(subcategory)) {
                                 let subcategoryData = mainCategoryData[subcategory];
-                                generateCard(document, subcategoryData, subcategory, subcategoryContainers);
+                                generateCard(document, subcategoryData, subcategory, subcategoryContainers, counter);
                             }
                         }
                     } else {
@@ -128,7 +129,6 @@ async function generatePageContent(document, mainCategory, subcategoryContainers
                     }
                 });
                 resolve();
-                generatedCardCount = 0;  // Reset card count after processing each page
             } catch (parseError) {
                 console.error(parseError.message);
                 reject(parseError);
@@ -145,7 +145,7 @@ async function generatePageContent(document, mainCategory, subcategoryContainers
  * @param {string} subcategory - The name of the subcategory (e.g., 'Armors', 'Weapons').
  * @param {Object} subcategoryContainers - An object mapping subcategories to their container IDs in the HTML.
  */
-function generateCard(document, subcategoryData, subcategory, subcategoryContainers) {
+function generateCard(document, subcategoryData, subcategory, subcategoryContainers, counter) {
     let weaponNumber = 0;
     subcategoryData.forEach(item => {
         let cardContent;
@@ -158,7 +158,7 @@ function generateCard(document, subcategoryData, subcategory, subcategoryContain
         if (Array.isArray(item.description) && Array.isArray(item.imageSrc)) {
             cardContent = generateWeaponCard(item, weaponNumber, itemElemId);
         } else {
-            cardContent = generateNormalCard(item, itemElemId);
+            cardContent = generateNormalCard(item, itemElemId, counter);
         }
 
         // Insert the generated card content into the corresponding container in the document
@@ -232,16 +232,16 @@ function generateWeaponCard(item, weaponNumber, itemElemId) {
  * @param {string} itemElemId - The ID of the card element.
  * @returns {string} - The generated HTML string representing the normal card.
  */
-function generateNormalCard(item, itemElemId) {
+function generateNormalCard(item, itemElemId, counter) {
     let imageType;
 
     // Generate the image section for the card
     if (item.imageSrc.length > 0) {
-        const lazyLoad = generatedCardCount >= 6 ? ' loading="lazy"' : ''; // Lazy load images after the first 6 to avoid FOUC
+        const lazyLoad = counter.count >= 6 ? ' loading="lazy"' : ''; // Lazy load images after the first 6 to avoid FOUC
         imageType = `<div class="image-container">
         <img src="${item.imageSrc[0]}" alt="" height="250" ${lazyLoad}>
         </div>`;
-        generatedCardCount++;
+        counter.count++;
     }
 
     return `

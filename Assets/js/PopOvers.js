@@ -3,12 +3,19 @@
 const { computePosition, flip, offset, shift, autoUpdate } = window.FloatingUIDOM;
 let jsonData = null;
 let mobileOpen = false;
+let touchInput = false;
+let autoUpdateCleanup = null;
+let popoverControllers = [];
+window.addEventListener('touchstart', () => { touchInput = true; }, { once: true, passive: true });
 
 /**
  * Initializes popover functionality by setting up event listeners on elements with the class 'get-popped'.
  * The popovers are shown or hidden based on hover or focus events.
  */
 export function initiatePopovers() {
+	// Abort all previous per-element window listeners before re-initialising
+	popoverControllers.forEach(c => c.abort());
+	popoverControllers = [];
 	const popElements = document.querySelectorAll('.get-popped');
 	popElements.forEach(triggerElement => {
 		setupPopover(triggerElement);
@@ -28,11 +35,8 @@ function setupPopover(triggerElement) {
     let hideTimer; // Timer for hiding the HTML popover
 	const popoverElement = document.getElementById("popoverElement");
 
-    // Checks if the user has a touch input
-    let touchInput = false;
-    window.addEventListener('touchstart', () => {
-        touchInput = true;
-    }, { passive: true });
+    const controller = new AbortController();
+    popoverControllers.push(controller);
 
     const showPopoverHandler = () => {
         clearTimeout(hoverTimer);
@@ -42,7 +46,7 @@ function setupPopover(triggerElement) {
     };
 
     const hidePopoverHandler = () => {
-		const timerTime = touchInput ? '0' : '500';
+		const timerTime = touchInput ? 0 : 500;
         if (triggerElement.getAttribute('data-popCard')) {
             hideTimer = setTimeout(() => {
                 hidePopover(popoverElement);
@@ -61,9 +65,9 @@ function setupPopover(triggerElement) {
         }
     };
 
-    // Add global event listeners for clicks and touches
-    window.addEventListener('mousedown', handleDocumentClick);
-    window.addEventListener('touchend', handleDocumentClick);
+    // Add global event listeners for clicks and touches (scoped to this element's controller)
+    window.addEventListener('mousedown', handleDocumentClick, { signal: controller.signal });
+    window.addEventListener('touchend', handleDocumentClick, { signal: controller.signal });
 
     ['mouseenter', 'mouseleave', 'focus', 'blur', 'touchend'].forEach(event => {
         triggerElement.addEventListener(event, (e) => {
@@ -112,9 +116,13 @@ function updatePopPosition(triggerElement, popoverElement) {
 	// Determine placement from the data-popSide attribute
 	const placement = triggerElement.getAttribute('data-popSide') || 'top';
 
-	// Get and set the position
-	
-	autoUpdate(
+	// Clean up any existing autoUpdate listener before creating a new one
+	if (autoUpdateCleanup) {
+		autoUpdateCleanup();
+		autoUpdateCleanup = null;
+	}
+
+	autoUpdateCleanup = autoUpdate(
 		triggerElement,
 		popoverElement,
 		() => {
@@ -312,7 +320,7 @@ function createPopoverContent(item, pageNavVal) {
 
 			// Create the HTML content
 			const content = `
-				<button class="card-pop-wrapper pageNav" data-href="${pageNavVal}" data-ItemId="${itemElemId}">
+				<button class="card-pop-wrapper pageNav" data-href="${pageNavVal}" data-item-id="${itemElemId}">
 					<h3>${item.title}</h3>
 					<img src="${item.imageSrc}" alt="${item.title}" class="${imgClass}" />
 					<p>${item.description}</p>	
@@ -344,6 +352,10 @@ function createPopoverContent(item, pageNavVal) {
  * @param {HTMLElement} element - The popover element to be hidden.
  */
 function hidePopover(popoverElement) {
+	if (autoUpdateCleanup) {
+		autoUpdateCleanup();
+		autoUpdateCleanup = null;
+	}
 	popoverElement.classList.remove('show');
 	popoverElement.classList.add('hide');
 	popoverElement.style.display = 'none';

@@ -33,9 +33,11 @@ export function navbarHandler() {
         navToggle.addEventListener('click', function () {
             const ariaExpanded = navToggle.getAttribute('aria-expanded');
             if (ariaExpanded === 'false') {
+                navToggle.setAttribute('aria-expanded', 'true');
                 navList.setAttribute('aria-expanded', 'true');
                 setAutoHeight(navList);
             } else if (ariaExpanded === 'true') {
+                navToggle.setAttribute('aria-expanded', 'false');
                 navList.setAttribute('aria-expanded', 'false');
                 collapseContent(navList);
             }
@@ -47,8 +49,10 @@ export function navbarHandler() {
     const contentSection = document.querySelector('.content-section');
 
     if (navbar && contentSection) {
-        const navbarHeight = navbar.offsetHeight;
-        const navbarOffset = navbarHeight + 25;
-        contentSection.style.paddingTop = navbarOffset + 'px';
+        const updatePadding = () => {
+            contentSection.style.paddingTop = (navbar.offsetHeight + 25) + 'px';
+        };
+        updatePadding();
+        new ResizeObserver(updatePadding).observe(navbar);
     }
 }

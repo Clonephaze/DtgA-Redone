@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     return; // Do nothing if the link is to the current page
                 }
                 const pageId = href.substring(1);
-                if (event.target.getAttribute('data-itemID')) {
-                    itemId = event.target.getAttribute('data-itemID');
+                if (event.target.getAttribute('data-item-id')) {
+                    itemId = event.target.getAttribute('data-item-id');
                 }
                 history.pushState({ pageId: pageId }, '', href);
                 if (popover) {

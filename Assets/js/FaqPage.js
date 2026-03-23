@@ -29,11 +29,12 @@ function handleAccordionClick(event) {
             content.style.height = '';
         }
     } else {
-        // Collapse other open accordion content
-        document.querySelectorAll('.show').forEach(openContent => {
-            if (openContent !== content) {
-                collapseContent(openContent);
-                openContent.classList.remove('show');
+        // Collapse other open accordion content (scope to accordion siblings only)
+        document.querySelectorAll('.accordion-button').forEach(btn => {
+            const sibling = btn.nextElementSibling;
+            if (sibling && sibling !== content && sibling.classList.contains('show')) {
+                collapseContent(sibling);
+                sibling.classList.remove('show');
             }
         });
 

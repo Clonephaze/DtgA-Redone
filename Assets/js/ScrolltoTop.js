@@ -5,7 +5,7 @@
 function scrollButton() {
     const button = document.getElementById('scroll-btn');
     const progressCircle = document.getElementById('progress-circle');
-    const circleRadius = progressCircle.getAttribute('r');
+    const circleRadius = parseFloat(progressCircle.getAttribute('r'));
     const circleCircumference = 2 * Math.PI * circleRadius;
 
     // Set the progress circle's dash array and initial dash offset

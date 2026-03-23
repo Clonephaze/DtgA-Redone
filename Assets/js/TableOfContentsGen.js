@@ -23,7 +23,8 @@ export function generateTOC() {
         // Set up click event for TOC buttons to scroll to the target section
         document.querySelectorAll('.toc-button').forEach(button => {
             button.addEventListener('click', function () {
-                const target = document.querySelector(this.dataset.target);
+                const targetId = this.dataset.target.replace(/^#/, '');
+                const target = document.getElementById(targetId);
                 const navbarHeight = document.querySelector('nav').offsetHeight;
                 const navbarOffset = navbarHeight + 10;
                 const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarOffset;

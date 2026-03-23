@@ -167,6 +167,10 @@ function loadContentAndScripts(pageId, optItemId) {
         })
         .catch(() => {
             console.error(`Failed to load ${fileName}.`);
+            const contentSection = document.querySelector('.content-section');
+            if (contentSection) {
+                contentSection.innerHTML = `<div class="error-message"><p>Failed to load page content. Please try refreshing.</p></div>`;
+            }
         });
 }
 
